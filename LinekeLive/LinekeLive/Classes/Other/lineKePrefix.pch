@@ -1,0 +1,21 @@
+//
+//  lineKePrefix.pch
+//  LinekeLive
+//
+//  Created by CoderTan on 2017/6/22.
+//  Copyright © 2017年 CoderTan. All rights reserved.
+//
+
+#ifndef lineKePrefix_pch
+#define lineKePrefix_pch
+
+#import "LineKeMacros.h"
+
+#ifdef DEBUG
+#define LKLog(fmt, ...)      NSLog(fmt, ##__VA_ARGS__)
+#else
+#define LKLog(fmt, ...)      ((void)0)
+#endif
+
+
+#endif /* lineKePrefix_pch */

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="LKGiftCollectionViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Eve-G7-txM">
+                        <rect key="frame" x="20" y="3" width="40" height="40"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="Eve-G7-txM" secondAttribute="height" multiplier="1:1" id="cPh-g9-0v9"/>
+                            <constraint firstAttribute="width" constant="40" id="yGz-dA-VmA"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="烟花" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zeK-7M-st9">
+                        <rect key="frame" x="30" y="48" width="21" height="12"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="99.0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7us-EZ-ksr">
+                        <rect key="frame" x="29" y="63" width="22" height="12"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstItem="7us-EZ-ksr" firstAttribute="centerX" secondItem="Eve-G7-txM" secondAttribute="centerX" id="BfS-7L-LY7"/>
+                <constraint firstItem="Eve-G7-txM" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="FVv-P4-GYk"/>
+                <constraint firstItem="7us-EZ-ksr" firstAttribute="top" secondItem="zeK-7M-st9" secondAttribute="bottom" constant="3" id="Go6-yh-QUz"/>
+                <constraint firstItem="zeK-7M-st9" firstAttribute="centerX" secondItem="Eve-G7-txM" secondAttribute="centerX" id="Hg0-Nv-v0o"/>
+                <constraint firstItem="Eve-G7-txM" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="3" id="PAV-k3-AbQ"/>
+                <constraint firstItem="zeK-7M-st9" firstAttribute="top" secondItem="Eve-G7-txM" secondAttribute="bottom" constant="5" id="Quw-eI-ouf"/>
+            </constraints>
+            <connections>
+                <outlet property="giftImage" destination="Eve-G7-txM" id="nRt-XX-tjC"/>
+                <outlet property="giftName" destination="zeK-7M-st9" id="mKS-vR-BZJ"/>
+                <outlet property="giftPrice" destination="7us-EZ-ksr" id="n7O-Bk-BAr"/>
+            </connections>
+        </collectionViewCell>
+    </objects>
+</document>

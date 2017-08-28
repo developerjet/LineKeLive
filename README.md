@@ -10,9 +10,9 @@
 5、本地rtmp服务器推流地址搭建，并实现推流(具体搭建方式，可网上搜取)
 
 示图：
-![image](https://github.com/tj812215542/LinekeLive/raw/master/Images/hot.png)
-![image](https://github.com/tj812215542/LinekeLive/raw/master/Images/near.png)
-![image](https://github.com/tj812215542/LinekeLive/raw/master/Images/focuse.png)
-![image](https://github.com/tj812215542/LinekeLive/raw/master/Images/room.png)
+![image](https://github.com/tj812215542/LineKeLive/raw/master/Images/hot.png)
+![image](https://github.com/tj812215542/LineKeLive/raw/master/Images/near.png)
+![image](https://github.com/tj812215542/LineKeLive/raw/master/Images/focuse.png)
+![image](https://github.com/tj812215542/LineKeLive/raw/master/Images/room.png)
 
 希望大家参考和指正，如果喜欢的话或对你有一些帮助的话，还望大家Star，谢谢。

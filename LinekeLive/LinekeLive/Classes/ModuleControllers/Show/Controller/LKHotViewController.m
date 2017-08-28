@@ -68,12 +68,16 @@ static NSString * const LiveCellID = @"HotLiveCell";
 //获取热门直播数据
 - (void)loadLives {
 
+    [XDProgressHUD showHUDWithIndeterminate:@"正在加载热门..."];
+    
     [LKLiveHandler executeGetHotLiveTaskWithSuccess:^(id obj) {
+        [XDProgressHUD hideHUD];
         
         [self.dataSource addObjectsFromArray:obj];
         [self.tableView  reloadData];
         
     } failed:^(id obj) {
+        [XDProgressHUD hideHUD];
         
         [XDProgressHUD showHUDWithText:@"请求失败" hideDelay:1.0];
     }];
@@ -109,11 +113,11 @@ static NSString * const LiveCellID = @"HotLiveCell";
         
         //获取直播的源
         LKLiveModel *model = self.dataSource[indexPath.row];
-        [self toPlayerWithModel:model];
+        [self playThisModel:model];
     }
 }
 
-- (void)toPlayerWithModel:(LKLiveModel *)model {
+- (void)playThisModel:(LKLiveModel *)model {
     if (!model) return;
     
     LKPlayerViewController *playerVC = [[LKPlayerViewController alloc] init];

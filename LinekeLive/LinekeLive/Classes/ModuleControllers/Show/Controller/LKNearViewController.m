@@ -135,7 +135,10 @@ UICollectionViewDelegateFlowLayout>
 
 - (void)requestNear {
 
+    [XDProgressHUD showHUDWithIndeterminate:@"正在加载..."];
+    
     [LKLiveHandler executeGetNearLiveTaskWithSuccess:^(id obj) {
+        [XDProgressHUD hideHUD];
         
         if (obj) {
             [self.dataSource addObjectsFromArray:obj];
@@ -143,6 +146,7 @@ UICollectionViewDelegateFlowLayout>
         }
         
     } failed:^(id obj) {
+        [XDProgressHUD hideHUD];
         
         [XDProgressHUD showHUDWithText:@"请求失败" hideDelay:1.0];
     }];

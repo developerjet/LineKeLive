@@ -9,4 +9,10 @@
 4、附近主播信息长按抖动、可拖拽、交换位置
 5、本地rtmp服务器推流地址搭建，并实现推流(具体搭建方式，可网上搜取)
 
+示图：
+![image](https://raw.githubusercontent.com/LinekeLive/LinekeLive/master/Images/hot.jpg)
+![image](https://raw.githubusercontent.com/LinekeLive/LinekeLive/master/Images/near.jpg)
+![image](https://raw.githubusercontent.com/LinekeLive/LinekeLive/master/Images/focuse.jpg)
+![image](https://raw.githubusercontent.com/LinekeLive/LinekeLive/master/Images/room.jpg)
+
 希望大家参考和指正，如果喜欢的话或对你有一些帮助的话，还望大家Star，谢谢。

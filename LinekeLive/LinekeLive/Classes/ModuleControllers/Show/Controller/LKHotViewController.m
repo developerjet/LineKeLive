@@ -9,6 +9,7 @@
 #import "LKHotViewController.h"
 #import "LKHotLiveTableViewCell.h"
 #import "LKPlayerViewController.h"
+#import <MJRefresh.h>
 
 static NSString * const LiveCellID = @"HotLiveCell";
 
@@ -52,35 +53,53 @@ static NSString * const LiveCellID = @"HotLiveCell";
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor colorBackGroundColor];
     
-    [self setUptable];
-    [self loadLives];
+    [self setUptableOrReload];
 }
 
 
-- (void)setUptable {
+- (void)setUptableOrReload {
     
+    __weak typeof(self) weasSelf = self;
+    self.tableView.mj_header = [MJRefreshStateHeader headerWithRefreshingBlock:^{
+       
+        [weasSelf reloadHot];
+    }];
+    
+    [self.tableView.mj_header beginRefreshing];
     [self.view addSubview:self.tableView];
 }
 
+#pragma mark - net
 
-#pragma mark - NetWorking
-
-//获取热门直播数据
-- (void)loadLives {
+- (void)reloadHot {
 
     [XDProgressHUD showHUDWithIndeterminate:@"正在加载热门..."];
     
     [LKLiveHandler executeGetHotLiveTaskWithSuccess:^(id obj) {
+        [self endRefrshing];
         [XDProgressHUD hideHUD];
         
         [self.dataSource addObjectsFromArray:obj];
         [self.tableView  reloadData];
         
     } failed:^(id obj) {
-        [XDProgressHUD hideHUD];
         
+        [self endRefrshing];
+        [XDProgressHUD hideHUD];
         [XDProgressHUD showHUDWithText:@"请求失败" hideDelay:1.0];
     }];
+}
+
+- (void)endRefrshing {
+    
+    if ([self.tableView.mj_header isRefreshing]) {
+        
+        [self.tableView.mj_header endRefreshing];
+    }
+    else if ([self.tableView.mj_footer isRefreshing]) {
+        
+        [self.tableView.mj_footer endRefreshing];
+    }
 }
 
 

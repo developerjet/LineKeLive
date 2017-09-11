@@ -11,6 +11,7 @@
 #import "LKPlayerViewController.h"
 #import "LKLiveHandler.h"
 #import "LKLiveModel.h"
+#import <MJRefresh.h>
 
 #define kMargin  5
 #define kItemWidth  100
@@ -65,19 +66,26 @@ UICollectionViewDelegateFlowLayout>
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor colorBackGroundWhiteColor];
-    
-    [self initializeUI];
-    [self requestNear];
+
+    [self setUpListOrReload];
 }
 
-- (void)initializeUI {
+- (void)setUpListOrReload {
     
-    [self.view addSubview:self.collectionView];
+    __weak typeof(self) weasSelf = self;
+    self.collectionView.mj_header = [MJRefreshStateHeader headerWithRefreshingBlock:^{
+        
+        [weasSelf reloadNear];
+    }];
+    
+    [self.collectionView.mj_header beginRefreshing];
     
     //添加长按手势
     UILongPressGestureRecognizer *longGesture = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPress:)];
     [self.collectionView addGestureRecognizer:longGesture];
     _longGesture = longGesture;
+    
+    [self.view addSubview:self.collectionView];
 }
 
 - (void)startShake:(UICollectionViewCell *)cell {
@@ -133,11 +141,12 @@ UICollectionViewDelegateFlowLayout>
 
 #pragma mark - net
 
-- (void)requestNear {
+- (void)reloadNear {
 
     [XDProgressHUD showHUDWithIndeterminate:@"正在加载..."];
     
     [LKLiveHandler executeGetNearLiveTaskWithSuccess:^(id obj) {
+        [self endRefrshing];
         [XDProgressHUD hideHUD];
         
         if (obj) {
@@ -146,10 +155,24 @@ UICollectionViewDelegateFlowLayout>
         }
         
     } failed:^(id obj) {
+        
+        [self endRefrshing];
         [XDProgressHUD hideHUD];
         
         [XDProgressHUD showHUDWithText:@"请求失败" hideDelay:1.0];
     }];
+}
+
+- (void)endRefrshing {
+    
+    if ([self.collectionView.mj_header isRefreshing]) {
+        
+        [self.collectionView.mj_header endRefreshing];
+    }
+    else if ([self.collectionView.mj_footer isRefreshing]) {
+        
+        [self.collectionView.mj_footer endRefreshing];
+    }
 }
 
 #pragma mark - data && delegate

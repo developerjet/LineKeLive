@@ -75,9 +75,7 @@ static NSString * const kTalkId = @"talkCell";
                       @{@"level": @5, @"name": @"相见恨晚2017", @"talk": @"主播你好~😆"},
                       @{@"level": @3, @"name": @"演员", @"talk": @"该配合你演出的我视而不见~😆"}];
     
-    NSArray *tempMs = [LKTalkModel mj_objectArrayWithKeyValuesArray:datas];
-    
-    [self.dataSource addObjectsFromArray:tempMs];
+    [self.dataSource addObjectsFromArray:[LKTalkModel mj_objectArrayWithKeyValuesArray:datas]];
     [self.tableView reloadData];
 }
 
@@ -124,6 +122,14 @@ static NSString * const kTalkId = @"talkCell";
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     return 26.0;
+}
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    
+    if (self.isDraggBlock) {
+        
+        self.isDraggBlock();
+    }
 }
 
 @end

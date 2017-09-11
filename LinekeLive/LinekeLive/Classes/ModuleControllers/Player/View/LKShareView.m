@@ -24,7 +24,7 @@
     [super awakeFromNib];
 
     self.backgroundColor = [UIColor colorWithHexString:@"FFFFFF"];
-    self.frame = CGRectMake(0, SCREEN_HEIGHT, SCREEN_WIDTH, 0);
+    self.frame = CGRectMake(0, SCREEN_HEIGHT, SCREEN_WIDTH, kCustomHeight);
 }
 
 

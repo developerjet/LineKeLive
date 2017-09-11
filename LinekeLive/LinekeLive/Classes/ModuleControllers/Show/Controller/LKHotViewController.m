@@ -110,8 +110,6 @@ static NSString * const LiveCellID = @"HotLiveCell";
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     if (self.dataSource.count > indexPath.row) {
-        
-        //获取直播的源
         LKLiveModel *model = self.dataSource[indexPath.row];
         [self playThisModel:model];
     }

@@ -32,7 +32,7 @@ UICollectionViewDelegateFlowLayout>
 @property (nonatomic, strong) UICollectionView *collectionView;
 @property (nonatomic, strong) UIPageControl *pageControl; /** >索引< **/
 
-@property (nonatomic, strong) NSMutableArray *giftMs;
+@property (nonatomic, strong) NSArray *dataSource;
 
 @end
 
@@ -52,12 +52,12 @@ UICollectionViewDelegateFlowLayout>
     return _pageControl;
 }
 
-- (NSMutableArray *)giftMs {
+- (NSArray *)dataSource {
     
-    if (!_giftMs) {
-        _giftMs = [NSMutableArray array];
+    if (!_dataSource) {
+        _dataSource = [NSArray array];
     }
-    return _giftMs;
+    return _dataSource;
 }
 
 - (UICollectionView *)collectionView {
@@ -150,17 +150,15 @@ UICollectionViewDelegateFlowLayout>
             [self endProgress];
             
             NSDictionary *dictionaryMs = obj[@"message"];
+            self.dataSource = @[[LKGiftModel mj_objectArrayWithKeyValuesArray:dictionaryMs[@"type1"][@"list"]],
+                                [LKGiftModel mj_objectArrayWithKeyValuesArray:dictionaryMs[@"type2"][@"list"]],
+                                [LKGiftModel mj_objectArrayWithKeyValuesArray:dictionaryMs[@"type4"][@"list"]],
+                                [LKGiftModel mj_objectArrayWithKeyValuesArray:dictionaryMs[@"type5"][@"list"]],
+                                [LKGiftModel mj_objectArrayWithKeyValuesArray:dictionaryMs[@"type6"][@"list"]],
+                                [LKGiftModel mj_objectArrayWithKeyValuesArray:dictionaryMs[@"type49"][@"list"]]];
+        
             
-            for (int i=0; i<dictionaryMs.count; i++) {
-                
-                NSString *type = [NSString stringWithFormat:@"type%d", i+1];
-                NSArray *listMs = dictionaryMs[type][@"list"];
-                
-                NSMutableArray *tempMs = [LKGiftModel mj_objectArrayWithKeyValuesArray:listMs];
-                [self.giftMs insertObject:tempMs atIndex:i];
-            }
-            
-            self.pageControl.numberOfPages = [self.giftMs count];
+            self.pageControl.numberOfPages = [self.dataSource count];
             
             [self.collectionView reloadData];
             
@@ -186,13 +184,13 @@ UICollectionViewDelegateFlowLayout>
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
     
-    return self.giftMs.count;
+    return self.dataSource.count;
 }
 
 //每组返回多少行
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     
-    return [self.giftMs[section] count];
+    return [self.dataSource[section] count];
 }
 
 
@@ -200,13 +198,13 @@ UICollectionViewDelegateFlowLayout>
     
     LKGiftCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:GitfIdentifier forIndexPath:indexPath];
     
-    if (self.giftMs.count > indexPath.section) {
+    if (self.dataSource.count > indexPath.section) {
         
-        NSArray *data = self.giftMs[indexPath.section];
+        NSArray *data = self.dataSource[indexPath.section];
         
         if (data.count > indexPath.row) {
             
-            cell.model = self.giftMs[indexPath.section][indexPath.row];
+            cell.model = self.dataSource[indexPath.section][indexPath.row];
         }
     }
     
@@ -215,13 +213,13 @@ UICollectionViewDelegateFlowLayout>
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     
-    if (self.giftMs.count > indexPath.section) {
+    if (self.dataSource.count > indexPath.section) {
         
-        NSArray *data = self.giftMs[indexPath.section];
+        NSArray *data = self.dataSource[indexPath.section];
         
         if (data.count > indexPath.row) {
             
-            LKGiftModel *model = self.giftMs[indexPath.section][indexPath.row];
+            LKGiftModel *model = self.dataSource[indexPath.section][indexPath.row];
             [self sendGiftIsMd:model];
         }
     }

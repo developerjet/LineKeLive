@@ -13,7 +13,7 @@ static NSString *const Identifier = @"SettingCell";
 
 @interface LKSettingViewController ()<UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic, strong) UITableView *tableView;
-@property (nonatomic, copy) void(^cleanBlock)(void);
+@property (nonatomic, copy) void(^cleanBlock)();
 
 @end
 

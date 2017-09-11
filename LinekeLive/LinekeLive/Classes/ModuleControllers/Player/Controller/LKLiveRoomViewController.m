@@ -88,6 +88,11 @@
     [self.view bringSubviewToFront:talkView];
     _centerOriginY = talkView.center.y;
     _talkView = talkView;
+    __weak typeof(self) weakSelf = self;
+    talkView.isDraggBlock = ^{
+        
+        [weakSelf.view endEditing:YES];
+    };
 }
 
 - (void)configureUI {

@@ -61,7 +61,8 @@ static NSString * const LiveCellID = @"HotLiveCell";
     
     __weak typeof(self) weasSelf = self;
     self.tableView.mj_header = [MJRefreshStateHeader headerWithRefreshingBlock:^{
-       
+        [weasSelf.dataSource removeAllObjects];
+        
         [weasSelf reloadHot];
     }];
     

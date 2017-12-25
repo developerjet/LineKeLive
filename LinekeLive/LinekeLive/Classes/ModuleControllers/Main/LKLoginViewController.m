@@ -16,7 +16,7 @@
 
 @implementation LKLoginViewController
 
-#pragma mark - EventMethods
+#pragma mark - view Load
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -31,19 +31,12 @@
     
     switch (_loginStyle) {
         case WeiBoLogin:
-            [self setUptabBar];
+            [kAppDelegate animationRoot:AnimServiceLoginIn];
             break;
             
         default:
             break;
     }
-}
-
-//进入主界面
-- (void)setUptabBar {
-    
-    LKBasicTabBarController *tabBar = [[LKBasicTabBarController alloc] init];
-    self.view.window.rootViewController = tabBar;
 }
 
 @end

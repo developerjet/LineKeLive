@@ -21,7 +21,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
-    [self setWindowRoot];
+    [self initializedRoot];
+    [self appearanceSetting];
     [self setLocation];
     [self setAdvertise];
     
@@ -29,14 +30,13 @@
 }
 
 //设置根控制器
-- (void)setWindowRoot {
+- (void)initializedRoot {
     
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     self.window.backgroundColor = [UIColor colorBackGroundWhiteColor];
     
     LKLoginViewController *LKLogin = [[LKLoginViewController alloc] init];
     self.window.rootViewController = LKLogin;
-    
     [self.window makeKeyAndVisible];
 }
 
@@ -54,6 +54,41 @@
     
     LKAdvertiseView *advertiseView = [LKAdvertiseView loadAdvertiseView];
     [self.window addSubview:advertiseView];
+}
+
+// iOS11 TableView统一适配
+- (void)appearanceSetting {
+    
+    if (@available(iOS 11.0, *)) {
+        [UITableView appearance].estimatedRowHeight = 0;
+        [UITableView appearance].estimatedSectionHeaderHeight =0;
+        [UITableView appearance].estimatedSectionFooterHeight =0;
+        [UITableView appearance].contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+    }
+}
+
+- (void)animationRoot:(AnimServiceType)type {
+    
+    CATransition *anim = [CATransition animation];
+    anim.timingFunction = UIViewAnimationCurveEaseInOut;
+    // 设置转场类型
+    anim.type = @"oglFlip"; //左右翻转
+    anim.duration = 0.8f;
+    // 设置转场方向
+    anim.subtype = type == AnimServiceLoginIn ? kCATransitionFromRight : kCATransitionFromLeft;
+    // 设置动画的开始位置
+    //anim.startProgress = 0.5;
+    // 设置动画结束位置
+    //anim.endProgress = 1;
+    // 添加动画
+    [[UIApplication sharedApplication].keyWindow.layer addAnimation:anim forKey:nil];
+    
+    // 根据业务类型切换根控制器
+    if (type == AnimServiceLoginIn) {
+        [[UIApplication sharedApplication].keyWindow setRootViewController:[[LKBasicTabBarController alloc] init]];
+    }else {
+        [[UIApplication sharedApplication].keyWindow setRootViewController:[[LKLoginViewController alloc] init]];
+    }
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

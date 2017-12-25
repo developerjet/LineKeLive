@@ -61,7 +61,7 @@ static NSString * const mineCellID = @"HotLiveCell";
     
     self.view.backgroundColor = [UIColor colorBackGroundColor];
     
-    LKMeHeaderView *headerView = [LKMeHeaderView loadNibCell];
+    LKMeHeaderView *headerView = [LKMeHeaderView loadNibHeader];
     headerView.frame = CGRectMake(0, 0, SCREEN_WIDTH, 300);
     self.tableView.tableHeaderView = headerView;
     
@@ -134,8 +134,8 @@ static NSString * const mineCellID = @"HotLiveCell";
         
         if (indexPath.row == 0) {
             
-            LKSettingViewController *set = [[LKSettingViewController alloc] init];
-            [self.navigationController pushViewController:set animated:NO];
+            LKSettingViewController *setting = [[LKSettingViewController alloc] init];
+            [self.navigationController pushViewController:setting animated:YES];
         }
     }
 }

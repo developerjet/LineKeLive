@@ -12,6 +12,8 @@
 
 @property (strong, nonatomic) UIWindow *window;
 
+/// 转场动画更改根控制器
+- (void)animationRoot:(AnimServiceType)type;
 
 @end
 

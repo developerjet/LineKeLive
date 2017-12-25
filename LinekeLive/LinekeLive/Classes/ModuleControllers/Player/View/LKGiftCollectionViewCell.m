@@ -43,8 +43,8 @@
     
     _model = model;
     
-    [self.giftImage downloadImage:model.img2 placeholder:@"default_room"];
     self.giftName.text = model.subject;
+    [self.giftImage downloadImage:model.img2 placeholder:@"default_room"];
     self.giftPrice.text = [NSString stringWithFormat:@"￥%.2ld", model.coin];
 }
 

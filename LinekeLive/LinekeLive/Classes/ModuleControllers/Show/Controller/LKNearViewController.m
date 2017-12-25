@@ -50,8 +50,8 @@ UICollectionViewDelegateFlowLayout>
         layout.minimumInteritemSpacing = kMargin;
         layout.sectionInset = UIEdgeInsetsMake(kMargin, kMargin, kMargin, kMargin);
         
-        CGRect fm = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
-        _collectionView = [[UICollectionView alloc] initWithFrame:fm collectionViewLayout:layout];
+        CGRect frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-SCREEN_NAV-SCREEN_TABBAR);
+        _collectionView = [[UICollectionView alloc] initWithFrame:frame collectionViewLayout:layout];
         _collectionView.delegate = self;
         _collectionView.dataSource = self;
         _collectionView.backgroundColor = [UIColor clearColor];
@@ -232,7 +232,6 @@ UICollectionViewDelegateFlowLayout>
     LKNearCollectionViewCell *cell = (LKNearCollectionViewCell *)[collectionView cellForItemAtIndexPath:selectIndex];
     
     if (self.dataSource.count > indexPath.row) {
-        
         LKLiveModel *model = self.dataSource[indexPath.row];
         [self endShake:cell];
         [self playIsMd:model];

@@ -16,7 +16,6 @@
 
 - (UIView *)danmuViewWithModel:(id<LKDanmuModelProtocol>)model;
 
-
 - (void)danmuViewDidClick:(UIView *)danmuView at:(CGPoint)point;
 
 @end

@@ -162,6 +162,7 @@
 		2B1E7FD21F459B2100B00C58 /* LKTalkTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LKTalkTableViewCell.xib; sourceTree = "<group>"; };
 		2B1E7FD51F45A60700B00C58 /* LKTalkModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKTalkModel.h; sourceTree = "<group>"; };
 		2B1E7FD61F45A60700B00C58 /* LKTalkModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKTalkModel.m; sourceTree = "<group>"; };
+		2B4B31F51FF13F1200E77A84 /* LKEnumHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LKEnumHeader.h; sourceTree = "<group>"; };
 		2B55FBC31EFA73E0005A83BE /* LinekeLive.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LinekeLive.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2B55FBC71EFA73E0005A83BE /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		2B55FBD21EFA73E0005A83BE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -542,6 +543,7 @@
 				2B5AF3FA1F02041F00D83361 /* Advertise */,
 				2B704C9C1EFB71C00020A0D6 /* lineKePrefix.pch */,
 				2B704C9D1EFB744F0020A0D6 /* LineKeMacros.h */,
+				2B4B31F51FF13F1200E77A84 /* LKEnumHeader.h */,
 			);
 			path = Other;
 			sourceTree = "<group>";

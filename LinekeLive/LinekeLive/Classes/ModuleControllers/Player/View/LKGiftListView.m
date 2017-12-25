@@ -193,7 +193,6 @@ UICollectionViewDelegateFlowLayout>
     return [self.dataSource[section] count];
 }
 
-
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     
     LKGiftCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:GitfIdentifier forIndexPath:indexPath];

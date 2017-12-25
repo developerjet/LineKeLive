@@ -13,24 +13,24 @@
 /**
  设备类型(1.手机 2.电脑)
  */
-@property (nonatomic, strong) NSString *deveiceType;
+@property (nonatomic, copy) NSString *deveiceType;
 
 /**
  发送者名称
  */
-@property (nonatomic, strong) NSString *senderName;
+@property (nonatomic, copy) NSString *senderName;
 
 
 /**
  礼物名称
  */
-@property (nonatomic, strong) NSString *giftName;
+@property (nonatomic, copy) NSString *giftName;
 
 
 /**
  发送者头像
  */
-@property (nonatomic, strong) NSString *giftIcon;
+@property (nonatomic, copy) NSString *giftIcon;
 
 
 @end

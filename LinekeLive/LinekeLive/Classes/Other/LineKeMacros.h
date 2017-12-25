@@ -16,6 +16,7 @@
 #import "LKLiveHandler.h"
 #import "LKCacheHelper.h"
 #import "XDProgressHUD.h"
+#import "LKEnumHeader.h"
 #import "AppDelegate.h"
 #import "APIConfig.h"
 #import <Masonry.h>
@@ -34,6 +35,9 @@
 #define SCREEN_BOUNDS    [UIScreen mainScreen].bounds
 #define SCREEN_WIDTH     SCREEN_BOUNDS.size.width
 #define SCREEN_HEIGHT    SCREEN_BOUNDS.size.height
+
+#define SCREEN_NAV       64
+#define SCREEN_TABBAR    49
 
 /// IMG
 #define IMG(x)       [UIImage imageNamed:x]

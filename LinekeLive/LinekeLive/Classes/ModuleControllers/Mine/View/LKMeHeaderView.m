@@ -17,7 +17,7 @@ static NSString * iconURL = @"http://p3.music.126.net/cm1Zl1iA4FWPOeFciGJhxQ==/7
 
 @implementation LKMeHeaderView
 
-+ (instancetype)loadNibCell {
++ (instancetype)loadNibHeader {
     
     NSBundle *_currentBundle = [NSBundle mainBundle];
     LKMeHeaderView *meHeaderV = [[_currentBundle loadNibNamed:@"LKMeHeaderView" owner:nil options:nil] firstObject];

@@ -47,32 +47,30 @@ static NSString * const LiveCellID = @"HotLiveCell";
     return _tableView;
 }
 
-#pragma mark - Events
-
+#pragma mark - View Load
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor colorBackGroundColor];
     
-    [self setUptableOrReload];
+    [self setUptableOrData];
 }
 
-
-- (void)setUptableOrReload {
+- (void)setUptableOrData {
     
     __weak typeof(self) weasSelf = self;
     self.tableView.mj_header = [MJRefreshStateHeader headerWithRefreshingBlock:^{
         [weasSelf.dataSource removeAllObjects];
         
-        [weasSelf reloadHot];
+        [weasSelf reloadData];
     }];
     
     [self.tableView.mj_header beginRefreshing];
     [self.view addSubview:self.tableView];
 }
 
-#pragma mark - net
+#pragma mark - Cycle net
 
-- (void)reloadHot {
+- (void)reloadData {
 
     [XDProgressHUD showHUDWithIndeterminate:@"正在加载热门..."];
     
@@ -157,7 +155,5 @@ static NSString * const LiveCellID = @"HotLiveCell";
     [self presentViewController:movieVC animated:YES completion:NULL];
 }
  */
-
-
 
 @end

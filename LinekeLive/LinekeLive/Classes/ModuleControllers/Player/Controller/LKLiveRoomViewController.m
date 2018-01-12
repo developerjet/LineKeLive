@@ -10,10 +10,10 @@
 #import "LKAnimationManager.h"
 #import "LKGiftListView.h"
 #import "LKSendTalkView.h"
-#import "LKDanmuView.h"
 #import "LKDanmuModel.h"
 #import "LKGiftModel.h"
 #import "LKShareView.h"
+#import "LKDanmuView.h"
 #import "LKGiftData.h"
 
 @interface LKLiveRoomViewController ()<UITextViewDelegate, LKGiftListViewDelegate, LKDanmuViewProtocol>
@@ -255,16 +255,80 @@
             [self.giftListView show];
             break;
          case LKPlayRoomTaskOpenShare:
-            [self openShare];
+            [self showShare];
+            break;
+         case LKPlayRoomTaskMessage:
+            [self creatFabulous];
             break;
         default:
             break;
     }
 }
 
-- (void)openShare {
+- (void)creatFabulous {
     
-    LKShareView *view = [LKShareView loadShareCore];
+    CALayer *imageLayer = [CALayer layer];
+    imageLayer.frame = CGRectMake(0, 0, 30, 30);
+    imageLayer.contents = (__bridge id _Nullable)([UIImage imageNamed:@"heart_1"].CGImage);
+    imageLayer.position = CGPointMake(self.view.bounds.size.width *0.5, self.view.bounds.size.height - 10);
+    [self.view.layer addSublayer:imageLayer];
+    
+    [self startAnim:imageLayer];
+}
+
+- (void)startAnim:(CALayer *)layer {
+    
+    [CATransaction begin];
+    
+    [CATransaction setCompletionBlock:^{
+        [layer removeAllAnimations];
+        [layer removeFromSuperlayer];
+    }];
+    
+    CAAnimationGroup *group = [CAAnimationGroup animation];
+    
+    CAKeyframeAnimation *frameAnim = [CAKeyframeAnimation animation];
+    frameAnim.path = [self setupAnimPath];
+    frameAnim.keyPath = @"position";
+    
+    CABasicAnimation *opacityAnim = [CABasicAnimation animation];
+    opacityAnim.keyPath = @"opacity";
+    opacityAnim.fromValue = @1.0;
+    opacityAnim.toValue = @0.0;
+    opacityAnim.beginTime = 1;
+    
+    group.duration = 5;
+    group.animations = @[frameAnim, opacityAnim];
+    group.fillMode = kCAFillModeForwards;
+    group.removedOnCompletion = NO;
+    [layer addAnimation:group forKey:nil];
+    
+    [CATransaction commit];
+}
+
+- (CGPathRef)setupAnimPath {
+    
+    CGFloat y = self.view.bounds.size.height - 50;
+    CGFloat centerX = self.view.bounds.size.width * 0.5;
+    CGFloat x = 0;
+    
+    UIBezierPath *path = [UIBezierPath bezierPath];
+    while (y >= 0) {
+        if ( y == self.view.bounds.size.height - 50) {
+            [path moveToPoint:CGPointMake(centerX, y)];
+        }else {
+            x = centerX + arc4random_uniform(31) - 15;
+            [path addLineToPoint:CGPointMake(x, y)];
+        }
+        y -= 40;
+    }
+    
+    return path.CGPath;
+}
+
+- (void)showShare {
+    
+    LKShareView *view = [[LKShareView alloc] init];
     [view show];
 }
 

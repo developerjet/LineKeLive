@@ -17,15 +17,13 @@
 @implementation LKLoginViewController
 
 #pragma mark - view Load
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
 }
 
 
-#pragma mark - LoginManager
-
+#pragma mark - login In
 - (IBAction)loginClick:(UIButton *)btn {
     _loginStyle = btn.tag;
     

@@ -71,7 +71,6 @@
 
 
 #pragma mark - LKBasicTabBarDelegate
-
 - (void)tabBar:(LKBasicTabBar *)tabBar didSelectItemIndex:(LKTabBarItemType)index {
     
     if (index != LKItemTypeLaunch) {
@@ -82,6 +81,20 @@
     //开启直播
     LKLaunchLiveViewController *launchLive = [[LKLaunchLiveViewController alloc] init];
     [self presentViewController:launchLive animated:YES completion:nil];
+}
+
+
+#pragma mark - 禁止屏幕旋转
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation {
+    return (toInterfaceOrientation == UIInterfaceOrientationPortrait);
+}
+
+- (BOOL)shouldAutorotate {
+    return NO;
+}
+
+- (UIInterfaceOrientationMask)supportedInterfaceOrientations {
+    return UIInterfaceOrientationMaskPortrait;//只支持这一个方向(正常的方向)
 }
 
 

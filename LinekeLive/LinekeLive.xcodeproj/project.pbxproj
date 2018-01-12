@@ -43,7 +43,6 @@
 		2B75AF881EFCED4700BFE311 /* LKBasicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B75AF871EFCED4700BFE311 /* LKBasicViewController.m */; };
 		2B75AF951EFCEEBC00BFE311 /* LKBasicNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B75AF941EFCEEBC00BFE311 /* LKBasicNavigationController.m */; };
 		2B8A333E1F4824880090B2BB /* LKShareView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B8A333D1F4824880090B2BB /* LKShareView.m */; };
-		2B8A33401F4824960090B2BB /* LKShareView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2B8A333F1F4824960090B2BB /* LKShareView.xib */; };
 		2B9C00011F00B0150010611A /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B9C00001F00B0150010611A /* libz.tbd */; };
 		2B9C00031F00B01D0010611A /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B9C00021F00B01D0010611A /* MediaPlayer.framework */; };
 		2B9C00051F00B0280010611A /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B9C00041F00B0280010611A /* MobileCoreServices.framework */; };
@@ -205,7 +204,6 @@
 		2B75AF941EFCEEBC00BFE311 /* LKBasicNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKBasicNavigationController.m; sourceTree = "<group>"; };
 		2B8A333C1F4824880090B2BB /* LKShareView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKShareView.h; sourceTree = "<group>"; };
 		2B8A333D1F4824880090B2BB /* LKShareView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKShareView.m; sourceTree = "<group>"; };
-		2B8A333F1F4824960090B2BB /* LKShareView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LKShareView.xib; sourceTree = "<group>"; };
 		2B9C00001F00B0150010611A /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		2B9C00021F00B01D0010611A /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		2B9C00041F00B0280010611A /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
@@ -788,7 +786,6 @@
 				2B1E7FCE1F458BDD00B00C58 /* LKSendTalkView.m */,
 				2B8A333C1F4824880090B2BB /* LKShareView.h */,
 				2B8A333D1F4824880090B2BB /* LKShareView.m */,
-				2B8A333F1F4824960090B2BB /* LKShareView.xib */,
 				2B1E7FD01F459B2100B00C58 /* LKTalkTableViewCell.h */,
 				2B1E7FD11F459B2100B00C58 /* LKTalkTableViewCell.m */,
 				2B1E7FD21F459B2100B00C58 /* LKTalkTableViewCell.xib */,
@@ -1017,7 +1014,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				AE7E71711F3B09880019B515 /* LKLaunchLiveViewController.xib in Resources */,
-				2B8A33401F4824960090B2BB /* LKShareView.xib in Resources */,
 				AE7E719A1F3B09880019B515 /* LKNearCollectionViewCell.xib in Resources */,
 				AE7E71751F3B09880019B515 /* camra_beauty_close@3x.png in Resources */,
 				AE7E71841F3B09880019B515 /* LKMeTableViewCell.xib in Resources */,

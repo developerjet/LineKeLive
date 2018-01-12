@@ -57,7 +57,7 @@
     [self.view endEditing:YES];
 }
 
-#pragma mark - live
+#pragma mark - living
 //开始直播
 - (IBAction)startLive:(id)sender {
     [self.view endEditing:YES];

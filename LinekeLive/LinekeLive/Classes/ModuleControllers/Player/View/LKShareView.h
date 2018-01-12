@@ -8,21 +8,20 @@
 
 #import <UIKit/UIKit.h>
 
-typedef NS_ENUM(NSUInteger, LKSharedCoreType) {
-    LKSharedCoreTencentQQ = 899,
-    LKSharedCoreWeiChat ,
-    LKSharedCoreTimeLine,
-    LKSharedCoreShortMsg,
-    LKSharedCoreCopyLine
+typedef NS_ENUM(NSUInteger, LKSharedState) {
+    LKSharedStateQQ = 1000,
+    LKSharedStateWeiChat ,
+    LKSharedStateTimeLine,
+    LKSharedStateShortMsg,
+    LKSharedStateLink
 };
 
 @interface LKShareView : UIView
 
-+ (instancetype)loadShareCore;
-
-
+///---------------------
+/// @name show && dismiss
+///---------------------
 - (void)show;
-
 - (void)dismiss;
 
 @end

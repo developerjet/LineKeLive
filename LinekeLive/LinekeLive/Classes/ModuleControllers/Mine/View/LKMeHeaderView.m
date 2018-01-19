@@ -7,39 +7,136 @@
 //
 
 #import "LKMeHeaderView.h"
+#import "FLAnimatedImageView.h"
+#import "FLAnimatedImage.h"
+#import <Masonry.h>
 
-static NSString * iconURL = @"http://p3.music.126.net/cm1Zl1iA4FWPOeFciGJhxQ==/7834020348056256.jpg";
+static NSString *gifURL = @"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1516351655298&di=5b3efa13bcd95159393f47ce4bee3668&imgtype=0&src=http%3A%2F%2Fwww.fevte.com%2Fdata%2Fattachment%2Fportal%2F201607%2F04%2F224648wo5vp2rya5pu0mp2.gif";
 
 @interface LKMeHeaderView()
-@property (weak, nonatomic) IBOutlet UIImageView *iconView;
+@property (nonatomic, strong) UIButton *topLeftBtn;
+@property (nonatomic, strong) UIButton *topRightBtn;
+@property (nonatomic, strong) UILabel *titleLabel;
+@property (nonatomic, strong) UIView *spaceView;
+@property (nonatomic, strong) UIView *bottomView;
+@property (nonatomic, strong) FLAnimatedImageView *backImageView;
+@property (nonatomic, strong) NSArray *items; // 底部标题
 
 @end
 
 @implementation LKMeHeaderView
 
-+ (instancetype)loadNibHeader {
+#pragma mark - Lazy
+- (NSArray *)items {
     
-    NSBundle *_currentBundle = [NSBundle mainBundle];
-    LKMeHeaderView *meHeaderV = [[_currentBundle loadNibNamed:@"LKMeHeaderView" owner:nil options:nil] firstObject];
-    
-    return meHeaderV;
+    if (!_items) {
+        _items = @[@"关注1", @"直播1", @"粉丝99"];
+    }
+    return _items;
 }
 
 - (void)awakeFromNib {
     [super awakeFromNib];
     
-    [self setUpUI];
 }
 
-- (void)setUpUI {
-
-    self.iconView.layer.cornerRadius = self.iconView.layer.frame.size.height*0.5;
-    self.iconView.layer.masksToBounds = YES;
-    [self.iconView downloadImage:iconURL placeholder:@"icon"];
+#pragma mark - initial
+- (instancetype)initWithFrame:(CGRect)frame {
     
-    UILabel *line = [[UILabel alloc] initWithFrame:CGRectMake(0, self.height-0.5, SCREEN_WIDTH, 0.5)];
-    line.backgroundColor = [UIColor lightGrayColor];
-    [self addSubview:line];
+    if (self = [super initWithFrame:frame]) {
+        self.backgroundColor = [UIColor clearColor];
+        
+        [self initSubview];
+        [self initConstraint];
+    }
+    return self;
 }
+
+- (void)initSubview {
+    
+    _spaceView = [[UIView alloc] init];
+    _spaceView.backgroundColor = [UIColor grayColor];
+    [self addSubview:_spaceView];
+    
+    _bottomView = [[UIView alloc] init];
+    _bottomView.backgroundColor = [UIColor whiteColor];
+    [self addSubview:_bottomView];
+    
+    FLAnimatedImage *animatedImage = [FLAnimatedImage animatedImageWithGIFData:[NSData dataWithContentsOfURL:[NSURL URLWithString:gifURL]]];
+    _backImageView = [FLAnimatedImageView new];
+    _backImageView.animatedImage = animatedImage;
+    [self addSubview:_backImageView];
+    
+    _topLeftBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [_topLeftBtn setImage:[UIImage imageNamed:@"me_global_search"] forState:UIControlStateNormal];
+    [self addSubview:_topLeftBtn];
+    
+    _topRightBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [_topRightBtn setImage:[UIImage imageNamed:@"me_title_more"] forState:UIControlStateNormal];
+    [self addSubview:_topRightBtn];
+    
+    _titleLabel = [[UILabel alloc] init];
+    _titleLabel.textColor = [UIColor whiteColor];
+    _titleLabel.textAlignment = NSTextAlignmentCenter;
+    _titleLabel.font = [UIFont systemFontOfSize:14];
+    _titleLabel.text = @"送出99";
+    [self addSubview:_titleLabel];
+}
+
+- (void)initConstraint {
+
+    [_spaceView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.right.equalTo(self);
+        make.height.equalTo(@0.5);
+        make.bottom.equalTo(self);
+    }];
+    
+    [_bottomView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.bottom.equalTo(_spaceView.mas_top);
+        make.left.right.equalTo(self);
+        make.height.equalTo(@44);
+    }];
+    
+    [_backImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self);
+        make.left.right.equalTo(self);
+        make.bottom.equalTo(_bottomView.mas_top).offset(0);
+    }];
+    
+    [_topLeftBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self).offset(14);
+        make.top.equalTo(self).offset(30);
+        make.width.height.equalTo(@30);
+    }];
+    
+    [_topRightBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.right.equalTo(self).offset(-14);
+        make.top.equalTo(self).offset(30);
+        make.width.height.equalTo(@30);
+    }];
+    
+    [_titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.width.equalTo(@120);
+        make.centerX.equalTo(self);
+        make.top.equalTo(_topLeftBtn);
+    }];
+    
+    CGFloat w = SCREEN_WIDTH / self.items.count;
+    for (int i = 0; i < self.items.count; i++)
+    {
+        UIButton *item = [[UIButton alloc] init];
+        item.titleLabel.font = [UIFont systemFontOfSize:15];
+        [item setTitle:self.items[i] forState:UIControlStateNormal];
+        [item setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
+        [_bottomView addSubview:item];
+        [item mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.equalTo(_bottomView).offset(w * i);
+            make.top.equalTo(_bottomView);
+            make.bottom.equalTo(_bottomView);
+            make.width.equalTo(@(w));
+        }];
+    }
+}
+
 
 @end

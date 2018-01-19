@@ -141,9 +141,9 @@
 
 - (void)dismiss {
     
-    NSArray *subView = self.scrollView.subviews;
+    NSArray *subViews = self.scrollView.subviews;
     // 反转数组
-    NSArray *array = [[subView reverseObjectEnumerator] allObjects];
+    NSArray *array = [[subViews reverseObjectEnumerator] allObjects];
     
     for (int i = 0; i < array.count; i++) {
         UIView *view = array[i];

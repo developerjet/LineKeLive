@@ -78,7 +78,6 @@
 		AE7E717F1F3B09880019B515 /* LKSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE7E71341F3B09880019B515 /* LKSettingViewController.m */; };
 		AE7E71801F3B09880019B515 /* LKMineModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AE7E71371F3B09880019B515 /* LKMineModel.m */; };
 		AE7E71811F3B09880019B515 /* LKMeHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = AE7E713A1F3B09880019B515 /* LKMeHeaderView.m */; };
-		AE7E71821F3B09880019B515 /* LKMeHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AE7E713B1F3B09880019B515 /* LKMeHeaderView.xib */; };
 		AE7E71831F3B09880019B515 /* LKMeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AE7E713D1F3B09880019B515 /* LKMeTableViewCell.m */; };
 		AE7E71841F3B09880019B515 /* LKMeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AE7E713E1F3B09880019B515 /* LKMeTableViewCell.xib */; };
 		AE7E71851F3B09880019B515 /* LKLiveRoomViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE7E71421F3B09880019B515 /* LKLiveRoomViewController.m */; };
@@ -248,7 +247,6 @@
 		AE7E71371F3B09880019B515 /* LKMineModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKMineModel.m; sourceTree = "<group>"; };
 		AE7E71391F3B09880019B515 /* LKMeHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKMeHeaderView.h; sourceTree = "<group>"; };
 		AE7E713A1F3B09880019B515 /* LKMeHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKMeHeaderView.m; sourceTree = "<group>"; };
-		AE7E713B1F3B09880019B515 /* LKMeHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LKMeHeaderView.xib; sourceTree = "<group>"; };
 		AE7E713C1F3B09880019B515 /* LKMeTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKMeTableViewCell.h; sourceTree = "<group>"; };
 		AE7E713D1F3B09880019B515 /* LKMeTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKMeTableViewCell.m; sourceTree = "<group>"; };
 		AE7E713E1F3B09880019B515 /* LKMeTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LKMeTableViewCell.xib; sourceTree = "<group>"; };
@@ -731,7 +729,6 @@
 			children = (
 				AE7E71391F3B09880019B515 /* LKMeHeaderView.h */,
 				AE7E713A1F3B09880019B515 /* LKMeHeaderView.m */,
-				AE7E713B1F3B09880019B515 /* LKMeHeaderView.xib */,
 				AE7E713C1F3B09880019B515 /* LKMeTableViewCell.h */,
 				AE7E713D1F3B09880019B515 /* LKMeTableViewCell.m */,
 				AE7E713E1F3B09880019B515 /* LKMeTableViewCell.xib */,
@@ -1023,7 +1020,6 @@
 				AE7E71781F3B09880019B515 /* close_preview@2x.png in Resources */,
 				AE7E71731F3B09880019B515 /* camra_beauty@3x.png in Resources */,
 				AE7E71761F3B09880019B515 /* camra_preview@2x.png in Resources */,
-				AE7E71821F3B09880019B515 /* LKMeHeaderView.xib in Resources */,
 				AE7E71771F3B09880019B515 /* camra_preview@3x.png in Resources */,
 				AE7E717A1F3B09880019B515 /* ios-29x29.png in Resources */,
 				2B1E7FD41F459B2100B00C58 /* LKTalkTableViewCell.xib in Resources */,
@@ -1060,9 +1056,13 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-LinekeLive/Pods-LinekeLive-resources.sh",
+				"${PODS_ROOT}/MJRefresh/MJRefresh/MJRefresh.bundle",
+				"${PODS_ROOT}/SVProgressHUD/SVProgressHUD/SVProgressHUD.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1090,13 +1090,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-LinekeLive-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */

@@ -12,7 +12,7 @@
 #import "LKMeHeaderView.h"
 #import "LKMineModel.h"
 
-static NSString * const mineCellID = @"HotLiveCell";
+static NSString * const mineCellID = @"MineTableCell";
 
 @interface LKMeViewController ()<UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic, strong) UITableView *tableView;
@@ -22,12 +22,23 @@ static NSString * const mineCellID = @"HotLiveCell";
 
 @implementation LKMeViewController
 
-#pragma mark - LazyLoad
+- (UIStatusBarStyle)preferredStatusBarStyle {
+    return UIStatusBarStyleLightContent;
+}
+
+#pragma mark - Lazy
 
 - (NSArray *)dataSource {
     
     if (!_dataSource) {
-        _dataSource = [NSArray array];
+        _dataSource = @[
+                        @[[LKMineModel initClassWithTitle:@"映客贡献榜" detail:@""],
+                          [LKMineModel initClassWithTitle:@"收益" detail:@"0映票"],
+                          [LKMineModel initClassWithTitle:@"账户" detail:@"0钻石"]],
+                        @[[LKMineModel initClassWithTitle:@"等级" detail:@"3级"],
+                              [LKMineModel initClassWithTitle:@"实名认证" detail:@"已认证"]],
+                        @[[LKMineModel initClassWithTitle:@"设置" detail:@""]]
+                        ];
     }
     return _dataSource;
 }
@@ -52,39 +63,18 @@ static NSString * const mineCellID = @"HotLiveCell";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self setUptable];
-    [self setRefresh];
+    [self configuraTable];
 }
 
-
-- (void)setUptable {
-    
+- (void)configuraTable {
     self.view.backgroundColor = [UIColor colorBackGroundColor];
     
-    LKMeHeaderView *headerView = [LKMeHeaderView loadNibHeader];
-    headerView.frame = CGRectMake(0, 0, SCREEN_WIDTH, 300);
+    LKMeHeaderView *headerView = [[LKMeHeaderView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 300)];
     self.tableView.tableHeaderView = headerView;
-    
     [self.view addSubview:self.tableView];
 }
 
-- (void)setRefresh {
-
-    NSArray *datas = @[@[@{@"title":@"映客贡献榜"},
-                         @{@"title":@"收益",@"detail":@"0映票"},
-                         @{@"title":@"账户",@"detail":@"0钻石"}],
-                       @[@{@"title":@"等级",@"detail":@"3级"},
-                         @{@"title":@"实名认证",@"detail":@"0映票"}],
-                       @[@{@"title":@"设置"}]];
-    
-    self.dataSource = [LKMineModel mj_objectArrayWithKeyValuesArray:datas];
-    
-    [self.tableView reloadData];
-}
-
-
 #pragma mark - data && delegate
-
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     
     return self.dataSource.count;
@@ -102,41 +92,28 @@ static NSString * const mineCellID = @"HotLiveCell";
     LKMeTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:mineCellID];
     cell.accessoryType = YES;
     
-    if (self.dataSource.count > indexPath.section) {
+    if ([self.dataSource[indexPath.section] count] > indexPath.row) {
         
-        NSArray *data = self.dataSource[indexPath.section];
-        
-        if (data.count > indexPath.row) {
-            
-            cell.model = self.dataSource[indexPath.section][indexPath.row];
-        }
+        cell.model = self.dataSource[indexPath.section][indexPath.row];
     }
-    
     return cell;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
     
     if (section == 0) {
-        
-        return 0.0;
+        return 0.001;
     }else {
-        
         return 10;
     }
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    if (indexPath.section == 2) {
-        
-        if (indexPath.row == 0) {
-            
-            LKSettingViewController *setting = [[LKSettingViewController alloc] init];
-            [self.navigationController pushViewController:setting animated:YES];
-        }
+    if (indexPath.section == 2 && indexPath.row == 0) {
+        LKSettingViewController *setting = [[LKSettingViewController alloc] init];
+        [self.navigationController pushViewController:setting animated:YES];
     }
 }
 

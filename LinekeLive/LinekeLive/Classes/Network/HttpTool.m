@@ -28,6 +28,8 @@ static NSString * kBaseURL = SERVER_HOST;
         NSURLSessionConfiguration * configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
         
         client = [[AFHttpClient alloc] initWithBaseURL:[NSURL URLWithString:kBaseURL] sessionConfiguration:configuration];
+        client.requestSerializer = [AFHTTPRequestSerializer serializer];
+        client.responseSerializer =  [AFJSONResponseSerializer serializer];
         //接收参数类型
         client.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json",@"text/html", @"text/json", @"text/javascript",@"text/plain",@"image/gif", nil];
         //设置超时时间

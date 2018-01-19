@@ -82,6 +82,7 @@ static NSString * const kTalkId = @"talkCell";
 - (void)setTalkModel:(LKTalkModel *)talkModel {
     _talkModel = talkModel;
  
+    // 插入到最后索引
     [self.dataSource insertObject:talkModel atIndex:self.dataSource.count];
     [_tableView reloadData];
     

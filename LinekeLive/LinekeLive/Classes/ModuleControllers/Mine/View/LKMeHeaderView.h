@@ -10,6 +10,4 @@
 
 @interface LKMeHeaderView : UIView
 
-+ (instancetype)loadNibHeader;
-
 @end

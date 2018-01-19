@@ -9,9 +9,9 @@
 #import <Foundation/Foundation.h>
 
 @interface LKMineModel : NSObject
-
 @property (nonatomic, copy) NSString *title;
-
 @property (nonatomic, copy) NSString *detail;
+
++ (instancetype)initClassWithTitle:(NSString *)title detail:(NSString *)detail;
 
 @end

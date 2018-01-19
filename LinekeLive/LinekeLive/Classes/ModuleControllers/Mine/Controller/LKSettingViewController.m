@@ -15,7 +15,7 @@ static NSString *const Identifier = @"SettingCell";
 @interface LKSettingViewController ()<UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) NSString *dataSource;
-@property (nonatomic, copy) void(^cleanBlock)();
+@property (nonatomic, copy) void(^clearBlock)();
 @end
 
 @implementation LKSettingViewController
@@ -58,7 +58,7 @@ static NSString *const Identifier = @"SettingCell";
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:Identifier];
         if (indexPath.row == 0) {
             cell.textLabel.text = [self getCaches];
-            self.cleanBlock = ^{
+            self.clearBlock = ^{
                 cell.textLabel.text = @"0.0KB";
             };
         }else {
@@ -81,8 +81,7 @@ static NSString *const Identifier = @"SettingCell";
             
             [weakSelf.tableView reloadData];
         }];
-        
-        weakSelf.cleanBlock();
+        weakSelf.clearBlock();
     });
 }
 
@@ -118,19 +117,13 @@ static NSString *const Identifier = @"SettingCell";
     
     if (caches) {
         if (caches>1024.0*1024.0) {
-            
             return [NSString stringWithFormat:@"当前缓存：%.2fMB", caches/1024.0/1024.0];
-        }
-        else if (caches>1024.0) {
-            
+        }else if (caches>1024.0) {
             return [NSString stringWithFormat:@"当前缓存：%.2fKB", caches/1024.0];
-        }
-        else if (caches>0) {
-            
+        }else if (caches>0) {
             return [NSString stringWithFormat:@"当前缓存：%.2luB", caches];
         }
     }
-    
     return @"当前缓存：0KB";
 }
 

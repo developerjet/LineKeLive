@@ -10,4 +10,12 @@
 
 @implementation LKMineModel
 
++ (instancetype)initClassWithTitle:(NSString *)title detail:(NSString *)detail {
+    
+    LKMineModel *meModel = [[LKMineModel alloc] init];
+    meModel.title  = title;
+    meModel.detail = detail;
+    return meModel;
+}
+
 @end

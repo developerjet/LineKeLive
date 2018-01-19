@@ -25,6 +25,9 @@
     hud.tag = HUD_TAG;
     hud.mode = MBProgressHUDModeText;
     hud.label.text =  text;
+    hud.bezelView.style = MBProgressHUDBackgroundStyleSolidColor;
+    hud.contentColor = [UIColor whiteColor];//文字和菊花的颜色
+    hud.bezelView.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.75];
     hud.removeFromSuperViewOnHide = YES;
     [hud hideAnimated:YES afterDelay:delay];
 }
@@ -41,6 +44,9 @@
     hud.tag = HUD_TAG;
     hud.mode = MBProgressHUDModeIndeterminate;
     hud.label.text = text;
+    hud.bezelView.style = MBProgressHUDBackgroundStyleSolidColor;
+    hud.contentColor = [UIColor whiteColor];//文字和菊花的颜色
+    hud.bezelView.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.75];
     hud.removeFromSuperViewOnHide = YES;
     [hud hideAnimated:YES afterDelay:delay];
 }
@@ -55,6 +61,9 @@
     }
     hud = [MBProgressHUD showHUDAddedTo:window animated:YES];
     hud.mode = MBProgressHUDModeText;
+    hud.bezelView.style = MBProgressHUDBackgroundStyleSolidColor;
+    hud.contentColor = [UIColor whiteColor];//文字和菊花的颜色
+    hud.bezelView.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.75];
     hud.tag = HUD_TAG;
     hud.detailsLabel.text = text;
     hud.detailsLabel.font = [UIFont systemFontOfSize:15];
@@ -71,6 +80,9 @@
         hud = nil;
     }
     hud = [MBProgressHUD showHUDAddedTo:window animated:NO];
+    hud.bezelView.style = MBProgressHUDBackgroundStyleSolidColor;
+    hud.bezelView.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.75];
+    hud.contentColor = [UIColor whiteColor];//文字和菊花的颜色
     hud.tag = HUD_TAG;
     hud.label.text = text;
     hud.label.font = [UIFont systemFontOfSize:15];

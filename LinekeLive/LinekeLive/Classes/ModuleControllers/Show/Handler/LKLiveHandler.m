@@ -13,23 +13,26 @@
 #import "LKLiveModel.h"
 #import "HttpTool.h"
 
-static NSString * kParams = @"imsi=&uid=17800399&proto=5&idfa=A1205EB8-0C9A-4131-A2A2-27B9A1E06622&lc=0000000000000026&cc=TG0001&imei=&sid=20i0a3GAvc8ykfClKMAen8WNeIBKrUwgdG9whVJ0ljXi1Af8hQci3&cv=IK3.1.00_Iphone&devi=bcb94097c7a3f3314be284c8a5be2aaeae66d6ab&conn=Wifi&ua=iPhone&idfv=DEBAD23B-7C6A-4251-B8AF-A95910B778B7&osversion=ios_9.300000&count=5&multiaddr=1";
+/*
+ http://116.211.167.106/api/live/users?lc=0000000000000043&cc=TG0001&cv=IK3.8.10_Iphone&proto=7&idfa=2D707AF8-980F-415C-B443-6FED3E9BBE97&idfv=76F26589-EA5D-4D0A-BC1C-A4B6010FFA37&devi=135ede19e251cd6512eb6ad4f418fbbde03c9266&osversion=ios_10.100000&ua=iPhone5_2&imei=&imsi=&uid=310474203&sid=209pU5OK49fA6uhxX3taEXIWAm5lENuCrr6xKL48pqAQ0Y0FqL&conn=wifi&mtid=87edd7144bd658132ae544d7c9a0eba8&mtxid=acbc329027f3&logid=110,30,5&start=0&count=20&id=
+ */
+
+static NSString * user_hot_Url = @"http://116.211.167.106/api/live/users?lc=0000000000000043&cc=TG0001&cv=IK3.8.10_Iphone&proto=7&idfa=2D707AF8-980F-415C-B443-6FED3E9BBE97&idfv=76F26589-EA5D-4D0A-BC1C-A4B6010FFA37&devi=135ede19e251cd6512eb6ad4f418fbbde03c9266&osversion=ios_10.100000&ua=iPhone5_2&imei=&imsi=&uid=310474203&sid=209pU5OK49fA6uhxX3taEXIWAm5lENuCrr6xKL48pqAQ0Y0FqL&conn=wifi&mtid=87edd7144bd658132ae544d7c9a0eba8&mtxid=acbc329027f3&logid=110,30,5&start=0&count=20&id=";
 
 @implementation LKLiveHandler
 
 + (void)executeGetHotLiveTaskWithSuccess:(successBlock)success failed:(failedBlock)failed {
-
-    // NSString *kHotAPI = [NSString stringWithFormat:@"%@?%@", API_HotLive, kParams];
-    NSString *url = @"http://service.ingkee.com/api/live/gettop?imsi=&uid=17800399&proto=5&idfa=A1205EB8-0C9A-4131-A2A2-27B9A1E06622&lc=0000000000000026&cc=TG0001&imei=&sid=20i0a3GAvc8ykfClKMAen8WNeIBKrUwgdG9whVJ0ljXi1Af8hQci3&cv=IK3.1.00_Iphone&devi=bcb94097c7a3f3314be284c8a5be2aaeae66d6ab&conn=Wifi&ua=iPhone&idfv=DEBAD23B-7C6A-4251-B8AF-A95910B778B7&osversion=ios_11.000000&count=5&multiaddr=1";
+    //NSString *kHotAPI = [NSString stringWithFormat:@"%@?%@", API_HotLive, kParams];
     
-    [HttpTool getWithPath:url params:nil success:^(id json) {
+    [HttpTool getWithPath:user_hot_Url params:nil success:^(id json) {
         
         NSInteger errorCode = [json[@"dm_error"] integerValue];
-        
+
         if (errorCode == 0) { //请求成功
     
             NSArray *lives = [LKLiveModel mj_objectArrayWithKeyValuesArray:json[@"lives"]];
             success(lives);
+            
         }else {
             
             failed(json);
@@ -108,7 +111,7 @@ static NSString * kParams = @"imsi=&uid=17800399&proto=5&idfa=A1205EB8-0C9A-4131
         
     } failure:^(NSError *error) {
         
-        failed(error);
+        
     }];
 }
 

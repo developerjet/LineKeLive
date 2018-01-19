@@ -12,6 +12,8 @@
 #import "LKLocationManager.h"
 #import "LKAdvertiseView.h"
 
+#import <Bugly/Bugly.h>
+
 @interface AppDelegate ()
 
 @end
@@ -21,16 +23,18 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
-    [self initializedRoot];
-    [self appearanceSetting];
+    [self initialRoot];
+    [self appearanceSet];
     [self setLocation];
     [self setAdvertise];
+    
+    [self setAllSDK];
     
     return YES;
 }
 
 //设置根控制器
-- (void)initializedRoot {
+- (void)initialRoot {
     
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     self.window.backgroundColor = [UIColor colorBackGroundWhiteColor];
@@ -38,6 +42,12 @@
     LKLoginViewController *LKLogin = [[LKLoginViewController alloc] init];
     self.window.rootViewController = LKLogin;
     [self.window makeKeyAndVisible];
+}
+
+// 腾讯Bugly
+- (void)setAllSDK {
+    
+    [Bugly startWithAppId:@"dcb5a15014"];
 }
 
 //开始定位
@@ -57,7 +67,7 @@
 }
 
 // iOS11 TableView统一适配
-- (void)appearanceSetting {
+- (void)appearanceSet {
     
     if (@available(iOS 11.0, *)) {
         [UITableView appearance].estimatedRowHeight = 0;

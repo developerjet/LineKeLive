@@ -12,5 +12,7 @@ target 'LinekeLive' do
 	pod 'MBProgressHUD', '~> 1.0.0'
 	pod 'SVProgressHUD', '~> 2.1.2'
 	pod 'LFLiveKit', '~> 2.6'
+	pod 'SDWebImage/GIF'
+	pod 'Bugly'
 
 end

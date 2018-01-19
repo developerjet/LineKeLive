@@ -11,8 +11,6 @@
 @interface LKMeTableViewCell()
 @property (weak, nonatomic) IBOutlet UILabel *leftLabel;
 @property (weak, nonatomic) IBOutlet UILabel *rightLabel;
-
-
 @end
 
 @implementation LKMeTableViewCell
@@ -25,10 +23,9 @@
 
 
 - (void)setModel:(LKMineModel *)model {
-    
     _model = model;
     
-    _leftLabel.text = model.title;
+    _leftLabel.text  = model.title;
     _rightLabel.text = model.detail;
 }
 

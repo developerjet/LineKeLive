@@ -10,6 +10,7 @@
 #import "LKAnimationManager.h"
 #import "LKGiftListView.h"
 #import "LKSendTalkView.h"
+#import "LKUserListView.h"
 #import "LKDanmuModel.h"
 #import "LKGiftModel.h"
 #import "LKShareView.h"
@@ -17,11 +18,11 @@
 #import "LKGiftData.h"
 
 @interface LKLiveRoomViewController ()<UITextViewDelegate, LKGiftListViewDelegate, LKDanmuViewProtocol>
+@property (weak, nonatomic) IBOutlet UIView      *menuView;
 @property (weak, nonatomic) IBOutlet UILabel     *countLable;
 @property (weak, nonatomic) IBOutlet UIButton    *ticketView;
 @property (weak, nonatomic) IBOutlet UIButton    *followView;
 @property (weak, nonatomic) IBOutlet UIImageView *iconView;
-@property (weak, nonatomic) IBOutlet UIView      *menuView;
 
 @property (nonatomic, weak) LKDanmuView *danmuView;
 @property (nonatomic, strong) LKGiftListView *giftListView;
@@ -32,8 +33,9 @@
 @property (nonatomic, strong) UIView *keyBoardView;
 @property (nonatomic, strong) UITextView *taskTextView; //聊天输入框
 @property (nonatomic, strong) LKSendTalkView *talkView;
-
-@property (nonatomic, assign) CGFloat centerOriginY;
+@property (nonatomic, strong) LKUserListView *userListView;
+@property (nonatomic, strong) NSArray *userList;
+@property (nonatomic, assign) CGFloat originalY;
 
 @end
 
@@ -60,17 +62,17 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self configureUI];
-    [self initNotification];
+    [self initConfiguration];
+    [self initKeyboardNote];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     
-    [self configBringUI];
+    [self initSendMsgView];
 }
 
-- (void)initNotification {
+- (void)initKeyboardNote {
 
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification  object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
@@ -81,12 +83,12 @@
     return [[LKCacheHelper shared] getAncherIsFollow:self.model];
 }
 
-- (void)configBringUI {
+- (void)initSendMsgView {
     
     LKSendTalkView *talkView = [[LKSendTalkView alloc] initWithFrame:CGRectMake(0, SCREEN_HEIGHT-210, SCREEN_WIDTH, 160)];
     [self.view addSubview:talkView];
     [self.view bringSubviewToFront:talkView];
-    _centerOriginY = talkView.center.y;
+    _originalY = talkView.center.y;
     _talkView = talkView;
     __weak typeof(self) weakSelf = self;
     talkView.isDraggBlock = ^{
@@ -95,7 +97,7 @@
     };
 }
 
-- (void)configureUI {
+- (void)initConfiguration {
     
     self.view.backgroundColor = [UIColor clearColor];
     self.menuView.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.8];
@@ -115,11 +117,10 @@
         [self.followView setTitle:@"关注" forState:UIControlStateNormal];
     }
     
-    
     [NSTimer scheduledTimerWithTimeInterval:1.0 block:^(NSTimer * _Nonnull timer) {
         _timer = timer;
         [self.ticketView setTitle:[NSString stringWithFormat:@"映票 %d", arc4random_uniform(10000)] forState:UIControlStateNormal]; //随机显示映票数
-        
+        [[NSRunLoop mainRunLoop] addTimer:_timer forMode:NSRunLoopCommonModes];
     } repeats:YES];
     
     self.animView = [[UIView alloc] initWithFrame:CGRectMake(0, (SCREEN_HEIGHT-140)/2, SCREEN_WIDTH, 140)];
@@ -131,6 +132,12 @@
     danmuView.delegate = self;
     self.danmuView = danmuView;
     [self.view addSubview:danmuView];
+    
+    // 用户列表
+    CGFloat userX = CGRectGetMaxX(self.menuView.frame) + 10;
+    CGFloat userW = SCREEN_WIDTH - userX - 60;
+    _userListView = [[LKUserListView alloc] initWithFrame:CGRectMake(userX, 30, userW, 40)];
+    [self.view addSubview:_userListView];
     
     /// 会话输入
     [self createKeyBoard];
@@ -163,7 +170,7 @@
     sendButton.userInteractionEnabled = YES;
     sendButton.layer.cornerRadius = 5;
     sendButton.layer.masksToBounds = YES;
-    [sendButton addTarget:self action:@selector(sendClick:) forControlEvents:UIControlEventTouchUpInside];
+    [sendButton addTarget:self action:@selector(sendClick) forControlEvents:UIControlEventTouchUpInside];
     [_keyBoardView addSubview:sendButton];
 }
 
@@ -197,9 +204,8 @@
     [UIView animateWithDuration:duration.doubleValue animations:^{
         [UIView setAnimationsEnabled:YES];
         [UIView setAnimationCurve:[curve integerValue]];
-        
         _keyBoardView.center = CGPointMake(_keyBoardView.center.x, keyBoardEndY - (_keyBoardView.bounds.size.height - keyBoardEndH)/2);
-        _talkView.center = CGPointMake(_talkView.center.x, _centerOriginY);
+        _talkView.center = CGPointMake(_talkView.center.x, _originalY);
         [UIView commitAnimations];
     }];
 }
@@ -211,7 +217,6 @@
 }
 
 #pragma mark - LKDanmuViewProtocol
-
 - (UIView *)danmuViewWithModel:(LKDanmuModel *)model {
     
     UILabel *label = [UILabel new];
@@ -230,8 +235,7 @@
     return time;
 }
 
-#pragma mark - setter
-
+#pragma mark - Setter
 - (void)setModel:(LKLiveModel *)model {
     
     _model = model;
@@ -254,10 +258,10 @@
             self.giftListView.delegate = self;
             [self.giftListView show];
             break;
-         case LKPlayRoomTaskOpenShare:
+        case LKPlayRoomTaskOpenShare:
             [self showShare];
             break;
-         case LKPlayRoomTaskMessage:
+        case LKPlayRoomTaskMessage:
             [self creatFabulous];
             break;
         default:
@@ -277,7 +281,6 @@
 }
 
 - (void)startAnim:(CALayer *)layer {
-    
     [CATransaction begin];
     
     [CATransaction setCompletionBlock:^{
@@ -348,9 +351,7 @@
     }
 }
 
-
-- (void)sendClick:(UIButton *)btn {
-    [self.view endEditing:YES];
+- (void)sendClick {
     
     LKDanmuModel *dmModel = [LKDanmuModel new];
     dmModel.beginTime = 2;
@@ -363,7 +364,7 @@
     talkModel.talk = self.taskTextView.text;
     talkModel.level = 9;
     self.talkView.talkModel = talkModel;
-
+    
     //清除之前的会话
     self.taskTextView.text = @"";
 }
@@ -386,7 +387,6 @@
 }
 
 #pragma mark - remove
-
 - (void)dealloc {
     
     [self removeTimer];
@@ -395,8 +395,10 @@
 //移除timer
 - (void)removeTimer {
     
-    [_timer invalidate];
-    _timer = nil;
+    if (_timer) {
+        [_timer invalidate];
+        _timer = nil;
+    }
 }
 
 @end

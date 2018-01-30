@@ -8,15 +8,19 @@
 
 #import "LKPlayerViewController.h"
 #import "LKLiveRoomViewController.h"
+#import <UIView+MJExtension.h>
 
 @interface LKPlayerViewController ()<IJKMediaPlayback, LKLiveRoomViewControllerDelegate>
-@property (nonatomic, strong) LKLiveRoomViewController *roomController;
+@property (nonatomic, strong) LKLiveRoomViewController *roomVC;
 ///毛玻璃效果
 @property (nonatomic, strong) UIVisualEffectView *effectView;
 ///粒子动画
 @property (nonatomic, weak) CAEmitterLayer *emitterLayer;
 @property (nonatomic, strong) UIImageView *blurImageView;
+@property (nonatomic, strong) UIPanGestureRecognizer *panGestureRecognizer;
 @property (nonatomic, strong) UIButton *closeBtn;
+@property (nonatomic, assign) CGPoint starPoint;
+@property (nonatomic, assign) CGPoint prePoint;
 
 @end
 
@@ -75,12 +79,12 @@
     return _emitterLayer;
 }
 
-- (LKLiveRoomViewController *)roomController {
+- (LKLiveRoomViewController *)roomVC {
     
-    if (!_roomController) {
-        _roomController = [[LKLiveRoomViewController alloc] init];
+    if (!_roomVC) {
+        _roomVC = [[LKLiveRoomViewController alloc] init];
     }
-    return _roomController;
+    return _roomVC;
 }
 
 - (UIButton *)closeBtn {
@@ -103,7 +107,7 @@
     return _blurImageView;
 }
 
-#pragma mark - Events
+#pragma mark - view Loads
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
@@ -117,19 +121,16 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self configureUI];
+    [self initSubviews];
 }
 
 
-- (void)configureUI {
+- (void)initSubviews {
     
     self.view.backgroundColor = [UIColor blackColor];
     
-    [self initPlayer];
-    [self initBlur];
-    
-    [self initChildPlayer];
-    
+    [self initPlayView];
+    [self initRoomView];
     [self beginEmitter];
 }
 
@@ -151,7 +152,7 @@
 }
 
 //创建主播放控制器视图
-- (void)initPlayer {
+- (void)initPlayView {
     
     IJKFFOptions *options = [IJKFFOptions optionsByDefault];
     
@@ -160,12 +161,6 @@
     self.player.view.frame = self.view.bounds;
     self.player.shouldAutoplay = YES; //设置自动播放
     [self.view addSubview:self.player.view];
-}
-
-//设置其他显示视图
-- (void)initBlur {
-    
-    [self.view addSubview:self.blurImageView];
     
     // 创建毛玻璃效果
     UIBlurEffect *blur = [UIBlurEffect effectWithStyle:UIBlurEffectStyleLight];
@@ -173,30 +168,57 @@
     UIVisualEffectView *effectView = [[UIVisualEffectView alloc] initWithEffect:blur];
     effectView.frame = self.blurImageView.bounds;
     [self.blurImageView addSubview:effectView];
+    [self.view addSubview:self.blurImageView];
     self.effectView = effectView;
 }
 
-- (void)initChildPlayer {
+- (void)initRoomView {
     
-    [self addChildViewController:self.roomController];
-    [self.view addSubview:self.roomController.view];
-    [self.roomController.view mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.equalTo(self.view);
-    }];
-    self.roomController.model = self.model;
+    self.roomVC.view.frame = [UIScreen mainScreen].bounds;
+    [self addChildViewController:self.roomVC];
+    [self.view addSubview:self.roomVC.view];
+    self.roomVC.model = self.model;
     
-    
+    self.closeBtn.frame = CGRectMake(SCREEN_WIDTH-50, 30, 40, 40);
     [self.view addSubview:self.closeBtn];
-    [self.closeBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.height.with.equalTo(@40);
-        make.right.bottom.equalTo(self.view).offset(-10);
-    }];
+    
+    _panGestureRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panEvent:)];
+    [self.view addGestureRecognizer:_panGestureRecognizer];
 }
 
+#pragma mark - Handle player action
+- (void)panEvent:(UIPanGestureRecognizer *)pan {
+    
+    if (_panGestureRecognizer.state == UIGestureRecognizerStateBegan) {
+        _prePoint  = [pan locationInView:self.view];
+        _starPoint = _roomVC.view.frame.origin;
+    }
+    if (_panGestureRecognizer.state == UIGestureRecognizerStateChanged) {
+        CGPoint point =  [pan locationInView:self.view];
+        CGFloat x = _roomVC.view.frame.origin.x;
+        x += point.x - _prePoint.x;
+        x = x > 0 ? 0 : x;
+        x = x < -_roomVC.view.frame.size.width ? -_roomVC.view.frame.size.width:x;
+        _roomVC.view.mj_x = x;
+        _prePoint = point;
+    }
+    if (_panGestureRecognizer.state == UIGestureRecognizerStateEnded){
+        CGFloat x = _starPoint.x - _roomVC.view.frame.origin.x;
+        if (x < - _roomVC.view.frame.size.width/3) {
+            x = 0;
+        }else if(x > _roomVC.view.frame.size.width/3){
+            x = - _roomVC.view.frame.size.width;
+        }else{
+            x = _starPoint.x;
+        }
+        
+        [UIView animateWithDuration:0.2 animations:^{
+            
+            _roomVC.view.mj_x = x;
+        }];
+    }
+}
 
-/**
- 主动退出直播
- */
 - (void)closePlayer {
     
     [self.player shutdown];

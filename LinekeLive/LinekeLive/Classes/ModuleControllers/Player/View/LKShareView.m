@@ -12,19 +12,18 @@
 #define views_bgColor   [UIColor colorWithHexString:@"FFFFFF"]
 
 @interface LKShareView()
-@property (nonatomic, strong) UIView *overalView;
-@property (nonatomic, strong) UIView *bottomView;
-@property (nonatomic, strong) NSMutableArray *images;
+@property (nonatomic, strong) NSArray *items;
+@property (nonatomic, strong) UIView  *overalView;
+@property (nonatomic, strong) UIView  *bottomView;
 @property (nonatomic, strong) UIScrollView *scrollView;
 @end
 
 @implementation LKShareView
 
 #pragma mark -
-#pragma mark - initial method
+#pragma mark - initial
 - (instancetype)init {
     if (self = [super init]) {
-        self.frame = [UIApplication sharedApplication].keyWindow.frame;
         [self initSubviews];
     }
     return self;
@@ -32,8 +31,9 @@
 
 - (void)initSubviews {
     self.backgroundColor = [UIColor clearColor];
-    CGFloat padding = 10;
+    self.frame = [UIApplication sharedApplication].keyWindow.frame;
     
+    CGFloat padding = 10;
     // configura gestureRecognizer
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismiss)];
     
@@ -72,12 +72,12 @@
     CGFloat btnW = 60;
     CGFloat btnH = 40;
     CGFloat btnX = 30;
-    // configura btn
-    for (int i = 0; i < self.images.count; i++)
+    // configura share item's
+    for (int i = 0; i < self.items.count; i++)
     {
         UIButton *item = [UIButton buttonWithType:UIButtonTypeCustom];
         item.frame = CGRectMake(btnX + (i * btnW), 10, btnW, btnH);
-        [item setImage:[UIImage imageNamed:self.images[i]] forState:UIControlStateNormal];
+        [item setImage:[UIImage imageNamed:self.items[i]] forState:UIControlStateNormal];
         // 将所有按钮都移至底部
         item.transform = CGAffineTransformMakeTranslation(0, SCREEN_HEIGHT);
         item.tag = i + 1000;
@@ -96,7 +96,7 @@
 
 
 #pragma mark -
-#pragma mark - all action
+#pragma mark - animate click
 - (void)animShow {
     
     for (int i = 0; i < self.scrollView.subviews.count; i++) {
@@ -124,9 +124,11 @@
                     btn.layer.transform = CATransform3DMakeScale(1.5, 1.5, 1);
                     // 放大同时alpha置为0
                     btn.alpha = 0;
-                } completion:^(BOOL finished) {
-                    // 完成时移除
-                    [self dismiss];
+                } completion:^(BOOL finished) { // 完成时隐藏移除
+                    [UIView animateWithDuration:0.25 animations:^{
+                        _bottomView.alpha = 0.0;
+                        [self removeFromSuperview];
+                    }];
                 }];
             }else {
                 // 如果不是当前按钮
@@ -201,18 +203,17 @@
 }
 
 #pragma mark -
-#pragma mark - lazy Loads
-- (NSMutableArray *)images {
+#pragma mark - Lazy
+- (NSArray *)items {
     
-    if (!_images) {
-        _images = [NSMutableArray arrayWithObjects:
-                   @"shareView_qq",
+    if (!_items) {
+        _items = @[@"shareView_qq",
                    @"shareView_wx",
                    @"shareView_friend",
                    @"shareView_msg",
-                   @"icon_copylink2", nil];
+                   @"shareView_copylink"];
     }
-    return _images;
+    return _items;
 }
 
 

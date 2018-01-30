@@ -13,7 +13,6 @@
 
 @property (nonatomic, strong) LKTalkModel *talkModel;
 
-
 /**
  是否拖拽了列表
  */

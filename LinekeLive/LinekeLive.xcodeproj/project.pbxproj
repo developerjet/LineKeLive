@@ -59,6 +59,8 @@
 		2B9CFFFB1F00AFF00010611A /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B9CFFFA1F00AFF00010611A /* CoreMedia.framework */; };
 		2B9CFFFD1F00AFFD0010611A /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B9CFFFC1F00AFFD0010611A /* CoreVideo.framework */; };
 		2B9CFFFF1F00B00C0010611A /* libbz2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B9CFFFE1F00B00C0010611A /* libbz2.tbd */; };
+		2BDF10F32019D99900048CF7 /* LKPlayerUserCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BDF10F22019D99900048CF7 /* LKPlayerUserCell.m */; };
+		2BDF10F62019DE0100048CF7 /* LKUserListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BDF10F52019DE0100048CF7 /* LKUserListView.m */; };
 		2BF8A7F81F49B34E00801F9B /* LKFocuseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BF8A7F71F49B34E00801F9B /* LKFocuseViewController.m */; };
 		AE7E71701F3B09880019B515 /* LKLaunchLiveViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE7E711B1F3B09880019B515 /* LKLaunchLiveViewController.m */; };
 		AE7E71711F3B09880019B515 /* LKLaunchLiveViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AE7E711C1F3B09880019B515 /* LKLaunchLiveViewController.xib */; };
@@ -221,6 +223,10 @@
 		2B9CFFFA1F00AFF00010611A /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		2B9CFFFC1F00AFFD0010611A /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
 		2B9CFFFE1F00B00C0010611A /* libbz2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libbz2.tbd; path = usr/lib/libbz2.tbd; sourceTree = SDKROOT; };
+		2BDF10F12019D99900048CF7 /* LKPlayerUserCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LKPlayerUserCell.h; sourceTree = "<group>"; };
+		2BDF10F22019D99900048CF7 /* LKPlayerUserCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LKPlayerUserCell.m; sourceTree = "<group>"; };
+		2BDF10F42019DE0100048CF7 /* LKUserListView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LKUserListView.h; sourceTree = "<group>"; };
+		2BDF10F52019DE0100048CF7 /* LKUserListView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LKUserListView.m; sourceTree = "<group>"; };
 		2BF8A7F71F49B34E00801F9B /* LKFocuseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKFocuseViewController.m; sourceTree = "<group>"; };
 		AE7E711A1F3B09880019B515 /* LKLaunchLiveViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKLaunchLiveViewController.h; sourceTree = "<group>"; };
 		AE7E711B1F3B09880019B515 /* LKLaunchLiveViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKLaunchLiveViewController.m; sourceTree = "<group>"; };
@@ -783,6 +789,10 @@
 				2B1E7FCE1F458BDD00B00C58 /* LKSendTalkView.m */,
 				2B8A333C1F4824880090B2BB /* LKShareView.h */,
 				2B8A333D1F4824880090B2BB /* LKShareView.m */,
+				2BDF10F12019D99900048CF7 /* LKPlayerUserCell.h */,
+				2BDF10F22019D99900048CF7 /* LKPlayerUserCell.m */,
+				2BDF10F42019DE0100048CF7 /* LKUserListView.h */,
+				2BDF10F52019DE0100048CF7 /* LKUserListView.m */,
 				2B1E7FD01F459B2100B00C58 /* LKTalkTableViewCell.h */,
 				2B1E7FD11F459B2100B00C58 /* LKTalkTableViewCell.m */,
 				2B1E7FD21F459B2100B00C58 /* LKTalkTableViewCell.xib */,
@@ -964,7 +974,7 @@
 			attributes = {
 				CLASSPREFIX = LK;
 				LastUpgradeCheck = 0820;
-				ORGANIZATIONNAME = CoderTan;
+				ORGANIZATIONNAME = CODER_TJ;
 				TargetAttributes = {
 					2B55FBC21EFA73E0005A83BE = {
 						CreatedOnToolsVersion = 8.2.1;
@@ -1125,6 +1135,7 @@
 				AE7E71871F3B09880019B515 /* LKPlayerViewController.m in Sources */,
 				2B55FBC81EFA73E0005A83BE /* main.m in Sources */,
 				2B1E7FCC1F458B0800B00C58 /* LKDanmuView.m in Sources */,
+				2BDF10F32019D99900048CF7 /* LKPlayerUserCell.m in Sources */,
 				AE7E71851F3B09880019B515 /* LKLiveRoomViewController.m in Sources */,
 				2B147A511EFF557C0019312D /* NSString+Encrypt.m in Sources */,
 				AE7E71891F3B09880019B515 /* LKFlowLayout.m in Sources */,
@@ -1136,6 +1147,7 @@
 				AE7E71701F3B09880019B515 /* LKLaunchLiveViewController.m in Sources */,
 				2B1E7FCB1F458B0800B00C58 /* LKDanmuModel.m in Sources */,
 				AE7E71931F3B09880019B515 /* LKExtra.m in Sources */,
+				2BDF10F62019DE0100048CF7 /* LKUserListView.m in Sources */,
 				2B9C001D1F00E5160010611A /* LKHasNavViewController.m in Sources */,
 				2B147A681EFF5F770019312D /* LKBaseHandler.m in Sources */,
 				AE7E71991F3B09880019B515 /* LKNearCollectionViewCell.m in Sources */,

@@ -24,13 +24,16 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
     [self initialRoot];
-    [self appearanceSet];
-    [self setLocation];
-    [self setAdvertise];
-    
-    [self setAllSDK];
+    [self initAppTool];
     
     return YES;
+}
+
+- (void)initAppTool {
+    
+    [self setupSDK];
+    [self setupAdvert];
+    [self appearanceSet];
 }
 
 //设置根控制器
@@ -45,13 +48,13 @@
 }
 
 // 腾讯Bugly
-- (void)setAllSDK {
+- (void)setupSDK {
     
     [Bugly startWithAppId:@"dcb5a15014"];
 }
 
 //开始定位
-- (void)setLocation {
+- (void)setupLocation {
     
     [[LKLocationManager sharedManager] getGPS:^(NSString *lat, NSString *lon) {
         
@@ -60,7 +63,7 @@
 }
 
 //设置广告页
-- (void)setAdvertise {
+- (void)setupAdvert {
     
     LKAdvertiseView *advertiseView = [LKAdvertiseView loadAdvertiseView];
     [self.window addSubview:advertiseView];
@@ -79,7 +82,7 @@
 
 - (void)animationRoot:(AnimServiceType)type {
     
-    CATransition *anim = [CATransition animation];
+    CATransition *anim  = [CATransition animation];
     anim.timingFunction = UIViewAnimationCurveEaseInOut;
     // 设置转场类型
     anim.type = @"oglFlip"; //左右翻转

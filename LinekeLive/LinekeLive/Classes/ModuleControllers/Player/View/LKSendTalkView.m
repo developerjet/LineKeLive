@@ -37,7 +37,6 @@ static NSString * const kTalkId = @"talkCell";
         _tableView.delegate = self;
         _tableView.dataSource = self;
         _tableView.backgroundColor = [UIColor clearColor];
-        //_tableView.contentInset = UIEdgeInsetsMake(0, 0, , 0);
         _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;//去除系统线条
         _tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
         [_tableView registerNib:[UINib nibWithNibName:@"LKTalkTableViewCell" bundle:nil] forCellReuseIdentifier:kTalkId];

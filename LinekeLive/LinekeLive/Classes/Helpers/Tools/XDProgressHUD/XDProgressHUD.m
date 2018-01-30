@@ -73,7 +73,7 @@
 
 + (void)showHUDWithIndeterminate:(NSString *)text
 {
-    UIView *window = kCurrentKeyWindow;
+    UIWindow *window = kCurrentKeyWindow;
     MBProgressHUD *hud = (MBProgressHUD *)[window viewWithTag:HUD_TAG];
     if (hud.superview&&[hud isKindOfClass:MBProgressHUD.class]) {
         [hud removeFromSuperview];
@@ -98,6 +98,11 @@
         [hud removeFromSuperview];
         hud = nil;
     }
+}
+
+- (UIWindow *)window {
+    
+    return [UIApplication sharedApplication].keyWindow;
 }
 
 @end

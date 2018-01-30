@@ -15,7 +15,7 @@
 
 -(NSString *)desKey{
     
-    return @"onlybrot";
+    return @"LKLiveEncrypted";
 }
 
 -(NSString *)DesEncrypt{

@@ -9,11 +9,11 @@
 #import "LKLiveRoomViewController.h"
 #import "LKAnimationManager.h"
 #import "LKGiftListView.h"
-#import "LKSendTalkView.h"
+#import "LKShareActivityView.h"
+#import "LKLiveSessionView.h"
 #import "LKUserListView.h"
 #import "LKDanmuModel.h"
 #import "LKGiftModel.h"
-#import "LKShareView.h"
 #import "LKDanmuView.h"
 #import "LKGiftData.h"
 
@@ -32,7 +32,7 @@
 
 @property (nonatomic, strong) UIView *keyBoardView;
 @property (nonatomic, strong) UITextView *taskTextView; //聊天输入框
-@property (nonatomic, strong) LKSendTalkView *talkView;
+@property (nonatomic, strong) LKLiveSessionView *talkView;
 @property (nonatomic, strong) LKUserListView *userListView;
 @property (nonatomic, strong) NSArray *userList;
 @property (nonatomic, assign) CGFloat originalY;
@@ -85,7 +85,7 @@
 
 - (void)initSendMsgView {
     
-    LKSendTalkView *talkView = [[LKSendTalkView alloc] initWithFrame:CGRectMake(0, SCREEN_HEIGHT-210, SCREEN_WIDTH, 160)];
+    LKLiveSessionView *talkView = [[LKLiveSessionView alloc] initWithFrame:CGRectMake(0, SCREEN_HEIGHT-210, SCREEN_WIDTH, 160)];
     [self.view addSubview:talkView];
     [self.view bringSubviewToFront:talkView];
     _originalY = talkView.center.y;
@@ -259,7 +259,7 @@
             [self.giftListView show];
             break;
         case LKPlayRoomTaskOpenShare:
-            [self showShare];
+            [self showActivity];
             break;
         case LKPlayRoomTaskMessage:
             [self creatFabulous];
@@ -329,10 +329,11 @@
     return path.CGPath;
 }
 
-- (void)showShare {
+- (void)showActivity {
     
-    LKShareView *view = [[LKShareView alloc] init];
-    [view show];
+    NSArray *activitys = @[@"shareView_qq", @"shareView_wx", @"shareView_friend", @"shareView_msg", @"shareView_copylink"];
+    LKShareActivityView *activity = [[LKShareActivityView alloc] initWithConfigActivitys:activitys];
+    [activity show];
 }
 
 - (IBAction)followClick:(UIButton *)button {

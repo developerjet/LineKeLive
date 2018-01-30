@@ -29,21 +29,21 @@
                     <rect key="frame" x="0.0" y="607" width="375" height="60"/>
                     <subviews>
                         <button opaque="NO" tag="1002" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SMD-C0-QxR" userLabel="Liwu Button">
-                            <rect key="frame" x="225" y="10" width="40" height="40"/>
+                            <rect key="frame" x="110" y="10" width="40" height="40"/>
                             <state key="normal" image="mg_room_btn_liwu_h"/>
                             <connections>
                                 <action selector="openTools:" destination="-1" eventType="touchUpInside" id="Ai8-mm-anV"/>
                             </connections>
                         </button>
                         <button opaque="NO" tag="1003" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Iyx-pg-igg" userLabel="Share Button">
-                            <rect key="frame" x="275" y="10" width="40" height="40"/>
+                            <rect key="frame" x="160" y="10" width="40" height="40"/>
                             <state key="normal" image="mg_room_btn_fenxiang_h"/>
                             <connections>
                                 <action selector="openTools:" destination="-1" eventType="touchUpInside" id="N4z-fx-BDW"/>
                             </connections>
                         </button>
                         <button opaque="NO" tag="1001" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i45-7W-SNT" userLabel="Message Button">
-                            <rect key="frame" x="175" y="10" width="40" height="40"/>
+                            <rect key="frame" x="60" y="10" width="40" height="40"/>
                             <state key="normal" image="mg_room_btn_xinxi_h"/>
                             <connections>
                                 <action selector="openTools:" destination="-1" eventType="touchUpInside" id="gWA-lg-Bsy"/>
@@ -64,7 +64,7 @@
                         <constraint firstAttribute="height" constant="60" id="AXp-k2-1gi"/>
                         <constraint firstAttribute="bottom" secondItem="w6O-fH-AwN" secondAttribute="bottom" constant="10" id="Dwv-R3-WqI"/>
                         <constraint firstItem="SMD-C0-QxR" firstAttribute="leading" secondItem="i45-7W-SNT" secondAttribute="trailing" constant="10" id="HnQ-Rq-3dv"/>
-                        <constraint firstAttribute="trailing" secondItem="Iyx-pg-igg" secondAttribute="trailing" constant="60" id="L6d-3w-meC"/>
+                        <constraint firstItem="i45-7W-SNT" firstAttribute="leading" secondItem="w6O-fH-AwN" secondAttribute="trailing" constant="10" id="OOx-sw-Qe8"/>
                         <constraint firstItem="i45-7W-SNT" firstAttribute="top" secondItem="Qcz-Sn-jPv" secondAttribute="top" constant="10" id="PeT-Bk-d0W"/>
                         <constraint firstItem="w6O-fH-AwN" firstAttribute="leading" secondItem="Qcz-Sn-jPv" secondAttribute="leading" constant="10" id="TGf-6N-evw"/>
                         <constraint firstItem="Iyx-pg-igg" firstAttribute="top" secondItem="i45-7W-SNT" secondAttribute="top" id="VAg-Nd-07w"/>

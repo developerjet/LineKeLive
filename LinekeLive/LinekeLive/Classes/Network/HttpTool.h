@@ -16,7 +16,7 @@ typedef void (^HttpDownloadProgressBlock)(CGFloat progress);
 typedef void (^HttpUploadProgressBlock)(CGFloat progress);
 
 
-@interface HttpTool : NSObject
+@interface HttpTool : NSObject<UIAlertViewDelegate>
 
 /**
  *  get网络请求
@@ -79,6 +79,5 @@ typedef void (^HttpUploadProgressBlock)(CGFloat progress);
                     success:(HttpSuccessBlock)success
                     failure:(HttpFailureBlock)failure
                    progress:(HttpUploadProgressBlock)progress;
-
 
 @end

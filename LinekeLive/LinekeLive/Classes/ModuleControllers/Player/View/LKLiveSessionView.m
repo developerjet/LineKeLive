@@ -6,18 +6,17 @@
 //  Copyright © 2017年 CoderTan. All rights reserved.
 //
 
-#import "LKSendTalkView.h"
+#import "LKLiveSessionView.h"
 #import "LKTalkTableViewCell.h"
 
-static NSString * const kTalkId = @"talkCell";
-
-@interface LKSendTalkView()<UITableViewDelegate, UITableViewDataSource>
+static NSString *identifier = @"Identifier_cell";
+@interface LKLiveSessionView()<UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) NSMutableArray *dataSource;
 
 @end
 
-@implementation LKSendTalkView
+@implementation LKLiveSessionView
 
 #pragma mark - lazyLoad
 
@@ -37,27 +36,27 @@ static NSString * const kTalkId = @"talkCell";
         _tableView.delegate = self;
         _tableView.dataSource = self;
         _tableView.backgroundColor = [UIColor clearColor];
+        _tableView.showsVerticalScrollIndicator   = NO;
+        _tableView.showsHorizontalScrollIndicator = NO;
         _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;//去除系统线条
         _tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
-        [_tableView registerNib:[UINib nibWithNibName:@"LKTalkTableViewCell" bundle:nil] forCellReuseIdentifier:kTalkId];
+        [_tableView registerNib:[UINib nibWithNibName:@"LKTalkTableViewCell" bundle:nil] forCellReuseIdentifier:identifier];
     }
     return _tableView;
 }
 
-#pragma mark - init
-
+#pragma mark - init method
 - (instancetype)initWithFrame:(CGRect)frame {
-    
-    if (self = [super initWithFrame:frame]) {
+    self = [super initWithFrame:frame];
+    if (self) {
         self.backgroundColor = [UIColor clearColor];
-        
         [self addSubview:self.tableView];
-        [self reload];
+        [self configureData];
     }
     return self;
 }
 
-- (void)reload {
+- (void)configureData {
     
     NSArray *datas = @[@{@"level": @2, @"name": @"冷少", @"talk": @"主播真美啊~😆"},
                       @{@"level": @4, @"name": @"瞄神", @"talk": @"主播做什么工作的啊~😆"},
@@ -83,7 +82,7 @@ static NSString * const kTalkId = @"talkCell";
  
     // 插入到最后索引
     [self.dataSource insertObject:talkModel atIndex:self.dataSource.count];
-    [_tableView reloadData];
+    [self.tableView reloadData];
     
     // 滚动到指定位置
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:self.dataSource.count-1 inSection:0];
@@ -100,7 +99,6 @@ static NSString * const kTalkId = @"talkCell";
 }
 
 #pragma mark - delegate && data
-
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
     return self.dataSource.count;
@@ -108,11 +106,9 @@ static NSString * const kTalkId = @"talkCell";
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    LKTalkTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kTalkId];
+    LKTalkTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    
     if (self.dataSource.count > indexPath.row) {
-        
         cell.model = self.dataSource[indexPath.row];
     }
     
@@ -127,7 +123,6 @@ static NSString * const kTalkId = @"talkCell";
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     
     if (self.isDraggBlock) {
-        
         self.isDraggBlock();
     }
 }

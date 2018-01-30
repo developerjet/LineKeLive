@@ -6,24 +6,39 @@
 //  Copyright © 2017年 CoderTan. All rights reserved.
 //
 
-#import "LKShareView.h"
+#import "LKShareActivityView.h"
 
 #define bottom_height   160
 #define views_bgColor   [UIColor colorWithHexString:@"FFFFFF"]
 
-@interface LKShareView()
-@property (nonatomic, strong) NSArray *items;
-@property (nonatomic, strong) UIView  *overalView;
-@property (nonatomic, strong) UIView  *bottomView;
+@interface LKShareActivityView()
+@property (nonatomic, strong) UIView *overalView;
+@property (nonatomic, strong) UIView *bottomView;
 @property (nonatomic, strong) UIScrollView *scrollView;
+
 @end
 
-@implementation LKShareView
+@implementation LKShareActivityView
 
 #pragma mark -
 #pragma mark - initial
+- (instancetype)initWithConfigActivitys:(NSArray *)activitys {
+    if (self = [super init]) {
+        if (activitys) {
+            _activitys = activitys;
+        }else {
+            _activitys = @[@"shareView_qq", @"shareView_wx", @"shareView_friend", @"shareView_msg", @"shareView_copylink"];
+        }
+        [self initSubviews];
+    }
+    return self;
+}
+
 - (instancetype)init {
     if (self = [super init]) {
+        if (!_activitys) {
+            _activitys = @[@"shareView_qq", @"shareView_wx", @"shareView_friend", @"shareView_msg", @"shareView_copylink"];
+        }
         [self initSubviews];
     }
     return self;
@@ -73,15 +88,16 @@
     CGFloat btnH = 40;
     CGFloat btnX = 30;
     // configura share item's
-    for (int i = 0; i < self.items.count; i++)
+    _scrollView.contentSize = CGSizeMake(btnX+(self.activitys.count*btnW), 0);
+    for (int i = 0; i < self.activitys.count; i++)
     {
         UIButton *item = [UIButton buttonWithType:UIButtonTypeCustom];
         item.frame = CGRectMake(btnX + (i * btnW), 10, btnW, btnH);
-        [item setImage:[UIImage imageNamed:self.items[i]] forState:UIControlStateNormal];
+        [item setImage:[UIImage imageNamed:self.activitys[i]] forState:UIControlStateNormal];
         // 将所有按钮都移至底部
         item.transform = CGAffineTransformMakeTranslation(0, SCREEN_HEIGHT);
         item.tag = i + 1000;
-        [item addTarget:self action:@selector(itemClick:) forControlEvents:UIControlEventTouchUpInside];
+        [item addTarget:self action:@selector(activityClick:) forControlEvents:UIControlEventTouchUpInside];
         [_scrollView addSubview:item];
     }
     
@@ -96,7 +112,7 @@
 
 
 #pragma mark -
-#pragma mark - animate click
+#pragma mark - Activity Click
 - (void)animShow {
     
     for (int i = 0; i < self.scrollView.subviews.count; i++) {
@@ -158,7 +174,7 @@
         }
     }
     
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.25 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         _bottomView.frame = CGRectMake(_bottomView.origin.x, SCREEN_HEIGHT, SCREEN_WIDTH, bottom_height);
         _overalView.alpha = 0.0;
         [self removeFromSuperview];
@@ -176,23 +192,23 @@
     }];
 }
 
-- (void)itemClick:(UIButton *)button {
-    LKSharedState state = button.tag;
+- (void)activityClick:(UIButton *)button {
+    kActivityStatus status = button.tag;
     
-    switch (state) {
-        case LKSharedStateQQ:
+    switch (status) {
+        case kActivityStatus_QQ:
             LKLog(@"分享到QQ");
             break;
-        case LKSharedStateWeiChat:
+        case kActivityStatus_WeiChat:
             LKLog(@"分享到微信");
             break;
-        case LKSharedStateTimeLine:
+        case kActivityStatus_TimeLine:
             LKLog(@"分享到朋友圈");
             break;
-        case LKSharedStateShortMsg:
+        case kActivityStatus_SMS:
             LKLog(@"分享到短息");
             break;
-        case LKSharedStateLink:
+        case kActivityStatus_CopyLink:
             LKLog(@"复制链接");
             break;
         default:
@@ -201,20 +217,5 @@
     
     [self animClose:button];
 }
-
-#pragma mark -
-#pragma mark - Lazy
-- (NSArray *)items {
-    
-    if (!_items) {
-        _items = @[@"shareView_qq",
-                   @"shareView_wx",
-                   @"shareView_friend",
-                   @"shareView_msg",
-                   @"shareView_copylink"];
-    }
-    return _items;
-}
-
 
 @end

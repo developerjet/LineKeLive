@@ -177,7 +177,7 @@
 {
     CGSize imageSize = self.size;
     //缩放比例
-    int width = imageSize.width;
+    int width  = imageSize.width;
     int height = imageSize.height;
     
     if (viewSize.width != width) {

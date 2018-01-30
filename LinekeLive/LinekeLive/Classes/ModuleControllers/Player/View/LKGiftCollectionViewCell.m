@@ -9,9 +9,9 @@
 #import "LKGiftCollectionViewCell.h"
 
 @interface LKGiftCollectionViewCell()
-@property (weak, nonatomic) IBOutlet UIImageView *giftImage;
 @property (weak, nonatomic) IBOutlet UILabel *giftName;
 @property (weak, nonatomic) IBOutlet UILabel *giftPrice;
+@property (weak, nonatomic) IBOutlet UIImageView *giftImage;
 
 @end
 
@@ -20,27 +20,24 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     
-    [self configUI];
+    [self configureas];
 }
 
-
-- (void)configUI {
-    
+- (void)configureas {
     self.backgroundColor = [UIColor clearColor];
     
     UIView *selectView = [[UIView alloc] init];
     selectView.layer.cornerRadius = 5;
-    selectView.layer.masksToBounds = YES;
-    selectView.layer.borderWidth = 1;
+    selectView.layer.borderWidth = 1.5;
     selectView.layer.borderColor = [UIColor orangeColor].CGColor;
+    selectView.layer.masksToBounds = YES;
     
-    selectView.backgroundColor = [UIColor blackColor];
+    selectView.backgroundColor = [UIColor clearColor];
     self.selectedBackgroundView = selectView;
 }
 
 
 - (void)setModel:(LKGiftModel *)model {
-    
     _model = model;
     
     self.giftName.text = model.subject;

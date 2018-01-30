@@ -9,9 +9,9 @@
 #import "LKGiftListView.h"
 #import "LKGiftCollectionViewCell.h"
 #import <MBProgressHUD/MBProgressHUD.h>
+#import "LineKeMacros.h"
 #import "LKFlowLayout.h"
 #import "LKGiftModel.h"
-#import "LineKeMacros.h"
 
 #define margin  10
 static NSString *const GitfIdentifier = @"GiftCell";
@@ -83,12 +83,10 @@ UICollectionViewDelegateFlowLayout>
 }
 
 #pragma mark - initialize
-
 - (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     
     if (self) {
-        
         self.show_BGView = [[UIView alloc] initWithFrame:frame];
         [self addSubview:self.show_BGView];
         
@@ -97,7 +95,7 @@ UICollectionViewDelegateFlowLayout>
         [self.show_BGView addGestureRecognizer:tapGesture];
         
         self.show_GFView = [[UIView alloc] initWithFrame:CGRectMake(0, SCREEN_HEIGHT, SCREEN_WIDTH, 0)];
-        self.show_GFView.backgroundColor = [UIColor blackColor];
+        self.show_GFView.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.5];
         [self addSubview:self.show_GFView];
         
         //添加礼物展示
@@ -138,7 +136,6 @@ UICollectionViewDelegateFlowLayout>
 }
 
 #pragma mark - net
-
 - (void)requestGift {
     
     [MBProgressHUD showHUDAddedTo:self.collectionView animated:YES];
@@ -196,31 +193,17 @@ UICollectionViewDelegateFlowLayout>
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     
     LKGiftCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:GitfIdentifier forIndexPath:indexPath];
-    
-    if (self.dataSource.count > indexPath.section) {
-        
-        NSArray *data = self.dataSource[indexPath.section];
-        
-        if (data.count > indexPath.row) {
-            
-            cell.model = self.dataSource[indexPath.section][indexPath.row];
-        }
+    if ([self.dataSource[indexPath.section] count] > indexPath.row) {
+        cell.model = self.dataSource[indexPath.section][indexPath.row];
     }
-    
     return cell;
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     
-    if (self.dataSource.count > indexPath.section) {
-        
-        NSArray *data = self.dataSource[indexPath.section];
-        
-        if (data.count > indexPath.row) {
-            
-            LKGiftModel *model = self.dataSource[indexPath.section][indexPath.row];
-            [self sendGiftIsMd:model];
-        }
+    if ([self.dataSource[indexPath.section] count] > indexPath.row) {
+        LKGiftModel *model = self.dataSource[indexPath.section][indexPath.row];
+        [self sendGiftIsMd:model];
     }
 }
 
@@ -249,14 +232,13 @@ UICollectionViewDelegateFlowLayout>
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     
-    CGFloat width = SCREEN_WIDTH;
+    CGFloat width   = SCREEN_WIDTH;
     CGFloat offsetX = scrollView.contentOffset.x;
     
     //获取索引值
     NSInteger index = offsetX / width;
     
     if (offsetX <= 0) {
-        
         self.pageControl.currentPage = 1;
     }
     

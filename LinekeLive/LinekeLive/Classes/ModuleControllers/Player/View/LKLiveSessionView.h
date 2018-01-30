@@ -9,13 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "LKTalkModel.h"
 
-@interface LKSendTalkView : UIView
+@interface LKLiveSessionView : UIView
 
 @property (nonatomic, strong) LKTalkModel *talkModel;
-
-/**
- 是否拖拽了列表
- */
 @property (nonatomic, copy) void(^isDraggBlock)();
 
 @end

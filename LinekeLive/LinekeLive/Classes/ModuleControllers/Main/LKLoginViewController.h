@@ -8,11 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-typedef NS_ENUM(NSUInteger, LKLoginStyle) {
-    WeiBoLogin = 1, //微博登录
-    MoBileLogin,
-    WeChatLogin,
-    QQLogin,
+typedef NS_ENUM(NSUInteger, kLoginStatus) {
+    kLoginStatus_WeiBo   = 1, //微博登录
+    kLoginStatus_MoBile,
+    kLoginStatus_WeChat,
+    kLoginStatus_TXQQ
 };
 
 @interface LKLoginViewController : UIViewController

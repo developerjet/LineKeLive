@@ -19,7 +19,7 @@
 		2B1E7FCA1F458B0800B00C58 /* CALayer+Aimate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B1E7FC41F458B0800B00C58 /* CALayer+Aimate.m */; };
 		2B1E7FCB1F458B0800B00C58 /* LKDanmuModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B1E7FC61F458B0800B00C58 /* LKDanmuModel.m */; };
 		2B1E7FCC1F458B0800B00C58 /* LKDanmuView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B1E7FC91F458B0800B00C58 /* LKDanmuView.m */; };
-		2B1E7FCF1F458BDD00B00C58 /* LKSendTalkView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B1E7FCE1F458BDD00B00C58 /* LKSendTalkView.m */; };
+		2B1E7FCF1F458BDD00B00C58 /* LKLiveSessionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B1E7FCE1F458BDD00B00C58 /* LKLiveSessionView.m */; };
 		2B1E7FD31F459B2100B00C58 /* LKTalkTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B1E7FD11F459B2100B00C58 /* LKTalkTableViewCell.m */; };
 		2B1E7FD41F459B2100B00C58 /* LKTalkTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2B1E7FD21F459B2100B00C58 /* LKTalkTableViewCell.xib */; };
 		2B1E7FD71F45A60700B00C58 /* LKTalkModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B1E7FD61F45A60700B00C58 /* LKTalkModel.m */; };
@@ -28,7 +28,6 @@
 		2B55FBD61EFA73E0005A83BE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2B55FBD41EFA73E0005A83BE /* LaunchScreen.storyboard */; };
 		2B55FBE11EFA73E0005A83BE /* LinekeLiveTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B55FBE01EFA73E0005A83BE /* LinekeLiveTests.m */; };
 		2B55FBEC1EFA73E0005A83BE /* LinekeLiveUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B55FBEB1EFA73E0005A83BE /* LinekeLiveUITests.m */; };
-		2B55FC111EFA74C9005A83BE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B55FC101EFA74C9005A83BE /* AppDelegate.m */; };
 		2B5AF4001F02046600D83361 /* LKAdvertModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B5AF3FF1F02046600D83361 /* LKAdvertModel.m */; };
 		2B5AF4031F0206BE00D83361 /* LKAdvertiseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B5AF4021F0206BE00D83361 /* LKAdvertiseView.m */; };
 		2B5AF4051F0206C900D83361 /* LKAdvertiseView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2B5AF4041F0206C900D83361 /* LKAdvertiseView.xib */; };
@@ -42,7 +41,7 @@
 		2B75AF811EFCC8B900BFE311 /* LKBasicTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B75AF801EFCC8B900BFE311 /* LKBasicTabBar.m */; };
 		2B75AF881EFCED4700BFE311 /* LKBasicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B75AF871EFCED4700BFE311 /* LKBasicViewController.m */; };
 		2B75AF951EFCEEBC00BFE311 /* LKBasicNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B75AF941EFCEEBC00BFE311 /* LKBasicNavigationController.m */; };
-		2B8A333E1F4824880090B2BB /* LKShareView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B8A333D1F4824880090B2BB /* LKShareView.m */; };
+		2B8A333E1F4824880090B2BB /* LKShareActivityView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B8A333D1F4824880090B2BB /* LKShareActivityView.m */; };
 		2B9C00011F00B0150010611A /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B9C00001F00B0150010611A /* libz.tbd */; };
 		2B9C00031F00B01D0010611A /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B9C00021F00B01D0010611A /* MediaPlayer.framework */; };
 		2B9C00051F00B0280010611A /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B9C00041F00B0280010611A /* MobileCoreServices.framework */; };
@@ -61,6 +60,9 @@
 		2B9CFFFF1F00B00C0010611A /* libbz2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B9CFFFE1F00B00C0010611A /* libbz2.tbd */; };
 		2BDF10F32019D99900048CF7 /* LKPlayerUserCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BDF10F22019D99900048CF7 /* LKPlayerUserCell.m */; };
 		2BDF10F62019DE0100048CF7 /* LKUserListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BDF10F52019DE0100048CF7 /* LKUserListView.m */; };
+		2BE9BA59202005A500711676 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BE9BA58202005A500711676 /* AppDelegate.m */; };
+		2BE9BA5D2020063100711676 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BE9BA5C2020063100711676 /* Reachability.m */; };
+		2BE9BA6020200AAE00711676 /* AppDelegate+Util.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BE9BA5F20200AAE00711676 /* AppDelegate+Util.m */; };
 		2BF8A7F81F49B34E00801F9B /* LKFocuseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BF8A7F71F49B34E00801F9B /* LKFocuseViewController.m */; };
 		AE7E71701F3B09880019B515 /* LKLaunchLiveViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE7E711B1F3B09880019B515 /* LKLaunchLiveViewController.m */; };
 		AE7E71711F3B09880019B515 /* LKLaunchLiveViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AE7E711C1F3B09880019B515 /* LKLaunchLiveViewController.xib */; };
@@ -155,8 +157,8 @@
 		2B1E7FC71F458B0800B00C58 /* LKDanmuModelProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKDanmuModelProtocol.h; sourceTree = "<group>"; };
 		2B1E7FC81F458B0800B00C58 /* LKDanmuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKDanmuView.h; sourceTree = "<group>"; };
 		2B1E7FC91F458B0800B00C58 /* LKDanmuView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKDanmuView.m; sourceTree = "<group>"; };
-		2B1E7FCD1F458BDD00B00C58 /* LKSendTalkView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKSendTalkView.h; sourceTree = "<group>"; };
-		2B1E7FCE1F458BDD00B00C58 /* LKSendTalkView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKSendTalkView.m; sourceTree = "<group>"; };
+		2B1E7FCD1F458BDD00B00C58 /* LKLiveSessionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKLiveSessionView.h; sourceTree = "<group>"; };
+		2B1E7FCE1F458BDD00B00C58 /* LKLiveSessionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKLiveSessionView.m; sourceTree = "<group>"; };
 		2B1E7FD01F459B2100B00C58 /* LKTalkTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKTalkTableViewCell.h; sourceTree = "<group>"; };
 		2B1E7FD11F459B2100B00C58 /* LKTalkTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKTalkTableViewCell.m; sourceTree = "<group>"; };
 		2B1E7FD21F459B2100B00C58 /* LKTalkTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LKTalkTableViewCell.xib; sourceTree = "<group>"; };
@@ -174,8 +176,6 @@
 		2B55FBE71EFA73E0005A83BE /* LinekeLiveUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LinekeLiveUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2B55FBEB1EFA73E0005A83BE /* LinekeLiveUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LinekeLiveUITests.m; sourceTree = "<group>"; };
 		2B55FBED1EFA73E0005A83BE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		2B55FC0F1EFA74C9005A83BE /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		2B55FC101EFA74C9005A83BE /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		2B5AF3FE1F02046600D83361 /* LKAdvertModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKAdvertModel.h; sourceTree = "<group>"; };
 		2B5AF3FF1F02046600D83361 /* LKAdvertModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKAdvertModel.m; sourceTree = "<group>"; };
 		2B5AF4011F0206BE00D83361 /* LKAdvertiseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKAdvertiseView.h; sourceTree = "<group>"; };
@@ -203,8 +203,8 @@
 		2B75AF871EFCED4700BFE311 /* LKBasicViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKBasicViewController.m; sourceTree = "<group>"; };
 		2B75AF931EFCEEBC00BFE311 /* LKBasicNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKBasicNavigationController.h; sourceTree = "<group>"; };
 		2B75AF941EFCEEBC00BFE311 /* LKBasicNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKBasicNavigationController.m; sourceTree = "<group>"; };
-		2B8A333C1F4824880090B2BB /* LKShareView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKShareView.h; sourceTree = "<group>"; };
-		2B8A333D1F4824880090B2BB /* LKShareView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKShareView.m; sourceTree = "<group>"; };
+		2B8A333C1F4824880090B2BB /* LKShareActivityView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKShareActivityView.h; sourceTree = "<group>"; };
+		2B8A333D1F4824880090B2BB /* LKShareActivityView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKShareActivityView.m; sourceTree = "<group>"; };
 		2B9C00001F00B0150010611A /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		2B9C00021F00B01D0010611A /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		2B9C00041F00B0280010611A /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
@@ -227,6 +227,12 @@
 		2BDF10F22019D99900048CF7 /* LKPlayerUserCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LKPlayerUserCell.m; sourceTree = "<group>"; };
 		2BDF10F42019DE0100048CF7 /* LKUserListView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LKUserListView.h; sourceTree = "<group>"; };
 		2BDF10F52019DE0100048CF7 /* LKUserListView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LKUserListView.m; sourceTree = "<group>"; };
+		2BE9BA57202005A500711676 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		2BE9BA58202005A500711676 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		2BE9BA5B2020063100711676 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		2BE9BA5C2020063100711676 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		2BE9BA5E20200AAE00711676 /* AppDelegate+Util.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AppDelegate+Util.h"; sourceTree = "<group>"; };
+		2BE9BA5F20200AAE00711676 /* AppDelegate+Util.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "AppDelegate+Util.m"; sourceTree = "<group>"; };
 		2BF8A7F71F49B34E00801F9B /* LKFocuseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKFocuseViewController.m; sourceTree = "<group>"; };
 		AE7E711A1F3B09880019B515 /* LKLaunchLiveViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKLaunchLiveViewController.h; sourceTree = "<group>"; };
 		AE7E711B1F3B09880019B515 /* LKLaunchLiveViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKLaunchLiveViewController.m; sourceTree = "<group>"; };
@@ -457,7 +463,7 @@
 				2B55FBFB1EFA743F005A83BE /* Helpers */,
 				AE7E71171F3B09880019B515 /* ModuleControllers */,
 				2B55FC071EFA743F005A83BE /* Network */,
-				2B55FC0D1EFA74C9005A83BE /* System */,
+				2BE9BA56202005A500711676 /* AppDelegate */,
 				2B55FC081EFA743F005A83BE /* Other */,
 			);
 			path = Classes;
@@ -550,23 +556,6 @@
 			path = Other;
 			sourceTree = "<group>";
 		};
-		2B55FC0D1EFA74C9005A83BE /* System */ = {
-			isa = PBXGroup;
-			children = (
-				2B55FC0E1EFA74C9005A83BE /* AppDelegate */,
-			);
-			path = System;
-			sourceTree = "<group>";
-		};
-		2B55FC0E1EFA74C9005A83BE /* AppDelegate */ = {
-			isa = PBXGroup;
-			children = (
-				2B55FC0F1EFA74C9005A83BE /* AppDelegate.h */,
-				2B55FC101EFA74C9005A83BE /* AppDelegate.m */,
-			);
-			path = AppDelegate;
-			sourceTree = "<group>";
-		};
 		2B5AF3FA1F02041F00D83361 /* Advertise */ = {
 			isa = PBXGroup;
 			children = (
@@ -593,6 +582,26 @@
 				2B5AF4041F0206C900D83361 /* LKAdvertiseView.xib */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		2BE9BA56202005A500711676 /* AppDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				2BE9BA57202005A500711676 /* AppDelegate.h */,
+				2BE9BA58202005A500711676 /* AppDelegate.m */,
+				2BE9BA5E20200AAE00711676 /* AppDelegate+Util.h */,
+				2BE9BA5F20200AAE00711676 /* AppDelegate+Util.m */,
+			);
+			path = AppDelegate;
+			sourceTree = "<group>";
+		};
+		2BE9BA5A2020063100711676 /* Reachability */ = {
+			isa = PBXGroup;
+			children = (
+				2BE9BA5B2020063100711676 /* Reachability.h */,
+				2BE9BA5C2020063100711676 /* Reachability.m */,
+			);
+			path = Reachability;
 			sourceTree = "<group>";
 		};
 		611CC6AEAB7F8BE508BF8CD4 /* Frameworks */ = {
@@ -785,10 +794,10 @@
 				AE7E714E1F3B09880019B515 /* LKGiftCollectionViewCell.xib */,
 				AE7E714F1F3B09880019B515 /* LKGiftListView.h */,
 				AE7E71501F3B09880019B515 /* LKGiftListView.m */,
-				2B1E7FCD1F458BDD00B00C58 /* LKSendTalkView.h */,
-				2B1E7FCE1F458BDD00B00C58 /* LKSendTalkView.m */,
-				2B8A333C1F4824880090B2BB /* LKShareView.h */,
-				2B8A333D1F4824880090B2BB /* LKShareView.m */,
+				2B1E7FCD1F458BDD00B00C58 /* LKLiveSessionView.h */,
+				2B1E7FCE1F458BDD00B00C58 /* LKLiveSessionView.m */,
+				2B8A333C1F4824880090B2BB /* LKShareActivityView.h */,
+				2B8A333D1F4824880090B2BB /* LKShareActivityView.m */,
 				2BDF10F12019D99900048CF7 /* LKPlayerUserCell.h */,
 				2BDF10F22019D99900048CF7 /* LKPlayerUserCell.m */,
 				2BDF10F42019DE0100048CF7 /* LKUserListView.h */,
@@ -868,6 +877,7 @@
 		AE7E719B1F3B0B0D0019B515 /* Lib */ = {
 			isa = PBXGroup;
 			children = (
+				2BE9BA5A2020063100711676 /* Reachability */,
 			);
 			path = Lib;
 			sourceTree = "<group>";
@@ -1127,7 +1137,7 @@
 				AE7E718E1F3B09880019B515 /* LKHotViewController.m in Sources */,
 				2B147A5B1EFF562F0019312D /* BasicCommonUtils.m in Sources */,
 				AE7E71981F3B09880019B515 /* LKMainTopView.m in Sources */,
-				2B8A333E1F4824880090B2BB /* LKShareView.m in Sources */,
+				2B8A333E1F4824880090B2BB /* LKShareActivityView.m in Sources */,
 				AEB945E71F39606A009386D7 /* LKGiftSendView.m in Sources */,
 				AE7E718A1F3B09880019B515 /* LKGiftCollectionViewCell.m in Sources */,
 				AE7E71941F3B09880019B515 /* LKLiveModel.m in Sources */,
@@ -1140,9 +1150,9 @@
 				2B147A511EFF557C0019312D /* NSString+Encrypt.m in Sources */,
 				AE7E71891F3B09880019B515 /* LKFlowLayout.m in Sources */,
 				2B704C9A1EFB703D0020A0D6 /* UIImage+Estend.m in Sources */,
+				2BE9BA6020200AAE00711676 /* AppDelegate+Util.m in Sources */,
 				AE7E71811F3B09880019B515 /* LKMeHeaderView.m in Sources */,
 				AE7E71951F3B09880019B515 /* MJExtensionConfig.m in Sources */,
-				2B55FC111EFA74C9005A83BE /* AppDelegate.m in Sources */,
 				2B9C00201F00F4E70010611A /* LKLocationManager.m in Sources */,
 				AE7E71701F3B09880019B515 /* LKLaunchLiveViewController.m in Sources */,
 				2B1E7FCB1F458B0800B00C58 /* LKDanmuModel.m in Sources */,
@@ -1174,11 +1184,13 @@
 				2B75AF811EFCC8B900BFE311 /* LKBasicTabBar.m in Sources */,
 				2B5AF4081F020F8800D83361 /* LKCacheHelper.m in Sources */,
 				AE7E71831F3B09880019B515 /* LKMeTableViewCell.m in Sources */,
-				2B1E7FCF1F458BDD00B00C58 /* LKSendTalkView.m in Sources */,
+				2B1E7FCF1F458BDD00B00C58 /* LKLiveSessionView.m in Sources */,
 				2B147A641EFF5C410019312D /* HttpTool.m in Sources */,
 				AEB945ED1F39ADFA009386D7 /* LKAnimation.m in Sources */,
 				AE7E71961F3B09880019B515 /* LKHotLiveTableViewCell.m in Sources */,
+				2BE9BA5D2020063100711676 /* Reachability.m in Sources */,
 				2B75AF881EFCED4700BFE311 /* LKBasicViewController.m in Sources */,
+				2BE9BA59202005A500711676 /* AppDelegate.m in Sources */,
 				2B147A5F1EFF57700019312D /* APIConfig.m in Sources */,
 				2B1E7FCA1F458B0800B00C58 /* CALayer+Aimate.m in Sources */,
 				2B704C9B1EFB703D0020A0D6 /* UIImage+Extension.m in Sources */,

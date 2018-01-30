@@ -17,6 +17,7 @@
 #import "LKCacheHelper.h"
 #import "XDProgressHUD.h"
 #import "LKEnumHeader.h"
+#import "Reachability.h"
 #import "AppDelegate.h"
 #import "APIConfig.h"
 #import <Masonry.h>

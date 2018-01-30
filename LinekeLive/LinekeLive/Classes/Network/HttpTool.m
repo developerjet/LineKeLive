@@ -51,7 +51,6 @@ static NSString * kBaseURL = SERVER_HOST;
             failure:(HttpFailureBlock)failure {
     
     if ([path isEqualToString:@"http://qf.56.com/pay/v4/giftList.ios"]) {
-        
         kBaseURL = @"";
     }
     
@@ -86,7 +85,6 @@ static NSString * kBaseURL = SERVER_HOST;
         failure(error);
         
     }];
-    
 }
 
 + (void)downloadWithPath:(NSString *)path

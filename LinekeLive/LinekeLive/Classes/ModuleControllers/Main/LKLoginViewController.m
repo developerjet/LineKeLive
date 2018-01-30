@@ -10,28 +10,25 @@
 #import "LKBasicTabBarController.h"
 
 @interface LKLoginViewController ()
-@property (nonatomic, assign) LKLoginStyle loginStyle; //登录方式
+@property (nonatomic, assign) kLoginStatus status;
 
 @end
 
 @implementation LKLoginViewController
 
-#pragma mark - view Load
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
 }
 
-
 #pragma mark - login In
 - (IBAction)loginClick:(UIButton *)btn {
-    _loginStyle = btn.tag;
+    self.status = btn.tag;
     
-    switch (_loginStyle) {
-        case WeiBoLogin:
+    switch (self.status) {
+        case kLoginStatus_WeiBo:
             [kAppDelegate animationRoot:AnimServiceLoginIn];
             break;
-            
         default:
             break;
     }

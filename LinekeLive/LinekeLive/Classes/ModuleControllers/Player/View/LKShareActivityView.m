@@ -174,7 +174,7 @@
         }
     }
     
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.25 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         _bottomView.frame = CGRectMake(_bottomView.origin.x, SCREEN_HEIGHT, SCREEN_WIDTH, bottom_height);
         _overalView.alpha = 0.0;
         [self removeFromSuperview];

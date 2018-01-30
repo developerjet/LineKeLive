@@ -11,9 +11,8 @@
 #import "LKPlayerViewController.h"
 #import "LKLiveHandler.h"
 #import "LKLiveModel.h"
-#import <MJRefresh.h>
 
-#define kMargin  5
+#define kMargin     5
 #define kItemWidth  100
 #define ANGLE_TO_RADIAN(angle) ((angle)/180.0 * M_PI)
 //#define collectionWid   (SCREEN_WIDTH-(cols+1)*margin)/cols
@@ -33,7 +32,6 @@ UICollectionViewDelegateFlowLayout>
 @implementation LKNearViewController
 
 #pragma mark - lazy
-
 - (NSMutableArray *)dataSource {
     
     if (!_dataSource) {
@@ -61,22 +59,21 @@ UICollectionViewDelegateFlowLayout>
     return _collectionView;
 }
 
-#pragma mark - load
-
+#pragma mark -
+#pragma mark - view Loads
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor colorBackGroundWhiteColor];
 
-    [self setUpListOrReload];
+    [self initSubviews];
 }
 
-- (void)setUpListOrReload {
+- (void)initSubviews {
     
     __weak typeof(self) weasSelf = self;
-    self.collectionView.mj_header = [MJRefreshStateHeader headerWithRefreshingBlock:^{
+    self.collectionView.mj_header = [LKRefreshGifHeader headerWithRefreshingBlock:^{
         [weasSelf.dataSource removeAllObjects];
-        
-        [weasSelf reloadNear];
+        [weasSelf requestData];
     }];
     
     [self.collectionView.mj_header beginRefreshing];
@@ -141,10 +138,7 @@ UICollectionViewDelegateFlowLayout>
 }
 
 #pragma mark - net
-
-- (void)reloadNear {
-
-    [XDProgressHUD showHUDWithIndeterminate:@"正在加载..."];
+- (void)requestData {
     
     [LKLiveHandler executeGetNearLiveTaskWithSuccess:^(id obj) {
         [self endRefrshing];
@@ -154,30 +148,25 @@ UICollectionViewDelegateFlowLayout>
             [self.dataSource addObjectsFromArray:obj];
             [self.collectionView reloadData];
         }
-        
     } failed:^(id obj) {
-        
         [self endRefrshing];
         [XDProgressHUD hideHUD];
         
-        [XDProgressHUD showHUDWithText:@"请求失败" hideDelay:1.0];
     }];
 }
 
 - (void)endRefrshing {
+    [XDProgressHUD hideHUD];
     
     if ([self.collectionView.mj_header isRefreshing]) {
-        
         [self.collectionView.mj_header endRefreshing];
     }
     else if ([self.collectionView.mj_footer isRefreshing]) {
-        
         [self.collectionView.mj_footer endRefreshing];
     }
 }
 
-#pragma mark - data && delegate
-
+#pragma mark - UICollectionViewData && UICollectionViewDelegate
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     
     return self.dataSource.count;
@@ -270,13 +259,13 @@ UICollectionViewDelegateFlowLayout>
     [self.dataSource insertObject:model atIndex:destinationIndexPath.item];
 }
 
-#pragma mark - player
-
+#pragma mark - Start Player
 - (void)playIsMd:(LKLiveModel *)model {
     if (!model) return;
     
     LKPlayerViewController *player = [[LKPlayerViewController alloc] init];
     player.model = model;
+    player.streamAddr = model.streamAddr;
     [self.navigationController pushViewController:player animated:YES];
 }
 

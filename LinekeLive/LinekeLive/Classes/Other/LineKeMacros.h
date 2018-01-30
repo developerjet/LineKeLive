@@ -13,6 +13,7 @@
 #import "UIColor+Extension.h"
 #import <MJExtension/MJExtension.h>
 #import "UIImageView+SDWebImage.h"
+#import "LKRefreshGifHeader.h"
 #import "LKLiveHandler.h"
 #import "LKCacheHelper.h"
 #import "XDProgressHUD.h"

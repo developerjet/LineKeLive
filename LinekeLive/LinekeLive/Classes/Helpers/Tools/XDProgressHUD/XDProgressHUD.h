@@ -18,7 +18,10 @@
 
 + (void)showHUDWithIndeterminateAndText:(NSString *)text hideDelay:(NSTimeInterval)delay;
 
-///隐藏HUD
+/** 展示自定义GIF动画 */
++ (void)showGIFWithtext:(NSString *)text;
+
+/** 隐藏HUD */
 + (void)hideHUD;
 
 @end

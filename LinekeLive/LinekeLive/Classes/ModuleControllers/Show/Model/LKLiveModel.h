@@ -36,6 +36,11 @@
 @property (nonatomic, strong) NSString * tagId;
 @property (nonatomic, strong) NSString * token;
 @property (nonatomic, assign) NSInteger version;
+@property (nonatomic, strong) NSString * image2;
+@property (nonatomic, strong) NSString * portrait;
+@property (nonatomic, strong) NSString * nick;
+@property (nonatomic, strong) NSString * level;
+@property (nonatomic, strong) NSString * online_users;
 
 @property (nonatomic, copy) NSString *distance;
 

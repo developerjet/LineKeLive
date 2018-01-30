@@ -9,7 +9,6 @@
 #import "LKHotViewController.h"
 #import "LKHotLiveTableViewCell.h"
 #import "LKPlayerViewController.h"
-#import <MJRefresh.h>
 
 static NSString * const LiveCellID = @"HotLiveCell";
 
@@ -52,15 +51,14 @@ static NSString * const LiveCellID = @"HotLiveCell";
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor colorBackGroundColor];
     
-    [self setUptableOrData];
+    [self setup];
 }
 
-- (void)setUptableOrData {
+- (void)setup {
     
     __weak typeof(self) weasSelf = self;
-    self.tableView.mj_header = [MJRefreshStateHeader headerWithRefreshingBlock:^{
+    self.tableView.mj_header = [LKRefreshGifHeader headerWithRefreshingBlock:^{
         [weasSelf.dataSource removeAllObjects];
-        
         [weasSelf reloadData];
     }];
     
@@ -76,7 +74,6 @@ static NSString * const LiveCellID = @"HotLiveCell";
     
     [LKLiveHandler executeGetHotLiveTaskWithSuccess:^(id obj) {
         [self endRefrshing];
-        [XDProgressHUD hideHUD];
         
         [self.dataSource addObjectsFromArray:obj];
         [self.tableView  reloadData];
@@ -84,26 +81,21 @@ static NSString * const LiveCellID = @"HotLiveCell";
     } failed:^(id obj) {
         
         [self endRefrshing];
-        [XDProgressHUD hideHUD];
-        [XDProgressHUD showHUDWithText:@"请求失败" hideDelay:1.0];
     }];
 }
 
 - (void)endRefrshing {
+    [XDProgressHUD hideHUD];
     
     if ([self.tableView.mj_header isRefreshing]) {
-        
         [self.tableView.mj_header endRefreshing];
-    }
-    else if ([self.tableView.mj_footer isRefreshing]) {
-        
+    }else if ([self.tableView.mj_footer isRefreshing]) {
         [self.tableView.mj_footer endRefreshing];
     }
 }
 
 
-#pragma mark - UITableViewDataSource Or UITableViewDelegate
-
+#pragma mark - UITableViewDataSource && UITableViewDelegate
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
     return self.dataSource.count;
@@ -116,7 +108,6 @@ static NSString * const LiveCellID = @"HotLiveCell";
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
     if (self.dataSource.count > indexPath.row) {
-        
         cell.model = self.dataSource[indexPath.row];
     }
 
@@ -129,15 +120,16 @@ static NSString * const LiveCellID = @"HotLiveCell";
     
     if (self.dataSource.count > indexPath.row) {
         LKLiveModel *model = self.dataSource[indexPath.row];
-        [self playThisModel:model];
+        [self playStartModel:model];
     }
 }
 
-- (void)playThisModel:(LKLiveModel *)model {
+- (void)playStartModel:(LKLiveModel *)model {
     if (!model) return;
     
     LKPlayerViewController *playerVC = [[LKPlayerViewController alloc] init];
     playerVC.model = model;
+    playerVC.streamAddr = model.portrait;
     [self.navigationController pushViewController:playerVC animated:YES];
 }
 

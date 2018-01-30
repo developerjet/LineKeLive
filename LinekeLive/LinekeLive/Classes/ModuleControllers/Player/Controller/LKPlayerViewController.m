@@ -156,7 +156,7 @@
     
     IJKFFOptions *options = [IJKFFOptions optionsByDefault];
     
-    IJKFFMoviePlayerController *player = [[IJKFFMoviePlayerController alloc] initWithContentURLString:self.model.streamAddr withOptions:options];
+    IJKFFMoviePlayerController *player = [[IJKFFMoviePlayerController alloc] initWithContentURLString:self.streamAddr withOptions:options];
     self.player = player;
     self.player.view.frame = self.view.bounds;
     self.player.shouldAutoplay = YES; //设置自动播放

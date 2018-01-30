@@ -89,6 +89,39 @@
     hud.removeFromSuperViewOnHide = YES;
 }
 
++ (void)showGIFWithtext:(NSString *)text
+{
+    UIWindow *window = kCurrentKeyWindow;
+    MBProgressHUD *hud = (MBProgressHUD *)[window viewWithTag:HUD_TAG];
+    if (hud.superview&&[hud isKindOfClass:MBProgressHUD.class]) {
+        [hud removeFromSuperview];
+        hud = nil;
+    }
+    
+    // 自定义帧动画
+    UIImageView *gifImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"refresh_fly_1"]];
+    NSMutableArray *animationImages = [[NSMutableArray alloc] init];
+    for (NSInteger i = 1; i <= 29; i++) {
+        UIImage *image = [UIImage imageNamed:[NSString stringWithFormat:@"refresh_fly_%ld", i]];
+        [animationImages addObject:image];
+    }
+    [gifImageView setAnimationImages:animationImages];
+    [gifImageView setAnimationDuration:1.5];
+    [gifImageView setAnimationRepeatCount:0];
+    [gifImageView startAnimating];
+    
+    hud = [MBProgressHUD showHUDAddedTo:window animated:NO];
+    hud.tag = HUD_TAG;
+    hud.mode = MBProgressHUDModeCustomView;
+    hud.customView = gifImageView;
+    hud.detailsLabel.text = text;
+    hud.detailsLabel.textColor = [UIColor blackColor];
+    hud.detailsLabel.font = [UIFont systemFontOfSize:15];
+    // 设置此属性才可更改颜色
+    hud.bezelView.style = MBProgressHUDBackgroundStyleSolidColor;
+    hud.bezelView.backgroundColor = [UIColor clearColor];
+    hud.removeFromSuperViewOnHide = YES;
+}
 
 + (void)hideHUD {
     

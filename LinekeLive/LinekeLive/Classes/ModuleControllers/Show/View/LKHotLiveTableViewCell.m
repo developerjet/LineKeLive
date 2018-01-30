@@ -46,12 +46,12 @@
     
     _model = model;
     
-    self.nameLabel.text = model.creator.nick;
-    self.categoriesLabel.text = model.creator.birth;
+    self.nameLabel.text = model.nick;
     self.locationLabel.text = model.city;
+    self.categoriesLabel.text = [NSString stringWithFormat:@"等级：%@", model.level];
     self.watchLable.text = [NSString stringWithFormat:@"%ld 在看", model.onlineUsers];
-    [self.headView downloadImage:model.creator.portrait placeholder:@"default_room"];
-    [self.bigImageView downloadImage:model.creator.portrait placeholder:@"default_room"];
+    [self.headView downloadImage:model.image2 placeholder:@"default_room"];
+    [self.bigImageView downloadImage:model.image2 placeholder:@"default_room"];
 }
 
 @end

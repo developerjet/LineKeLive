@@ -17,7 +17,6 @@
  */
 #define SERVER_HOST @"http://service.ingkee.com/"
 
-
 /**
  图片类服务器地址
  */
@@ -29,7 +28,7 @@
 /**
  首页热门数据
  */
-#define API_HotLive @"api/live/gettop"
+#define API_HotLive @"http://baseapi.busi.inke.cn/live/LiveHotList"
 
 
 /**

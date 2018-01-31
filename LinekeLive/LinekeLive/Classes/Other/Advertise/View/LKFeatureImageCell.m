@@ -11,7 +11,6 @@
 @implementation LKFeatureImageCell
 
 - (instancetype)initWithFrame:(CGRect)frame {
-    
     self = [super initWithFrame:frame];
     if (self) {
         self.showImgView = [[UIImageView alloc] init];

@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "YYFPSLabel.h"
 
 @interface AppDelegate (Util)
 

@@ -9,7 +9,7 @@
 #import "LKLiveSessionView.h"
 #import "LKTalkTableViewCell.h"
 
-static NSString *identifier = @"Identifier_cell";
+static NSString *kCellReuseIdentifier = @"kCellReuseIdentifier";
 @interface LKLiveSessionView()<UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) NSMutableArray *dataSource;
@@ -40,7 +40,7 @@ static NSString *identifier = @"Identifier_cell";
         _tableView.showsHorizontalScrollIndicator = NO;
         _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;//去除系统线条
         _tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
-        [_tableView registerNib:[UINib nibWithNibName:@"LKTalkTableViewCell" bundle:nil] forCellReuseIdentifier:identifier];
+        [_tableView registerNib:[UINib nibWithNibName:@"LKTalkTableViewCell" bundle:nil] forCellReuseIdentifier:kCellReuseIdentifier];
     }
     return _tableView;
 }
@@ -106,7 +106,7 @@ static NSString *identifier = @"Identifier_cell";
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    LKTalkTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
+    LKTalkTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kCellReuseIdentifier];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     if (self.dataSource.count > indexPath.row) {
         cell.model = self.dataSource[indexPath.row];

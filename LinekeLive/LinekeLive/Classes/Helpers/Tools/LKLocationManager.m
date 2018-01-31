@@ -11,7 +11,7 @@
 
 @interface LKLocationManager()<CLLocationManagerDelegate, UIAlertViewDelegate>
 @property (nonatomic, strong) CLLocationManager *locationManager;
-@property (nonatomic,   copy) LocationFinishedBlock locationBlock;
+@property (nonatomic, copy) LocationFinishedBlock locationBlock;
 @property (nonatomic, strong) CLGeocoder *geocoder;
 
 @end
@@ -44,7 +44,6 @@
     
     self = [super init];
     if (self) {
-        
         _locationManager = [[CLLocationManager alloc] init];
         [_locationManager setDesiredAccuracy:kCLLocationAccuracyBest];
         _locationManager.distanceFilter = 100; //定位附近距离
@@ -123,7 +122,6 @@
 - (void)achieveLocation:(LocationFinishedBlock)locationBlock {
     
     self.locationBlock = locationBlock;
-    
     [self startLocation];
 }
 
@@ -138,7 +136,6 @@
 
 
 #pragma mark - UIAlertViewDelegate
-
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
     
     if (buttonIndex == 1) {

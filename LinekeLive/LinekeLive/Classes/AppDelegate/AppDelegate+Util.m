@@ -10,6 +10,8 @@
 #import "LKNewFeatureView.h"
 #import "LKLocationManager.h"
 #import <Bugly/Bugly.h>
+#import <UIColor+YYAdd.h>
+#import "YYFPSLabel.h"
 
 @implementation AppDelegate (Util)
 
@@ -95,7 +97,6 @@
     [[LKLocationManager sharedManager] achieveLocation:^(NSString *lat, NSString *lon) {
     
         NSLog(@"%@, %@", lat, lon);
-        
     }];
 }
 

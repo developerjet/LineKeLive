@@ -37,10 +37,10 @@
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     
-    [self setCurrentCity];
+    [self setupCurCity];
 }
 
-- (void)setCurrentCity {
+- (void)setupCurCity {
     
     LKLocationManager *manager = [LKLocationManager sharedManager];
     [self.cityBtn setTitle:manager.city forState:UIControlStateNormal];

@@ -70,8 +70,8 @@ UICollectionViewDelegateFlowLayout>
         layout.sectionInset = UIEdgeInsetsMake(margin, margin, margin, margin);
         layout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
         
-        //CGRect fm = CGRectMake(0, 0, SCREEN_WIDTH, contentHeight);
         _collectionView = [[UICollectionView alloc] initWithFrame:self.show_GFView.bounds collectionViewLayout:layout];
+        _collectionView.bounces  = NO;
         _collectionView.delegate = self;
         _collectionView.dataSource = self;
         _collectionView.showsVerticalScrollIndicator = NO;
@@ -111,7 +111,6 @@ UICollectionViewDelegateFlowLayout>
 }
 
 #pragma mark - animate
-
 - (void)show {
     
     [UIView animateWithDuration:0.35 delay:0.25 options:UIViewAnimationOptionCurveEaseIn animations:^{
@@ -162,13 +161,11 @@ UICollectionViewDelegateFlowLayout>
         }else {
             
             [self endProgress];
-            [XDProgressHUD showHUDWithLongText:@"获取礼物信息失败" hideDelay:1.0];
         }
         
     } failed:^(id obj) {
         
         [self endProgress];
-        [XDProgressHUD showHUDWithLongText:@"获取礼物信息失败" hideDelay:1.0];
     }];
 }
 
@@ -246,6 +243,5 @@ UICollectionViewDelegateFlowLayout>
     self.pageControl.currentPage = index;
     //NSLog(@"offsetX：%f", offsetX);
 }
-
 
 @end

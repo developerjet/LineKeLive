@@ -61,6 +61,15 @@
     }else {
         [[UIApplication sharedApplication].keyWindow setRootViewController:[[LKLoginViewController alloc] init]];
     }
+    
+    [self initFPSLabel];
+}
+
+- (void)initFPSLabel {
+    
+    YYFPSLabel *fpsLabel = [[YYFPSLabel alloc] initWithFrame:CGRectMake(SCREEN_WIDTH - 110, 50, 100, 20)];
+    [fpsLabel sizeToFit];
+    [[UIApplication sharedApplication].keyWindow addSubview:fpsLabel];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {

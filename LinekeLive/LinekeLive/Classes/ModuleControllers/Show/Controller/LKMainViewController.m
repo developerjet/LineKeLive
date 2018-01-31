@@ -10,12 +10,12 @@
 #import "LKFocuseViewController.h"
 #import "LKHotViewController.h"
 #import "LKNearViewController.h"
-#import "LKMainTopView.h"
+#import "LKMainSegmentView.h"
 
 
 @interface LKMainViewController ()<UIScrollViewDelegate>
 @property (nonatomic, strong) UIScrollView *contentScrollView;
-@property (nonatomic, strong) LKMainTopView *topView;
+@property (nonatomic, strong) LKMainSegmentView *topView;
 @property (nonatomic, strong) NSArray *titleNames;
 
 @end
@@ -49,11 +49,11 @@
     return _titleNames;
 }
 
-- (LKMainTopView *)topView {
+- (LKMainSegmentView *)topView {
     
     if (!_topView) {
         
-        _topView = [[LKMainTopView alloc] initWithFrame:CGRectMake(0, 0, 200, 50) titleNames:self.titleNames];
+        _topView = [[LKMainSegmentView alloc] initWithFrame:CGRectMake(0, 0, 200, 50) titleNames:self.titleNames];
         WeakSelf;
         _topView.topBlock = ^(NSInteger index) {
             CGPoint point = CGPointMake(index*self.contentScrollView.width, weakSelf.contentScrollView.contentOffset.y);

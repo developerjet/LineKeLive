@@ -12,8 +12,9 @@
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 @property (strong, nonatomic) UIWindow *window;
 @property (nonatomic, strong) Reachability  *hostReach;
-@property (nonatomic, assign) void(^netSatusBlock)(NetworkStatus networkStatus);
+@property (nonatomic, assign) void(^SatusFinishedBlock)(NetworkStatus networkStatus);
 /// 转场动画更改根控制器
 - (void)animationRoot:(AnimServiceType)type;
+
 @end
 

@@ -10,15 +10,7 @@
 
 @interface AppDelegate (Util)
 
-/** 初始化网络状态监听 */
-- (void)initReachNote;
-
-/** 当前网络状态改变监听 */
-- (void)reachabilityChanged:(NSNotification *)noti;
-
-/** 捕获最新的网络状态 */
-- (void)updateInterfaceWithReachability:(Reachability *)currentReach;
-
-- (void)showNetStatusAlert;
+/** 应用启动时常规的设置 */
+- (void)initAppUtil;
 
 @end

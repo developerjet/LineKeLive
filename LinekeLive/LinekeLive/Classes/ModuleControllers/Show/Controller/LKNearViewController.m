@@ -142,16 +142,14 @@ UICollectionViewDelegateFlowLayout>
     
     [LKLiveHandler executeGetNearLiveTaskWithSuccess:^(id obj) {
         [self endRefrshing];
-        [XDProgressHUD hideHUD];
         
         if (obj) {
             [self.dataSource addObjectsFromArray:obj];
             [self.collectionView reloadData];
         }
     } failed:^(id obj) {
-        [self endRefrshing];
-        [XDProgressHUD hideHUD];
         
+        [self endRefrshing];
     }];
 }
 

@@ -6,15 +6,15 @@
 //  Copyright © 2017年 CoderTan. All rights reserved.
 //
 
-#import "LKMainTopView.h"
+#import "LKMainSegmentView.h"
 
-@interface LKMainTopView()
+@interface LKMainSegmentView()
 @property (nonatomic, strong) UIView *lineView; //线条指示器
 @property (nonatomic, strong) NSMutableArray *buttons;
 
 @end
 
-@implementation LKMainTopView
+@implementation LKMainSegmentView
 
 #pragma mark - lazyLoad
 
@@ -85,7 +85,6 @@
 - (void)titleClick:(UIButton *)button {
     
     if (self.topBlock) {
-        
         self.topBlock(button.tag);
     }
     

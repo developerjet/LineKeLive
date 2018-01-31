@@ -89,12 +89,9 @@ static NSString * const Identifier = @"FocuseCell";
     LKHotLiveTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:Identifier];
     cell.backgroundColor = [UIColor colorBackGroundWhiteColor];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    
     if (self.dataSource.count > indexPath.row) {
-        
         cell.model = self.dataSource[indexPath.row];
     }
-    
     return cell;
 }
 

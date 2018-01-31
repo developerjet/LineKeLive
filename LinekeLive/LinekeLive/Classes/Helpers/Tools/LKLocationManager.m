@@ -11,8 +11,8 @@
 
 @interface LKLocationManager()<CLLocationManagerDelegate, UIAlertViewDelegate>
 @property (nonatomic, strong) CLLocationManager *locationManager;
+@property (nonatomic,   copy) LocationFinishedBlock locationBlock;
 @property (nonatomic, strong) CLGeocoder *geocoder;
-@property (nonatomic, copy) LocationBlock block;
 
 @end
 
@@ -30,17 +30,14 @@
 }
 
 #pragma mark - initialize
-
 + (instancetype)sharedManager {
     
-    static LKLocationManager * _manager = nil;
-    
+    static LKLocationManager * _shared = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        _manager = [[LKLocationManager alloc] init];
+        _shared = [[LKLocationManager alloc] init];
     });
-    
-    return _manager;
+    return _shared;
 }
 
 - (instancetype)init {
@@ -62,7 +59,6 @@
             CLAuthorizationStatus state = [CLLocationManager authorizationStatus]; //获取当前的定位状态
             
             if (state == kCLAuthorizationStatusNotDetermined) {
-                
                 [_locationManager requestWhenInUseAuthorization];
             }
         }
@@ -101,7 +97,8 @@
     [LKLocationManager sharedManager].latitude = lat;
     [LKLocationManager sharedManager].longitude = lon;
     
-    self.block(lat, lon); //传出经纬度
+    // 传递经纬度
+    self.locationBlock(lat, lon);
     
     CLLocation *location = [[CLLocation alloc] initWithLatitude:currentLocation.coordinate.latitude longitude:currentLocation.coordinate.longitude];
     
@@ -110,7 +107,7 @@
         
         if (error == nil) {
             CLPlacemark *placemark = [placemarks firstObject];
-            [LKLocationManager sharedManager].currentCity = placemark.locality;
+            [LKLocationManager sharedManager].city = placemark.locality;
             NSLog(@"当前城市：%@", placemark.locality);
         }
     }];
@@ -123,12 +120,22 @@
     [self showAlert];
 }
 
-- (void)getGPS:(LocationBlock)block {
+- (void)achieveLocation:(LocationFinishedBlock)locationBlock {
     
-    self.block = block;
+    self.locationBlock = locationBlock;
     
     [self startLocation];
 }
+
+- (void)openService {
+    
+    NSURL * url = [NSURL URLWithString:UIApplicationOpenSettingsURLString];
+    if([[UIApplication sharedApplication] canOpenURL:url]) {
+        NSURL *url =[NSURL URLWithString:UIApplicationOpenSettingsURLString];
+        [[UIApplication sharedApplication] openURL:url];
+    }
+}
+
 
 #pragma mark - UIAlertViewDelegate
 
@@ -137,15 +144,6 @@
     if (buttonIndex == 1) {
         
         [self openService];
-    }
-}
-
-- (void)openService {
-    
-    NSURL * url = [NSURL URLWithString:UIApplicationOpenSettingsURLString];
-    if([[UIApplication sharedApplication] canOpenURL:url]) {
-        NSURL*url =[NSURL URLWithString:UIApplicationOpenSettingsURLString];
-        [[UIApplication sharedApplication] openURL:url];
     }
 }
 

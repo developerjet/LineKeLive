@@ -26,10 +26,9 @@
     
     // 设置普通状态的动画图片
     NSMutableArray *idleImages = [NSMutableArray array];
-    for (NSInteger i = 1; i <= 29; i++) {
+    for (NSInteger i = 9; i <= 21; i++) {
         UIImage *image = [UIImage imageNamed:[NSString stringWithFormat:@"refresh_fly_%ld", i]];
-        UIImage *newImage = [image imageFixImageViewSize:CGSizeMake(40, 40)];
-        [idleImages addObject:newImage];
+        [idleImages addObject:image];
     }
     [self setImages:idleImages forState:MJRefreshStateIdle];
     
@@ -37,8 +36,7 @@
     NSMutableArray *refreshingImages = [NSMutableArray array];
     for (NSInteger i = 9; i <= 21; i++) {
         UIImage *image = [UIImage imageNamed:[NSString stringWithFormat:@"refresh_fly_%ld", i]];
-        UIImage *newImage = [image imageFixImageViewSize:CGSizeMake(40, 40)];
-        [refreshingImages addObject:newImage];
+        [refreshingImages addObject:image];
     }
     
     // 设置进行刷新的状态的动画图片

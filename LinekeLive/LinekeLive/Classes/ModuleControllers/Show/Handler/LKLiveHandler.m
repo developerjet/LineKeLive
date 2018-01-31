@@ -37,13 +37,12 @@
 
 + (void)executeGetNearLiveTaskWithSuccess:(successBlock)success failed:(failedBlock)failed {
     
-    //LKLocationManager * manager = [LKLocationManager sharedManager];
-    
+    NSString *url = API_NearLive;
     NSDictionary *params = @{@"uid": @"85149891",
                              @"latitude": @"22.570442",
                              @"longitude": @"113.852035"}; //深圳地区
     
-    [HttpTool getWithPath:API_NearLive params:params success:^(id json) {
+    [HttpTool getWithPath:url params:params success:^(id json) {
         
         NSInteger errorCode = [json[@"dm_error"] integerValue];
         
@@ -99,7 +98,6 @@
         }
         
     } failure:^(NSError *error) {
-        
         
     }];
 }

@@ -9,10 +9,10 @@
 #import "LKHotLiveTableViewCell.h"
 
 @interface LKHotLiveTableViewCell()
-@property (weak, nonatomic) IBOutlet UIImageView *headView;
 @property (weak, nonatomic) IBOutlet UILabel *watchLable;
-@property (weak, nonatomic) IBOutlet UILabel *locationLabel;
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *locationLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *headView;
 @property (weak, nonatomic) IBOutlet UIImageView *bigImageView;
 @property (weak, nonatomic) IBOutlet UILabel *categoriesLabel;
 

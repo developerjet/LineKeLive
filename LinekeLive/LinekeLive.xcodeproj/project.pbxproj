@@ -26,8 +26,7 @@
 		2B55FBE11EFA73E0005A83BE /* LinekeLiveTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B55FBE01EFA73E0005A83BE /* LinekeLiveTests.m */; };
 		2B55FBEC1EFA73E0005A83BE /* LinekeLiveUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B55FBEB1EFA73E0005A83BE /* LinekeLiveUITests.m */; };
 		2B5AF4001F02046600D83361 /* LKAdvertModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B5AF3FF1F02046600D83361 /* LKAdvertModel.m */; };
-		2B5AF4031F0206BE00D83361 /* LKAdvertiseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B5AF4021F0206BE00D83361 /* LKAdvertiseView.m */; };
-		2B5AF4051F0206C900D83361 /* LKAdvertiseView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2B5AF4041F0206C900D83361 /* LKAdvertiseView.xib */; };
+		2B5AF4031F0206BE00D83361 /* LKNewFeatureView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B5AF4021F0206BE00D83361 /* LKNewFeatureView.m */; };
 		2B5AF4081F020F8800D83361 /* LKCacheHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B5AF4071F020F8800D83361 /* LKCacheHelper.m */; };
 		2B704C971EFB703D0020A0D6 /* UIColor+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B704C8E1EFB703D0020A0D6 /* UIColor+Extension.m */; };
 		2B704C981EFB703D0020A0D6 /* UIColor+UIImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B704C901EFB703D0020A0D6 /* UIColor+UIImage.m */; };
@@ -64,6 +63,7 @@
 		2BE9BA59202005A500711676 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BE9BA58202005A500711676 /* AppDelegate.m */; };
 		2BE9BA5D2020063100711676 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BE9BA5C2020063100711676 /* Reachability.m */; };
 		2BE9BA6020200AAE00711676 /* AppDelegate+Util.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BE9BA5F20200AAE00711676 /* AppDelegate+Util.m */; };
+		2BEF620A20216E0F00FF597E /* LKFeatureImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BEF620920216E0F00FF597E /* LKFeatureImageCell.m */; };
 		2BF8A7F81F49B34E00801F9B /* LKFocuseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BF8A7F71F49B34E00801F9B /* LKFocuseViewController.m */; };
 		AE7E71701F3B09880019B515 /* LKLaunchLiveViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE7E711B1F3B09880019B515 /* LKLaunchLiveViewController.m */; };
 		AE7E71711F3B09880019B515 /* LKLaunchLiveViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AE7E711C1F3B09880019B515 /* LKLaunchLiveViewController.xib */; };
@@ -103,7 +103,7 @@
 		AE7E71951F3B09880019B515 /* MJExtensionConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = AE7E71661F3B09880019B515 /* MJExtensionConfig.m */; };
 		AE7E71961F3B09880019B515 /* LKHotLiveTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AE7E71691F3B09880019B515 /* LKHotLiveTableViewCell.m */; };
 		AE7E71971F3B09880019B515 /* LKHotLiveTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AE7E716A1F3B09880019B515 /* LKHotLiveTableViewCell.xib */; };
-		AE7E71981F3B09880019B515 /* LKMainTopView.m in Sources */ = {isa = PBXBuildFile; fileRef = AE7E716C1F3B09880019B515 /* LKMainTopView.m */; };
+		AE7E71981F3B09880019B515 /* LKMainSegmentView.m in Sources */ = {isa = PBXBuildFile; fileRef = AE7E716C1F3B09880019B515 /* LKMainSegmentView.m */; };
 		AE7E71991F3B09880019B515 /* LKNearCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AE7E716E1F3B09880019B515 /* LKNearCollectionViewCell.m */; };
 		AE7E719A1F3B09880019B515 /* LKNearCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AE7E716F1F3B09880019B515 /* LKNearCollectionViewCell.xib */; };
 		AEB945E71F39606A009386D7 /* LKGiftSendView.m in Sources */ = {isa = PBXBuildFile; fileRef = AEB945E61F39606A009386D7 /* LKGiftSendView.m */; };
@@ -173,9 +173,8 @@
 		2B55FBED1EFA73E0005A83BE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2B5AF3FE1F02046600D83361 /* LKAdvertModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKAdvertModel.h; sourceTree = "<group>"; };
 		2B5AF3FF1F02046600D83361 /* LKAdvertModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKAdvertModel.m; sourceTree = "<group>"; };
-		2B5AF4011F0206BE00D83361 /* LKAdvertiseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKAdvertiseView.h; sourceTree = "<group>"; };
-		2B5AF4021F0206BE00D83361 /* LKAdvertiseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKAdvertiseView.m; sourceTree = "<group>"; };
-		2B5AF4041F0206C900D83361 /* LKAdvertiseView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LKAdvertiseView.xib; sourceTree = "<group>"; };
+		2B5AF4011F0206BE00D83361 /* LKNewFeatureView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKNewFeatureView.h; sourceTree = "<group>"; };
+		2B5AF4021F0206BE00D83361 /* LKNewFeatureView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKNewFeatureView.m; sourceTree = "<group>"; };
 		2B5AF4061F020F8800D83361 /* LKCacheHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKCacheHelper.h; sourceTree = "<group>"; };
 		2B5AF4071F020F8800D83361 /* LKCacheHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKCacheHelper.m; sourceTree = "<group>"; };
 		2B704C8D1EFB703D0020A0D6 /* UIColor+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Extension.h"; sourceTree = "<group>"; };
@@ -236,6 +235,8 @@
 		2BE9BA5C2020063100711676 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		2BE9BA5E20200AAE00711676 /* AppDelegate+Util.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AppDelegate+Util.h"; sourceTree = "<group>"; };
 		2BE9BA5F20200AAE00711676 /* AppDelegate+Util.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "AppDelegate+Util.m"; sourceTree = "<group>"; };
+		2BEF620820216E0F00FF597E /* LKFeatureImageCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LKFeatureImageCell.h; sourceTree = "<group>"; };
+		2BEF620920216E0F00FF597E /* LKFeatureImageCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LKFeatureImageCell.m; sourceTree = "<group>"; };
 		2BF8A7F71F49B34E00801F9B /* LKFocuseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKFocuseViewController.m; sourceTree = "<group>"; };
 		AE7E711A1F3B09880019B515 /* LKLaunchLiveViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKLaunchLiveViewController.h; sourceTree = "<group>"; };
 		AE7E711B1F3B09880019B515 /* LKLaunchLiveViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKLaunchLiveViewController.m; sourceTree = "<group>"; };
@@ -299,8 +300,8 @@
 		AE7E71681F3B09880019B515 /* LKHotLiveTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKHotLiveTableViewCell.h; sourceTree = "<group>"; };
 		AE7E71691F3B09880019B515 /* LKHotLiveTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKHotLiveTableViewCell.m; sourceTree = "<group>"; };
 		AE7E716A1F3B09880019B515 /* LKHotLiveTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LKHotLiveTableViewCell.xib; sourceTree = "<group>"; };
-		AE7E716B1F3B09880019B515 /* LKMainTopView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKMainTopView.h; sourceTree = "<group>"; };
-		AE7E716C1F3B09880019B515 /* LKMainTopView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKMainTopView.m; sourceTree = "<group>"; };
+		AE7E716B1F3B09880019B515 /* LKMainSegmentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKMainSegmentView.h; sourceTree = "<group>"; };
+		AE7E716C1F3B09880019B515 /* LKMainSegmentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKMainSegmentView.m; sourceTree = "<group>"; };
 		AE7E716D1F3B09880019B515 /* LKNearCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKNearCollectionViewCell.h; sourceTree = "<group>"; };
 		AE7E716E1F3B09880019B515 /* LKNearCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKNearCollectionViewCell.m; sourceTree = "<group>"; };
 		AE7E716F1F3B09880019B515 /* LKNearCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LKNearCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -570,9 +571,10 @@
 		2B5AF3FD1F02043B00D83361 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				2B5AF4011F0206BE00D83361 /* LKAdvertiseView.h */,
-				2B5AF4021F0206BE00D83361 /* LKAdvertiseView.m */,
-				2B5AF4041F0206C900D83361 /* LKAdvertiseView.xib */,
+				2B5AF4011F0206BE00D83361 /* LKNewFeatureView.h */,
+				2B5AF4021F0206BE00D83361 /* LKNewFeatureView.m */,
+				2BEF620820216E0F00FF597E /* LKFeatureImageCell.h */,
+				2BEF620920216E0F00FF597E /* LKFeatureImageCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -878,8 +880,8 @@
 				AE7E71681F3B09880019B515 /* LKHotLiveTableViewCell.h */,
 				AE7E71691F3B09880019B515 /* LKHotLiveTableViewCell.m */,
 				AE7E716A1F3B09880019B515 /* LKHotLiveTableViewCell.xib */,
-				AE7E716B1F3B09880019B515 /* LKMainTopView.h */,
-				AE7E716C1F3B09880019B515 /* LKMainTopView.m */,
+				AE7E716B1F3B09880019B515 /* LKMainSegmentView.h */,
+				AE7E716C1F3B09880019B515 /* LKMainSegmentView.m */,
 				AE7E716D1F3B09880019B515 /* LKNearCollectionViewCell.h */,
 				AE7E716E1F3B09880019B515 /* LKNearCollectionViewCell.m */,
 				AE7E716F1F3B09880019B515 /* LKNearCollectionViewCell.xib */,
@@ -1056,7 +1058,6 @@
 				AE7E71771F3B09880019B515 /* camra_preview@3x.png in Resources */,
 				AE7E717A1F3B09880019B515 /* ios-29x29.png in Resources */,
 				2B1E7FD41F459B2100B00C58 /* LKTalkTableViewCell.xib in Resources */,
-				2B5AF4051F0206C900D83361 /* LKAdvertiseView.xib in Resources */,
 				2B55FBD61EFA73E0005A83BE /* LaunchScreen.storyboard in Resources */,
 				AE7E71791F3B09880019B515 /* close_preview@3x.png in Resources */,
 				AE7E717D1F3B09880019B515 /* LKLoginViewController.xib in Resources */,
@@ -1149,7 +1150,7 @@
 				AE7E71911F3B09880019B515 /* LKLiveHandler.m in Sources */,
 				AE7E718E1F3B09880019B515 /* LKHotViewController.m in Sources */,
 				2B147A5B1EFF562F0019312D /* BasicCommonUtils.m in Sources */,
-				AE7E71981F3B09880019B515 /* LKMainTopView.m in Sources */,
+				AE7E71981F3B09880019B515 /* LKMainSegmentView.m in Sources */,
 				2BA6A17E20204D02006FDA28 /* HttpTool.m in Sources */,
 				2B8A333E1F4824880090B2BB /* LKShareActivityView.m in Sources */,
 				AEB945E71F39606A009386D7 /* LKGiftSendView.m in Sources */,
@@ -1194,9 +1195,10 @@
 				AE7E718F1F3B09880019B515 /* LKMainViewController.m in Sources */,
 				AE7E718C1F3B09880019B515 /* LKGiftListView.m in Sources */,
 				AE7E71801F3B09880019B515 /* LKMineModel.m in Sources */,
-				2B5AF4031F0206BE00D83361 /* LKAdvertiseView.m in Sources */,
+				2B5AF4031F0206BE00D83361 /* LKNewFeatureView.m in Sources */,
 				2B1E7FD71F45A60700B00C58 /* LKTalkModel.m in Sources */,
 				2B75AF811EFCC8B900BFE311 /* LKBasicTabBar.m in Sources */,
+				2BEF620A20216E0F00FF597E /* LKFeatureImageCell.m in Sources */,
 				2B5AF4081F020F8800D83361 /* LKCacheHelper.m in Sources */,
 				AE7E71831F3B09880019B515 /* LKMeTableViewCell.m in Sources */,
 				2B1E7FCF1F458BDD00B00C58 /* LKLiveSessionView.m in Sources */,

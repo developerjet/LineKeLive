@@ -56,6 +56,9 @@ static NSString * kBaseURL = SERVER_HOST;
     if ([path isEqualToString:@"http://baseapi.busi.inke.cn/live/LiveHotList"]) {
         kBaseURL = @"";
     }
+    if ([path isEqualToString:@"api/live/near_recommend"]) {
+        kBaseURL = SERVER_HOST;
+    }
     
     //获取完整的url路径
     NSString * url = [kBaseURL stringByAppendingPathComponent:path];

@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-typedef void(^LocationBlock)(NSString *lat, NSString *lon);
+typedef void(^LocationFinishedBlock)(NSString *lat, NSString *lon);
 
 @interface LKLocationManager : NSObject
 
@@ -17,7 +17,7 @@ typedef void(^LocationBlock)(NSString *lat, NSString *lon);
 /**
  获取当前经纬度
  */
-- (void)getGPS:(LocationBlock)block;
+- (void)achieveLocation:(LocationFinishedBlock)locationBlock;
 
 
 /**
@@ -35,6 +35,6 @@ typedef void(^LocationBlock)(NSString *lat, NSString *lon);
 /** 
  获取当前定位城市 
  */
-@property (nonatomic, copy) NSString *currentCity;
+@property (nonatomic, copy) NSString *city;
 
 @end

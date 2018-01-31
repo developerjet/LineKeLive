@@ -27,8 +27,7 @@
     return _livePreview;
 }
 
-#pragma mark - load
-
+#pragma mark - viewDidLoad
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -44,7 +43,7 @@
 - (void)setCurrentCity {
     
     LKLocationManager *manager = [LKLocationManager sharedManager];
-    [self.cityBtn setTitle:manager.currentCity forState:UIControlStateNormal];
+    [self.cityBtn setTitle:manager.city forState:UIControlStateNormal];
 }
 
 - (IBAction)closeLaunch:(id)sender {

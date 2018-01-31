@@ -10,10 +10,8 @@
 #import "LKLoginViewController.h"
 #import "LKBasicTabBarController.h"
 #import "LKLocationManager.h"
-#import "LKAdvertiseView.h"
+#import "LKNewFeatureView.h"
 #import "AppDelegate+Util.h"
-
-#import <Bugly/Bugly.h>
 
 @interface AppDelegate ()
 
@@ -24,22 +22,14 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
-    [self initialRoot];
-    [self initAppTool];
+    [self initWindownRoot];
+    [self initAppUtil];
     
     return YES;
 }
 
-- (void)initAppTool {
-    
-    [self setupSDK];
-    [self setupAdvert];
-    [self appearanceSet];
-    [self initReachNote];
-}
-
 //设置根控制器
-- (void)initialRoot {
+- (void)initWindownRoot {
     
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     self.window.backgroundColor = [UIColor colorBackGroundWhiteColor];
@@ -47,39 +37,6 @@
     LKLoginViewController *LKLogin = [[LKLoginViewController alloc] init];
     self.window.rootViewController = LKLogin;
     [self.window makeKeyAndVisible];
-}
-
-// 腾讯Bugly
-- (void)setupSDK {
-    
-    [Bugly startWithAppId:@"dcb5a15014"];
-}
-
-//开始定位
-- (void)setupLocation {
-    
-    [[LKLocationManager sharedManager] getGPS:^(NSString *lat, NSString *lon) {
-        
-        NSLog(@"%@, %@", lat, lon);
-    }];
-}
-
-//设置广告页
-- (void)setupAdvert {
-    
-    LKAdvertiseView *advertiseView = [LKAdvertiseView loadAdvertiseView];
-    [self.window addSubview:advertiseView];
-}
-
-// iOS11 TableView统一适配
-- (void)appearanceSet {
-    
-    if (@available(iOS 11.0, *)) {
-        [UITableView appearance].estimatedRowHeight = 0;
-        [UITableView appearance].estimatedSectionHeaderHeight =0;
-        [UITableView appearance].estimatedSectionFooterHeight =0;
-        [UITableView appearance].contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
-    }
 }
 
 - (void)animationRoot:(AnimServiceType)type {

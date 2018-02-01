@@ -12,10 +12,6 @@
 		2B147A5B1EFF562F0019312D /* BasicCommonUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B147A561EFF562F0019312D /* BasicCommonUtils.m */; };
 		2B147A5C1EFF562F0019312D /* GTMBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B147A581EFF562F0019312D /* GTMBase64.m */; };
 		2B147A681EFF5F770019312D /* LKBaseHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B147A671EFF5F770019312D /* LKBaseHandler.m */; };
-		2B147A7F1EFFAA490019312D /* XDProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B147A7E1EFFAA490019312D /* XDProgressHUD.m */; };
-		2B1E7FCA1F458B0800B00C58 /* CALayer+Aimate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B1E7FC41F458B0800B00C58 /* CALayer+Aimate.m */; };
-		2B1E7FCB1F458B0800B00C58 /* LKDanmuModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B1E7FC61F458B0800B00C58 /* LKDanmuModel.m */; };
-		2B1E7FCC1F458B0800B00C58 /* LKDanmuView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B1E7FC91F458B0800B00C58 /* LKDanmuView.m */; };
 		2B1E7FCF1F458BDD00B00C58 /* LKLiveSessionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B1E7FCE1F458BDD00B00C58 /* LKLiveSessionView.m */; };
 		2B1E7FD31F459B2100B00C58 /* LKTalkTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B1E7FD11F459B2100B00C58 /* LKTalkTableViewCell.m */; };
 		2B1E7FD41F459B2100B00C58 /* LKTalkTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2B1E7FD21F459B2100B00C58 /* LKTalkTableViewCell.xib */; };
@@ -25,9 +21,6 @@
 		2B55FBD61EFA73E0005A83BE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2B55FBD41EFA73E0005A83BE /* LaunchScreen.storyboard */; };
 		2B55FBE11EFA73E0005A83BE /* LinekeLiveTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B55FBE01EFA73E0005A83BE /* LinekeLiveTests.m */; };
 		2B55FBEC1EFA73E0005A83BE /* LinekeLiveUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B55FBEB1EFA73E0005A83BE /* LinekeLiveUITests.m */; };
-		2B5AF4001F02046600D83361 /* LKAdvertModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B5AF3FF1F02046600D83361 /* LKAdvertModel.m */; };
-		2B5AF4031F0206BE00D83361 /* LKNewFeatureView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B5AF4021F0206BE00D83361 /* LKNewFeatureView.m */; };
-		2B5AF4081F020F8800D83361 /* LKCacheHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B5AF4071F020F8800D83361 /* LKCacheHelper.m */; };
 		2B704C971EFB703D0020A0D6 /* UIColor+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B704C8E1EFB703D0020A0D6 /* UIColor+Extension.m */; };
 		2B704C981EFB703D0020A0D6 /* UIColor+UIImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B704C901EFB703D0020A0D6 /* UIColor+UIImage.m */; };
 		2B704C991EFB703D0020A0D6 /* UIImage+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B704C921EFB703D0020A0D6 /* UIImage+Additions.m */; };
@@ -46,7 +39,6 @@
 		2B9C000B1F00B04C0010611A /* VideoToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B9C000A1F00B04C0010611A /* VideoToolbox.framework */; };
 		2B9C000D1F00B0630010611A /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B9C000C1F00B0630010611A /* AVFoundation.framework */; };
 		2B9C001D1F00E5160010611A /* LKHasNavViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B9C001C1F00E5160010611A /* LKHasNavViewController.m */; };
-		2B9C00201F00F4E70010611A /* LKLocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B9C001F1F00F4E70010611A /* LKLocationManager.m */; };
 		2B9C00221F00F6010010611A /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B9C00211F00F6010010611A /* CoreLocation.framework */; };
 		2B9CFFED1F00A07A0010611A /* IJKMediaFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B9CFFEC1F00A07A0010611A /* IJKMediaFramework.framework */; };
 		2B9CFFF71F00AFD10010611A /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B9CFFF61F00AFD10010611A /* AudioToolbox.framework */; };
@@ -54,17 +46,29 @@
 		2B9CFFFB1F00AFF00010611A /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B9CFFFA1F00AFF00010611A /* CoreMedia.framework */; };
 		2B9CFFFD1F00AFFD0010611A /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B9CFFFC1F00AFFD0010611A /* CoreVideo.framework */; };
 		2B9CFFFF1F00B00C0010611A /* libbz2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B9CFFFE1F00B00C0010611A /* libbz2.tbd */; };
-		2BA6A17720203E22006FDA28 /* LKRefreshGifHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BA6A17620203E22006FDA28 /* LKRefreshGifHeader.m */; };
 		2BA6A17D20204D02006FDA28 /* APIConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BA6A17A20204D02006FDA28 /* APIConfig.m */; };
 		2BA6A17E20204D02006FDA28 /* HttpTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BA6A17C20204D02006FDA28 /* HttpTool.m */; };
 		2BA6A18120204D15006FDA28 /* UIImageView+SDWebImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BA6A18020204D15006FDA28 /* UIImageView+SDWebImage.m */; };
 		2BC7672D2021CC9E0050A76E /* YYFPSLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BC7672A2021CC9E0050A76E /* YYFPSLabel.m */; };
 		2BDF10F32019D99900048CF7 /* LKPlayerUserCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BDF10F22019D99900048CF7 /* LKPlayerUserCell.m */; };
 		2BDF10F62019DE0100048CF7 /* LKUserListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BDF10F52019DE0100048CF7 /* LKUserListView.m */; };
+		2BE69B152022D45A009A2707 /* LKLaunchBrowseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BE69AF12022D45A009A2707 /* LKLaunchBrowseCell.m */; };
+		2BE69B162022D45A009A2707 /* LKLaunchBrowseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BE69AF32022D45A009A2707 /* LKLaunchBrowseView.m */; };
+		2BE69B172022D45A009A2707 /* CALayer+Aimate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BE69AF62022D45A009A2707 /* CALayer+Aimate.m */; };
+		2BE69B182022D45A009A2707 /* LKDanmuModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BE69AF82022D45A009A2707 /* LKDanmuModel.m */; };
+		2BE69B192022D45A009A2707 /* LKDanmuView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BE69AFB2022D45A009A2707 /* LKDanmuView.m */; };
+		2BE69B1A2022D45A009A2707 /* LKCacheHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BE69AFD2022D45A009A2707 /* LKCacheHelper.m */; };
+		2BE69B1B2022D45A009A2707 /* LKAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BE69B042022D45A009A2707 /* LKAnimation.m */; };
+		2BE69B1C2022D45A009A2707 /* LKAnimationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BE69B062022D45A009A2707 /* LKAnimationManager.m */; };
+		2BE69B1D2022D45A009A2707 /* LKCacheData.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BE69B082022D45A009A2707 /* LKCacheData.m */; };
+		2BE69B1E2022D45A009A2707 /* LKGiftData.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BE69B0A2022D45A009A2707 /* LKGiftData.m */; };
+		2BE69B1F2022D45A009A2707 /* LKGiftSendView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BE69B0C2022D45A009A2707 /* LKGiftSendView.m */; };
+		2BE69B202022D45A009A2707 /* LKLocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BE69B0E2022D45A009A2707 /* LKLocationManager.m */; };
+		2BE69B212022D45A009A2707 /* LKRefreshGifHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BE69B112022D45A009A2707 /* LKRefreshGifHeader.m */; };
+		2BE69B222022D45A009A2707 /* XDProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BE69B142022D45A009A2707 /* XDProgressHUD.m */; };
 		2BE9BA59202005A500711676 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BE9BA58202005A500711676 /* AppDelegate.m */; };
 		2BE9BA5D2020063100711676 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BE9BA5C2020063100711676 /* Reachability.m */; };
 		2BE9BA6020200AAE00711676 /* AppDelegate+Util.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BE9BA5F20200AAE00711676 /* AppDelegate+Util.m */; };
-		2BEF620A20216E0F00FF597E /* LKFeatureImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BEF620920216E0F00FF597E /* LKFeatureImageCell.m */; };
 		2BF8A7F81F49B34E00801F9B /* LKFocuseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BF8A7F71F49B34E00801F9B /* LKFocuseViewController.m */; };
 		AE7E71701F3B09880019B515 /* LKLaunchLiveViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE7E711B1F3B09880019B515 /* LKLaunchLiveViewController.m */; };
 		AE7E71711F3B09880019B515 /* LKLaunchLiveViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AE7E711C1F3B09880019B515 /* LKLaunchLiveViewController.xib */; };
@@ -107,11 +111,6 @@
 		AE7E71981F3B09880019B515 /* LKMainSegmentView.m in Sources */ = {isa = PBXBuildFile; fileRef = AE7E716C1F3B09880019B515 /* LKMainSegmentView.m */; };
 		AE7E71991F3B09880019B515 /* LKNearCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AE7E716E1F3B09880019B515 /* LKNearCollectionViewCell.m */; };
 		AE7E719A1F3B09880019B515 /* LKNearCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AE7E716F1F3B09880019B515 /* LKNearCollectionViewCell.xib */; };
-		AEB945E71F39606A009386D7 /* LKGiftSendView.m in Sources */ = {isa = PBXBuildFile; fileRef = AEB945E61F39606A009386D7 /* LKGiftSendView.m */; };
-		AEB945EA1F3997CC009386D7 /* LKGiftData.m in Sources */ = {isa = PBXBuildFile; fileRef = AEB945E91F3997CC009386D7 /* LKGiftData.m */; };
-		AEB945ED1F39ADFA009386D7 /* LKAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = AEB945EC1F39ADFA009386D7 /* LKAnimation.m */; };
-		AEB945F01F39B752009386D7 /* LKAnimationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = AEB945EF1F39B752009386D7 /* LKAnimationManager.m */; };
-		AEB945F31F39BD37009386D7 /* LKCacheData.m in Sources */ = {isa = PBXBuildFile; fileRef = AEB945F21F39BD37009386D7 /* LKCacheData.m */; };
 		E8DE294AD7D0CAD927DC4607 /* libPods-LinekeLive.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C35D5F4314E2739372BBE43A /* libPods-LinekeLive.a */; };
 /* End PBXBuildFile section */
 
@@ -144,15 +143,6 @@
 		2B147A591EFF562F0019312D /* GTMDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMDefines.h; sourceTree = "<group>"; };
 		2B147A661EFF5F770019312D /* LKBaseHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKBaseHandler.h; sourceTree = "<group>"; };
 		2B147A671EFF5F770019312D /* LKBaseHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKBaseHandler.m; sourceTree = "<group>"; };
-		2B147A7D1EFFAA490019312D /* XDProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XDProgressHUD.h; sourceTree = "<group>"; };
-		2B147A7E1EFFAA490019312D /* XDProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XDProgressHUD.m; sourceTree = "<group>"; };
-		2B1E7FC31F458B0800B00C58 /* CALayer+Aimate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CALayer+Aimate.h"; sourceTree = "<group>"; };
-		2B1E7FC41F458B0800B00C58 /* CALayer+Aimate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CALayer+Aimate.m"; sourceTree = "<group>"; };
-		2B1E7FC51F458B0800B00C58 /* LKDanmuModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKDanmuModel.h; sourceTree = "<group>"; };
-		2B1E7FC61F458B0800B00C58 /* LKDanmuModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKDanmuModel.m; sourceTree = "<group>"; };
-		2B1E7FC71F458B0800B00C58 /* LKDanmuModelProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKDanmuModelProtocol.h; sourceTree = "<group>"; };
-		2B1E7FC81F458B0800B00C58 /* LKDanmuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKDanmuView.h; sourceTree = "<group>"; };
-		2B1E7FC91F458B0800B00C58 /* LKDanmuView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKDanmuView.m; sourceTree = "<group>"; };
 		2B1E7FCD1F458BDD00B00C58 /* LKLiveSessionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKLiveSessionView.h; sourceTree = "<group>"; };
 		2B1E7FCE1F458BDD00B00C58 /* LKLiveSessionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKLiveSessionView.m; sourceTree = "<group>"; };
 		2B1E7FD01F459B2100B00C58 /* LKTalkTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKTalkTableViewCell.h; sourceTree = "<group>"; };
@@ -160,7 +150,6 @@
 		2B1E7FD21F459B2100B00C58 /* LKTalkTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LKTalkTableViewCell.xib; sourceTree = "<group>"; };
 		2B1E7FD51F45A60700B00C58 /* LKTalkModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKTalkModel.h; sourceTree = "<group>"; };
 		2B1E7FD61F45A60700B00C58 /* LKTalkModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKTalkModel.m; sourceTree = "<group>"; };
-		2B4B31F51FF13F1200E77A84 /* LKEnumHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LKEnumHeader.h; sourceTree = "<group>"; };
 		2B55FBC31EFA73E0005A83BE /* LinekeLive.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LinekeLive.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2B55FBC71EFA73E0005A83BE /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		2B55FBD21EFA73E0005A83BE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -172,12 +161,6 @@
 		2B55FBE71EFA73E0005A83BE /* LinekeLiveUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LinekeLiveUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2B55FBEB1EFA73E0005A83BE /* LinekeLiveUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LinekeLiveUITests.m; sourceTree = "<group>"; };
 		2B55FBED1EFA73E0005A83BE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		2B5AF3FE1F02046600D83361 /* LKAdvertModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKAdvertModel.h; sourceTree = "<group>"; };
-		2B5AF3FF1F02046600D83361 /* LKAdvertModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKAdvertModel.m; sourceTree = "<group>"; };
-		2B5AF4011F0206BE00D83361 /* LKNewFeatureView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKNewFeatureView.h; sourceTree = "<group>"; };
-		2B5AF4021F0206BE00D83361 /* LKNewFeatureView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKNewFeatureView.m; sourceTree = "<group>"; };
-		2B5AF4061F020F8800D83361 /* LKCacheHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKCacheHelper.h; sourceTree = "<group>"; };
-		2B5AF4071F020F8800D83361 /* LKCacheHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKCacheHelper.m; sourceTree = "<group>"; };
 		2B704C8D1EFB703D0020A0D6 /* UIColor+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Extension.h"; sourceTree = "<group>"; };
 		2B704C8E1EFB703D0020A0D6 /* UIColor+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Extension.m"; sourceTree = "<group>"; };
 		2B704C8F1EFB703D0020A0D6 /* UIColor+UIImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+UIImage.h"; sourceTree = "<group>"; };
@@ -188,8 +171,6 @@
 		2B704C941EFB703D0020A0D6 /* UIImage+Estend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Estend.m"; sourceTree = "<group>"; };
 		2B704C951EFB703D0020A0D6 /* UIImage+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Extension.h"; sourceTree = "<group>"; };
 		2B704C961EFB703D0020A0D6 /* UIImage+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Extension.m"; sourceTree = "<group>"; };
-		2B704C9C1EFB71C00020A0D6 /* lineKePrefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = lineKePrefix.pch; sourceTree = "<group>"; };
-		2B704C9D1EFB744F0020A0D6 /* LineKeMacros.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LineKeMacros.h; sourceTree = "<group>"; };
 		2B75AF7C1EFCC89400BFE311 /* LKBasicTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKBasicTabBarController.h; sourceTree = "<group>"; };
 		2B75AF7D1EFCC89400BFE311 /* LKBasicTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKBasicTabBarController.m; sourceTree = "<group>"; };
 		2B75AF7F1EFCC8B900BFE311 /* LKBasicTabBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKBasicTabBar.h; sourceTree = "<group>"; };
@@ -209,8 +190,6 @@
 		2B9C000C1F00B0630010611A /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		2B9C001B1F00E5160010611A /* LKHasNavViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKHasNavViewController.h; sourceTree = "<group>"; };
 		2B9C001C1F00E5160010611A /* LKHasNavViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKHasNavViewController.m; sourceTree = "<group>"; };
-		2B9C001E1F00F4E70010611A /* LKLocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKLocationManager.h; sourceTree = "<group>"; };
-		2B9C001F1F00F4E70010611A /* LKLocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKLocationManager.m; sourceTree = "<group>"; };
 		2B9C00211F00F6010010611A /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		2B9CFFEC1F00A07A0010611A /* IJKMediaFramework.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = IJKMediaFramework.framework; sourceTree = "<group>"; };
 		2B9CFFF61F00AFD10010611A /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
@@ -218,8 +197,6 @@
 		2B9CFFFA1F00AFF00010611A /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		2B9CFFFC1F00AFFD0010611A /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
 		2B9CFFFE1F00B00C0010611A /* libbz2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libbz2.tbd; path = usr/lib/libbz2.tbd; sourceTree = SDKROOT; };
-		2BA6A17520203E22006FDA28 /* LKRefreshGifHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LKRefreshGifHeader.h; sourceTree = "<group>"; };
-		2BA6A17620203E22006FDA28 /* LKRefreshGifHeader.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LKRefreshGifHeader.m; sourceTree = "<group>"; };
 		2BA6A17920204D02006FDA28 /* APIConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APIConfig.h; sourceTree = "<group>"; };
 		2BA6A17A20204D02006FDA28 /* APIConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APIConfig.m; sourceTree = "<group>"; };
 		2BA6A17B20204D02006FDA28 /* HttpTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HttpTool.h; sourceTree = "<group>"; };
@@ -232,14 +209,46 @@
 		2BDF10F22019D99900048CF7 /* LKPlayerUserCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LKPlayerUserCell.m; sourceTree = "<group>"; };
 		2BDF10F42019DE0100048CF7 /* LKUserListView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LKUserListView.h; sourceTree = "<group>"; };
 		2BDF10F52019DE0100048CF7 /* LKUserListView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LKUserListView.m; sourceTree = "<group>"; };
+		2BE69AEB2022D3B6009A2707 /* LineKeMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LineKeMacros.h; sourceTree = "<group>"; };
+		2BE69AEC2022D3B6009A2707 /* lineKePrefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lineKePrefix.pch; sourceTree = "<group>"; };
+		2BE69AED2022D3B6009A2707 /* LKEnumHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKEnumHeader.h; sourceTree = "<group>"; };
+		2BE69AF02022D45A009A2707 /* LKLaunchBrowseCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKLaunchBrowseCell.h; sourceTree = "<group>"; };
+		2BE69AF12022D45A009A2707 /* LKLaunchBrowseCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKLaunchBrowseCell.m; sourceTree = "<group>"; };
+		2BE69AF22022D45A009A2707 /* LKLaunchBrowseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKLaunchBrowseView.h; sourceTree = "<group>"; };
+		2BE69AF32022D45A009A2707 /* LKLaunchBrowseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKLaunchBrowseView.m; sourceTree = "<group>"; };
+		2BE69AF52022D45A009A2707 /* CALayer+Aimate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CALayer+Aimate.h"; sourceTree = "<group>"; };
+		2BE69AF62022D45A009A2707 /* CALayer+Aimate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CALayer+Aimate.m"; sourceTree = "<group>"; };
+		2BE69AF72022D45A009A2707 /* LKDanmuModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKDanmuModel.h; sourceTree = "<group>"; };
+		2BE69AF82022D45A009A2707 /* LKDanmuModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKDanmuModel.m; sourceTree = "<group>"; };
+		2BE69AF92022D45A009A2707 /* LKDanmuModelProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKDanmuModelProtocol.h; sourceTree = "<group>"; };
+		2BE69AFA2022D45A009A2707 /* LKDanmuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKDanmuView.h; sourceTree = "<group>"; };
+		2BE69AFB2022D45A009A2707 /* LKDanmuView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKDanmuView.m; sourceTree = "<group>"; };
+		2BE69AFC2022D45A009A2707 /* LKCacheHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKCacheHelper.h; sourceTree = "<group>"; };
+		2BE69AFD2022D45A009A2707 /* LKCacheHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKCacheHelper.m; sourceTree = "<group>"; };
+		2BE69B002022D45A009A2707 /* LKGiftCore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKGiftCore.h; sourceTree = "<group>"; };
+		2BE69B012022D45A009A2707 /* LKLogCore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKLogCore.h; sourceTree = "<group>"; };
+		2BE69B032022D45A009A2707 /* LKAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKAnimation.h; sourceTree = "<group>"; };
+		2BE69B042022D45A009A2707 /* LKAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKAnimation.m; sourceTree = "<group>"; };
+		2BE69B052022D45A009A2707 /* LKAnimationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKAnimationManager.h; sourceTree = "<group>"; };
+		2BE69B062022D45A009A2707 /* LKAnimationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKAnimationManager.m; sourceTree = "<group>"; };
+		2BE69B072022D45A009A2707 /* LKCacheData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKCacheData.h; sourceTree = "<group>"; };
+		2BE69B082022D45A009A2707 /* LKCacheData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKCacheData.m; sourceTree = "<group>"; };
+		2BE69B092022D45A009A2707 /* LKGiftData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKGiftData.h; sourceTree = "<group>"; };
+		2BE69B0A2022D45A009A2707 /* LKGiftData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKGiftData.m; sourceTree = "<group>"; };
+		2BE69B0B2022D45A009A2707 /* LKGiftSendView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKGiftSendView.h; sourceTree = "<group>"; };
+		2BE69B0C2022D45A009A2707 /* LKGiftSendView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKGiftSendView.m; sourceTree = "<group>"; };
+		2BE69B0D2022D45A009A2707 /* LKLocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKLocationManager.h; sourceTree = "<group>"; };
+		2BE69B0E2022D45A009A2707 /* LKLocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKLocationManager.m; sourceTree = "<group>"; };
+		2BE69B102022D45A009A2707 /* LKRefreshGifHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKRefreshGifHeader.h; sourceTree = "<group>"; };
+		2BE69B112022D45A009A2707 /* LKRefreshGifHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKRefreshGifHeader.m; sourceTree = "<group>"; };
+		2BE69B132022D45A009A2707 /* XDProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XDProgressHUD.h; sourceTree = "<group>"; };
+		2BE69B142022D45A009A2707 /* XDProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XDProgressHUD.m; sourceTree = "<group>"; };
 		2BE9BA57202005A500711676 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		2BE9BA58202005A500711676 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		2BE9BA5B2020063100711676 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		2BE9BA5C2020063100711676 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		2BE9BA5E20200AAE00711676 /* AppDelegate+Util.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AppDelegate+Util.h"; sourceTree = "<group>"; };
 		2BE9BA5F20200AAE00711676 /* AppDelegate+Util.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "AppDelegate+Util.m"; sourceTree = "<group>"; };
-		2BEF620820216E0F00FF597E /* LKFeatureImageCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LKFeatureImageCell.h; sourceTree = "<group>"; };
-		2BEF620920216E0F00FF597E /* LKFeatureImageCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LKFeatureImageCell.m; sourceTree = "<group>"; };
 		2BF8A7F71F49B34E00801F9B /* LKFocuseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKFocuseViewController.m; sourceTree = "<group>"; };
 		AE7E711A1F3B09880019B515 /* LKLaunchLiveViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKLaunchLiveViewController.h; sourceTree = "<group>"; };
 		AE7E711B1F3B09880019B515 /* LKLaunchLiveViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKLaunchLiveViewController.m; sourceTree = "<group>"; };
@@ -308,18 +317,6 @@
 		AE7E716D1F3B09880019B515 /* LKNearCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKNearCollectionViewCell.h; sourceTree = "<group>"; };
 		AE7E716E1F3B09880019B515 /* LKNearCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKNearCollectionViewCell.m; sourceTree = "<group>"; };
 		AE7E716F1F3B09880019B515 /* LKNearCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LKNearCollectionViewCell.xib; sourceTree = "<group>"; };
-		AEB945E31F395FA9009386D7 /* LKGiftCore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LKGiftCore.h; sourceTree = "<group>"; };
-		AEB945E41F396011009386D7 /* LKLogCore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LKLogCore.h; sourceTree = "<group>"; };
-		AEB945E51F39606A009386D7 /* LKGiftSendView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKGiftSendView.h; sourceTree = "<group>"; };
-		AEB945E61F39606A009386D7 /* LKGiftSendView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKGiftSendView.m; sourceTree = "<group>"; };
-		AEB945E81F3997CC009386D7 /* LKGiftData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKGiftData.h; sourceTree = "<group>"; };
-		AEB945E91F3997CC009386D7 /* LKGiftData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKGiftData.m; sourceTree = "<group>"; };
-		AEB945EB1F39ADFA009386D7 /* LKAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKAnimation.h; sourceTree = "<group>"; };
-		AEB945EC1F39ADFA009386D7 /* LKAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKAnimation.m; sourceTree = "<group>"; };
-		AEB945EE1F39B752009386D7 /* LKAnimationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKAnimationManager.h; sourceTree = "<group>"; };
-		AEB945EF1F39B752009386D7 /* LKAnimationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKAnimationManager.m; sourceTree = "<group>"; };
-		AEB945F11F39BD37009386D7 /* LKCacheData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKCacheData.h; sourceTree = "<group>"; };
-		AEB945F21F39BD37009386D7 /* LKCacheData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKCacheData.m; sourceTree = "<group>"; };
 		C35D5F4314E2739372BBE43A /* libPods-LinekeLive.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-LinekeLive.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D18A9382935CEB4084DD0F90 /* Pods-LinekeLive.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LinekeLive.release.xcconfig"; path = "Pods/Target Support Files/Pods-LinekeLive/Pods-LinekeLive.release.xcconfig"; sourceTree = "<group>"; };
 		F5117E62DD19283FE20BA3DC /* Pods-LinekeLive.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LinekeLive.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LinekeLive/Pods-LinekeLive.debug.xcconfig"; sourceTree = "<group>"; };
@@ -379,29 +376,6 @@
 				2B147A591EFF562F0019312D /* GTMDefines.h */,
 			);
 			path = BaseEncrypt;
-			sourceTree = "<group>";
-		};
-		2B147A7C1EFFAA490019312D /* XDProgressHUD */ = {
-			isa = PBXGroup;
-			children = (
-				2B147A7D1EFFAA490019312D /* XDProgressHUD.h */,
-				2B147A7E1EFFAA490019312D /* XDProgressHUD.m */,
-			);
-			path = XDProgressHUD;
-			sourceTree = "<group>";
-		};
-		2B1E7FC21F458B0800B00C58 /* LKBarrageCore */ = {
-			isa = PBXGroup;
-			children = (
-				2B1E7FC31F458B0800B00C58 /* CALayer+Aimate.h */,
-				2B1E7FC41F458B0800B00C58 /* CALayer+Aimate.m */,
-				2B1E7FC51F458B0800B00C58 /* LKDanmuModel.h */,
-				2B1E7FC61F458B0800B00C58 /* LKDanmuModel.m */,
-				2B1E7FC71F458B0800B00C58 /* LKDanmuModelProtocol.h */,
-				2B1E7FC81F458B0800B00C58 /* LKDanmuView.h */,
-				2B1E7FC91F458B0800B00C58 /* LKDanmuView.m */,
-			);
-			path = LKBarrageCore;
 			sourceTree = "<group>";
 		};
 		2B55FBBA1EFA73E0005A83BE = {
@@ -473,7 +447,7 @@
 				AE7E71171F3B09880019B515 /* ModuleControllers */,
 				2BA6A17820204D02006FDA28 /* RequestAdapter */,
 				2BE9BA56202005A500711676 /* AppDelegate */,
-				2B55FC081EFA743F005A83BE /* Other */,
+				2BE69AEA2022D3B6009A2707 /* Header */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -501,7 +475,7 @@
 			isa = PBXGroup;
 			children = (
 				2B55FBFC1EFA743F005A83BE /* Categories */,
-				2B55FBFD1EFA743F005A83BE /* Tools */,
+				2BE69AEE2022D459009A2707 /* Utils */,
 				AE7E719B1F3B0B0D0019B515 /* Lib */,
 			);
 			path = Helpers;
@@ -527,70 +501,6 @@
 			path = Categories;
 			sourceTree = "<group>";
 		};
-		2B55FBFD1EFA743F005A83BE /* Tools */ = {
-			isa = PBXGroup;
-			children = (
-				AEB945E01F395E71009386D7 /* LKGiftCore */,
-				2BA6A17420203E06006FDA28 /* LKRefresh */,
-				2B1E7FC21F458B0800B00C58 /* LKBarrageCore */,
-				2B147A7C1EFFAA490019312D /* XDProgressHUD */,
-				2B9C001E1F00F4E70010611A /* LKLocationManager.h */,
-				2B9C001F1F00F4E70010611A /* LKLocationManager.m */,
-				2B5AF4061F020F8800D83361 /* LKCacheHelper.h */,
-				2B5AF4071F020F8800D83361 /* LKCacheHelper.m */,
-			);
-			path = Tools;
-			sourceTree = "<group>";
-		};
-		2B55FC081EFA743F005A83BE /* Other */ = {
-			isa = PBXGroup;
-			children = (
-				2B5AF3FA1F02041F00D83361 /* Advertise */,
-				2B704C9C1EFB71C00020A0D6 /* lineKePrefix.pch */,
-				2B704C9D1EFB744F0020A0D6 /* LineKeMacros.h */,
-				2B4B31F51FF13F1200E77A84 /* LKEnumHeader.h */,
-			);
-			path = Other;
-			sourceTree = "<group>";
-		};
-		2B5AF3FA1F02041F00D83361 /* Advertise */ = {
-			isa = PBXGroup;
-			children = (
-				2B5AF3FC1F02043B00D83361 /* Model */,
-				2B5AF3FD1F02043B00D83361 /* View */,
-			);
-			path = Advertise;
-			sourceTree = "<group>";
-		};
-		2B5AF3FC1F02043B00D83361 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				2B5AF3FE1F02046600D83361 /* LKAdvertModel.h */,
-				2B5AF3FF1F02046600D83361 /* LKAdvertModel.m */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		2B5AF3FD1F02043B00D83361 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				2B5AF4011F0206BE00D83361 /* LKNewFeatureView.h */,
-				2B5AF4021F0206BE00D83361 /* LKNewFeatureView.m */,
-				2BEF620820216E0F00FF597E /* LKFeatureImageCell.h */,
-				2BEF620920216E0F00FF597E /* LKFeatureImageCell.m */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		2BA6A17420203E06006FDA28 /* LKRefresh */ = {
-			isa = PBXGroup;
-			children = (
-				2BA6A17520203E22006FDA28 /* LKRefreshGifHeader.h */,
-				2BA6A17620203E22006FDA28 /* LKRefreshGifHeader.m */,
-			);
-			path = LKRefresh;
-			sourceTree = "<group>";
-		};
 		2BA6A17820204D02006FDA28 /* RequestAdapter */ = {
 			isa = PBXGroup;
 			children = (
@@ -609,6 +519,110 @@
 				2BC7672A2021CC9E0050A76E /* YYFPSLabel.m */,
 			);
 			path = YYFPSLabel;
+			sourceTree = "<group>";
+		};
+		2BE69AEA2022D3B6009A2707 /* Header */ = {
+			isa = PBXGroup;
+			children = (
+				2BE69AED2022D3B6009A2707 /* LKEnumHeader.h */,
+				2BE69AEB2022D3B6009A2707 /* LineKeMacros.h */,
+				2BE69AEC2022D3B6009A2707 /* lineKePrefix.pch */,
+			);
+			path = Header;
+			sourceTree = "<group>";
+		};
+		2BE69AEE2022D459009A2707 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				2BE69B0F2022D45A009A2707 /* LKRefresh */,
+				2BE69AFE2022D45A009A2707 /* LKGiftCore */,
+				2BE69AEF2022D45A009A2707 /* LaunchBrowse */,
+				2BE69AF42022D45A009A2707 /* LKBarrageCore */,
+				2BE69B122022D45A009A2707 /* XDProgressHUD */,
+				2BE69AFC2022D45A009A2707 /* LKCacheHelper.h */,
+				2BE69AFD2022D45A009A2707 /* LKCacheHelper.m */,
+				2BE69B0D2022D45A009A2707 /* LKLocationManager.h */,
+				2BE69B0E2022D45A009A2707 /* LKLocationManager.m */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		2BE69AEF2022D45A009A2707 /* LaunchBrowse */ = {
+			isa = PBXGroup;
+			children = (
+				2BE69AF02022D45A009A2707 /* LKLaunchBrowseCell.h */,
+				2BE69AF12022D45A009A2707 /* LKLaunchBrowseCell.m */,
+				2BE69AF22022D45A009A2707 /* LKLaunchBrowseView.h */,
+				2BE69AF32022D45A009A2707 /* LKLaunchBrowseView.m */,
+			);
+			path = LaunchBrowse;
+			sourceTree = "<group>";
+		};
+		2BE69AF42022D45A009A2707 /* LKBarrageCore */ = {
+			isa = PBXGroup;
+			children = (
+				2BE69AF52022D45A009A2707 /* CALayer+Aimate.h */,
+				2BE69AF62022D45A009A2707 /* CALayer+Aimate.m */,
+				2BE69AF72022D45A009A2707 /* LKDanmuModel.h */,
+				2BE69AF82022D45A009A2707 /* LKDanmuModel.m */,
+				2BE69AF92022D45A009A2707 /* LKDanmuModelProtocol.h */,
+				2BE69AFA2022D45A009A2707 /* LKDanmuView.h */,
+				2BE69AFB2022D45A009A2707 /* LKDanmuView.m */,
+			);
+			path = LKBarrageCore;
+			sourceTree = "<group>";
+		};
+		2BE69AFE2022D45A009A2707 /* LKGiftCore */ = {
+			isa = PBXGroup;
+			children = (
+				2BE69AFF2022D45A009A2707 /* Helpers */,
+				2BE69B022022D45A009A2707 /* View */,
+			);
+			path = LKGiftCore;
+			sourceTree = "<group>";
+		};
+		2BE69AFF2022D45A009A2707 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				2BE69B002022D45A009A2707 /* LKGiftCore.h */,
+				2BE69B012022D45A009A2707 /* LKLogCore.h */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		2BE69B022022D45A009A2707 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				2BE69B032022D45A009A2707 /* LKAnimation.h */,
+				2BE69B042022D45A009A2707 /* LKAnimation.m */,
+				2BE69B052022D45A009A2707 /* LKAnimationManager.h */,
+				2BE69B062022D45A009A2707 /* LKAnimationManager.m */,
+				2BE69B072022D45A009A2707 /* LKCacheData.h */,
+				2BE69B082022D45A009A2707 /* LKCacheData.m */,
+				2BE69B092022D45A009A2707 /* LKGiftData.h */,
+				2BE69B0A2022D45A009A2707 /* LKGiftData.m */,
+				2BE69B0B2022D45A009A2707 /* LKGiftSendView.h */,
+				2BE69B0C2022D45A009A2707 /* LKGiftSendView.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		2BE69B0F2022D45A009A2707 /* LKRefresh */ = {
+			isa = PBXGroup;
+			children = (
+				2BE69B102022D45A009A2707 /* LKRefreshGifHeader.h */,
+				2BE69B112022D45A009A2707 /* LKRefreshGifHeader.m */,
+			);
+			path = LKRefresh;
+			sourceTree = "<group>";
+		};
+		2BE69B122022D45A009A2707 /* XDProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				2BE69B132022D45A009A2707 /* XDProgressHUD.h */,
+				2BE69B142022D45A009A2707 /* XDProgressHUD.m */,
+			);
+			path = XDProgressHUD;
 			sourceTree = "<group>";
 		};
 		2BE9BA56202005A500711676 /* AppDelegate */ = {
@@ -910,41 +924,6 @@
 			path = Lib;
 			sourceTree = "<group>";
 		};
-		AEB945E01F395E71009386D7 /* LKGiftCore */ = {
-			isa = PBXGroup;
-			children = (
-				AEB945E11F395F94009386D7 /* Helpers */,
-				AEB945E21F395F94009386D7 /* View */,
-			);
-			path = LKGiftCore;
-			sourceTree = "<group>";
-		};
-		AEB945E11F395F94009386D7 /* Helpers */ = {
-			isa = PBXGroup;
-			children = (
-				AEB945E31F395FA9009386D7 /* LKGiftCore.h */,
-				AEB945E41F396011009386D7 /* LKLogCore.h */,
-			);
-			path = Helpers;
-			sourceTree = "<group>";
-		};
-		AEB945E21F395F94009386D7 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				AEB945E51F39606A009386D7 /* LKGiftSendView.h */,
-				AEB945E61F39606A009386D7 /* LKGiftSendView.m */,
-				AEB945E81F3997CC009386D7 /* LKGiftData.h */,
-				AEB945E91F3997CC009386D7 /* LKGiftData.m */,
-				AEB945EB1F39ADFA009386D7 /* LKAnimation.h */,
-				AEB945EC1F39ADFA009386D7 /* LKAnimation.m */,
-				AEB945EE1F39B752009386D7 /* LKAnimationManager.h */,
-				AEB945EF1F39B752009386D7 /* LKAnimationManager.m */,
-				AEB945F11F39BD37009386D7 /* LKCacheData.h */,
-				AEB945F21F39BD37009386D7 /* LKCacheData.m */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1156,75 +1135,74 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2B5AF4001F02046600D83361 /* LKAdvertModel.m in Sources */,
 				AE7E717E1F3B09880019B515 /* LKMeViewController.m in Sources */,
-				AEB945EA1F3997CC009386D7 /* LKGiftData.m in Sources */,
 				2B1E7FD31F459B2100B00C58 /* LKTalkTableViewCell.m in Sources */,
 				AE7E71911F3B09880019B515 /* LKLiveHandler.m in Sources */,
+				2BE69B152022D45A009A2707 /* LKLaunchBrowseCell.m in Sources */,
 				AE7E718E1F3B09880019B515 /* LKHotViewController.m in Sources */,
 				2B147A5B1EFF562F0019312D /* BasicCommonUtils.m in Sources */,
 				AE7E71981F3B09880019B515 /* LKMainSegmentView.m in Sources */,
 				2BA6A17E20204D02006FDA28 /* HttpTool.m in Sources */,
 				2B8A333E1F4824880090B2BB /* LKShareActivityView.m in Sources */,
-				AEB945E71F39606A009386D7 /* LKGiftSendView.m in Sources */,
 				2BA6A17D20204D02006FDA28 /* APIConfig.m in Sources */,
 				AE7E718A1F3B09880019B515 /* LKGiftCollectionViewCell.m in Sources */,
 				AE7E71941F3B09880019B515 /* LKLiveModel.m in Sources */,
 				2B704C991EFB703D0020A0D6 /* UIImage+Additions.m in Sources */,
+				2BE69B1D2022D45A009A2707 /* LKCacheData.m in Sources */,
+				2BE69B1B2022D45A009A2707 /* LKAnimation.m in Sources */,
 				AE7E71871F3B09880019B515 /* LKPlayerViewController.m in Sources */,
 				2B55FBC81EFA73E0005A83BE /* main.m in Sources */,
-				2B1E7FCC1F458B0800B00C58 /* LKDanmuView.m in Sources */,
 				2BDF10F32019D99900048CF7 /* LKPlayerUserCell.m in Sources */,
 				AE7E71851F3B09880019B515 /* LKLiveRoomViewController.m in Sources */,
+				2BE69B182022D45A009A2707 /* LKDanmuModel.m in Sources */,
 				2B147A511EFF557C0019312D /* NSString+Encrypt.m in Sources */,
 				AE7E71891F3B09880019B515 /* LKFlowLayout.m in Sources */,
 				2B704C9A1EFB703D0020A0D6 /* UIImage+Estend.m in Sources */,
+				2BE69B1A2022D45A009A2707 /* LKCacheHelper.m in Sources */,
 				2BE9BA6020200AAE00711676 /* AppDelegate+Util.m in Sources */,
 				AE7E71811F3B09880019B515 /* LKMeHeaderView.m in Sources */,
 				AE7E71951F3B09880019B515 /* MJExtensionConfig.m in Sources */,
-				2B9C00201F00F4E70010611A /* LKLocationManager.m in Sources */,
 				AE7E71701F3B09880019B515 /* LKLaunchLiveViewController.m in Sources */,
-				2B1E7FCB1F458B0800B00C58 /* LKDanmuModel.m in Sources */,
 				AE7E71931F3B09880019B515 /* LKExtra.m in Sources */,
 				2BDF10F62019DE0100048CF7 /* LKUserListView.m in Sources */,
 				2B9C001D1F00E5160010611A /* LKHasNavViewController.m in Sources */,
+				2BE69B1E2022D45A009A2707 /* LKGiftData.m in Sources */,
 				2B147A681EFF5F770019312D /* LKBaseHandler.m in Sources */,
 				AE7E71991F3B09880019B515 /* LKNearCollectionViewCell.m in Sources */,
 				AE7E717F1F3B09880019B515 /* LKSettingViewController.m in Sources */,
+				2BE69B1F2022D45A009A2707 /* LKGiftSendView.m in Sources */,
+				2BE69B212022D45A009A2707 /* LKRefreshGifHeader.m in Sources */,
 				2B147A5A1EFF562F0019312D /* Base64.m in Sources */,
 				AE7E71921F3B09880019B515 /* LKCreatorModel.m in Sources */,
 				AE7E717B1F3B09880019B515 /* LFLivePreview.m in Sources */,
-				2BA6A17720203E22006FDA28 /* LKRefreshGifHeader.m in Sources */,
 				2B75AF951EFCEEBC00BFE311 /* LKBasicNavigationController.m in Sources */,
 				2B147A5C1EFF562F0019312D /* GTMBase64.m in Sources */,
 				2BF8A7F81F49B34E00801F9B /* LKFocuseViewController.m in Sources */,
 				2B704C971EFB703D0020A0D6 /* UIColor+Extension.m in Sources */,
 				AE7E71881F3B09880019B515 /* LKGiftModel.m in Sources */,
-				2B147A7F1EFFAA490019312D /* XDProgressHUD.m in Sources */,
 				AE7E71901F3B09880019B515 /* LKNearViewController.m in Sources */,
 				2B75AF7E1EFCC89400BFE311 /* LKBasicTabBarController.m in Sources */,
 				2B704C981EFB703D0020A0D6 /* UIColor+UIImage.m in Sources */,
-				AEB945F01F39B752009386D7 /* LKAnimationManager.m in Sources */,
 				AE7E718F1F3B09880019B515 /* LKMainViewController.m in Sources */,
 				AE7E718C1F3B09880019B515 /* LKGiftListView.m in Sources */,
+				2BE69B162022D45A009A2707 /* LKLaunchBrowseView.m in Sources */,
 				AE7E71801F3B09880019B515 /* LKMineModel.m in Sources */,
-				2B5AF4031F0206BE00D83361 /* LKNewFeatureView.m in Sources */,
 				2B1E7FD71F45A60700B00C58 /* LKTalkModel.m in Sources */,
+				2BE69B172022D45A009A2707 /* CALayer+Aimate.m in Sources */,
 				2B75AF811EFCC8B900BFE311 /* LKBasicTabBar.m in Sources */,
-				2BEF620A20216E0F00FF597E /* LKFeatureImageCell.m in Sources */,
 				2BC7672D2021CC9E0050A76E /* YYFPSLabel.m in Sources */,
-				2B5AF4081F020F8800D83361 /* LKCacheHelper.m in Sources */,
 				AE7E71831F3B09880019B515 /* LKMeTableViewCell.m in Sources */,
+				2BE69B192022D45A009A2707 /* LKDanmuView.m in Sources */,
 				2B1E7FCF1F458BDD00B00C58 /* LKLiveSessionView.m in Sources */,
-				AEB945ED1F39ADFA009386D7 /* LKAnimation.m in Sources */,
 				AE7E71961F3B09880019B515 /* LKHotLiveTableViewCell.m in Sources */,
 				2BE9BA5D2020063100711676 /* Reachability.m in Sources */,
+				2BE69B1C2022D45A009A2707 /* LKAnimationManager.m in Sources */,
 				2B75AF881EFCED4700BFE311 /* LKBasicViewController.m in Sources */,
+				2BE69B222022D45A009A2707 /* XDProgressHUD.m in Sources */,
 				2BA6A18120204D15006FDA28 /* UIImageView+SDWebImage.m in Sources */,
 				2BE9BA59202005A500711676 /* AppDelegate.m in Sources */,
-				2B1E7FCA1F458B0800B00C58 /* CALayer+Aimate.m in Sources */,
+				2BE69B202022D45A009A2707 /* LKLocationManager.m in Sources */,
 				2B704C9B1EFB703D0020A0D6 /* UIImage+Extension.m in Sources */,
-				AEB945F31F39BD37009386D7 /* LKCacheData.m in Sources */,
 				AE7E717C1F3B09880019B515 /* LKLoginViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1375,7 +1353,7 @@
 					"$(PROJECT_DIR)/LinekeLive",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = LinekeLive/Classes/Other/lineKePrefix.pch;
+				GCC_PREFIX_HEADER = LinekeLive/Classes/Header/lineKePrefix.pch;
 				INFOPLIST_FILE = LinekeLive/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1398,7 +1376,7 @@
 					"$(PROJECT_DIR)/LinekeLive",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = LinekeLive/Classes/Other/lineKePrefix.pch;
+				GCC_PREFIX_HEADER = LinekeLive/Classes/Header/lineKePrefix.pch;
 				INFOPLIST_FILE = LinekeLive/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

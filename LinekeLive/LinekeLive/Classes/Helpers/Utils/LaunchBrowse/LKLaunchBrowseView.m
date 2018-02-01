@@ -6,14 +6,14 @@
 //  Copyright © 2017年 CoderTan. All rights reserved.
 //
 
-#import "LKNewFeatureView.h"
-#import "LKFeatureImageCell.h"
+#import "LKLaunchBrowseView.h"
+#import "LKLaunchBrowseCell.h"
 
 static NSInteger showtime = 3.0;
 static NSString  *const kCacheImagesKey  = @"kCacheImagesKey";
 static NSString  *const kReuseIdentifier = @"kCellReuseIdentifier";
 
-@interface LKNewFeatureView()<UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
+@interface LKLaunchBrowseView()<UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
 @property (nonatomic, strong) dispatch_source_t timer;
 @property (nonatomic, strong) NSArray           *imageGroups; // 设置加载广告图片数组
 @property (nonatomic, strong) UICollectionView  *collectionView;
@@ -23,7 +23,7 @@ static NSString  *const kReuseIdentifier = @"kCellReuseIdentifier";
 
 @end
 
-@implementation LKNewFeatureView
+@implementation LKLaunchBrowseView
 
 #pragma mark - awakeFromNib
 - (void)awakeFromNib {
@@ -68,7 +68,7 @@ static NSString  *const kReuseIdentifier = @"kCellReuseIdentifier";
     _collectionView.backgroundColor = [UIColor clearColor];
     _collectionView.showsHorizontalScrollIndicator = NO;
     _collectionView.showsVerticalScrollIndicator = NO;
-    [_collectionView registerClass:[LKFeatureImageCell class] forCellWithReuseIdentifier:kReuseIdentifier];
+    [_collectionView registerClass:[LKLaunchBrowseCell class] forCellWithReuseIdentifier:kReuseIdentifier];
     [self addSubview:_collectionView];
     
     self.timerButton = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -103,10 +103,9 @@ static NSString  *const kReuseIdentifier = @"kCellReuseIdentifier";
     [self.jumpButton addTarget:self action:@selector(dismiss) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:self.jumpButton];
     
-    if (self.imageGroups.count == 1) {
+    if (self.imageGroups.count == 1) { //如果是单张图片
         [self startTimer]; // 开启倒计时
     }
-    //NSLog(@"NSHomeDirectory：%@", NSHomeDirectory());
 }
 
 #pragma mark - filed image
@@ -212,7 +211,7 @@ static NSString  *const kReuseIdentifier = @"kCellReuseIdentifier";
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     
-    LKFeatureImageCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kReuseIdentifier forIndexPath:indexPath];
+    LKLaunchBrowseCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kReuseIdentifier forIndexPath:indexPath];
     cell.imagePath = self.imageGroups[indexPath.row];
     return cell;
 }

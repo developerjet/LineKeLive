@@ -6,15 +6,16 @@
 //  Copyright © 2018年 CODER_TJ. All rights reserved.
 //
 
-#import "LKFeatureImageCell.h"
+#import "LKLaunchBrowseCell.h"
 
-@implementation LKFeatureImageCell
+@implementation LKLaunchBrowseCell
 
+#pragma mark - init method
 - (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
-        self.showImgView = [[UIImageView alloc] init];
-        [self.contentView addSubview:self.showImgView];
+        self.featureView = [[UIImageView alloc] init];
+        [self.contentView addSubview:self.featureView];
     }
     return self;
 }
@@ -23,9 +24,9 @@
     _imagePath = imagePath;
     
     if ([imagePath containsString:@"http"] || [imagePath containsString:@"https"]) {
-        [self.showImgView downloadImage:imagePath placeholder:@"follow_bg"];
+        [self.featureView downloadImage:imagePath placeholder:@"follow_bg"];
     }else {
-        self.showImgView.image = [UIImage imageNamed:imagePath];
+        self.featureView.image = [UIImage imageNamed:imagePath];
     }
 }
 
@@ -34,7 +35,7 @@
 - (void)layoutSubviews {
     [super layoutSubviews];
     
-    self.showImgView.frame = self.bounds;
+    self.featureView.frame = self.bounds;
 }
 
 @end

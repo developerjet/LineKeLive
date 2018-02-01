@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface LKFeatureImageCell : UICollectionViewCell
+@interface LKLaunchBrowseCell : UICollectionViewCell
 @property (nonatomic, strong) NSString    *imagePath;
-@property (nonatomic, strong) UIImageView *showImgView;
+@property (nonatomic, strong) UIImageView *featureView;
 @end

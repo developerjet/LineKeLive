@@ -9,7 +9,6 @@
 #import "LKLiveHandler.h"
 #import "LKLocationManager.h"
 #import "LKCreatorModel.h"
-#import "LKAdvertModel.h"
 #import "LKLiveModel.h"
 #import "HttpTool.h"
 
@@ -88,9 +87,6 @@
         NSInteger errorCode = [json[@"dm_error"] integerValue];
         
         if (errorCode == 0) { //请求成功
-            
-            LKAdvertModel *advertModels = [LKAdvertModel mj_objectWithKeyValues:[json[@"resources"] firstObject]];
-            success(advertModels);
             
         }else {
             

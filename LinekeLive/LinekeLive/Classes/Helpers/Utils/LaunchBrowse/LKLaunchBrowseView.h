@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface LKNewFeatureView : UIView
+@interface LKLaunchBrowseView : UIView
 
 /**
  自定义广告页展示(单张&多张广告页)

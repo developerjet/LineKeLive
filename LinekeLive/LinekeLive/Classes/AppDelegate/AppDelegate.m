@@ -10,7 +10,7 @@
 #import "LKLoginViewController.h"
 #import "LKBasicTabBarController.h"
 #import "LKLocationManager.h"
-#import "LKNewFeatureView.h"
+#import "LKLaunchBrowseView.h"
 #import "AppDelegate+Util.h"
 
 @interface AppDelegate ()

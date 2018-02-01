@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate+Util.h"
-#import "LKNewFeatureView.h"
+#import "LKLaunchBrowseView.h"
 #import "LKLocationManager.h"
 #import <Bugly/Bugly.h>
 #import <UIColor+YYAdd.h>
@@ -45,9 +45,12 @@
         self.SatusFinishedBlock(status);
     }
     
-    if (status == NotReachable) {
-        [self showNetStatusAlert];
-    }else {
+    if (status == NotReachable)
+    {
+        [self showNote];
+    }
+    else
+    {
         
     }
 }
@@ -87,9 +90,9 @@
                                  @"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1517393953794&di=e254bca583929d0bc6adaedd7a75cb5d&imgtype=0&src=http%3A%2F%2Fimg.zcool.cn%2Fcommunity%2F01af5a55f959226ac7251df8250c99.jpg"
                                  ];
         
-        LKNewFeatureView *newFeature = [[LKNewFeatureView alloc] initWithConfigImageGroups:imageArray1
+        LKLaunchBrowseView *browseView = [[LKLaunchBrowseView alloc] initWithConfigImageGroups:imageArray1
                                                                                    isCache:YES];
-        [newFeature show];
+        [browseView show];
     }
 }
 
@@ -113,7 +116,7 @@
     }];
 }
 
-- (void)showNetStatusAlert {
+- (void)showNote {
     
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"温馨提示" message:@"当前网络已断开,请检查网络连接设置" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
     [alert show];

@@ -13,11 +13,11 @@
 /**
  自定义广告页展示(单张&多张广告页)
 
- @param urlStringGroups 图片数组
+ @param imageGroups 图片数组
  @param isCache 是否开启缓存
  @return 广告页
  */
-- (instancetype)initWithConfigUrlStringGroups:(NSArray *)urlStringGroups
+- (instancetype)initWithConfigImageGroups:(NSArray *)imageGroups
                                       isCache:(BOOL)isCache;
 
 /** 阅读完成时回调 */

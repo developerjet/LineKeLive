@@ -15,7 +15,7 @@ static NSString  *const kReuseIdentifier = @"kCellReuseIdentifier";
 
 @interface LKNewFeatureView()<UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
 @property (nonatomic, strong) dispatch_source_t timer;
-@property (nonatomic, strong) NSArray           *urlStringGroups; // 设置加载广告url数组
+@property (nonatomic, strong) NSArray           *imageGroups; // 设置加载广告图片数组
 @property (nonatomic, strong) UICollectionView  *collectionView;
 @property (nonatomic, strong) UIPageControl     *pageControl;
 @property (nonatomic, strong) UIButton          *timerButton;
@@ -32,7 +32,7 @@ static NSString  *const kReuseIdentifier = @"kCellReuseIdentifier";
 }
 
 #pragma mark - init Configs
-- (instancetype)initWithConfigUrlStringGroups:(NSArray *)urlStringGroups isCache:(BOOL)isCache {
+- (instancetype)initWithConfigImageGroups:(NSArray *)imageGroups isCache:(BOOL)isCache {
     
     if (self = [super init]) {
         self.alpha = 0.0; //默认不显示
@@ -41,13 +41,13 @@ static NSString  *const kReuseIdentifier = @"kCellReuseIdentifier";
         
         if (isCache) {
             if ([self isExited]) { //如果已缓存(直接从缓存取)
-                self.urlStringGroups = [self showImages];
+                self.imageGroups = [self showImages];
             }else {
-                self.urlStringGroups = urlStringGroups;
+                self.imageGroups = imageGroups;
                 [self cacheImages];
             }
         }else {
-            self.urlStringGroups = urlStringGroups;
+            self.imageGroups = imageGroups;
         }
         
         [self configSubviews];
@@ -76,18 +76,18 @@ static NSString  *const kReuseIdentifier = @"kCellReuseIdentifier";
     self.timerButton.titleLabel.font = [UIFont systemFontOfSize:13];
     self.timerButton.layer.cornerRadius = 3.0;
     self.timerButton.layer.masksToBounds = YES;
-    self.timerButton.hidden = self.urlStringGroups.count == 1 ? NO : YES;
+    self.timerButton.hidden = self.imageGroups.count == 1 ? NO : YES;
     self.timerButton.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.7];
     [self.timerButton setTitle:[NSString stringWithFormat:@"%zds跳过",showtime] forState:UIControlStateNormal];
     [self.timerButton addTarget:self action:@selector(dismiss) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:self.timerButton];
     
     self.pageControl = [[UIPageControl alloc] init];
-    self.pageControl.hidden = self.urlStringGroups.count > 1 ? NO : YES;
+    self.pageControl.hidden = self.imageGroups.count > 1 ? NO : YES;
     self.pageControl.backgroundColor = [UIColor clearColor];
     self.pageControl.pageIndicatorTintColor = [UIColor whiteColor];
     self.pageControl.currentPageIndicatorTintColor = [UIColor orangeColor];
-    self.pageControl.numberOfPages = self.urlStringGroups.count;
+    self.pageControl.numberOfPages = self.imageGroups.count;
     [self addSubview:self.pageControl];
     
     self.jumpButton = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -103,7 +103,7 @@ static NSString  *const kReuseIdentifier = @"kCellReuseIdentifier";
     [self.jumpButton addTarget:self action:@selector(dismiss) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:self.jumpButton];
     
-    if (self.urlStringGroups.count == 1) {
+    if (self.imageGroups.count == 1) {
         [self startTimer]; // 开启倒计时
     }
     //NSLog(@"NSHomeDirectory：%@", NSHomeDirectory());
@@ -119,7 +119,7 @@ static NSString  *const kReuseIdentifier = @"kCellReuseIdentifier";
 //下载缓存
 - (void)cacheImages {
     
-    [self.urlStringGroups writeToFile:[self filePath] atomically:YES];
+    [self.imageGroups writeToFile:[self filePath] atomically:YES];
 }
 
 - (NSString *)filePath {
@@ -207,13 +207,13 @@ static NSString  *const kReuseIdentifier = @"kCellReuseIdentifier";
 #pragma mark - UICollection data && delegate
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
     
-    return self.urlStringGroups.count;
+    return self.imageGroups.count;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     
     LKFeatureImageCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kReuseIdentifier forIndexPath:indexPath];
-    cell.imagePath = self.urlStringGroups[indexPath.row];
+    cell.imagePath = self.imageGroups[indexPath.row];
     return cell;
 }
 
@@ -242,7 +242,7 @@ static NSString  *const kReuseIdentifier = @"kCellReuseIdentifier";
     
     CGFloat offsetX = scrollView.contentOffset.x;
     NSInteger index = offsetX / [UIScreen mainScreen].bounds.size.width;
-    _jumpButton.hidden = index == self.urlStringGroups.count-1 ? NO : YES;
+    _jumpButton.hidden = index == self.imageGroups.count-1 ? NO : YES;
     
     if (offsetX <= 0) {
         [self.pageControl setCurrentPage:0];

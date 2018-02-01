@@ -30,7 +30,7 @@
 #define kAppDelegate        ((AppDelegate *)([UIApplication sharedApplication].delegate))
 #define kCurrentKeyWindow   [UIApplication sharedApplication].keyWindow
 
-/// Weak
+/// WeakSelf
 #define WeakSelf    __weak typeof(self) weakSelf = self
 
 /// VIEW_SCREEN
@@ -41,7 +41,7 @@
 #define SCREEN_NAV       64
 #define SCREEN_TABBAR    49
 
-/// IMG
+/// IMAGE
 #define IMG(x)       [UIImage imageNamed:x]
 #define IMGURL(url)  [NSURL URLWithString:url]
 
@@ -56,6 +56,12 @@
 
 /** 版本号 */
 #define kVersionNum  [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"]
+
+/** 通知相关 */
+#define kFollowKey  @"NotificationNameFollowAnchor"
+
+/** 本地存储 */
+#define UD  [NSUserDefaults standardUserDefaults]
 
 /**
  Synthsize a weak or strong reference.

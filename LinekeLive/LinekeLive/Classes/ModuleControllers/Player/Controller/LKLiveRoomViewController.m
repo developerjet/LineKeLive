@@ -344,6 +344,7 @@
         [[LKCacheHelper shared] followAnchor:self.model];
         [XDProgressHUD showHUDWithText:@"已关注主播" hideDelay:1.0];
         [_followView setTitle:@"已关注" forState:UIControlStateNormal];
+        [[NSNotificationCenter defaultCenter] postNotificationName:kFollowKey object:nil];
     }else {
         self.model.follow = NO;
         [[LKCacheHelper shared] unFollowAnchor:self.model];

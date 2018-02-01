@@ -67,8 +67,7 @@
 
 - (void)initFPSLabel {
     
-    YYFPSLabel *fpsLabel = [[YYFPSLabel alloc] initWithFrame:CGRectMake(SCREEN_WIDTH - 110, 50, 100, 20)];
-    [fpsLabel sizeToFit];
+    YYFPSLabel *fpsLabel = [[YYFPSLabel alloc] initWithFrame:CGRectMake(SCREEN_WIDTH - 80, 90, 70, 20)];
     [[UIApplication sharedApplication].keyWindow addSubview:fpsLabel];
 }
 

@@ -77,18 +77,31 @@
 
 /** 设置新特性&广告界面 */
 - (void)initNewFeature {
-    
-    NSArray *imageArray1 = @[
-                            @"http://imgsrc.baidu.com/forum/pic/item/9213b07eca80653846dc8fab97dda144ad348257.jpg",
-                            @"http://pic.paopaoche.net/up/2012-2/20122220201612322865.png",
-                            @"http://img5.pcpop.com/ArticleImages/picshow/0x0/20110801/2011080114495843125.jpg",
-                            @"http://www.mangowed.com/uploads/allimg/130410/1-130410215449417.jpg",
-                            @"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1517393953794&di=e254bca583929d0bc6adaedd7a75cb5d&imgtype=0&src=http%3A%2F%2Fimg.zcool.cn%2Fcommunity%2F01af5a55f959226ac7251df8250c99.jpg"
-                            ];
-    
-    LKNewFeatureView *newFeature = [[LKNewFeatureView alloc] initWithConfigUrlStringGroups:imageArray1
+
+    if ([self isFirstLaunch]) {
+        NSArray *imageArray1 = @[
+                                 @"http://imgsrc.baidu.com/forum/pic/item/9213b07eca80653846dc8fab97dda144ad348257.jpg",
+                                 @"http://pic.paopaoche.net/up/2012-2/20122220201612322865.png",
+                                 @"http://img5.pcpop.com/ArticleImages/picshow/0x0/20110801/2011080114495843125.jpg",
+                                 @"http://www.mangowed.com/uploads/allimg/130410/1-130410215449417.jpg",
+                                 @"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1517393953794&di=e254bca583929d0bc6adaedd7a75cb5d&imgtype=0&src=http%3A%2F%2Fimg.zcool.cn%2Fcommunity%2F01af5a55f959226ac7251df8250c99.jpg"
+                                 ];
+        
+        LKNewFeatureView *newFeature = [[LKNewFeatureView alloc] initWithConfigImageGroups:imageArray1
                                                                                    isCache:YES];
-    [newFeature show];
+        [newFeature show];
+    }
+}
+
+/** 检测是否是第一次启动 */
+- (BOOL)isFirstLaunch {
+    NSString *launchCheckVersionNum = [NSString stringWithFormat:@"LaunchVersion%@", kVersionNum];
+    BOOL isFirstLaunch = [UD boolForKey:launchCheckVersionNum];
+    if (!isFirstLaunch) {
+        [UD setBool:YES forKey:launchCheckVersionNum];
+        [UD synchronize];
+    }
+    return !isFirstLaunch;
 }
 
 /** 开启定位 */

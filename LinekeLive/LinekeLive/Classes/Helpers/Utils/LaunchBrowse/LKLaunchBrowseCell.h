@@ -2,7 +2,7 @@
 //  LKAdvertImageCell.h
 //  LinekeLive
 //
-//  Created by CoderTan on 2018/1/31.
+//  Created by CODER_TJ on 2018/1/31.
 //  Copyright © 2018年 CODER_TJ. All rights reserved.
 //
 
@@ -10,5 +10,5 @@
 
 @interface LKLaunchBrowseCell : UICollectionViewCell
 @property (nonatomic, strong) NSString    *imagePath;
-@property (nonatomic, strong) UIImageView *featureView;
+@property (nonatomic, strong) UIImageView *browseView;
 @end

@@ -18,8 +18,9 @@ static NSString  *const kReuseIdentifier = @"kCellReuseIdentifier";
 @property (nonatomic, strong) NSArray           *imageGroups; // 设置加载广告图片数组
 @property (nonatomic, strong) UICollectionView  *collectionView;
 @property (nonatomic, strong) UIPageControl     *pageControl;
-@property (nonatomic, strong) UIButton          *timerButton;
+@property (nonatomic, strong) UIButton          *timerButton; //可自定义样式
 @property (nonatomic, strong) UIButton          *jumpButton;
+@property (nonatomic, assign) BOOL isCancel;
 
 @end
 
@@ -41,7 +42,7 @@ static NSString  *const kReuseIdentifier = @"kCellReuseIdentifier";
         
         if (isCache) {
             if ([self isExited]) { //如果已缓存(直接从缓存取)
-                self.imageGroups = [self showImages];
+                self.imageGroups = [self filedImages];
             }else {
                 self.imageGroups = imageGroups;
                 [self cacheImages];
@@ -101,16 +102,33 @@ static NSString  *const kReuseIdentifier = @"kCellReuseIdentifier";
     self.jumpButton.layer.borderWidth = 1.5;
     self.jumpButton.layer.masksToBounds = YES;
     [self.jumpButton addTarget:self action:@selector(dismiss) forControlEvents:UIControlEventTouchUpInside];
-    [self addSubview:self.jumpButton];
+    //[self addSubview:self.jumpButton];
+    
+    // 手势
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAction:)];
+    [self addGestureRecognizer:tap];
     
     if (self.imageGroups.count == 1) { //如果是单张图片
         [self startTimer]; // 开启倒计时
     }
 }
 
-#pragma mark - filed image
+- (void)tapAction:(UITapGestureRecognizer *)tapGesture {
+    
+    if (self.isCancel) {
+        [self dismiss];
+    }
+}
+
+- (void)setImageName:(NSString *)imageName {
+    _imageName = imageName;
+    
+    [self.jumpButton setImage:[UIImage imageNamed:imageName] forState:UIControlStateNormal];
+}
+
+#pragma mark - filed images
 //展示广告
-- (NSArray *)showImages {
+- (NSArray *)filedImages {
     
     return [NSArray arrayWithContentsOfFile:[self filePath]];
 }
@@ -174,6 +192,9 @@ static NSString  *const kReuseIdentifier = @"kCellReuseIdentifier";
 }
 
 - (void)dismiss {
+    if (self.browseFinishedBlock) {
+        self.browseFinishedBlock();
+    }
     
     [UIView animateWithDuration:0.25 animations:^{
         self.timerButton.alpha = 0;
@@ -181,10 +202,6 @@ static NSString  *const kReuseIdentifier = @"kCellReuseIdentifier";
     } completion:^(BOOL finished) {
         [self removeFromSuperview];
     }];
-    
-    if (self.readFinishedBlock) {
-        self.readFinishedBlock();
-    }
 }
 
 #pragma mark -
@@ -241,7 +258,7 @@ static NSString  *const kReuseIdentifier = @"kCellReuseIdentifier";
     
     CGFloat offsetX = scrollView.contentOffset.x;
     NSInteger index = offsetX / [UIScreen mainScreen].bounds.size.width;
-    _jumpButton.hidden = index == self.imageGroups.count-1 ? NO : YES;
+    self.isCancel = index == self.imageGroups.count-1 ? YES : NO; //浏览到最后一张点击事件生效
     
     if (offsetX <= 0) {
         [self.pageControl setCurrentPage:0];

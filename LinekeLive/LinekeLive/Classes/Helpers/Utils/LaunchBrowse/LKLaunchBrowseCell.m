@@ -2,11 +2,12 @@
 //  LKAdvertImageCell.m
 //  LinekeLive
 //
-//  Created by CoderTan on 2018/1/31.
+//  Created by CODER_TJ on 2018/1/31.
 //  Copyright © 2018年 CODER_TJ. All rights reserved.
 //
 
 #import "LKLaunchBrowseCell.h"
+#import <UIImageView+WebCache.h>
 
 @implementation LKLaunchBrowseCell
 
@@ -14,8 +15,8 @@
 - (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
-        self.featureView = [[UIImageView alloc] init];
-        [self.contentView addSubview:self.featureView];
+        self.browseView = [[UIImageView alloc] init];
+        [self.contentView addSubview:self.browseView];
     }
     return self;
 }
@@ -24,9 +25,9 @@
     _imagePath = imagePath;
     
     if ([imagePath containsString:@"http"] || [imagePath containsString:@"https"]) {
-        [self.featureView downloadImage:imagePath placeholder:@"follow_bg"];
+        [self.browseView sd_setImageWithURL:[NSURL URLWithString:imagePath] placeholderImage:[UIImage imageNamed:@"follow_bg"]];
     }else {
-        self.featureView.image = [UIImage imageNamed:imagePath];
+        self.browseView.image = [UIImage imageNamed:imagePath];
     }
 }
 
@@ -35,7 +36,7 @@
 - (void)layoutSubviews {
     [super layoutSubviews];
     
-    self.featureView.frame = self.bounds;
+    self.browseView.frame = self.bounds;
 }
 
 @end

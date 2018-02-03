@@ -73,29 +73,20 @@ static NSString *kCellReuseIdentifier = @"kCellReuseIdentifier";
                       @{@"level": @5, @"name": @"相见恨晚2017", @"talk": @"主播你好~😆"},
                       @{@"level": @3, @"name": @"演员", @"talk": @"该配合你演出的我视而不见~😆"}];
     
-    [self.dataSource addObjectsFromArray:[LKTalkModel mj_objectArrayWithKeyValuesArray:datas]];
+    [self.dataSource addObjectsFromArray:[LKSessionModel mj_objectArrayWithKeyValuesArray:datas]];
     [self.tableView reloadData];
 }
 
-- (void)setTalkModel:(LKTalkModel *)talkModel {
-    _talkModel = talkModel;
- 
+- (void)setSession:(LKSessionModel *)session {
+    _session = session;
+    
     // 插入到最后索引
-    [self.dataSource insertObject:talkModel atIndex:self.dataSource.count];
+    [self.dataSource insertObject:session atIndex:self.dataSource.count];
     [self.tableView reloadData];
     
     // 滚动到指定位置
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:self.dataSource.count-1 inSection:0];
-    [_tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionBottom animated:YES];
-    
-    [UIView animateWithDuration:0.15 delay:0 usingSpringWithDamping:0 initialSpringVelocity:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
-        
-        _tableView.transform = CGAffineTransformMakeScale(1, -1);
-        
-    } completion:^(BOOL finished) {
-
-        _tableView.transform = CGAffineTransformIdentity; // 恢复动画
-    }];
+    [self.tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionBottom animated:YES];
 }
 
 #pragma mark - delegate && data

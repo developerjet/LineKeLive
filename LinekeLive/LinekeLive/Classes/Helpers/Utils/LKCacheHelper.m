@@ -49,11 +49,9 @@ static NSString * const kAdvertKey = @"advertise_Key";
 }
 
 #pragma mark - setter && getter
-
 - (void)followAnchor:(LKLiveModel *)ancher {
     
     [self.allAnchorMs removeObject:ancher];
-    
     [self.allAnchorMs insertObject:ancher atIndex:0];
     
     [NSKeyedArchiver archiveRootObject:self.allAnchorMs toFile:LKData];

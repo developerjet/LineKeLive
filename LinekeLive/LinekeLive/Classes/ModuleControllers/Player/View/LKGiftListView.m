@@ -31,15 +31,13 @@ UICollectionViewDelegateFlowLayout>
 @property (nonatomic, strong) UIView *show_GFView; //礼物展示区域
 @property (nonatomic, strong) UICollectionView *collectionView;
 @property (nonatomic, strong) UIPageControl *pageControl; /** >索引< **/
-
 @property (nonatomic, strong) NSArray *dataSource;
 
 @end
 
 @implementation LKGiftListView
 
-#pragma mark - lazy
-
+#pragma mark - Lazy
 - (UIPageControl *)pageControl {
     
     if (!_pageControl) {
@@ -83,42 +81,43 @@ UICollectionViewDelegateFlowLayout>
 }
 
 #pragma mark - initialize
-- (instancetype)initWithFrame:(CGRect)frame {
-    self = [super initWithFrame:frame];
-    
+- (instancetype)init {
+    self = [super init];
     if (self) {
-        self.show_BGView = [[UIView alloc] initWithFrame:frame];
-        [self addSubview:self.show_BGView];
-        
-        //添加点按手势
-        UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismiss)];
-        [self.show_BGView addGestureRecognizer:tapGesture];
-        
-        self.show_GFView = [[UIView alloc] initWithFrame:CGRectMake(0, SCREEN_HEIGHT, SCREEN_WIDTH, 0)];
-        self.show_GFView.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.5];
-        [self addSubview:self.show_GFView];
-        
-        //添加礼物展示
-        [self.show_GFView addSubview:self.collectionView];
-        
-        //添加索引
-        [self.show_GFView addSubview:self.pageControl];
-        
-        [self requestGift];
+        self.frame = [UIApplication sharedApplication].keyWindow.frame;
+        self.backgroundColor = [UIColor clearColor];
+        [self initSubviews];
     }
-    
     return self;
+}
+
+- (void)initSubviews {
+    
+    self.show_BGView = [[UIView alloc] initWithFrame:self.frame];
+    [self addSubview:self.show_BGView];
+    
+    //添加点按手势
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismiss)];
+    [self.show_BGView addGestureRecognizer:tap];
+    
+    self.show_GFView = [[UIView alloc] initWithFrame:CGRectMake(0, SCREEN_HEIGHT, SCREEN_WIDTH, 0)];
+    self.show_GFView.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.5];
+    [self addSubview:self.show_GFView];
+    
+    [self.show_GFView addSubview:self.collectionView];
+    
+    [self.show_GFView addSubview:self.pageControl];
+    
+    [self addGiftList];
 }
 
 #pragma mark - animate
 - (void)show {
+    [[UIApplication sharedApplication].keyWindow addSubview:self];
     
-    [UIView animateWithDuration:0.35 delay:0.25 options:UIViewAnimationOptionCurveEaseIn animations:^{
+    [UIView animateWithDuration:0.25 animations:^{
         self.show_GFView.frame = CGRectMake(0, SCREEN_HEIGHT-contentHeight, SCREEN_WIDTH, contentHeight);
         self.collectionView.frame = CGRectMake(0, 0, SCREEN_WIDTH, self.show_GFView.frame.size.height-20);
-    } completion:^(BOOL finished) {
-        
-        [[UIApplication sharedApplication].keyWindow addSubview:self];
     }];
 }
 
@@ -127,15 +126,14 @@ UICollectionViewDelegateFlowLayout>
     [UIView animateWithDuration:0.25 delay:0.15 options:UIViewAnimationOptionCurveEaseOut animations:^{
         self.show_GFView.frame = CGRectMake(0, SCREEN_HEIGHT, SCREEN_WIDTH, 0);
         self.show_GFView.alpha = 0;
-        
     } completion:^(BOOL finished) {
-        [self.show_GFView removeFromSuperview];
+        
         [self removeFromSuperview];
     }];
 }
 
 #pragma mark - net
-- (void)requestGift {
+- (void)addGiftList {
     
     [MBProgressHUD showHUDAddedTo:self.collectionView animated:YES];
     

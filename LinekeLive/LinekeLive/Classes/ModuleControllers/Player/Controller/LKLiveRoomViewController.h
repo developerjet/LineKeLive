@@ -12,25 +12,23 @@
 /**
  底部点击类型
  */
-typedef NS_ENUM(NSUInteger, LKPlayRoomTaskType) {
-    LKPlayRoomTaskSendChat = 1000,
-    LKPlayRoomTaskMessage,
-    LKPlayRoomTaskSendGift,
-    LKPlayRoomTaskOpenShare,
+typedef NS_ENUM(NSUInteger, LKPlayerEventStatus) {
+    LKPlayerEventStatus_Session = 1000, //聊天
+    LKPlayerEventStatus_Message, //私聊
+    LKPlayerEventStatus_GiveGift, //送礼物
+    LKPlayerEventStatus_Activity //分享
 };
 
 @class LKLiveRoomViewController;
 
-@protocol LKLiveRoomViewControllerDelegate <NSObject>
-
-- (void)roomViewControllerDelegate:(LKLiveRoomViewController *)controller didSelectItemType:(LKPlayRoomTaskType)itemType;
+@protocol LKLiveRoomControllerDelegate <NSObject>
+@optional
+- (void)livePlayerRoomCtrl:(LKLiveRoomViewController *)roomCtrl didSelectStatus:(LKPlayerEventStatus)status;
 
 @end
 
 @interface LKLiveRoomViewController : LKHasNavViewController
-
-@property (nonatomic, weak) id <LKLiveRoomViewControllerDelegate> delegate;
-
+@property (nonatomic, weak) id <LKLiveRoomControllerDelegate> delegate;
 @property (nonatomic, strong) LKLiveModel *model;
 
 @end

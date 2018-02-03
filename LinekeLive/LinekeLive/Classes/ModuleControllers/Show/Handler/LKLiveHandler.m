@@ -17,10 +17,10 @@
 + (void)executeGetHotLiveTaskWithSuccess:(successBlock)success failed:(failedBlock)failed {
     
     [HttpTool getWithPath:API_HotLive params:nil success:^(id json) {
-        NSInteger errorCode = [json[@"error_code"] integerValue];
+        NSInteger errorCode = [json[@"dm_error"] integerValue];
 
         if (errorCode == 0) { //请求成功
-            NSArray *lives = [LKLiveModel mj_objectArrayWithKeyValuesArray:json[@"data"]];
+            NSArray *lives = [LKLiveModel mj_objectArrayWithKeyValuesArray:json[@"lives"]];
             success(lives);
         }else {
             failed(json);

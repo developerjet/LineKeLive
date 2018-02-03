@@ -10,7 +10,7 @@
 
 @interface LKBasicTabBar()
 @property (nonatomic, strong) UIButton *lastItem;
-@property (nonatomic, strong) NSArray *dataSource;
+@property (nonatomic, strong) NSArray  *dataSource;
 @property (nonatomic, strong) UIButton *cameraButton;
 @property (nonatomic, strong) UIImageView *tabBgView; //tabBar背景图片
 

@@ -9,13 +9,29 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "LinekeLive/Classes/ModuleControllers/Show/Handler/LKLiveHandler.m"
-            timestampString = "539157994.737366"
+            filePath = "LinekeLive/Classes/ModuleControllers/Show/Controller/LKHotViewController.m"
+            timestampString = "539336056.192413"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "89"
-            endingLineNumber = "89"
-            landmarkName = "+executeGetAdvertTaskWithSuccess:failed:"
+            startingLineNumber = "75"
+            endingLineNumber = "75"
+            landmarkName = "-reloadData"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "LinekeLive/Classes/ModuleControllers/Show/Controller/LKHotViewController.m"
+            timestampString = "539336056.1925189"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "76"
+            endingLineNumber = "76"
+            landmarkName = "-reloadData"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

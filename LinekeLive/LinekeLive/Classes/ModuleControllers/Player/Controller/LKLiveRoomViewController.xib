@@ -32,28 +32,28 @@
                             <rect key="frame" x="110" y="10" width="40" height="40"/>
                             <state key="normal" image="mg_room_btn_liwu_h"/>
                             <connections>
-                                <action selector="openTools:" destination="-1" eventType="touchUpInside" id="Ai8-mm-anV"/>
+                                <action selector="roomEvents:" destination="-1" eventType="touchUpInside" id="3Oz-7u-086"/>
                             </connections>
                         </button>
                         <button opaque="NO" tag="1003" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Iyx-pg-igg" userLabel="Share Button">
                             <rect key="frame" x="160" y="10" width="40" height="40"/>
                             <state key="normal" image="mg_room_btn_fenxiang_h"/>
                             <connections>
-                                <action selector="openTools:" destination="-1" eventType="touchUpInside" id="N4z-fx-BDW"/>
+                                <action selector="roomEvents:" destination="-1" eventType="touchUpInside" id="fB2-KX-F2j"/>
                             </connections>
                         </button>
                         <button opaque="NO" tag="1001" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i45-7W-SNT" userLabel="Message Button">
                             <rect key="frame" x="60" y="10" width="40" height="40"/>
                             <state key="normal" image="mg_room_btn_xinxi_h"/>
                             <connections>
-                                <action selector="openTools:" destination="-1" eventType="touchUpInside" id="gWA-lg-Bsy"/>
+                                <action selector="roomEvents:" destination="-1" eventType="touchUpInside" id="Yzf-fN-j0U"/>
                             </connections>
                         </button>
                         <button opaque="NO" tag="1000" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w6O-fH-AwN" userLabel="Chat Button">
                             <rect key="frame" x="10" y="10" width="40" height="40"/>
                             <state key="normal" image="mg_room_btn_liao_h"/>
                             <connections>
-                                <action selector="openTools:" destination="-1" eventType="touchUpInside" id="wri-S0-rKt"/>
+                                <action selector="roomEvents:" destination="-1" eventType="touchUpInside" id="5YR-6B-ELL"/>
                             </connections>
                         </button>
                     </subviews>

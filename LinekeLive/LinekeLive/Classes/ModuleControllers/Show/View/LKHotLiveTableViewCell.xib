@@ -1,14 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="HelveticaNeue.ttc">
+            <string>HelveticaNeue</string>
+        </array>
+    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -16,7 +21,7 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="375"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="375" height="374"/>
+                <rect key="frame" x="0.0" y="0.0" width="375" height="374.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IIQ-Xz-qfa" userLabel="TopView">
@@ -96,12 +101,12 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
-                <outlet property="bigImageView" destination="0Mj-Mr-cMf" id="itM-hz-i8e"/>
-                <outlet property="categoriesLabel" destination="PAY-cz-PO5" id="rPg-B1-l4o"/>
-                <outlet property="headView" destination="4Xs-Y4-pJe" id="fa6-b3-FWT"/>
-                <outlet property="locationLabel" destination="fi3-FW-qBX" id="vuN-cY-qs9"/>
+                <outlet property="backBgView" destination="0Mj-Mr-cMf" id="b97-xE-IkM"/>
+                <outlet property="cityLabel" destination="fi3-FW-qBX" id="ldQ-E0-5lP"/>
+                <outlet property="detailLabel" destination="PAY-cz-PO5" id="1WY-5E-SJk"/>
+                <outlet property="headerView" destination="4Xs-Y4-pJe" id="Ug3-U7-vvG"/>
                 <outlet property="nameLabel" destination="4hP-al-9HY" id="lYb-4Q-79c"/>
-                <outlet property="watchLable" destination="khr-E2-Tfc" id="cDX-jV-J3N"/>
+                <outlet property="usersLabel" destination="khr-E2-Tfc" id="Ibb-Qo-etP"/>
             </connections>
             <point key="canvasLocation" x="30.5" y="-19.5"/>
         </tableViewCell>

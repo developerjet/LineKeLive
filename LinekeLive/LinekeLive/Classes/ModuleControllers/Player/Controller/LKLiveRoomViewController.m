@@ -8,10 +8,10 @@
 
 #import "LKLiveRoomViewController.h"
 #import "LKAnimationManager.h"
-#import "LKGiftListView.h"
 #import "LKShareActivityView.h"
 #import "LKLiveSessionView.h"
 #import "LKUserListView.h"
+#import "LKGiftListView.h"
 #import "LKDanmuModel.h"
 #import "LKGiftModel.h"
 #import "LKDanmuView.h"
@@ -24,16 +24,16 @@
 @property (weak, nonatomic) IBOutlet UIButton    *followView;
 @property (weak, nonatomic) IBOutlet UIImageView *iconView;
 
-@property (nonatomic, weak) LKDanmuView *danmuView;
+@property (nonatomic, weak)   LKDanmuView *danmuView;
 @property (nonatomic, strong) LKGiftListView *giftListView;
-@property (nonatomic, strong) UIView *animView; //礼物展示区域
+@property (nonatomic, strong) UIView *showView; //礼物展示区域
 @property (nonatomic, strong) LKGiftData *data;
 @property (nonatomic, strong) NSTimer *timer;
 
 @property (nonatomic, strong) UIView *keyBoardView;
-@property (nonatomic, strong) UITextView *taskTextView; //聊天输入框
-@property (nonatomic, strong) LKLiveSessionView *talkView;
+@property (nonatomic, strong) UITextView *inputTextView; //聊天输入框
 @property (nonatomic, strong) LKUserListView *userListView;
+@property (nonatomic, strong) LKLiveSessionView *sessionView;
 @property (nonatomic, strong) NSArray *userList;
 @property (nonatomic, assign) CGFloat originalY;
 
@@ -62,14 +62,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self initConfiguration];
+    [self configSubviews];
     [self initKeyboardNote];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     
-    [self initSendMsgView];
+    [self initInputBox];
 }
 
 - (void)initKeyboardNote {
@@ -78,42 +78,45 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
 }
 
-- (BOOL)isAnchorFollow {
+- (BOOL)isFollow {
     
     return [[LKCacheHelper shared] getAncherIsFollow:self.model];
 }
 
-- (void)initSendMsgView {
+- (void)initInputBox {
     
-    LKLiveSessionView *talkView = [[LKLiveSessionView alloc] initWithFrame:CGRectMake(0, SCREEN_HEIGHT-210, SCREEN_WIDTH, 160)];
-    [self.view addSubview:talkView];
-    [self.view bringSubviewToFront:talkView];
-    _originalY = talkView.center.y;
-    _talkView = talkView;
+    LKLiveSessionView *sessionView = [[LKLiveSessionView alloc] initWithFrame:CGRectMake(0, SCREEN_HEIGHT-210, SCREEN_WIDTH, 160)];
+    [self.view addSubview:sessionView];
+    [self.view bringSubviewToFront:sessionView];
+    _originalY = sessionView.center.y;
+    _sessionView = sessionView;
     __weak typeof(self) weakSelf = self;
-    talkView.isDraggBlock = ^{
+    sessionView.isDraggBlock = ^{
         
         [weakSelf.view endEditing:YES];
     };
 }
 
-- (void)initConfiguration {
+- (void)configSubviews {
     
     self.view.backgroundColor = [UIColor clearColor];
     self.menuView.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.8];
     self.menuView.layer.cornerRadius = self.menuView.layer.frame.size.height * 0.5;
     self.menuView.layer.masksToBounds = YES;
     
-    self.iconView.layer.cornerRadius = self.iconView.layer.height * 0.5;
-    self.iconView.layer.masksToBounds = YES;
     self.ticketView.titleLabel.textAlignment = NSTextAlignmentCenter;
+    
+    self.iconView.layer.cornerRadius  = self.iconView.layer.height * 0.5;
+    self.iconView.layer.masksToBounds = YES;
 
-    self.followView.layer.cornerRadius = self.followView.layer.height * 0.5;
+    self.followView.layer.cornerRadius  = self.followView.layer.height * 0.5;
     self.followView.layer.masksToBounds = YES;
     
-    if ([self isAnchorFollow]) {
+    if ([self isFollow]) {
+        self.followView.selected = YES;
         [self.followView setTitle:@"已关注" forState:UIControlStateNormal];
     }else {
+        self.followView.selected = NO;
         [self.followView setTitle:@"关注" forState:UIControlStateNormal];
     }
     
@@ -123,9 +126,9 @@
         [[NSRunLoop mainRunLoop] addTimer:_timer forMode:NSRunLoopCommonModes];
     } repeats:YES];
     
-    self.animView = [[UIView alloc] initWithFrame:CGRectMake(0, (SCREEN_HEIGHT-140)/2, SCREEN_WIDTH, 140)];
-    self.animView.backgroundColor = [UIColor clearColor];
-    [self.view addSubview:self.animView];
+    self.showView = [[UIView alloc] initWithFrame:CGRectMake(0, (SCREEN_HEIGHT-140)/2, SCREEN_WIDTH, 140)];
+    self.showView.backgroundColor = [UIColor clearColor];
+    [self.view addSubview:self.showView];
     
     /// 弹幕
     LKDanmuView *danmuView = [[LKDanmuView alloc] initWithFrame:CGRectMake(0, 150, SCREEN_WIDTH, 150)];
@@ -151,20 +154,13 @@
     [self.view addSubview:_keyBoardView];
     [self.view bringSubviewToFront:_keyBoardView];
     
-    CGFloat padding = 15, margin = 10;
-    UITextView *taskTextView = [[UITextView alloc] initWithFrame:CGRectMake(padding, margin, (SCREEN_WIDTH-30)-70, 30)];
-    taskTextView.delegate = self;
-    taskTextView.layer.borderWidth = 1.0;
-    taskTextView.layer.borderColor = [UIColor colorWithHexString:@"989898"].CGColor;
-    taskTextView.text = @"请输入你的想法...";
-    [_keyBoardView addSubview:taskTextView];
-    _taskTextView = taskTextView;
+    CGFloat padding = 10;
     
+    CGFloat btnW = 70;
+    CGFloat btnX = SCREEN_WIDTH - (btnW + padding);
     UIButton *sendButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    sendButton.backgroundColor = [UIColor orangeColor];
-    CGFloat btnX = CGRectGetMaxX(taskTextView.frame)+margin;
-    CGFloat btnW = SCREEN_WIDTH - btnX - padding;
-    sendButton.frame = CGRectMake(btnX, margin, btnW, 30);
+    sendButton.backgroundColor = [UIColor colorNavThemeColor];
+    sendButton.frame = CGRectMake(btnX, padding, btnW, 30);
     [sendButton setTitle:@"发送" forState:UIControlStateNormal];
     sendButton.titleLabel.font = [UIFont systemFontOfSize:14];
     sendButton.userInteractionEnabled = YES;
@@ -172,6 +168,23 @@
     sendButton.layer.masksToBounds = YES;
     [sendButton addTarget:self action:@selector(sendClick) forControlEvents:UIControlEventTouchUpInside];
     [_keyBoardView addSubview:sendButton];
+    
+    CGFloat boxW = 30;
+    CGFloat boxX = SCREEN_WIDTH - (btnW + padding) - (boxW + padding);
+    UIButton *boxInButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [boxInButton setImage:[UIImage imageNamed:@"ToolViewEmotion"] forState:UIControlStateNormal];
+    boxInButton.frame = CGRectMake(boxX, padding, boxW, boxW);
+    [_keyBoardView addSubview:boxInButton];
+    
+    CGFloat textW = SCREEN_WIDTH - (btnW + padding) - (boxW + padding) - 2*padding;
+    UITextView *inputTextView = [[UITextView alloc] initWithFrame:CGRectMake(padding, padding, textW, 30)];
+    inputTextView.delegate = self;
+    inputTextView.layer.cornerRadius = 3;
+    inputTextView.layer.borderWidth = 0.8;
+    inputTextView.returnKeyType = UIReturnKeySend;
+    inputTextView.layer.borderColor = COLORHEX(@"e8e8e8").CGColor;
+    [_keyBoardView addSubview:inputTextView];
+    _inputTextView = inputTextView;
 }
 
 - (void)keyboardWillShow:(NSNotification *)noti {
@@ -185,9 +198,8 @@
     [UIView animateWithDuration:duration.doubleValue animations:^{
         [UIView setAnimationsEnabled:YES];
         [UIView setAnimationCurve:[curve integerValue]]; //设置动画曲线，控制动画速度
-    
         _keyBoardView.center = CGPointMake(_keyBoardView.center.x, keyBoardEndY-_keyBoardView.bounds.size.height/2.0);
-        _talkView.center = CGPointMake(_talkView.center.x, keyBoardEndY-_keyBoardView.frame.size.height- _talkView.bounds.size.height/2.0);
+        _sessionView.center = CGPointMake(_sessionView.center.x, keyBoardEndY-_keyBoardView.frame.size.height- _sessionView.bounds.size.height/2.0);
         [UIView commitAnimations];
     }];
 }
@@ -205,7 +217,7 @@
         [UIView setAnimationsEnabled:YES];
         [UIView setAnimationCurve:[curve integerValue]];
         _keyBoardView.center = CGPointMake(_keyBoardView.center.x, keyBoardEndY - (_keyBoardView.bounds.size.height - keyBoardEndH)/2);
-        _talkView.center = CGPointMake(_talkView.center.x, _originalY);
+        _sessionView.center = CGPointMake(_sessionView.center.x, _originalY);
         [UIView commitAnimations];
     }];
 }
@@ -213,7 +225,7 @@
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
     [self.view endEditing:YES];
     
-    self.taskTextView.text = @"";
+    self.inputTextView.text = @"";
 }
 
 #pragma mark - LKDanmuViewProtocol
@@ -244,89 +256,32 @@
     self.countLable.text = [NSString stringWithFormat:@"%ld人", (long)model.onlineUsers];
 }
 
-#pragma mark - click
-
-- (IBAction)openTools:(UIButton *)btn {
-    LKPlayRoomTaskType taskType = btn.tag;
+#pragma mark - Room Actions
+- (IBAction)roomEvents:(UIButton *)btn {
+    LKPlayerEventStatus status = btn.tag;
     
-    switch (taskType) {
-        case LKPlayRoomTaskSendChat:
-            [_taskTextView becomeFirstResponder];
+    switch (status) {
+        case LKPlayerEventStatus_Session:
+            [self.inputTextView becomeFirstResponder]; //弹出会话输入框
             break;
-        case LKPlayRoomTaskSendGift:
-            self.giftListView = [[LKGiftListView alloc] initWithFrame:[UIScreen mainScreen].bounds];
-            self.giftListView.delegate = self;
-            [self.giftListView show];
+        case LKPlayerEventStatus_GiveGift:
+            [self showGiftBox];
             break;
-        case LKPlayRoomTaskOpenShare:
+        case LKPlayerEventStatus_Activity:
             [self showActivity];
             break;
-        case LKPlayRoomTaskMessage:
-            [self creatFabulous];
+        case LKPlayerEventStatus_Message:
             break;
         default:
             break;
     }
 }
 
-- (void)creatFabulous {
+- (void)showGiftBox {
     
-    CALayer *imageLayer = [CALayer layer];
-    imageLayer.frame = CGRectMake(0, 0, 30, 30);
-    imageLayer.contents = (__bridge id _Nullable)([UIImage imageNamed:@"heart_1"].CGImage);
-    imageLayer.position = CGPointMake(self.view.bounds.size.width *0.5, self.view.bounds.size.height - 10);
-    [self.view.layer addSublayer:imageLayer];
-    
-    [self startAnim:imageLayer];
-}
-
-- (void)startAnim:(CALayer *)layer {
-    [CATransaction begin];
-    
-    [CATransaction setCompletionBlock:^{
-        [layer removeAllAnimations];
-        [layer removeFromSuperlayer];
-    }];
-    
-    CAAnimationGroup *group = [CAAnimationGroup animation];
-    
-    CAKeyframeAnimation *frameAnim = [CAKeyframeAnimation animation];
-    frameAnim.path = [self setupAnimPath];
-    frameAnim.keyPath = @"position";
-    
-    CABasicAnimation *opacityAnim = [CABasicAnimation animation];
-    opacityAnim.keyPath = @"opacity";
-    opacityAnim.fromValue = @1.0;
-    opacityAnim.toValue = @0.0;
-    opacityAnim.beginTime = 1;
-    
-    group.duration = 5;
-    group.animations = @[frameAnim, opacityAnim];
-    group.fillMode = kCAFillModeForwards;
-    group.removedOnCompletion = NO;
-    [layer addAnimation:group forKey:nil];
-    
-    [CATransaction commit];
-}
-
-- (CGPathRef)setupAnimPath {
-    
-    CGFloat y = self.view.bounds.size.height - 50;
-    CGFloat centerX = self.view.bounds.size.width * 0.5;
-    CGFloat x = 0;
-    
-    UIBezierPath *path = [UIBezierPath bezierPath];
-    while (y >= 0) {
-        if ( y == self.view.bounds.size.height - 50) {
-            [path moveToPoint:CGPointMake(centerX, y)];
-        }else {
-            x = centerX + arc4random_uniform(31) - 15;
-            [path addLineToPoint:CGPointMake(x, y)];
-        }
-        y -= 40;
-    }
-    
-    return path.CGPath;
+    LKGiftListView *ListBox = [[LKGiftListView alloc] init];
+    ListBox.delegate = self;
+    [ListBox show];
 }
 
 - (void)showActivity {
@@ -342,15 +297,16 @@
     if (button.selected) {
         self.model.follow = YES;
         [[LKCacheHelper shared] followAnchor:self.model];
+        [self.followView setTitle:@"已关注" forState:UIControlStateNormal];
         [XDProgressHUD showHUDWithText:@"已关注主播" hideDelay:1.0];
-        [_followView setTitle:@"已关注" forState:UIControlStateNormal];
-        [[NSNotificationCenter defaultCenter] postNotificationName:kFollowKey object:nil];
     }else {
         self.model.follow = NO;
         [[LKCacheHelper shared] unFollowAnchor:self.model];
-        [XDProgressHUD showHUDWithText:@"取消主播" hideDelay:1.0];
-        [_followView setTitle:@"关注" forState:UIControlStateNormal];
+        [self.followView setTitle:@"关注" forState:UIControlStateNormal];
+        [XDProgressHUD showHUDWithText:@"取消关注" hideDelay:1.0];
     }
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:kFollowKey object:nil];
 }
 
 - (void)sendClick {
@@ -358,34 +314,43 @@
     LKDanmuModel *dmModel = [LKDanmuModel new];
     dmModel.beginTime = 2;
     dmModel.liveTime = 5;
-    dmModel.content = self.taskTextView.text;
+    dmModel.content = self.inputTextView.text;
     [self.danmuView.models addObject:dmModel];
     
-    LKTalkModel *talkModel = [LKTalkModel new];
-    talkModel.name = @"王思聪";
-    talkModel.talk = self.taskTextView.text;
-    talkModel.level = 9;
-    self.talkView.talkModel = talkModel;
+    LKSessionModel *session = [LKSessionModel new];
+    session.level = 9;
+    session.name = @"王思聪";
+    session.talk = self.inputTextView.text;
+    self.sessionView.session = session;
     
     //清除之前的会话
-    self.taskTextView.text = @"";
+    self.inputTextView.text = @"";
 }
 
 #pragma mark - LKGiftListViewDelegate
-
 - (void)sendGiftListViewDelegate:(LKGiftListView *)giftView DidSelectItem:(LKGiftModel *)model {
     
-    self.data.senderName = [NSString stringWithFormat:@"用户%d", arc4random()%2]; //模拟两个用户在送礼物
+    self.data.giftIcon = model.img2;
+    self.data.giftName = model.subject; //礼物名称
+    self.data.senderName  = [NSString stringWithFormat:@"用户%d", arc4random()%2]; //模拟两个用户在送礼物
     self.data.deveiceType = [NSString stringWithFormat:@"%d", arc4random()%2+1]; //模拟用户设备
     
-    self.data.giftName = model.subject; //礼物名称
-    self.data.giftIcon = model.img2;
-    
     LKAnimationManager *manager = [LKAnimationManager manager];
-    manager.parentView = self.animView;
+    manager.parentView = self.showView;
     [manager animWithData:self.data finishedBlock:^(BOOL result) {
         LKLog(@"complete...");
     }];
+}
+
+#pragma mark - UITextViewDelegate
+- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text{
+    if ([text isEqualToString:@"\n"]){ //判断输入的字是否是回车，即按下return
+        [self sendClick];
+        [self.inputTextView resignFirstResponder];
+        return NO;
+    }
+    
+    return YES;
 }
 
 #pragma mark - remove

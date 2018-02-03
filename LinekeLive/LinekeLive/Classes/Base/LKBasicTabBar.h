@@ -9,9 +9,9 @@
 #import <UIKit/UIKit.h>
 
 typedef NS_ENUM(NSUInteger, LKTabBarItemType) {
-    LKItemTypeLaunch = 10, //启动直播
-    LKItemTypeLive = 100, //展示直播
-    LKItemTypeMine,//我的
+    LKItemTypeLaunch = 10,  //启动直播
+    LKItemTypeLive   = 100, //展示直播
+    LKItemTypeMine,         //我的
 };
 
 @class LKBasicTabBar;

@@ -11,7 +11,7 @@
 @class LKGiftModel, LKGiftListView;
 
 @protocol LKGiftListViewDelegate <NSObject>
-
+@optional
 - (void)sendGiftListViewDelegate:(LKGiftListView *)giftView DidSelectItem:(LKGiftModel *)model;
 
 @end

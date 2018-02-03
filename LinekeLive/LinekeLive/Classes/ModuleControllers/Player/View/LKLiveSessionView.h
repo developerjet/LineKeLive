@@ -7,11 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "LKTalkModel.h"
+#import "LKSessionModel.h"
 
 @interface LKLiveSessionView : UIView
-
-@property (nonatomic, strong) LKTalkModel *talkModel;
+@property (nonatomic, strong) LKSessionModel *session;
 @property (nonatomic, copy) void(^isDraggBlock)();
 
 @end

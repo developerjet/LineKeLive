@@ -7,10 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "LKTalkModel.h"
+#import "LKSessionModel.h"
 
 @interface LKTalkTableViewCell : UITableViewCell
 
-@property (nonatomic, strong) LKTalkModel *model;
+@property (nonatomic, strong) LKSessionModel *model;
 
 @end

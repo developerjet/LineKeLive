@@ -14,6 +14,5 @@
 @interface LKPlayerViewController : LKHasNavViewController
 @property(atomic, retain) id<IJKMediaPlayback> player;
 @property(nonatomic, strong) LKLiveModel *model;
-@property(nonatomic, copy) NSString *streamAddr;
-
+@property(nonatomic, copy) NSString *streamAddr; //直播的源
 @end

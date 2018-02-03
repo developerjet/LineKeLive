@@ -14,6 +14,7 @@
 
 @property (nonatomic, readonly) NSTimeInterval currentTime;
 
+@optional
 - (UIView *)danmuViewWithModel:(id<LKDanmuModelProtocol>)model;
 
 - (void)danmuViewDidClick:(UIView *)danmuView at:(CGPoint)point;

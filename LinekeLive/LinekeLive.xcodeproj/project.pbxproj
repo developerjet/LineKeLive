@@ -7,15 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2B147A511EFF557C0019312D /* NSString+Encrypt.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B147A501EFF557C0019312D /* NSString+Encrypt.m */; };
-		2B147A5A1EFF562F0019312D /* Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B147A541EFF562F0019312D /* Base64.m */; };
-		2B147A5B1EFF562F0019312D /* BasicCommonUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B147A561EFF562F0019312D /* BasicCommonUtils.m */; };
-		2B147A5C1EFF562F0019312D /* GTMBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B147A581EFF562F0019312D /* GTMBase64.m */; };
 		2B147A681EFF5F770019312D /* LKBaseHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B147A671EFF5F770019312D /* LKBaseHandler.m */; };
 		2B1E7FCF1F458BDD00B00C58 /* LKLiveSessionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B1E7FCE1F458BDD00B00C58 /* LKLiveSessionView.m */; };
 		2B1E7FD31F459B2100B00C58 /* LKTalkTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B1E7FD11F459B2100B00C58 /* LKTalkTableViewCell.m */; };
 		2B1E7FD41F459B2100B00C58 /* LKTalkTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2B1E7FD21F459B2100B00C58 /* LKTalkTableViewCell.xib */; };
-		2B1E7FD71F45A60700B00C58 /* LKTalkModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B1E7FD61F45A60700B00C58 /* LKTalkModel.m */; };
 		2B55FBC81EFA73E0005A83BE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B55FBC71EFA73E0005A83BE /* main.m */; };
 		2B55FBD31EFA73E0005A83BE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2B55FBD21EFA73E0005A83BE /* Assets.xcassets */; };
 		2B55FBD61EFA73E0005A83BE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2B55FBD41EFA73E0005A83BE /* LaunchScreen.storyboard */; };
@@ -30,6 +25,7 @@
 		2B75AF811EFCC8B900BFE311 /* LKBasicTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B75AF801EFCC8B900BFE311 /* LKBasicTabBar.m */; };
 		2B75AF881EFCED4700BFE311 /* LKBasicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B75AF871EFCED4700BFE311 /* LKBasicViewController.m */; };
 		2B75AF951EFCEEBC00BFE311 /* LKBasicNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B75AF941EFCEEBC00BFE311 /* LKBasicNavigationController.m */; };
+		2B7C32632023181500BA28DA /* LKItemSegmentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B7C32622023181400BA28DA /* LKItemSegmentView.m */; };
 		2B8A333E1F4824880090B2BB /* LKShareActivityView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B8A333D1F4824880090B2BB /* LKShareActivityView.m */; };
 		2B9C00011F00B0150010611A /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B9C00001F00B0150010611A /* libz.tbd */; };
 		2B9C00031F00B01D0010611A /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B9C00021F00B01D0010611A /* MediaPlayer.framework */; };
@@ -49,6 +45,7 @@
 		2BA6A17D20204D02006FDA28 /* APIConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BA6A17A20204D02006FDA28 /* APIConfig.m */; };
 		2BA6A17E20204D02006FDA28 /* HttpTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BA6A17C20204D02006FDA28 /* HttpTool.m */; };
 		2BA6A18120204D15006FDA28 /* UIImageView+SDWebImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BA6A18020204D15006FDA28 /* UIImageView+SDWebImage.m */; };
+		2BB2671E2025836600CC920F /* LKSessionModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BB2671D2025836600CC920F /* LKSessionModel.m */; };
 		2BC7672D2021CC9E0050A76E /* YYFPSLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BC7672A2021CC9E0050A76E /* YYFPSLabel.m */; };
 		2BDF10F32019D99900048CF7 /* LKPlayerUserCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BDF10F22019D99900048CF7 /* LKPlayerUserCell.m */; };
 		2BDF10F62019DE0100048CF7 /* LKUserListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BDF10F52019DE0100048CF7 /* LKUserListView.m */; };
@@ -108,7 +105,6 @@
 		AE7E71951F3B09880019B515 /* MJExtensionConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = AE7E71661F3B09880019B515 /* MJExtensionConfig.m */; };
 		AE7E71961F3B09880019B515 /* LKHotLiveTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AE7E71691F3B09880019B515 /* LKHotLiveTableViewCell.m */; };
 		AE7E71971F3B09880019B515 /* LKHotLiveTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AE7E716A1F3B09880019B515 /* LKHotLiveTableViewCell.xib */; };
-		AE7E71981F3B09880019B515 /* LKMainSegmentView.m in Sources */ = {isa = PBXBuildFile; fileRef = AE7E716C1F3B09880019B515 /* LKMainSegmentView.m */; };
 		AE7E71991F3B09880019B515 /* LKNearCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AE7E716E1F3B09880019B515 /* LKNearCollectionViewCell.m */; };
 		AE7E719A1F3B09880019B515 /* LKNearCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AE7E716F1F3B09880019B515 /* LKNearCollectionViewCell.xib */; };
 		E8DE294AD7D0CAD927DC4607 /* libPods-LinekeLive.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C35D5F4314E2739372BBE43A /* libPods-LinekeLive.a */; };
@@ -132,15 +128,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		2B147A4F1EFF557C0019312D /* NSString+Encrypt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Encrypt.h"; sourceTree = "<group>"; };
-		2B147A501EFF557C0019312D /* NSString+Encrypt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Encrypt.m"; sourceTree = "<group>"; };
-		2B147A531EFF562F0019312D /* Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Base64.h; sourceTree = "<group>"; };
-		2B147A541EFF562F0019312D /* Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Base64.m; sourceTree = "<group>"; };
-		2B147A551EFF562F0019312D /* BasicCommonUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BasicCommonUtils.h; sourceTree = "<group>"; };
-		2B147A561EFF562F0019312D /* BasicCommonUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BasicCommonUtils.m; sourceTree = "<group>"; };
-		2B147A571EFF562F0019312D /* GTMBase64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMBase64.h; sourceTree = "<group>"; };
-		2B147A581EFF562F0019312D /* GTMBase64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTMBase64.m; sourceTree = "<group>"; };
-		2B147A591EFF562F0019312D /* GTMDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMDefines.h; sourceTree = "<group>"; };
 		2B147A661EFF5F770019312D /* LKBaseHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKBaseHandler.h; sourceTree = "<group>"; };
 		2B147A671EFF5F770019312D /* LKBaseHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKBaseHandler.m; sourceTree = "<group>"; };
 		2B1E7FCD1F458BDD00B00C58 /* LKLiveSessionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKLiveSessionView.h; sourceTree = "<group>"; };
@@ -148,8 +135,6 @@
 		2B1E7FD01F459B2100B00C58 /* LKTalkTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKTalkTableViewCell.h; sourceTree = "<group>"; };
 		2B1E7FD11F459B2100B00C58 /* LKTalkTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKTalkTableViewCell.m; sourceTree = "<group>"; };
 		2B1E7FD21F459B2100B00C58 /* LKTalkTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LKTalkTableViewCell.xib; sourceTree = "<group>"; };
-		2B1E7FD51F45A60700B00C58 /* LKTalkModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKTalkModel.h; sourceTree = "<group>"; };
-		2B1E7FD61F45A60700B00C58 /* LKTalkModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKTalkModel.m; sourceTree = "<group>"; };
 		2B55FBC31EFA73E0005A83BE /* LinekeLive.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LinekeLive.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2B55FBC71EFA73E0005A83BE /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		2B55FBD21EFA73E0005A83BE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -179,6 +164,8 @@
 		2B75AF871EFCED4700BFE311 /* LKBasicViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKBasicViewController.m; sourceTree = "<group>"; };
 		2B75AF931EFCEEBC00BFE311 /* LKBasicNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKBasicNavigationController.h; sourceTree = "<group>"; };
 		2B75AF941EFCEEBC00BFE311 /* LKBasicNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKBasicNavigationController.m; sourceTree = "<group>"; };
+		2B7C32612023181400BA28DA /* LKItemSegmentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKItemSegmentView.h; sourceTree = "<group>"; };
+		2B7C32622023181400BA28DA /* LKItemSegmentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKItemSegmentView.m; sourceTree = "<group>"; };
 		2B8A333C1F4824880090B2BB /* LKShareActivityView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKShareActivityView.h; sourceTree = "<group>"; };
 		2B8A333D1F4824880090B2BB /* LKShareActivityView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKShareActivityView.m; sourceTree = "<group>"; };
 		2B9C00001F00B0150010611A /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
@@ -203,6 +190,8 @@
 		2BA6A17C20204D02006FDA28 /* HttpTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HttpTool.m; sourceTree = "<group>"; };
 		2BA6A17F20204D15006FDA28 /* UIImageView+SDWebImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImageView+SDWebImage.h"; path = "LinekeLive/Classes/Helpers/Categories/UIImageView+SDWebImage.h"; sourceTree = SOURCE_ROOT; };
 		2BA6A18020204D15006FDA28 /* UIImageView+SDWebImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImageView+SDWebImage.m"; path = "LinekeLive/Classes/Helpers/Categories/UIImageView+SDWebImage.m"; sourceTree = SOURCE_ROOT; };
+		2BB2671C2025836600CC920F /* LKSessionModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LKSessionModel.h; sourceTree = "<group>"; };
+		2BB2671D2025836600CC920F /* LKSessionModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LKSessionModel.m; sourceTree = "<group>"; };
 		2BC767292021CC9E0050A76E /* YYFPSLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYFPSLabel.h; sourceTree = "<group>"; };
 		2BC7672A2021CC9E0050A76E /* YYFPSLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYFPSLabel.m; sourceTree = "<group>"; };
 		2BDF10F12019D99900048CF7 /* LKPlayerUserCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LKPlayerUserCell.h; sourceTree = "<group>"; };
@@ -312,8 +301,6 @@
 		AE7E71681F3B09880019B515 /* LKHotLiveTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKHotLiveTableViewCell.h; sourceTree = "<group>"; };
 		AE7E71691F3B09880019B515 /* LKHotLiveTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKHotLiveTableViewCell.m; sourceTree = "<group>"; };
 		AE7E716A1F3B09880019B515 /* LKHotLiveTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LKHotLiveTableViewCell.xib; sourceTree = "<group>"; };
-		AE7E716B1F3B09880019B515 /* LKMainSegmentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKMainSegmentView.h; sourceTree = "<group>"; };
-		AE7E716C1F3B09880019B515 /* LKMainSegmentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKMainSegmentView.m; sourceTree = "<group>"; };
 		AE7E716D1F3B09880019B515 /* LKNearCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKNearCollectionViewCell.h; sourceTree = "<group>"; };
 		AE7E716E1F3B09880019B515 /* LKNearCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKNearCollectionViewCell.m; sourceTree = "<group>"; };
 		AE7E716F1F3B09880019B515 /* LKNearCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LKNearCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -362,22 +349,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		2B147A521EFF562F0019312D /* BaseEncrypt */ = {
-			isa = PBXGroup;
-			children = (
-				2BA6A17F20204D15006FDA28 /* UIImageView+SDWebImage.h */,
-				2BA6A18020204D15006FDA28 /* UIImageView+SDWebImage.m */,
-				2B147A531EFF562F0019312D /* Base64.h */,
-				2B147A541EFF562F0019312D /* Base64.m */,
-				2B147A551EFF562F0019312D /* BasicCommonUtils.h */,
-				2B147A561EFF562F0019312D /* BasicCommonUtils.m */,
-				2B147A571EFF562F0019312D /* GTMBase64.h */,
-				2B147A581EFF562F0019312D /* GTMBase64.m */,
-				2B147A591EFF562F0019312D /* GTMDefines.h */,
-			);
-			path = BaseEncrypt;
-			sourceTree = "<group>";
-		};
 		2B55FBBA1EFA73E0005A83BE = {
 			isa = PBXGroup;
 			children = (
@@ -463,6 +434,8 @@
 				2B75AF871EFCED4700BFE311 /* LKBasicViewController.m */,
 				2B9C001B1F00E5160010611A /* LKHasNavViewController.h */,
 				2B9C001C1F00E5160010611A /* LKHasNavViewController.m */,
+				2B7C32612023181400BA28DA /* LKItemSegmentView.h */,
+				2B7C32622023181400BA28DA /* LKItemSegmentView.m */,
 				2B75AF7F1EFCC8B900BFE311 /* LKBasicTabBar.h */,
 				2B75AF801EFCC8B900BFE311 /* LKBasicTabBar.m */,
 				2B147A661EFF5F770019312D /* LKBaseHandler.h */,
@@ -484,7 +457,6 @@
 		2B55FBFC1EFA743F005A83BE /* Categories */ = {
 			isa = PBXGroup;
 			children = (
-				2B147A521EFF562F0019312D /* BaseEncrypt */,
 				2B704C8D1EFB703D0020A0D6 /* UIColor+Extension.h */,
 				2B704C8E1EFB703D0020A0D6 /* UIColor+Extension.m */,
 				2B704C8F1EFB703D0020A0D6 /* UIColor+UIImage.h */,
@@ -495,8 +467,8 @@
 				2B704C941EFB703D0020A0D6 /* UIImage+Estend.m */,
 				2B704C951EFB703D0020A0D6 /* UIImage+Extension.h */,
 				2B704C961EFB703D0020A0D6 /* UIImage+Extension.m */,
-				2B147A4F1EFF557C0019312D /* NSString+Encrypt.h */,
-				2B147A501EFF557C0019312D /* NSString+Encrypt.m */,
+				2BA6A17F20204D15006FDA28 /* UIImageView+SDWebImage.h */,
+				2BA6A18020204D15006FDA28 /* UIImageView+SDWebImage.m */,
 			);
 			path = Categories;
 			sourceTree = "<group>";
@@ -819,8 +791,8 @@
 			children = (
 				AE7E71471F3B09880019B515 /* LKGiftModel.h */,
 				AE7E71481F3B09880019B515 /* LKGiftModel.m */,
-				2B1E7FD51F45A60700B00C58 /* LKTalkModel.h */,
-				2B1E7FD61F45A60700B00C58 /* LKTalkModel.m */,
+				2BB2671C2025836600CC920F /* LKSessionModel.h */,
+				2BB2671D2025836600CC920F /* LKSessionModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -888,12 +860,12 @@
 		AE7E715E1F3B09880019B515 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				AE7E715F1F3B09880019B515 /* LKCreatorModel.h */,
-				AE7E71601F3B09880019B515 /* LKCreatorModel.m */,
 				AE7E71611F3B09880019B515 /* LKExtra.h */,
 				AE7E71621F3B09880019B515 /* LKExtra.m */,
 				AE7E71631F3B09880019B515 /* LKLiveModel.h */,
 				AE7E71641F3B09880019B515 /* LKLiveModel.m */,
+				AE7E715F1F3B09880019B515 /* LKCreatorModel.h */,
+				AE7E71601F3B09880019B515 /* LKCreatorModel.m */,
 				AE7E71651F3B09880019B515 /* MJExtensionConfig.h */,
 				AE7E71661F3B09880019B515 /* MJExtensionConfig.m */,
 			);
@@ -906,8 +878,6 @@
 				AE7E71681F3B09880019B515 /* LKHotLiveTableViewCell.h */,
 				AE7E71691F3B09880019B515 /* LKHotLiveTableViewCell.m */,
 				AE7E716A1F3B09880019B515 /* LKHotLiveTableViewCell.xib */,
-				AE7E716B1F3B09880019B515 /* LKMainSegmentView.h */,
-				AE7E716C1F3B09880019B515 /* LKMainSegmentView.m */,
 				AE7E716D1F3B09880019B515 /* LKNearCollectionViewCell.h */,
 				AE7E716E1F3B09880019B515 /* LKNearCollectionViewCell.m */,
 				AE7E716F1F3B09880019B515 /* LKNearCollectionViewCell.xib */,
@@ -1140,8 +1110,6 @@
 				AE7E71911F3B09880019B515 /* LKLiveHandler.m in Sources */,
 				2BE69B152022D45A009A2707 /* LKLaunchBrowseCell.m in Sources */,
 				AE7E718E1F3B09880019B515 /* LKHotViewController.m in Sources */,
-				2B147A5B1EFF562F0019312D /* BasicCommonUtils.m in Sources */,
-				AE7E71981F3B09880019B515 /* LKMainSegmentView.m in Sources */,
 				2BA6A17E20204D02006FDA28 /* HttpTool.m in Sources */,
 				2B8A333E1F4824880090B2BB /* LKShareActivityView.m in Sources */,
 				2BA6A17D20204D02006FDA28 /* APIConfig.m in Sources */,
@@ -1155,12 +1123,12 @@
 				2BDF10F32019D99900048CF7 /* LKPlayerUserCell.m in Sources */,
 				AE7E71851F3B09880019B515 /* LKLiveRoomViewController.m in Sources */,
 				2BE69B182022D45A009A2707 /* LKDanmuModel.m in Sources */,
-				2B147A511EFF557C0019312D /* NSString+Encrypt.m in Sources */,
 				AE7E71891F3B09880019B515 /* LKFlowLayout.m in Sources */,
 				2B704C9A1EFB703D0020A0D6 /* UIImage+Estend.m in Sources */,
 				2BE69B1A2022D45A009A2707 /* LKCacheHelper.m in Sources */,
 				2BE9BA6020200AAE00711676 /* AppDelegate+Util.m in Sources */,
 				AE7E71811F3B09880019B515 /* LKMeHeaderView.m in Sources */,
+				2B7C32632023181500BA28DA /* LKItemSegmentView.m in Sources */,
 				AE7E71951F3B09880019B515 /* MJExtensionConfig.m in Sources */,
 				AE7E71701F3B09880019B515 /* LKLaunchLiveViewController.m in Sources */,
 				AE7E71931F3B09880019B515 /* LKExtra.m in Sources */,
@@ -1172,11 +1140,9 @@
 				AE7E717F1F3B09880019B515 /* LKSettingViewController.m in Sources */,
 				2BE69B1F2022D45A009A2707 /* LKGiftSendView.m in Sources */,
 				2BE69B212022D45A009A2707 /* LKRefreshGifHeader.m in Sources */,
-				2B147A5A1EFF562F0019312D /* Base64.m in Sources */,
 				AE7E71921F3B09880019B515 /* LKCreatorModel.m in Sources */,
 				AE7E717B1F3B09880019B515 /* LFLivePreview.m in Sources */,
 				2B75AF951EFCEEBC00BFE311 /* LKBasicNavigationController.m in Sources */,
-				2B147A5C1EFF562F0019312D /* GTMBase64.m in Sources */,
 				2BF8A7F81F49B34E00801F9B /* LKFocuseViewController.m in Sources */,
 				2B704C971EFB703D0020A0D6 /* UIColor+Extension.m in Sources */,
 				AE7E71881F3B09880019B515 /* LKGiftModel.m in Sources */,
@@ -1187,7 +1153,6 @@
 				AE7E718C1F3B09880019B515 /* LKGiftListView.m in Sources */,
 				2BE69B162022D45A009A2707 /* LKLaunchBrowseView.m in Sources */,
 				AE7E71801F3B09880019B515 /* LKMineModel.m in Sources */,
-				2B1E7FD71F45A60700B00C58 /* LKTalkModel.m in Sources */,
 				2BE69B172022D45A009A2707 /* CALayer+Aimate.m in Sources */,
 				2B75AF811EFCC8B900BFE311 /* LKBasicTabBar.m in Sources */,
 				2BC7672D2021CC9E0050A76E /* YYFPSLabel.m in Sources */,
@@ -1203,6 +1168,7 @@
 				2BE9BA59202005A500711676 /* AppDelegate.m in Sources */,
 				2BE69B202022D45A009A2707 /* LKLocationManager.m in Sources */,
 				2B704C9B1EFB703D0020A0D6 /* UIImage+Extension.m in Sources */,
+				2BB2671E2025836600CC920F /* LKSessionModel.m in Sources */,
 				AE7E717C1F3B09880019B515 /* LKLoginViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

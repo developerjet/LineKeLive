@@ -10,7 +10,7 @@
 #import "LKLiveRoomViewController.h"
 #import <UIView+MJExtension.h>
 
-@interface LKPlayerViewController ()<IJKMediaPlayback, LKLiveRoomViewControllerDelegate>
+@interface LKPlayerViewController ()<IJKMediaPlayback, LKLiveRoomControllerDelegate>
 @property (nonatomic, strong) LKLiveRoomViewController *roomVC;
 ///毛玻璃效果
 @property (nonatomic, strong) UIVisualEffectView *effectView;
@@ -83,6 +83,7 @@
     
     if (!_roomVC) {
         _roomVC = [[LKLiveRoomViewController alloc] init];
+        _roomVC.model = self.model;
     }
     return _roomVC;
 }
@@ -114,7 +115,6 @@
     [self.navigationController setNavigationBarHidden:YES animated:NO]; //隐藏导航栏
     
     [self installMovieNotificationObservers];
-    
     [self.player prepareToPlay];
 }
 
@@ -123,7 +123,6 @@
     
     [self initSubviews];
 }
-
 
 - (void)initSubviews {
     
@@ -239,9 +238,7 @@
     [UIView animateWithDuration:0.35 delay:0.35 options:UIViewAnimationOptionCurveLinear animations:^{
         weakSelf.effectView.alpha = 0;
         weakSelf.blurImageView.alpha = 0;
-        
     } completion:^(BOOL finished) {
-        
         weakSelf.effectView.hidden = YES;
         weakSelf.blurImageView.hidden = YES;
         [weakSelf.effectView removeFromSuperview];

@@ -9,12 +9,12 @@
 #import "LKHotLiveTableViewCell.h"
 
 @interface LKHotLiveTableViewCell()
-@property (weak, nonatomic) IBOutlet UILabel *watchLable;
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
-@property (weak, nonatomic) IBOutlet UILabel *locationLabel;
-@property (weak, nonatomic) IBOutlet UIImageView *headView;
-@property (weak, nonatomic) IBOutlet UIImageView *bigImageView;
-@property (weak, nonatomic) IBOutlet UILabel *categoriesLabel;
+@property (weak, nonatomic) IBOutlet UILabel *cityLabel;
+@property (weak, nonatomic) IBOutlet UILabel *usersLabel;
+@property (weak, nonatomic) IBOutlet UILabel *detailLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *headerView;
+@property (weak, nonatomic) IBOutlet UIImageView *backBgView;
 
 @end
 
@@ -30,28 +30,27 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     
-    [self setCellUI];
+    [self configSubviews];
 }
 
-
-- (void)setCellUI {
+- (void)configSubviews {
     
     self.backgroundColor = [UIColor clearColor];
-    self.watchLable.textColor = [UIColor orangeColor];
-    self.headView.layer.cornerRadius = self.headView.layer.frame.size.height*0.5;
-    self.headView.layer.masksToBounds = YES;
+    self.usersLabel.textColor = [UIColor orangeColor];
+    self.headerView.layer.cornerRadius  = self.headerView.layer.frame.size.height*0.5;
+    self.headerView.layer.masksToBounds = YES;
 }
 
 - (void)setModel:(LKLiveModel *)model {
     
     _model = model;
     
-    self.locationLabel.text = model.city;
+    self.cityLabel.text = model.city;
     self.nameLabel.text = model.creator.nick ? model.creator.nick : model.nick;
-    self.categoriesLabel.text = model.creator.birth ? model.creator.birth : model.level;
-    self.watchLable.text = [NSString stringWithFormat:@"%ld 在看", model.onlineUsers];
-    [self.headView downloadImage:model.creator.portrait ? model.creator.portrait : model.image2 placeholder:@"default_room"];
-    [self.bigImageView downloadImage:model.creator.portrait ? model.creator.portrait : model.image2 placeholder:@"default_room"];
+    self.detailLabel.text = model.creator.birth ? model.creator.birth : model.level;
+    self.usersLabel.text = [NSString stringWithFormat:@"%ld 在看", model.onlineUsers];
+    [self.headerView downloadImage:model.creator.portrait ? model.creator.portrait : model.image2 placeholder:@"default_room"];
+    [self.backBgView downloadImage:model.creator.portrait ? model.creator.portrait : model.image2 placeholder:@"default_room"];
 }
 
 @end

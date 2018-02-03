@@ -67,11 +67,8 @@ static NSString * const LiveCellID = @"HotLiveCell";
 }
 
 #pragma mark - Cycle net
-
 - (void)reloadData {
 
-    [XDProgressHUD showHUDWithIndeterminate:@"正在加载热门..."];
-    
     [LKLiveHandler executeGetHotLiveTaskWithSuccess:^(id obj) {
         [self endRefrshing];
         
@@ -129,7 +126,7 @@ static NSString * const LiveCellID = @"HotLiveCell";
     
     LKPlayerViewController *playerVC = [[LKPlayerViewController alloc] init];
     playerVC.model = model;
-    playerVC.streamAddr = model.portrait;
+    playerVC.streamAddr = model.streamAddr;
     [self.navigationController pushViewController:playerVC animated:YES];
 }
 
@@ -137,15 +134,5 @@ static NSString * const LiveCellID = @"HotLiveCell";
     
     return 70.0 + SCREEN_WIDTH;
 }
-
-/*
- 注意：系统自带的播放器实现不了直播视频播放
-- (void)systemPlayWithURL:(NSString *)url {
-    if (!url || url.length<=0) return;
-    
-    MPMoviePlayerViewController *movieVC = [[MPMoviePlayerViewController alloc] initWithContentURL:[NSURL URLWithString:url]];
-    [self presentViewController:movieVC animated:YES completion:NULL];
-}
- */
 
 @end

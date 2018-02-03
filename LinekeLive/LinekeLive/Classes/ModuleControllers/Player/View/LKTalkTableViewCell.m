@@ -34,7 +34,7 @@
     self.talkLabel.textColor = [UIColor whiteColor];   
 }
 
-- (void)setModel:(LKTalkModel *)model {
+- (void)setModel:(LKSessionModel *)model {
     _model = model;
     
     NSString *level = [NSString stringWithFormat:@"%ld", model.level];

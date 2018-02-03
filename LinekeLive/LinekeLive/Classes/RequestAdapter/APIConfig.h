@@ -28,7 +28,7 @@
 /**
  首页热门数据
  */
-#define API_HotLive @"http://baseapi.busi.inke.cn/live/LiveHotList"
+#define API_HotLive @"api/live/simpleall?uid=139587564"
 
 
 /**

@@ -9,9 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @interface LKGiftModel : NSObject
-
 @property (nonatomic, copy) NSString *img2; //图片
 @property (nonatomic, copy) NSString *subject; //名称
 @property (nonatomic, assign) long coin; //价格
-
 @end

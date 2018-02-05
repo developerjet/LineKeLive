@@ -2,8 +2,8 @@
 //  LKMainTopView.h
 //  LinekeLive
 //
-//  Created by CoderTan on 2017/6/24.
-//  Copyright © 2017年 CoderTan. All rights reserved.
+//  Created by CODER_TJ on 2017/6/24.
+//  Copyright © 2017年 CODER_TJ. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>

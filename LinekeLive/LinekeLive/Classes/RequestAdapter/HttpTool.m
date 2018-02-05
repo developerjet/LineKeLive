@@ -53,9 +53,6 @@ static NSString * kBaseURL = SERVER_HOST;
     if ([path isEqualToString:@"http://qf.56.com/pay/v4/giftList.ios"]) {
         kBaseURL = @"";
     }
-    if ([path isEqualToString:@"api/live/near_recommend"]) {
-        kBaseURL = SERVER_HOST;
-    }
     
     //获取完整的url路径
     NSString * url = [kBaseURL stringByAppendingPathComponent:path];

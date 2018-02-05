@@ -17,21 +17,20 @@
  */
 + (void)executeGetHotLiveTaskWithSuccess:(successBlock)success failed:(failedBlock)failed;
 
-
-
 /**
  获取附近的人直播信息
  */
 + (void)executeGetNearLiveTaskWithSuccess:(successBlock)success failed:(failedBlock)failed;
 
-
+/**
+ 获取搜索界面主播信息
+ */
++ (void)executeGetSearchListTaskWithSuccess:(successBlock)success failed:(failedBlock)failed;
 
 /**
  获取礼物的数据
  */
 + (void)executeGetGiftTaskWithSuccess:(successBlock)success failed:(failedBlock)failed;
-
-
 
 /**
  获取广告页

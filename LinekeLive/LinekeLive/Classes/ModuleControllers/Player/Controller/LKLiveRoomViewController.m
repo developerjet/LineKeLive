@@ -69,7 +69,7 @@
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     
-    [self initInputBox];
+    [self initSession];
 }
 
 - (void)initKeyboardNote {
@@ -83,16 +83,16 @@
     return [[LKCacheHelper shared] getAncherIsFollow:self.model];
 }
 
-- (void)initInputBox {
+- (void)initSession {
     
     LKLiveSessionView *sessionView = [[LKLiveSessionView alloc] initWithFrame:CGRectMake(0, SCREEN_HEIGHT-210, SCREEN_WIDTH, 160)];
     [self.view addSubview:sessionView];
     [self.view bringSubviewToFront:sessionView];
     _originalY = sessionView.center.y;
     _sessionView = sessionView;
+    
     __weak typeof(self) weakSelf = self;
     sessionView.isDraggBlock = ^{
-        
         [weakSelf.view endEditing:YES];
     };
 }
@@ -328,7 +328,7 @@
 }
 
 #pragma mark - LKGiftListViewDelegate
-- (void)sendGiftListViewDelegate:(LKGiftListView *)giftView DidSelectItem:(LKGiftModel *)model {
+- (void)startAnimaView:(LKGiftListView *)giftView DidSelectItem:(LKGiftModel *)model {
     
     self.data.giftIcon = model.img2;
     self.data.giftName = model.subject; //礼物名称
@@ -357,6 +357,8 @@
 - (void)dealloc {
     
     [self removeTimer];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillHideNotification object:nil];
 }
 
 //移除timer

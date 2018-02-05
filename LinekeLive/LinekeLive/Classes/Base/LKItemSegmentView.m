@@ -2,15 +2,15 @@
 //  LKMainTopView.m
 //  LinekeLive
 //
-//  Created by CoderTan on 2017/6/24.
-//  Copyright © 2017年 CoderTan. All rights reserved.
+//  Created by CODER_TJ on 2017/6/24.
+//  Copyright © 2017年 CODER_TJ. All rights reserved.
 //
 
 #import "LKItemSegmentView.h"
 
 @interface LKItemSegmentView()
+@property (nonatomic, strong) UIView *indicatorView; //线条指示器
 @property (nonatomic, strong) NSMutableArray *itemGroups;
-@property (nonatomic, strong) UIView         *indicatorView; //线条指示器
 
 @end
 
@@ -82,7 +82,7 @@
 }
 
 #pragma mark -
-#pragma mark - Click Handle
+#pragma mark - actions
 //滑动控制器时调用title自动滚动
 - (void)scrolling:(NSInteger)index
 {

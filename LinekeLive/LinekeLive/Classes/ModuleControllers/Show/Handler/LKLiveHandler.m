@@ -61,6 +61,18 @@
     }];
 }
 
++ (void)executeGetSearchListTaskWithSuccess:(successBlock)success failed:(failedBlock)failed {
+    
+    [HttpTool getWithPath:API_SearchList params:nil success:^(id json) {
+        
+        success(success);
+        
+    } failure:^(NSError *error) {
+        
+        failed(error);
+    }];
+}
+
 + (void)executeGetGiftTaskWithSuccess:(successBlock)success failed:(failedBlock)failed {
     
     NSDictionary *params = @{@"type": @"0",

@@ -10,9 +10,11 @@
 
 @class LKGiftModel, LKGiftListView;
 
+typedef void(^StartFinishedBlock)(void);
+
 @protocol LKGiftListViewDelegate <NSObject>
 @optional
-- (void)sendGiftListViewDelegate:(LKGiftListView *)giftView DidSelectItem:(LKGiftModel *)model;
+- (void)startAnimaView:(LKGiftListView *)view DidSelectItem:(LKGiftModel *)model;
 
 @end
 
@@ -20,10 +22,12 @@
 
 /** 展示礼物列表 */
 - (void)show;
-
 /** 关闭礼物列表 */
 - (void)dismiss;
 
+/** delegate */
 @property (nonatomic, weak) id<LKGiftListViewDelegate> delegate;
+
+@property (nonatomic, copy) StartFinishedBlock  startBlock;
 
 @end

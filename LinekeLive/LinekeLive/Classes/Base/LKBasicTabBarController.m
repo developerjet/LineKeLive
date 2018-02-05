@@ -14,21 +14,20 @@
 #import "LKBasicTabBar.h"
 
 @interface LKBasicTabBarController ()<LKBasicTabBarDelegate>
-@property (nonatomic, strong) LKBasicTabBar *lkTabBar;
+@property (nonatomic, strong) LKBasicTabBar *configTabBar;
 
 @end
 
 @implementation LKBasicTabBarController
 
-#pragma mark - LazyLoad
-
-- (LKBasicTabBar *)lkTabBar {
+#pragma mark - Lazy
+- (LKBasicTabBar *)configTabBar {
     
-    if (!_lkTabBar) {
-        _lkTabBar = [[LKBasicTabBar alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 49)];
-        _lkTabBar.delegate = self;
+    if (!_configTabBar) {
+        _configTabBar = [[LKBasicTabBar alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 49)];
+        _configTabBar.delegate = self;
     }
-    return _lkTabBar;
+    return _configTabBar;
 }
 
 #pragma mark - EventMethods
@@ -40,7 +39,7 @@
     [self configViewController];
     
     //加载tabBar
-    [self.tabBar addSubview:self.lkTabBar];
+    [self.tabBar addSubview:self.configTabBar];
     
     //解决tabBar的阴影线
     [[UITabBar appearance] setShadowImage:[UIImage new]];

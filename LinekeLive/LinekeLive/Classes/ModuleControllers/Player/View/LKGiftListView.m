@@ -10,16 +10,16 @@
 #import "LKGiftCollectionViewCell.h"
 #import <MBProgressHUD/MBProgressHUD.h>
 #import "LineKeMacros.h"
-#import "LKFlowLayout.h"
 #import "LKGiftModel.h"
 
-#define margin  10
-static NSString *const GitfIdentifier = @"GiftCell";
-static CGFloat contentHeight = 220.f;
+#define kShowHeight  230
 
-static int const cols = 4;
-#define itemW   (SCREEN_WIDTH-(cols+1)*margin)/cols
-#define itemH   81
+static int const maxCols = 4;
+static NSString *kCellIdentifier = @"CellFromIdentifier";
+
+#define itemH   80
+#define margin  10
+#define itemW   (SCREEN_WIDTH-(maxCols+1)*margin)/maxCols
 
 @interface LKGiftListView()
 <UICollectionViewDelegate,
@@ -29,9 +29,10 @@ UICollectionViewDelegateFlowLayout>
 
 @property (nonatomic, strong) UIView *show_BGView; //背景视图
 @property (nonatomic, strong) UIView *show_GFView; //礼物展示区域
+@property (nonatomic, strong) UIButton         *startButton;
+@property (nonatomic, strong) UIPageControl    *pageControl; /** >索引< **/
+@property (nonatomic, strong) NSMutableArray   *resultItems;
 @property (nonatomic, strong) UICollectionView *collectionView;
-@property (nonatomic, strong) UIPageControl *pageControl; /** >索引< **/
-@property (nonatomic, strong) NSArray *dataSource;
 
 @end
 
@@ -41,8 +42,8 @@ UICollectionViewDelegateFlowLayout>
 - (UIPageControl *)pageControl {
     
     if (!_pageControl) {
-        CGRect fm = CGRectMake(0, contentHeight-20, SCREEN_WIDTH, 20);
-        _pageControl = [[UIPageControl alloc] initWithFrame:fm];
+        CGRect frame = CGRectMake(0, kShowHeight-30, SCREEN_WIDTH, 30);
+        _pageControl = [[UIPageControl alloc] initWithFrame:frame];
         _pageControl.backgroundColor = [UIColor clearColor];
         _pageControl.pageIndicatorTintColor = [UIColor whiteColor];
         _pageControl.currentPageIndicatorTintColor = [UIColor orangeColor];
@@ -50,12 +51,27 @@ UICollectionViewDelegateFlowLayout>
     return _pageControl;
 }
 
-- (NSArray *)dataSource {
+- (UIButton *)startButton {
     
-    if (!_dataSource) {
-        _dataSource = [NSArray array];
+    if (!_startButton) {
+        _startButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        _startButton.frame = CGRectMake(SCREEN_WIDTH-60, kShowHeight-32, 50, 24);
+        [_startButton setTitle:@"赠送" forState:UIControlStateNormal];
+        _startButton.layer.cornerRadius = 12.0;
+        _startButton.layer.masksToBounds = YES;
+        _startButton.backgroundColor = [UIColor colorNavThemeColor];
+        _startButton.titleLabel.font = [UIFont systemFontOfSize:13];
+        [_startButton addTarget:self action:@selector(startClick:) forControlEvents:UIControlEventTouchUpInside];
     }
-    return _dataSource;
+    return _startButton;
+}
+
+- (NSMutableArray *)resultItems {
+    
+    if (!_resultItems) {
+        _resultItems = [[NSMutableArray alloc] init];
+    }
+    return _resultItems;
 }
 
 - (UICollectionView *)collectionView {
@@ -72,15 +88,16 @@ UICollectionViewDelegateFlowLayout>
         _collectionView.bounces  = NO;
         _collectionView.delegate = self;
         _collectionView.dataSource = self;
+        _collectionView.pagingEnabled = YES;
         _collectionView.showsVerticalScrollIndicator = NO;
         _collectionView.showsHorizontalScrollIndicator = NO;
         _collectionView.backgroundColor = [UIColor clearColor];
-        [_collectionView registerNib:[UINib nibWithNibName:@"LKGiftCollectionViewCell" bundle:nil] forCellWithReuseIdentifier:GitfIdentifier];
+        [_collectionView registerNib:[UINib nibWithNibName:@"LKGiftCollectionViewCell" bundle:nil] forCellWithReuseIdentifier:kCellIdentifier];
     }
     return _collectionView;
 }
 
-#pragma mark - initialize
+#pragma mark - inital
 - (instancetype)init {
     self = [super init];
     if (self) {
@@ -101,23 +118,24 @@ UICollectionViewDelegateFlowLayout>
     [self.show_BGView addGestureRecognizer:tap];
     
     self.show_GFView = [[UIView alloc] initWithFrame:CGRectMake(0, SCREEN_HEIGHT, SCREEN_WIDTH, 0)];
-    self.show_GFView.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.5];
+    self.show_GFView.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.65];
     [self addSubview:self.show_GFView];
     
     [self.show_GFView addSubview:self.collectionView];
-    
+    //添加索引
     [self.show_GFView addSubview:self.pageControl];
+    [self.show_GFView addSubview:self.startButton];
     
-    [self addGiftList];
+    [self startRespObj];
 }
 
-#pragma mark - animate
+#pragma mark - Cycle Actions
 - (void)show {
     [[UIApplication sharedApplication].keyWindow addSubview:self];
     
     [UIView animateWithDuration:0.25 animations:^{
-        self.show_GFView.frame = CGRectMake(0, SCREEN_HEIGHT-contentHeight, SCREEN_WIDTH, contentHeight);
-        self.collectionView.frame = CGRectMake(0, 0, SCREEN_WIDTH, self.show_GFView.frame.size.height-20);
+        
+        self.show_GFView.frame = CGRectMake(0, SCREEN_HEIGHT-kShowHeight, SCREEN_WIDTH, kShowHeight);
     }];
 }
 
@@ -132,8 +150,15 @@ UICollectionViewDelegateFlowLayout>
     }];
 }
 
-#pragma mark - net
-- (void)addGiftList {
+- (void)startClick:(UIButton *)sender {
+    
+    if (self.startBlock) {
+        self.startBlock();
+    }
+}
+
+#pragma mark - CyCle left
+- (void)startRespObj {
     
     [MBProgressHUD showHUDAddedTo:self.collectionView animated:YES];
     
@@ -142,18 +167,14 @@ UICollectionViewDelegateFlowLayout>
         
         if ([obj[@"status"] integerValue] == 200) {
             [self endProgress];
+            NSDictionary *object = obj[@"message"];
+            NSArray *keys = @[@"type1", @"type2", @"type4", @"type5", @"type6", @"type49"];
             
-            NSDictionary *dictionaryMs = obj[@"message"];
-            self.dataSource = @[[LKGiftModel mj_objectArrayWithKeyValuesArray:dictionaryMs[@"type1"][@"list"]],
-                                [LKGiftModel mj_objectArrayWithKeyValuesArray:dictionaryMs[@"type2"][@"list"]],
-                                [LKGiftModel mj_objectArrayWithKeyValuesArray:dictionaryMs[@"type4"][@"list"]],
-                                [LKGiftModel mj_objectArrayWithKeyValuesArray:dictionaryMs[@"type5"][@"list"]],
-                                [LKGiftModel mj_objectArrayWithKeyValuesArray:dictionaryMs[@"type6"][@"list"]],
-                                [LKGiftModel mj_objectArrayWithKeyValuesArray:dictionaryMs[@"type49"][@"list"]]];
-        
-            
-            self.pageControl.numberOfPages = [self.dataSource count];
-            
+            for (NSString *type in keys)
+            {
+                [self.resultItems addObject:[LKGiftModel mj_objectArrayWithKeyValuesArray:object[type][@"list"]]];
+            }
+            self.pageControl.numberOfPages = self.resultItems.count;
             [self.collectionView reloadData];
             
         }else {
@@ -172,41 +193,45 @@ UICollectionViewDelegateFlowLayout>
     [MBProgressHUD hideHUDForView:self.collectionView animated:YES];
 }
 
-#pragma mark - delegate && data
-
+#pragma mark - UICollectionView Delegate && data
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
-    
-    return self.dataSource.count;
+
+    return self.resultItems.count;
 }
 
 //每组返回多少行
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    
-    return [self.dataSource[section] count];
+
+    return [self.resultItems[section] count];
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     
-    LKGiftCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:GitfIdentifier forIndexPath:indexPath];
-    if ([self.dataSource[indexPath.section] count] > indexPath.row) {
-        cell.model = self.dataSource[indexPath.section][indexPath.row];
+    LKGiftCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kCellIdentifier forIndexPath:indexPath];
+    if ([self.resultItems[indexPath.section] count] > indexPath.row)
+    {
+        cell.model = self.resultItems[indexPath.section][indexPath.row];
     }
     return cell;
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     
-    if ([self.dataSource[indexPath.section] count] > indexPath.row) {
-        LKGiftModel *model = self.dataSource[indexPath.section][indexPath.row];
-        [self sendGiftIsMd:model];
+    if ([self.resultItems[indexPath.section] count] > indexPath.row)
+    {
+        LKGiftModel *model = self.resultItems[indexPath.section][indexPath.row];
+        __weak typeof(self) weakSelf = self;
+        self.startBlock = ^{
+            [weakSelf showAnima:model];
+        };
     }
 }
 
-- (void)sendGiftIsMd:(LKGiftModel *)model {
+- (void)showAnima:(LKGiftModel *)model {
     
-    if (self.delegate && [self.delegate respondsToSelector:@selector(sendGiftListViewDelegate:DidSelectItem:)]) {
+    if (self.delegate && [self.delegate respondsToSelector:@selector(startAnimaView:DidSelectItem:)]) {
         
-        [self.delegate sendGiftListViewDelegate:self DidSelectItem:model];
+        [self.delegate startAnimaView:self DidSelectItem:model];
     }
 }
 
@@ -218,10 +243,6 @@ UICollectionViewDelegateFlowLayout>
 // 该方法是设置一个section的上左下右边距
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
     
-    // 注意，这里默认会在top有+64的边距，因为状态栏+导航栏是64.
-    // 因为我们常常把[[UIScreen mainScreen] bounds]作为CollectionView的区域，所以苹果API就默认给了+64的EdgeInsets，这里其实是一个坑，一定要注意。
-    // 这里我暂时不用这个边距，所以top减去64
-    // 所以这是就要考虑你是把Collection从屏幕左上角(0,0)开始放还是(0,64)开始放。
     return UIEdgeInsetsMake(margin, margin, margin, margin);
 }
 
@@ -229,9 +250,8 @@ UICollectionViewDelegateFlowLayout>
     
     CGFloat width   = SCREEN_WIDTH;
     CGFloat offsetX = scrollView.contentOffset.x;
-    
-    //获取索引值
-    NSInteger index = offsetX / width;
+
+    NSInteger index = offsetX / width; //获取索引值
     
     if (offsetX <= 0) {
         self.pageControl.currentPage = 1;
@@ -239,7 +259,6 @@ UICollectionViewDelegateFlowLayout>
     
     //切换索引
     self.pageControl.currentPage = index;
-    //NSLog(@"offsetX：%f", offsetX);
 }
 
 @end

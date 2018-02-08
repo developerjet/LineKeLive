@@ -7,27 +7,26 @@
 //
 
 #import <UIKit/UIKit.h>
-
-#import "LKDanmuModelProtocol.h"
+#import "LKBarrageModelProtocol.h"
 
 @protocol LKDanmuViewProtocol <NSObject>
 
 @property (nonatomic, readonly) NSTimeInterval currentTime;
 
 @optional
-- (UIView *)danmuViewWithModel:(id<LKDanmuModelProtocol>)model;
+- (UIView *)danmuViewWithModel:(id<LKBarrageModelProtocol>)model;
 
 - (void)danmuViewDidClick:(UIView *)danmuView at:(CGPoint)point;
 
 @end
 
 
-@interface LKDanmuView : UIView
+@interface LKBarrageCoreView : UIView
 
 
 @property (nonatomic, weak) id<LKDanmuViewProtocol> delegate;
 
-@property (nonatomic, strong) NSMutableArray <id <LKDanmuModelProtocol>>*models;
+@property (nonatomic, strong) NSMutableArray <id <LKBarrageModelProtocol>>*models;
 
 - (void)pause;
 - (void)resume;

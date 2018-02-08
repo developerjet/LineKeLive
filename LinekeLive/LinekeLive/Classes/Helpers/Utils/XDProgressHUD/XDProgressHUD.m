@@ -2,8 +2,8 @@
 //  XDProgressHUD.m
 //  OnlyBrother_ Seller
 //
-//  Created by codeTan on 16/10/23.
-//  Copyright © 2016年 谭捷. All rights reserved.
+//  Created by CODER_TJ on 16/10/23.
+//  Copyright © 2016年 CODER_TJ. All rights reserved.
 //
 
 #import "XDProgressHUD.h"
@@ -101,7 +101,7 @@
     // 自定义帧动画
     UIImageView *gifImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"refresh_fly_1"]];
     NSMutableArray *animationImages = [[NSMutableArray alloc] init];
-    for (NSInteger i = 1; i <= 29; i++) {
+    for (NSInteger i = 9; i <= 21; i++) {
         UIImage *image = [UIImage imageNamed:[NSString stringWithFormat:@"refresh_fly_%ld", i]];
         [animationImages addObject:image];
     }

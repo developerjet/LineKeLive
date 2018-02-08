@@ -12,8 +12,9 @@
 #define views_bgColor   [UIColor colorWithHexString:@"FFFFFF"]
 
 @interface LKShareActivityView()
-@property (nonatomic, strong) UIView *overalView;
-@property (nonatomic, strong) UIView *bottomView;
+@property (nonatomic, strong) UIView  *overalView;
+@property (nonatomic, strong) UIView  *bottomView;
+@property (nonatomic, strong) NSArray *activitys;
 @property (nonatomic, strong) UIScrollView *scrollView;
 
 @end
@@ -194,26 +195,11 @@
 
 - (void)activityClick:(UIButton *)button {
     kActivityStatus status = button.tag;
-    
-    switch (status) {
-        case kActivityStatus_QQ:
-            LKLog(@"分享到QQ");
-            break;
-        case kActivityStatus_WeiChat:
-            LKLog(@"分享到微信");
-            break;
-        case kActivityStatus_TimeLine:
-            LKLog(@"分享到朋友圈");
-            break;
-        case kActivityStatus_SMS:
-            LKLog(@"分享到短息");
-            break;
-        case kActivityStatus_CopyLink:
-            LKLog(@"复制链接");
-            break;
-        default:
-            break;
+    if (self.activeFinishedBlock) {
+        self.activeFinishedBlock(status);
     }
+    
+    
     
     [self animClose:button];
 }

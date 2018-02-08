@@ -27,6 +27,12 @@
 		2B75AF951EFCEEBC00BFE311 /* LKBasicNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B75AF941EFCEEBC00BFE311 /* LKBasicNavigationController.m */; };
 		2B7C32632023181500BA28DA /* LKItemSegmentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B7C32622023181400BA28DA /* LKItemSegmentView.m */; };
 		2B8A333E1F4824880090B2BB /* LKShareActivityView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B8A333D1F4824880090B2BB /* LKShareActivityView.m */; };
+		2B8A3FC9202A993D00E2F5EE /* LKEmojiKeyBoard.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B8A3FC8202A993D00E2F5EE /* LKEmojiKeyBoard.m */; };
+		2B8A3FCE202AA9D900E2F5EE /* aio_face_delete@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2B8A3FCB202AA9D900E2F5EE /* aio_face_delete@2x.png */; };
+		2B8A3FCF202AA9D900E2F5EE /* aio_face_delete_pressed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2B8A3FCC202AA9D900E2F5EE /* aio_face_delete_pressed@2x.png */; };
+		2B8A3FD0202AA9D900E2F5EE /* EmojisList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2B8A3FCD202AA9D900E2F5EE /* EmojisList.plist */; };
+		2B8A3FD3202AC70A00E2F5EE /* LKEmojiKeyBoardFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B8A3FD2202AC70A00E2F5EE /* LKEmojiKeyBoardFlowLayout.m */; };
+		2B8A3FD6202AC73800E2F5EE /* LKEmojiKeyBoardLabelCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B8A3FD5202AC73800E2F5EE /* LKEmojiKeyBoardLabelCell.m */; };
 		2B9C00011F00B0150010611A /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B9C00001F00B0150010611A /* libz.tbd */; };
 		2B9C00031F00B01D0010611A /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B9C00021F00B01D0010611A /* MediaPlayer.framework */; };
 		2B9C00051F00B0280010611A /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B9C00041F00B0280010611A /* MobileCoreServices.framework */; };
@@ -47,13 +53,15 @@
 		2BA6A18120204D15006FDA28 /* UIImageView+SDWebImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BA6A18020204D15006FDA28 /* UIImageView+SDWebImage.m */; };
 		2BB2671E2025836600CC920F /* LKSessionModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BB2671D2025836600CC920F /* LKSessionModel.m */; };
 		2BC7672D2021CC9E0050A76E /* YYFPSLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BC7672A2021CC9E0050A76E /* YYFPSLabel.m */; };
+		2BC9CDDE202957380015FE0A /* InputBoxBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BC9CDDD202957380015FE0A /* InputBoxBar.m */; };
 		2BDF10F32019D99900048CF7 /* LKPlayerUserCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BDF10F22019D99900048CF7 /* LKPlayerUserCell.m */; };
 		2BDF10F62019DE0100048CF7 /* LKUserListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BDF10F52019DE0100048CF7 /* LKUserListView.m */; };
+		2BDFE13F202AF6AA0007CAB2 /* LKEmojiKeyBoardImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BDFE13E202AF6AA0007CAB2 /* LKEmojiKeyBoardImageCell.m */; };
 		2BE69B152022D45A009A2707 /* LKLaunchBrowseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BE69AF12022D45A009A2707 /* LKLaunchBrowseCell.m */; };
 		2BE69B162022D45A009A2707 /* LKLaunchBrowseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BE69AF32022D45A009A2707 /* LKLaunchBrowseView.m */; };
 		2BE69B172022D45A009A2707 /* CALayer+Aimate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BE69AF62022D45A009A2707 /* CALayer+Aimate.m */; };
-		2BE69B182022D45A009A2707 /* LKDanmuModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BE69AF82022D45A009A2707 /* LKDanmuModel.m */; };
-		2BE69B192022D45A009A2707 /* LKDanmuView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BE69AFB2022D45A009A2707 /* LKDanmuView.m */; };
+		2BE69B182022D45A009A2707 /* LKBarrageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BE69AF82022D45A009A2707 /* LKBarrageModel.m */; };
+		2BE69B192022D45A009A2707 /* LKBarrageCoreView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BE69AFB2022D45A009A2707 /* LKBarrageCoreView.m */; };
 		2BE69B1A2022D45A009A2707 /* LKCacheHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BE69AFD2022D45A009A2707 /* LKCacheHelper.m */; };
 		2BE69B1B2022D45A009A2707 /* LKAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BE69B042022D45A009A2707 /* LKAnimation.m */; };
 		2BE69B1C2022D45A009A2707 /* LKAnimationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BE69B062022D45A009A2707 /* LKAnimationManager.m */; };
@@ -168,6 +176,15 @@
 		2B7C32622023181400BA28DA /* LKItemSegmentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKItemSegmentView.m; sourceTree = "<group>"; };
 		2B8A333C1F4824880090B2BB /* LKShareActivityView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKShareActivityView.h; sourceTree = "<group>"; };
 		2B8A333D1F4824880090B2BB /* LKShareActivityView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKShareActivityView.m; sourceTree = "<group>"; };
+		2B8A3FC7202A993D00E2F5EE /* LKEmojiKeyBoard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKEmojiKeyBoard.h; sourceTree = "<group>"; };
+		2B8A3FC8202A993D00E2F5EE /* LKEmojiKeyBoard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKEmojiKeyBoard.m; sourceTree = "<group>"; };
+		2B8A3FCB202AA9D900E2F5EE /* aio_face_delete@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "aio_face_delete@2x.png"; sourceTree = "<group>"; };
+		2B8A3FCC202AA9D900E2F5EE /* aio_face_delete_pressed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "aio_face_delete_pressed@2x.png"; sourceTree = "<group>"; };
+		2B8A3FCD202AA9D900E2F5EE /* EmojisList.plist */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = EmojisList.plist; sourceTree = "<group>"; };
+		2B8A3FD1202AC70A00E2F5EE /* LKEmojiKeyBoardFlowLayout.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LKEmojiKeyBoardFlowLayout.h; sourceTree = "<group>"; };
+		2B8A3FD2202AC70A00E2F5EE /* LKEmojiKeyBoardFlowLayout.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LKEmojiKeyBoardFlowLayout.m; sourceTree = "<group>"; };
+		2B8A3FD4202AC73800E2F5EE /* LKEmojiKeyBoardLabelCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LKEmojiKeyBoardLabelCell.h; sourceTree = "<group>"; };
+		2B8A3FD5202AC73800E2F5EE /* LKEmojiKeyBoardLabelCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LKEmojiKeyBoardLabelCell.m; sourceTree = "<group>"; };
 		2B9C00001F00B0150010611A /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		2B9C00021F00B01D0010611A /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		2B9C00041F00B0280010611A /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
@@ -194,10 +211,14 @@
 		2BB2671D2025836600CC920F /* LKSessionModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LKSessionModel.m; sourceTree = "<group>"; };
 		2BC767292021CC9E0050A76E /* YYFPSLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYFPSLabel.h; sourceTree = "<group>"; };
 		2BC7672A2021CC9E0050A76E /* YYFPSLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYFPSLabel.m; sourceTree = "<group>"; };
+		2BC9CDDC202957380015FE0A /* InputBoxBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InputBoxBar.h; sourceTree = "<group>"; };
+		2BC9CDDD202957380015FE0A /* InputBoxBar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InputBoxBar.m; sourceTree = "<group>"; };
 		2BDF10F12019D99900048CF7 /* LKPlayerUserCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LKPlayerUserCell.h; sourceTree = "<group>"; };
 		2BDF10F22019D99900048CF7 /* LKPlayerUserCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LKPlayerUserCell.m; sourceTree = "<group>"; };
 		2BDF10F42019DE0100048CF7 /* LKUserListView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LKUserListView.h; sourceTree = "<group>"; };
 		2BDF10F52019DE0100048CF7 /* LKUserListView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LKUserListView.m; sourceTree = "<group>"; };
+		2BDFE13D202AF6AA0007CAB2 /* LKEmojiKeyBoardImageCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LKEmojiKeyBoardImageCell.h; sourceTree = "<group>"; };
+		2BDFE13E202AF6AA0007CAB2 /* LKEmojiKeyBoardImageCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LKEmojiKeyBoardImageCell.m; sourceTree = "<group>"; };
 		2BE69AEB2022D3B6009A2707 /* LineKeMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LineKeMacros.h; sourceTree = "<group>"; };
 		2BE69AEC2022D3B6009A2707 /* lineKePrefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lineKePrefix.pch; sourceTree = "<group>"; };
 		2BE69AED2022D3B6009A2707 /* LKEnumHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKEnumHeader.h; sourceTree = "<group>"; };
@@ -207,11 +228,11 @@
 		2BE69AF32022D45A009A2707 /* LKLaunchBrowseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKLaunchBrowseView.m; sourceTree = "<group>"; };
 		2BE69AF52022D45A009A2707 /* CALayer+Aimate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CALayer+Aimate.h"; sourceTree = "<group>"; };
 		2BE69AF62022D45A009A2707 /* CALayer+Aimate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CALayer+Aimate.m"; sourceTree = "<group>"; };
-		2BE69AF72022D45A009A2707 /* LKDanmuModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKDanmuModel.h; sourceTree = "<group>"; };
-		2BE69AF82022D45A009A2707 /* LKDanmuModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKDanmuModel.m; sourceTree = "<group>"; };
-		2BE69AF92022D45A009A2707 /* LKDanmuModelProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKDanmuModelProtocol.h; sourceTree = "<group>"; };
-		2BE69AFA2022D45A009A2707 /* LKDanmuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKDanmuView.h; sourceTree = "<group>"; };
-		2BE69AFB2022D45A009A2707 /* LKDanmuView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKDanmuView.m; sourceTree = "<group>"; };
+		2BE69AF72022D45A009A2707 /* LKBarrageModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKBarrageModel.h; sourceTree = "<group>"; };
+		2BE69AF82022D45A009A2707 /* LKBarrageModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKBarrageModel.m; sourceTree = "<group>"; };
+		2BE69AF92022D45A009A2707 /* LKBarrageModelProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKBarrageModelProtocol.h; sourceTree = "<group>"; };
+		2BE69AFA2022D45A009A2707 /* LKBarrageCoreView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKBarrageCoreView.h; sourceTree = "<group>"; };
+		2BE69AFB2022D45A009A2707 /* LKBarrageCoreView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKBarrageCoreView.m; sourceTree = "<group>"; };
 		2BE69AFC2022D45A009A2707 /* LKCacheHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKCacheHelper.h; sourceTree = "<group>"; };
 		2BE69AFD2022D45A009A2707 /* LKCacheHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKCacheHelper.m; sourceTree = "<group>"; };
 		2BE69B002022D45A009A2707 /* LKGiftCore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKGiftCore.h; sourceTree = "<group>"; };
@@ -473,6 +494,32 @@
 			path = Categories;
 			sourceTree = "<group>";
 		};
+		2B8A3FC6202A993D00E2F5EE /* LKEmojiKeyBoard */ = {
+			isa = PBXGroup;
+			children = (
+				2B8A3FCA202AA9D900E2F5EE /* Assets */,
+				2B8A3FC7202A993D00E2F5EE /* LKEmojiKeyBoard.h */,
+				2B8A3FC8202A993D00E2F5EE /* LKEmojiKeyBoard.m */,
+				2B8A3FD4202AC73800E2F5EE /* LKEmojiKeyBoardLabelCell.h */,
+				2B8A3FD5202AC73800E2F5EE /* LKEmojiKeyBoardLabelCell.m */,
+				2BDFE13D202AF6AA0007CAB2 /* LKEmojiKeyBoardImageCell.h */,
+				2BDFE13E202AF6AA0007CAB2 /* LKEmojiKeyBoardImageCell.m */,
+				2B8A3FD1202AC70A00E2F5EE /* LKEmojiKeyBoardFlowLayout.h */,
+				2B8A3FD2202AC70A00E2F5EE /* LKEmojiKeyBoardFlowLayout.m */,
+			);
+			path = LKEmojiKeyBoard;
+			sourceTree = "<group>";
+		};
+		2B8A3FCA202AA9D900E2F5EE /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				2B8A3FCB202AA9D900E2F5EE /* aio_face_delete@2x.png */,
+				2B8A3FCC202AA9D900E2F5EE /* aio_face_delete_pressed@2x.png */,
+				2B8A3FCD202AA9D900E2F5EE /* EmojisList.plist */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
 		2BA6A17820204D02006FDA28 /* RequestAdapter */ = {
 			isa = PBXGroup;
 			children = (
@@ -493,6 +540,15 @@
 			path = YYFPSLabel;
 			sourceTree = "<group>";
 		};
+		2BC9CDDB2029571B0015FE0A /* InputBoxBar */ = {
+			isa = PBXGroup;
+			children = (
+				2BC9CDDC202957380015FE0A /* InputBoxBar.h */,
+				2BC9CDDD202957380015FE0A /* InputBoxBar.m */,
+			);
+			path = InputBoxBar;
+			sourceTree = "<group>";
+		};
 		2BE69AEA2022D3B6009A2707 /* Header */ = {
 			isa = PBXGroup;
 			children = (
@@ -510,6 +566,8 @@
 				2BE69AFE2022D45A009A2707 /* LKGiftCore */,
 				2BE69AEF2022D45A009A2707 /* LaunchBrowse */,
 				2BE69AF42022D45A009A2707 /* LKBarrageCore */,
+				2BC9CDDB2029571B0015FE0A /* InputBoxBar */,
+				2B8A3FC6202A993D00E2F5EE /* LKEmojiKeyBoard */,
 				2BE69B122022D45A009A2707 /* XDProgressHUD */,
 				2BE69AFC2022D45A009A2707 /* LKCacheHelper.h */,
 				2BE69AFD2022D45A009A2707 /* LKCacheHelper.m */,
@@ -535,11 +593,11 @@
 			children = (
 				2BE69AF52022D45A009A2707 /* CALayer+Aimate.h */,
 				2BE69AF62022D45A009A2707 /* CALayer+Aimate.m */,
-				2BE69AF72022D45A009A2707 /* LKDanmuModel.h */,
-				2BE69AF82022D45A009A2707 /* LKDanmuModel.m */,
-				2BE69AF92022D45A009A2707 /* LKDanmuModelProtocol.h */,
-				2BE69AFA2022D45A009A2707 /* LKDanmuView.h */,
-				2BE69AFB2022D45A009A2707 /* LKDanmuView.m */,
+				2BE69AF72022D45A009A2707 /* LKBarrageModel.h */,
+				2BE69AF82022D45A009A2707 /* LKBarrageModel.m */,
+				2BE69AF92022D45A009A2707 /* LKBarrageModelProtocol.h */,
+				2BE69AFA2022D45A009A2707 /* LKBarrageCoreView.h */,
+				2BE69AFB2022D45A009A2707 /* LKBarrageCoreView.m */,
 			);
 			path = LKBarrageCore;
 			sourceTree = "<group>";
@@ -1015,12 +1073,15 @@
 				AE7E71721F3B09880019B515 /* camra_beauty@2x.png in Resources */,
 				AE7E71861F3B09880019B515 /* LKLiveRoomViewController.xib in Resources */,
 				AE7E71781F3B09880019B515 /* close_preview@2x.png in Resources */,
+				2B8A3FCE202AA9D900E2F5EE /* aio_face_delete@2x.png in Resources */,
 				AE7E71731F3B09880019B515 /* camra_beauty@3x.png in Resources */,
 				AE7E71761F3B09880019B515 /* camra_preview@2x.png in Resources */,
+				2B8A3FD0202AA9D900E2F5EE /* EmojisList.plist in Resources */,
 				AE7E71771F3B09880019B515 /* camra_preview@3x.png in Resources */,
 				AE7E717A1F3B09880019B515 /* ios-29x29.png in Resources */,
 				2B1E7FD41F459B2100B00C58 /* LKTalkTableViewCell.xib in Resources */,
 				2B55FBD61EFA73E0005A83BE /* LaunchScreen.storyboard in Resources */,
+				2B8A3FCF202AA9D900E2F5EE /* aio_face_delete_pressed@2x.png in Resources */,
 				AE7E71791F3B09880019B515 /* close_preview@3x.png in Resources */,
 				AE7E717D1F3B09880019B515 /* LKLoginViewController.xib in Resources */,
 				2B55FBD31EFA73E0005A83BE /* Assets.xcassets in Resources */,
@@ -1105,6 +1166,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2B8A3FD6202AC73800E2F5EE /* LKEmojiKeyBoardLabelCell.m in Sources */,
 				AE7E717E1F3B09880019B515 /* LKMeViewController.m in Sources */,
 				2B1E7FD31F459B2100B00C58 /* LKTalkTableViewCell.m in Sources */,
 				AE7E71911F3B09880019B515 /* LKLiveHandler.m in Sources */,
@@ -1118,11 +1180,13 @@
 				2B704C991EFB703D0020A0D6 /* UIImage+Additions.m in Sources */,
 				2BE69B1D2022D45A009A2707 /* LKCacheData.m in Sources */,
 				2BE69B1B2022D45A009A2707 /* LKAnimation.m in Sources */,
+				2BDFE13F202AF6AA0007CAB2 /* LKEmojiKeyBoardImageCell.m in Sources */,
 				AE7E71871F3B09880019B515 /* LKPlayerViewController.m in Sources */,
 				2B55FBC81EFA73E0005A83BE /* main.m in Sources */,
 				2BDF10F32019D99900048CF7 /* LKPlayerUserCell.m in Sources */,
 				AE7E71851F3B09880019B515 /* LKLiveRoomViewController.m in Sources */,
-				2BE69B182022D45A009A2707 /* LKDanmuModel.m in Sources */,
+				2B8A3FC9202A993D00E2F5EE /* LKEmojiKeyBoard.m in Sources */,
+				2BE69B182022D45A009A2707 /* LKBarrageModel.m in Sources */,
 				AE7E71891F3B09880019B515 /* LKFlowLayout.m in Sources */,
 				2B704C9A1EFB703D0020A0D6 /* UIImage+Estend.m in Sources */,
 				2BE69B1A2022D45A009A2707 /* LKCacheHelper.m in Sources */,
@@ -1135,6 +1199,8 @@
 				2BDF10F62019DE0100048CF7 /* LKUserListView.m in Sources */,
 				2B9C001D1F00E5160010611A /* LKHasNavViewController.m in Sources */,
 				2BE69B1E2022D45A009A2707 /* LKGiftData.m in Sources */,
+				2BC9CDDE202957380015FE0A /* InputBoxBar.m in Sources */,
+				2B8A3FD3202AC70A00E2F5EE /* LKEmojiKeyBoardFlowLayout.m in Sources */,
 				2B147A681EFF5F770019312D /* LKBaseHandler.m in Sources */,
 				AE7E71991F3B09880019B515 /* LKNearCollectionViewCell.m in Sources */,
 				AE7E717F1F3B09880019B515 /* LKSettingViewController.m in Sources */,
@@ -1157,7 +1223,7 @@
 				2B75AF811EFCC8B900BFE311 /* LKBasicTabBar.m in Sources */,
 				2BC7672D2021CC9E0050A76E /* YYFPSLabel.m in Sources */,
 				AE7E71831F3B09880019B515 /* LKMeTableViewCell.m in Sources */,
-				2BE69B192022D45A009A2707 /* LKDanmuView.m in Sources */,
+				2BE69B192022D45A009A2707 /* LKBarrageCoreView.m in Sources */,
 				2B1E7FCF1F458BDD00B00C58 /* LKLiveSessionView.m in Sources */,
 				AE7E71961F3B09880019B515 /* LKHotLiveTableViewCell.m in Sources */,
 				2BE9BA5D2020063100711676 /* Reachability.m in Sources */,

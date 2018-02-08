@@ -2,8 +2,8 @@
 //  XDProgressHUD.h
 //  OnlyBrother_ Seller
 //
-//  Created by codeTan on 16/10/23.
-//  Copyright © 2016年 谭捷. All rights reserved.
+//  Created by CODER_TJ on 16/10/23.
+//  Copyright © 2016年 CODER_TJ. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>

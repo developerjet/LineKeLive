@@ -10,4 +10,7 @@
 
 @interface LKMeHeaderView : UIView
 
+/** 顶部点击回调 */
+@property (nonatomic, weak) void(^DidFinishedBlock)(NSInteger index);
+
 @end

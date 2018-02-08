@@ -75,10 +75,10 @@ static NSString  *const kReuseIdentifier = @"kCellReuseIdentifier";
     self.timerButton = [UIButton buttonWithType:UIButtonTypeCustom];
     self.timerButton.titleLabel.textAlignment = NSTextAlignmentCenter;
     self.timerButton.titleLabel.font = [UIFont systemFontOfSize:13];
-    self.timerButton.layer.cornerRadius = 3.0;
+    self.timerButton.layer.cornerRadius = 12.0;
     self.timerButton.layer.masksToBounds = YES;
     self.timerButton.hidden = self.imageGroups.count == 1 ? NO : YES;
-    self.timerButton.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.7];
+    self.timerButton.backgroundColor = [[UIColor whiteColor] colorWithAlphaComponent:0.65];
     [self.timerButton setTitle:[NSString stringWithFormat:@"%zds跳过",showtime] forState:UIControlStateNormal];
     [self.timerButton addTarget:self action:@selector(dismiss) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:self.timerButton];
@@ -209,8 +209,8 @@ static NSString  *const kReuseIdentifier = @"kCellReuseIdentifier";
 - (void)layoutSubviews {
     [super layoutSubviews];
     
-    CGFloat btnH = 32;
-    CGFloat btnW = 68;
+    CGFloat btnH = 24;
+    CGFloat btnW = 56;
     CGFloat btnX = self.frame.size.width - btnW - 20;
     CGFloat btnY = 30;
     

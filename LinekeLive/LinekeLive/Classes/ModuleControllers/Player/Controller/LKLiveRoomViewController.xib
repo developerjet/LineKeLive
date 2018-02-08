@@ -12,11 +12,11 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LKLiveRoomViewController">
             <connections>
-                <outlet property="countLable" destination="Sbl-sf-1iP" id="u12-Gg-2Nl"/>
-                <outlet property="followView" destination="QS9-G5-6Sb" id="e3i-1r-a2h"/>
-                <outlet property="iconView" destination="96d-Cg-cqp" id="CFi-ok-bFj"/>
-                <outlet property="menuView" destination="1hn-57-9oo" id="4pm-uz-JxZ"/>
-                <outlet property="ticketView" destination="D30-vG-e3b" id="9WS-Z6-XUD"/>
+                <outlet property="connectView" destination="1hn-57-9oo" id="DjG-La-Tlo"/>
+                <outlet property="followButton" destination="QS9-G5-6Sb" id="fK5-rW-ffh"/>
+                <outlet property="headerImgView" destination="96d-Cg-cqp" id="LnM-AC-jQS"/>
+                <outlet property="onUsersLabel" destination="Sbl-sf-1iP" id="oiM-Nq-61P"/>
+                <outlet property="timerButton" destination="D30-vG-e3b" id="Dh5-PE-3yv"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -115,7 +115,7 @@
                             <fontDescription key="fontDescription" type="system" pointSize="11"/>
                             <state key="normal" title="关注"/>
                             <connections>
-                                <action selector="followClick:" destination="-1" eventType="touchUpInside" id="yZ5-0c-0b8"/>
+                                <action selector="followClick:" destination="-1" eventType="touchUpInside" id="vyS-1a-Gdy"/>
                             </connections>
                         </button>
                     </subviews>

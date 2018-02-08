@@ -12,37 +12,39 @@
 #import "LKLiveSessionView.h"
 #import "LKUserListView.h"
 #import "LKGiftListView.h"
-#import "LKDanmuModel.h"
+#import "LKBarrageModel.h"
 #import "LKGiftModel.h"
-#import "LKDanmuView.h"
+#import "LKBarrageCoreView.h"
+#import "InputBoxBar.h"
 #import "LKGiftData.h"
 
-@interface LKLiveRoomViewController ()<UITextViewDelegate, LKGiftListViewDelegate, LKDanmuViewProtocol>
-@property (weak, nonatomic) IBOutlet UIView      *menuView;
-@property (weak, nonatomic) IBOutlet UILabel     *countLable;
-@property (weak, nonatomic) IBOutlet UIButton    *ticketView;
-@property (weak, nonatomic) IBOutlet UIButton    *followView;
-@property (weak, nonatomic) IBOutlet UIImageView *iconView;
+@interface LKLiveRoomViewController ()<UITextViewDelegate, LKGiftListViewDelegate, LKDanmuViewProtocol, InputBoxBarDelegate>
+@property (weak, nonatomic) IBOutlet UIView      *connectView;
+@property (weak, nonatomic) IBOutlet UIButton    *timerButton;
+@property (weak, nonatomic) IBOutlet UILabel     *onUsersLabel;
+@property (weak, nonatomic) IBOutlet UIButton    *followButton;
+@property (weak, nonatomic) IBOutlet UIImageView *headerImgView;
 
-@property (nonatomic, weak)   LKDanmuView *danmuView;
-@property (nonatomic, strong) LKGiftListView *giftListView;
+@property (nonatomic, strong) NSTimer *timer;
 @property (nonatomic, strong) UIView *showView; //礼物展示区域
 @property (nonatomic, strong) LKGiftData *data;
-@property (nonatomic, strong) NSTimer *timer;
+@property (nonatomic,   weak) LKBarrageCoreView *danmuView;
+@property (nonatomic, strong) LKGiftListView *giftListView;
 
-@property (nonatomic, strong) UIView *keyBoardView;
-@property (nonatomic, strong) UITextView *inputTextView; //聊天输入框
-@property (nonatomic, strong) LKUserListView *userListView;
+@property (nonatomic, strong) InputBoxBar       *keyBoardBar;;
+@property (nonatomic, strong) LKUserListView    *userListView;
 @property (nonatomic, strong) LKLiveSessionView *sessionView;
-@property (nonatomic, strong) NSArray *userList;
-@property (nonatomic, assign) CGFloat originalY;
+@property (nonatomic, assign) kInputBarDidStatus status;
 
+@property (nonatomic, assign) CGFloat    sessionOriginY;
+@property (nonatomic, assign) double     originDuration;
+@property (nonatomic, assign) NSInteger  animationCurve;
+@property (nonatomic, assign) BOOL       keyboardIsVisible;
 @end
 
 @implementation LKLiveRoomViewController
 
-#pragma mark - lazy
-
+#pragma mark - Lazy
 - (LKGiftData *)data {
     
     if (!_data) {
@@ -51,8 +53,7 @@
     return _data;
 }
 
-#pragma mark - viewLoad
-
+#pragma mark - DidLoads
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     
@@ -64,12 +65,6 @@
     
     [self configSubviews];
     [self initKeyboardNote];
-}
-
-- (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
-    
-    [self initSession];
 }
 
 - (void)initKeyboardNote {
@@ -88,41 +83,36 @@
     LKLiveSessionView *sessionView = [[LKLiveSessionView alloc] initWithFrame:CGRectMake(0, SCREEN_HEIGHT-210, SCREEN_WIDTH, 160)];
     [self.view addSubview:sessionView];
     [self.view bringSubviewToFront:sessionView];
-    _originalY = sessionView.center.y;
+    _sessionOriginY = sessionView.center.y;
     _sessionView = sessionView;
-    
-    __weak typeof(self) weakSelf = self;
-    sessionView.isDraggBlock = ^{
-        [weakSelf.view endEditing:YES];
-    };
 }
 
 - (void)configSubviews {
     
     self.view.backgroundColor = [UIColor clearColor];
-    self.menuView.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.8];
-    self.menuView.layer.cornerRadius = self.menuView.layer.frame.size.height * 0.5;
-    self.menuView.layer.masksToBounds = YES;
+    self.connectView.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.8];
+    self.connectView.layer.cornerRadius = self.connectView.layer.frame.size.height * 0.5;
+    self.connectView.layer.masksToBounds = YES;
     
-    self.ticketView.titleLabel.textAlignment = NSTextAlignmentCenter;
+    self.timerButton.titleLabel.textAlignment = NSTextAlignmentCenter;
     
-    self.iconView.layer.cornerRadius  = self.iconView.layer.height * 0.5;
-    self.iconView.layer.masksToBounds = YES;
+    self.headerImgView.layer.cornerRadius  = self.headerImgView.layer.height * 0.5;
+    self.headerImgView.layer.masksToBounds = YES;
 
-    self.followView.layer.cornerRadius  = self.followView.layer.height * 0.5;
-    self.followView.layer.masksToBounds = YES;
+    self.followButton.layer.cornerRadius  = self.followButton.layer.height * 0.5;
+    self.followButton.layer.masksToBounds = YES;
     
     if ([self isFollow]) {
-        self.followView.selected = YES;
-        [self.followView setTitle:@"已关注" forState:UIControlStateNormal];
+        self.followButton.selected = YES;
+        [self.followButton setTitle:@"已关注" forState:UIControlStateNormal];
     }else {
-        self.followView.selected = NO;
-        [self.followView setTitle:@"关注" forState:UIControlStateNormal];
+        self.followButton.selected = NO;
+        [self.followButton setTitle:@"关注" forState:UIControlStateNormal];
     }
     
     [NSTimer scheduledTimerWithTimeInterval:1.0 block:^(NSTimer * _Nonnull timer) {
         _timer = timer;
-        [self.ticketView setTitle:[NSString stringWithFormat:@"映票 %d", arc4random_uniform(10000)] forState:UIControlStateNormal]; //随机显示映票数
+        [self.timerButton setTitle:[NSString stringWithFormat:@"映票 %d", arc4random_uniform(10000)] forState:UIControlStateNormal]; //随机显示映票数
         [[NSRunLoop mainRunLoop] addTimer:_timer forMode:NSRunLoopCommonModes];
     } repeats:YES];
     
@@ -131,112 +121,104 @@
     [self.view addSubview:self.showView];
     
     /// 弹幕
-    LKDanmuView *danmuView = [[LKDanmuView alloc] initWithFrame:CGRectMake(0, 150, SCREEN_WIDTH, 150)];
+    LKBarrageCoreView *danmuView = [[LKBarrageCoreView alloc] initWithFrame:CGRectMake(0, 150, SCREEN_WIDTH, 150)];
     danmuView.delegate = self;
     self.danmuView = danmuView;
     [self.view addSubview:danmuView];
     
+    [self initSession];
+    
     // 用户列表
-    CGFloat userX = CGRectGetMaxX(self.menuView.frame) + 10;
+    CGFloat userX = CGRectGetMaxX(self.connectView.frame) + 10;
     CGFloat userW = SCREEN_WIDTH - userX - 60;
     _userListView = [[LKUserListView alloc] initWithFrame:CGRectMake(userX, 30, userW, 40)];
     [self.view addSubview:_userListView];
     
-    /// 会话输入
-    [self createKeyBoard];
-}
-
-- (void)createKeyBoard {
-    
-    //自定义聊天输入框
-    _keyBoardView = [[UIView alloc] initWithFrame:CGRectMake(0, SCREEN_HEIGHT, SCREEN_WIDTH, 50)];
-    _keyBoardView.backgroundColor = [UIColor colorWithHexString:@"FFFFFF"];
-    [self.view addSubview:_keyBoardView];
-    [self.view bringSubviewToFront:_keyBoardView];
-    
-    CGFloat padding = 10;
-    
-    CGFloat btnW = 70;
-    CGFloat btnX = SCREEN_WIDTH - (btnW + padding);
-    UIButton *sendButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    sendButton.backgroundColor = [UIColor colorNavThemeColor];
-    sendButton.frame = CGRectMake(btnX, padding, btnW, 30);
-    [sendButton setTitle:@"发送" forState:UIControlStateNormal];
-    sendButton.titleLabel.font = [UIFont systemFontOfSize:14];
-    sendButton.userInteractionEnabled = YES;
-    sendButton.layer.cornerRadius = 5;
-    sendButton.layer.masksToBounds = YES;
-    [sendButton addTarget:self action:@selector(sendClick) forControlEvents:UIControlEventTouchUpInside];
-    [_keyBoardView addSubview:sendButton];
-    
-    CGFloat boxW = 30;
-    CGFloat boxX = SCREEN_WIDTH - (btnW + padding) - (boxW + padding);
-    UIButton *boxInButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [boxInButton setImage:[UIImage imageNamed:@"ToolViewEmotion"] forState:UIControlStateNormal];
-    boxInButton.frame = CGRectMake(boxX, padding, boxW, boxW);
-    [_keyBoardView addSubview:boxInButton];
-    
-    CGFloat textW = SCREEN_WIDTH - (btnW + padding) - (boxW + padding) - 2*padding;
-    UITextView *inputTextView = [[UITextView alloc] initWithFrame:CGRectMake(padding, padding, textW, 30)];
-    inputTextView.delegate = self;
-    inputTextView.layer.cornerRadius = 3;
-    inputTextView.layer.borderWidth = 0.8;
-    inputTextView.returnKeyType = UIReturnKeySend;
-    inputTextView.layer.borderColor = COLORHEX(@"e8e8e8").CGColor;
-    [_keyBoardView addSubview:inputTextView];
-    _inputTextView = inputTextView;
+    self.keyBoardBar = [[InputBoxBar alloc] init];
+    self.keyBoardBar.delegate = self;
+    [self.view addSubview:self.keyBoardBar];
 }
 
 - (void)keyboardWillShow:(NSNotification *)noti {
-    
+    _keyboardIsVisible = YES;
     NSDictionary *userInfo = [noti userInfo];
     NSValue *value = [userInfo objectForKey:UIKeyboardFrameEndUserInfoKey];
     CGFloat keyBoardEndY = value.CGRectValue.origin.y;
     NSNumber *duration = [userInfo objectForKey:UIKeyboardAnimationDurationUserInfoKey];
     NSNumber *curve = [userInfo objectForKey:UIKeyboardAnimationCurveUserInfoKey];
+    _originDuration = duration.doubleValue;
+    _animationCurve = [curve integerValue];
     
-    [UIView animateWithDuration:duration.doubleValue animations:^{
+    [UIView animateWithDuration:_originDuration animations:^{
         [UIView setAnimationsEnabled:YES];
-        [UIView setAnimationCurve:[curve integerValue]]; //设置动画曲线，控制动画速度
-        _keyBoardView.center = CGPointMake(_keyBoardView.center.x, keyBoardEndY-_keyBoardView.bounds.size.height/2.0);
-        _sessionView.center = CGPointMake(_sessionView.center.x, keyBoardEndY-_keyBoardView.frame.size.height- _sessionView.bounds.size.height/2.0);
+        [UIView setAnimationCurve:_animationCurve]; //设置动画曲线，控制动画速度
+        _sessionView.center = CGPointMake(_sessionView.center.x, keyBoardEndY-_keyBoardBar.frame.size.height- _sessionView.bounds.size.height/2.0);
         [UIView commitAnimations];
     }];
 }
 
 - (void)keyboardWillHide:(NSNotification *)noti {
-    
+    _keyboardIsVisible = NO;
     NSDictionary *userInfo = [noti userInfo];
-    NSValue *value = [userInfo objectForKey:UIKeyboardFrameEndUserInfoKey];
-    CGFloat keyBoardEndY = value.CGRectValue.origin.y;
-    CGFloat keyBoardEndH = value.CGRectValue.size.height;
     NSNumber *duration = [userInfo valueForKey:UIKeyboardAnimationDurationUserInfoKey];
     NSNumber *curve = [userInfo objectForKey:UIKeyboardAnimationCurveUserInfoKey];
+    _originDuration = duration.doubleValue;
+    _animationCurve = [curve integerValue];
     
-    [UIView animateWithDuration:duration.doubleValue animations:^{
+    [UIView animateWithDuration:_originDuration animations:^{
         [UIView setAnimationsEnabled:YES];
-        [UIView setAnimationCurve:[curve integerValue]];
-        _keyBoardView.center = CGPointMake(_keyBoardView.center.x, keyBoardEndY - (_keyBoardView.bounds.size.height - keyBoardEndH)/2);
-        _sessionView.center = CGPointMake(_sessionView.center.x, _originalY);
+        [UIView setAnimationCurve:_animationCurve];
+        _sessionView.center = CGPointMake(_sessionView.center.x, _sessionOriginY);
         [UIView commitAnimations];
     }];
 }
 
-- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
-    [self.view endEditing:YES];
+#pragma mark - <InputBoxBarDelegate>
+- (void)inputBoxBar:(InputBoxBar *)boxBar DidKeyBoardStatus:(kInputBarDidStatus)status {
     
-    self.inputTextView.text = @"";
+    self.status = status;
+    if (self.status == kInputBarDidStatus_Emoji) {
+        if (!_keyboardIsVisible) { //系统键盘已经回收
+            CGFloat layoutY = CGRectGetMidY(boxBar.frame) - (boxBar.height + 70);
+            [UIView animateWithDuration:_originDuration+0.35 animations:^{
+                [UIView setAnimationsEnabled:YES];
+                [UIView setAnimationCurve:_animationCurve];
+                _sessionView.center = CGPointMake(_sessionView.center.x, layoutY);
+                [UIView commitAnimations];
+            }];
+        }
+    }
 }
 
-#pragma mark - LKDanmuViewProtocol
-- (UIView *)danmuViewWithModel:(LKDanmuModel *)model {
+- (void)inputBoxBar:(InputBoxBar *)boxBar DidEditingAtText:(NSString *)text {
+    
+    CGFloat layoutY = CGRectGetMidY(boxBar.frame) - (_sessionView.bounds.size.height - 40);
+    self.sessionView.center = CGPointMake(_sessionView.center.x, layoutY);
+}
+
+- (void)inputBoxBar:(InputBoxBar *)boxBar DidEndEditingAtText:(NSString *)text {
+    
+    LKBarrageModel *dmModel = [LKBarrageModel new];
+    dmModel.beginTime = 2;
+    dmModel.liveTime = 5;
+    dmModel.content = text;
+    [self.danmuView.models addObject:dmModel];
+    
+    LKSessionModel *session = [LKSessionModel new];
+    session.level = 9;
+    session.name = @"王思聪";
+    session.talk = text;
+    self.sessionView.session = session;
+}
+
+#pragma mark - <LKDanmuViewProtocol>
+- (UIView *)danmuViewWithModel:(LKBarrageModel *)model {
     
     UILabel *label = [UILabel new];
     label.text = model.content;
     label.font = [UIFont systemFontOfSize:13];
     label.textColor = [UIColor colorWithRandom];
     [label sizeToFit];
-    
     return label;
 }
 
@@ -249,11 +231,10 @@
 
 #pragma mark - Setter
 - (void)setModel:(LKLiveModel *)model {
-    
     _model = model;
     
-    [self.iconView downloadImage:model.creator.portrait placeholder:@"default_room"];
-    self.countLable.text = [NSString stringWithFormat:@"%ld人", (long)model.onlineUsers];
+    [self.headerImgView downloadImage:model.creator.portrait placeholder:@"default_room"];
+    self.onUsersLabel.text = [NSString stringWithFormat:@"%ld人", (long)model.onlineUsers];
 }
 
 #pragma mark - Room Actions
@@ -262,7 +243,7 @@
     
     switch (status) {
         case LKPlayerEventStatus_Session:
-            [self.inputTextView becomeFirstResponder]; //弹出会话输入框
+            [self.keyBoardBar become]; //弹出会话输入框
             break;
         case LKPlayerEventStatus_GiveGift:
             [self showGiftBox];
@@ -297,37 +278,19 @@
     if (button.selected) {
         self.model.follow = YES;
         [[LKCacheHelper shared] followAnchor:self.model];
-        [self.followView setTitle:@"已关注" forState:UIControlStateNormal];
+        [self.followButton setTitle:@"已关注" forState:UIControlStateNormal];
         [XDProgressHUD showHUDWithText:@"已关注主播" hideDelay:1.0];
     }else {
         self.model.follow = NO;
         [[LKCacheHelper shared] unFollowAnchor:self.model];
-        [self.followView setTitle:@"关注" forState:UIControlStateNormal];
+        [self.followButton setTitle:@"关注" forState:UIControlStateNormal];
         [XDProgressHUD showHUDWithText:@"取消关注" hideDelay:1.0];
     }
     
     [[NSNotificationCenter defaultCenter] postNotificationName:kFollowKey object:nil];
 }
 
-- (void)sendClick {
-    
-    LKDanmuModel *dmModel = [LKDanmuModel new];
-    dmModel.beginTime = 2;
-    dmModel.liveTime = 5;
-    dmModel.content = self.inputTextView.text;
-    [self.danmuView.models addObject:dmModel];
-    
-    LKSessionModel *session = [LKSessionModel new];
-    session.level = 9;
-    session.name = @"王思聪";
-    session.talk = self.inputTextView.text;
-    self.sessionView.session = session;
-    
-    //清除之前的会话
-    self.inputTextView.text = @"";
-}
-
-#pragma mark - LKGiftListViewDelegate
+#pragma mark - <LKGiftListViewDelegate>
 - (void)startAnimaView:(LKGiftListView *)giftView DidSelectItem:(LKGiftModel *)model {
     
     self.data.giftIcon = model.img2;
@@ -342,15 +305,21 @@
     }];
 }
 
-#pragma mark - UITextViewDelegate
-- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text{
-    if ([text isEqualToString:@"\n"]){ //判断输入的字是否是回车，即按下return
-        [self sendClick];
-        [self.inputTextView resignFirstResponder];
-        return NO;
-    }
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
     
-    return YES;
+    [self recoveryKeyBoard];
+}
+
+- (void)recoveryKeyBoard {
+    [self.view endEditing:YES]; //系统键盘退出
+    
+    [UIView animateWithDuration:_originDuration+0.35 animations:^{
+        [UIView setAnimationsEnabled:YES];
+        [UIView setAnimationCurve:_animationCurve];
+        [self.keyBoardBar recovery];
+        _sessionView.center = CGPointMake(_sessionView.center.x, _sessionOriginY);
+        [UIView commitAnimations];
+    }];
 }
 
 #pragma mark - remove
@@ -363,6 +332,7 @@
 
 //移除timer
 - (void)removeTimer {
+    [self.keyBoardBar recovery];
     
     if (_timer) {
         [_timer invalidate];

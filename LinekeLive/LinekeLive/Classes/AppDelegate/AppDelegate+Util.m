@@ -9,8 +9,8 @@
 #import "AppDelegate+Util.h"
 #import "LKLaunchBrowseView.h"
 #import "LKLocationManager.h"
-#import <Bugly/Bugly.h>
 #import <UIColor+YYAdd.h>
+#import <Bugly/Bugly.h>
 #import "YYFPSLabel.h"
 
 @implementation AppDelegate (Util)
@@ -47,7 +47,7 @@
     
     if (status == NotReachable)
     {
-        [self showNote];
+        [self showNeting];
     }
     else
     {
@@ -64,8 +64,8 @@
     
     [self appearanceSet];
     [self initReachNote];
-    [self initNewFeature];
     [self initLoaction];
+    [self initLaunchBrows];
 }
 
 - (void)appearanceSet {
@@ -79,7 +79,7 @@
 }
 
 /** 设置新特性&广告界面 */
-- (void)initNewFeature {
+- (void)initLaunchBrows {
 
     if ([self isFirstLaunch]) {
         NSArray *imageArray1 = @[
@@ -116,7 +116,7 @@
     }];
 }
 
-- (void)showNote {
+- (void)showNeting {
     
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"温馨提示" message:@"当前网络已断开,请检查网络连接设置" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
     [alert show];

@@ -12,7 +12,8 @@
 #import "LineKeMacros.h"
 #import "LKGiftModel.h"
 
-#define kShowHeight  230
+#define kShowViewHeight  230
+#define kShowListHeight  200
 
 static int const maxCols = 4;
 static NSString *kCellIdentifier = @"CellFromIdentifier";
@@ -42,7 +43,7 @@ UICollectionViewDelegateFlowLayout>
 - (UIPageControl *)pageControl {
     
     if (!_pageControl) {
-        CGRect frame = CGRectMake(0, kShowHeight-30, SCREEN_WIDTH, 30);
+        CGRect frame = CGRectMake(0, kShowViewHeight-30, SCREEN_WIDTH, 30);
         _pageControl = [[UIPageControl alloc] initWithFrame:frame];
         _pageControl.backgroundColor = [UIColor clearColor];
         _pageControl.pageIndicatorTintColor = [UIColor whiteColor];
@@ -55,7 +56,7 @@ UICollectionViewDelegateFlowLayout>
     
     if (!_startButton) {
         _startButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        _startButton.frame = CGRectMake(SCREEN_WIDTH-60, kShowHeight-32, 50, 24);
+        _startButton.frame = CGRectMake(SCREEN_WIDTH-60, kShowViewHeight-32, 50, 24);
         [_startButton setTitle:@"赠送" forState:UIControlStateNormal];
         _startButton.layer.cornerRadius = 12.0;
         _startButton.layer.masksToBounds = YES;
@@ -84,9 +85,10 @@ UICollectionViewDelegateFlowLayout>
         layout.sectionInset = UIEdgeInsetsMake(margin, margin, margin, margin);
         layout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
         
-        _collectionView = [[UICollectionView alloc] initWithFrame:self.show_GFView.bounds collectionViewLayout:layout];
+        _collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, kShowListHeight) collectionViewLayout:layout];
         _collectionView.bounces  = NO;
         _collectionView.delegate = self;
+        _collectionView.backgroundColor = [UIColor orangeColor];
         _collectionView.dataSource = self;
         _collectionView.pagingEnabled = YES;
         _collectionView.showsVerticalScrollIndicator = NO;
@@ -117,7 +119,7 @@ UICollectionViewDelegateFlowLayout>
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismiss)];
     [self.show_BGView addGestureRecognizer:tap];
     
-    self.show_GFView = [[UIView alloc] initWithFrame:CGRectMake(0, SCREEN_HEIGHT, SCREEN_WIDTH, 0)];
+    self.show_GFView = [[UIView alloc] initWithFrame:CGRectMake(0, SCREEN_HEIGHT, SCREEN_WIDTH, kShowViewHeight)];
     self.show_GFView.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.65];
     [self addSubview:self.show_GFView];
     
@@ -126,7 +128,7 @@ UICollectionViewDelegateFlowLayout>
     [self.show_GFView addSubview:self.pageControl];
     [self.show_GFView addSubview:self.startButton];
     
-    [self startRespObj];
+    [self requestList];
 }
 
 #pragma mark - Cycle Actions
@@ -135,7 +137,7 @@ UICollectionViewDelegateFlowLayout>
     
     [UIView animateWithDuration:0.25 animations:^{
         
-        self.show_GFView.frame = CGRectMake(0, SCREEN_HEIGHT-kShowHeight, SCREEN_WIDTH, kShowHeight);
+        self.show_GFView.frame = CGRectMake(0, SCREEN_HEIGHT-kShowViewHeight, SCREEN_WIDTH, kShowViewHeight);
     }];
 }
 
@@ -158,7 +160,7 @@ UICollectionViewDelegateFlowLayout>
 }
 
 #pragma mark - CyCle left
-- (void)startRespObj {
+- (void)requestList {
     
     [MBProgressHUD showHUDAddedTo:self.collectionView animated:YES];
     
@@ -172,7 +174,7 @@ UICollectionViewDelegateFlowLayout>
             
             for (NSString *type in keys)
             {
-                [self.resultItems addObject:[LKGiftModel mj_objectArrayWithKeyValuesArray:object[type][@"list"]]];
+                [self.resultItems addObjectsFromArray:[LKGiftModel mj_objectArrayWithKeyValuesArray:object[type][@"list"]]];
             }
             self.pageControl.numberOfPages = self.resultItems.count;
             [self.collectionView reloadData];
@@ -195,13 +197,13 @@ UICollectionViewDelegateFlowLayout>
 
 #pragma mark - UICollectionView Delegate && data
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
-
+    
     return self.resultItems.count;
 }
 
 //每组返回多少行
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-
+    
     return [self.resultItems[section] count];
 }
 
@@ -250,9 +252,8 @@ UICollectionViewDelegateFlowLayout>
     
     CGFloat width   = SCREEN_WIDTH;
     CGFloat offsetX = scrollView.contentOffset.x;
-
-    NSInteger index = offsetX / width; //获取索引值
     
+    NSInteger index = offsetX / width; //获取索引值
     if (offsetX <= 0) {
         self.pageControl.currentPage = 1;
     }

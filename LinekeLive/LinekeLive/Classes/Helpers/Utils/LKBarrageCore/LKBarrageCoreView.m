@@ -6,13 +6,13 @@
 //  Copyright © 2017年 CoderTan. All rights reserved.
 //
 
-#import "LKDanmuView.h"
+#import "LKBarrageCoreView.h"
 #import "CALayer+Aimate.h"
 
 #define kClockSec 0.1
 #define kDandaoCount 5
 
-@interface LKDanmuView()
+@interface LKBarrageCoreView()
 {
     BOOL _isPause;
 }
@@ -26,7 +26,7 @@
 
 @end
 
-@implementation LKDanmuView
+@implementation LKBarrageCoreView
 
 #pragma mark - lazy
 - (NSMutableArray *)danmuViews {
@@ -160,7 +160,7 @@
     
     
     //ModelProtocol
-    [self.models sortUsingComparator:^NSComparisonResult(id<LKDanmuModelProtocol>  _Nonnull obj1, id<LKDanmuModelProtocol>  _Nonnull obj2) {
+    [self.models sortUsingComparator:^NSComparisonResult(id<LKBarrageModelProtocol>  _Nonnull obj1, id<LKBarrageModelProtocol>  _Nonnull obj2) {
         
         if (obj1.beginTime < obj2.beginTime) {
             return NSOrderedAscending;
@@ -171,7 +171,7 @@
     
     // 检测模型数组里面所有的模型，是否可以发射，如果可以，直接发射
     NSMutableArray *deleteModels = [NSMutableArray array];
-    for (id<LKDanmuModelProtocol> model in self.models) {
+    for (id<LKBarrageModelProtocol> model in self.models) {
         
         // 1.检测开始时间是否有到达
         NSTimeInterval beginTime = model.beginTime;
@@ -194,7 +194,7 @@
     [self.models removeObjectsInArray:deleteModels];
 }
 
-- (BOOL)checkBoomAndBiuWith:(id<LKDanmuModelProtocol>)model {
+- (BOOL)checkBoomAndBiuWith:(id<LKBarrageModelProtocol>)model {
     
     CGFloat danDaoH = self.frame.size.height / kDandaoCount;
     

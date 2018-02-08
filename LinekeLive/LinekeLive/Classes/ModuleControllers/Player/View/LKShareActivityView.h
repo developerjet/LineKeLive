@@ -27,7 +27,7 @@ typedef NS_ENUM(NSUInteger, kActivityStatus) {
 /** 设置分享控件 */
 - (instancetype)initWithConfigActivitys:(NSArray *)activitys;
 
-/** 自定义分享样式数组 */
-@property (nonatomic, strong) NSArray *activitys;
+/** 点击后回调 */
+@property (nonatomic, copy) void(^activeFinishedBlock)(kActivityStatus status);
 
 @end

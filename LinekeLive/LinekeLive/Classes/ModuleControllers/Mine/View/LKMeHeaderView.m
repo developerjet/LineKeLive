@@ -11,14 +11,14 @@
 #import "FLAnimatedImage.h"
 #import <Masonry.h>
 
-static NSString *gifURL = @"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1516351655298&di=5b3efa13bcd95159393f47ce4bee3668&imgtype=0&src=http%3A%2F%2Fwww.fevte.com%2Fdata%2Fattachment%2Fportal%2F201607%2F04%2F224648wo5vp2rya5pu0mp2.gif";
+static NSString *imagePath = @"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1516351655298&di=5b3efa13bcd95159393f47ce4bee3668&imgtype=0&src=http%3A%2F%2Fwww.fevte.com%2Fdata%2Fattachment%2Fportal%2F201607%2F04%2F224648wo5vp2rya5pu0mp2.gif";
 
 @interface LKMeHeaderView()
+@property (nonatomic, strong) UIView   *spaceView;
+@property (nonatomic, strong) UIView   *bottomView;
+@property (nonatomic, strong) UILabel  *titleLabel;
 @property (nonatomic, strong) UIButton *topLeftBtn;
 @property (nonatomic, strong) UIButton *topRightBtn;
-@property (nonatomic, strong) UILabel *titleLabel;
-@property (nonatomic, strong) UIView *spaceView;
-@property (nonatomic, strong) UIView *bottomView;
 @property (nonatomic, strong) FLAnimatedImageView *backImageView;
 @property (nonatomic, strong) NSArray *items; // 底部标题
 
@@ -62,7 +62,7 @@ static NSString *gifURL = @"https://timgsa.baidu.com/timg?image&quality=80&size=
     _bottomView.backgroundColor = [UIColor whiteColor];
     [self addSubview:_bottomView];
     
-    FLAnimatedImage *animatedImage = [FLAnimatedImage animatedImageWithGIFData:[NSData dataWithContentsOfURL:[NSURL URLWithString:gifURL]]];
+    FLAnimatedImage *animatedImage = [FLAnimatedImage animatedImageWithGIFData:[NSData dataWithContentsOfURL:[NSURL URLWithString:imagePath]]];
     _backImageView = [FLAnimatedImageView new];
     _backImageView.animatedImage = animatedImage;
     [self addSubview:_backImageView];
@@ -81,6 +81,11 @@ static NSString *gifURL = @"https://timgsa.baidu.com/timg?image&quality=80&size=
     _titleLabel.font = [UIFont systemFontOfSize:14];
     _titleLabel.text = @"送出99";
     [self addSubview:_titleLabel];
+    
+    _topLeftBtn.tag  = 10000;
+    _topRightBtn.tag = 10001;
+    [_topLeftBtn addTarget:self action:@selector(headerAction:) forControlEvents:UIControlEventTouchUpInside];
+    [_topRightBtn addTarget:self action:@selector(headerAction:) forControlEvents:UIControlEventTouchUpInside];
 }
 
 - (void)initConstraint {
@@ -135,6 +140,14 @@ static NSString *gifURL = @"https://timgsa.baidu.com/timg?image&quality=80&size=
             make.bottom.equalTo(_bottomView);
             make.width.equalTo(@(w));
         }];
+    }
+}
+
+#pragma mark - Header actions
+- (void)headerAction:(UIButton *)sender {
+    
+    if (self.DidFinishedBlock) {
+        self.DidFinishedBlock(sender.tag);
     }
 }
 

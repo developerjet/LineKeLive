@@ -11,6 +11,7 @@
 #import "LKMeTableViewCell.h"
 #import "LKMeHeaderView.h"
 #import "LKMineModel.h"
+#import "InputBoxBar.h"
 
 static NSString * const mineCellID = @"MineTableCell";
 
@@ -63,10 +64,10 @@ static NSString * const mineCellID = @"MineTableCell";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self configuraTable];
+    [self initSubviews];
 }
 
-- (void)configuraTable {
+- (void)initSubviews {
     self.view.backgroundColor = [UIColor colorBackGroundColor];
     
     LKMeHeaderView *headerView = [[LKMeHeaderView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 300)];
@@ -91,9 +92,7 @@ static NSString * const mineCellID = @"MineTableCell";
     
     LKMeTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:mineCellID];
     cell.accessoryType = YES;
-    
     if ([self.dataSource[indexPath.section] count] > indexPath.row) {
-        
         cell.model = self.dataSource[indexPath.section][indexPath.row];
     }
     return cell;

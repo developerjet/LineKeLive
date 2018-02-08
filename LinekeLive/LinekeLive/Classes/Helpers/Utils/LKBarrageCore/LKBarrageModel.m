@@ -6,8 +6,8 @@
 //  Copyright © 2017年 CoderTan. All rights reserved.
 //
 
-#import "LKDanmuModel.h"
+#import "LKBarrageModel.h"
 
-@implementation LKDanmuModel
+@implementation LKBarrageModel
 
 @end

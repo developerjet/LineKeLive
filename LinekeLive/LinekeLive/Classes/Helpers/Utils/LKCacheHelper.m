@@ -10,7 +10,7 @@
 
 static NSString * const kAdvertKey = @"advertise_Key";
 
-#define LKData [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:@"allModel.pist"]
+#define LKFiledCache [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:@"LKCaches.plist"]
 
 @interface LKCacheHelper()
 {
@@ -37,7 +37,7 @@ static NSString * const kAdvertKey = @"advertise_Key";
     
     if (_allAnchorMs == nil) {
         
-        _allAnchorMs = [NSKeyedUnarchiver unarchiveObjectWithFile:LKData];
+        _allAnchorMs = [NSKeyedUnarchiver unarchiveObjectWithFile:LKFiledCache];
         
         if (_allAnchorMs == nil) {
             
@@ -54,7 +54,7 @@ static NSString * const kAdvertKey = @"advertise_Key";
     [self.allAnchorMs removeObject:ancher];
     [self.allAnchorMs insertObject:ancher atIndex:0];
     
-    [NSKeyedArchiver archiveRootObject:self.allAnchorMs toFile:LKData];
+    [NSKeyedArchiver archiveRootObject:self.allAnchorMs toFile:LKFiledCache];
 }
 
 - (void)unFollowAnchor:(LKLiveModel *)ancher {
@@ -67,7 +67,7 @@ static NSString * const kAdvertKey = @"advertise_Key";
         }
     }];
     
-    [NSKeyedArchiver archiveRootObject:self.allAnchorMs toFile:LKData];
+    [NSKeyedArchiver archiveRootObject:self.allAnchorMs toFile:LKFiledCache];
 }
 
 - (BOOL)getAncherIsFollow:(LKLiveModel *)ancher {

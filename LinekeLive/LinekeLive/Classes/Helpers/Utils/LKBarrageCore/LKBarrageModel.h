@@ -7,9 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "LKDanmuModelProtocol.h"
+#import "LKBarrageModelProtocol.h"
 
-@interface LKBarrageModel : NSObject<LKDanmuModelProtocol>
+@interface LKBarrageModel : NSObject<LKBarrageModelProtocol>
 
 /** 弹幕的开始时间 */
 @property (nonatomic, assign) NSTimeInterval beginTime;

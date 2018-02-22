@@ -23,10 +23,10 @@
 }
 
 #pragma mark - <Setters>
-- (void)setEmojiValue:(NSString *)emojiValue {
-    _emojiValue = emojiValue;
+- (void)setEmoji:(NSString *)emoji {
+    _emoji = emoji;
     
-    _emojiLabel.text = emojiValue;
+    _emojiLabel.text = emoji;
 }
 
 #pragma mark - <layoutSubviews>

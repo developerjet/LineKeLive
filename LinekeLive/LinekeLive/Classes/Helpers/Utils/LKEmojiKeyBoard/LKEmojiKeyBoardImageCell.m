@@ -19,14 +19,14 @@
     if (self = [super initWithFrame:frame]) {
         _emojiButton = [UIButton buttonWithType:UIButtonTypeCustom];
         _emojiButton.userInteractionEnabled = NO; //避免冲突
-        [_emojiButton setImage:[self restImageNamed:@"aio_face_delete"] forState:UIControlStateNormal];
-        [_emojiButton setImage:[self restImageNamed:@"aio_face_delete_pressed"] forState:UIControlStateHighlighted];
+        [_emojiButton setImage:[self setImage:@"aio_face_delete"] forState:UIControlStateNormal];
+        [_emojiButton setImage:[self setImage:@"aio_face_delete_pressed"] forState:UIControlStateHighlighted];
         [self.contentView addSubview:_emojiButton];
     }
     return self;
 }
 
-- (UIImage *)restImageNamed:(NSString *)imageName {
+- (UIImage *)setImage:(NSString *)imageName {
     
     NSString *filePath = [[NSBundle mainBundle] pathForResource:[NSString stringWithFormat:@"%@@2x", imageName] ofType:@"png"];
     return [UIImage imageWithContentsOfFile:filePath];

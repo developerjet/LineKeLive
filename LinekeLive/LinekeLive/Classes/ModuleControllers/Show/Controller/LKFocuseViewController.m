@@ -10,23 +10,23 @@
 #import "LKHotLiveTableViewCell.h"
 #import "LKPlayerViewController.h"
 
-static NSString * const FocuseIdentifier = @"FocuseCellIdentifier";
+static NSString *const kFocuseIdentifier = @"kFocuseIdentifier";
 
 @interface LKFocuseViewController ()<UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic, strong) UITableView    *tableView;
-@property (nonatomic, strong) NSMutableArray *focuseList;
+@property (nonatomic, strong) NSMutableArray *playerList;
 
 @end
 
 @implementation LKFocuseViewController
 
-#pragma mark - LazyLoad
-- (NSMutableArray *)focuseList {
+#pragma mark - Lazy
+- (NSMutableArray *)playerList {
 
-    if (!_focuseList) {
-        _focuseList = [NSMutableArray array];
+    if (!_playerList) {
+        _playerList = [NSMutableArray array];
     }
-    return _focuseList;
+    return _playerList;
 }
 
 - (UITableView *)tableView {
@@ -39,28 +39,29 @@ static NSString * const FocuseIdentifier = @"FocuseCellIdentifier";
         _tableView.backgroundColor = [UIColor colorBackGroundColor];
         _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;//去除系统线条
         _tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
-        [_tableView registerNib:[UINib nibWithNibName:@"LKHotLiveTableViewCell" bundle:nil] forCellReuseIdentifier:FocuseIdentifier];
+        [_tableView registerNib:[UINib nibWithNibName:@"LKHotLiveTableViewCell" bundle:nil] forCellReuseIdentifier:kFocuseIdentifier];
     }
     return _tableView;
 }
 
-#pragma mark - viewLaod
+#pragma mark - Life Cycle
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     self.view.backgroundColor = [UIColor colorBackGroundColor];
-    [self.view addSubview:self.tableView];
-    
-    [self initTableView];
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(noteRefresh) name:kFollowKey
                                                object:nil];
+    
+    [self initTableView];
 }
 
 - (void)initTableView {
     
-    [self.focuseList addObject:[self initialLive]];
-    [self.focuseList addObjectsFromArray:[LKCacheHelper shared].allAnchorMs];
+    [self.playerList addObject:[self initialLive]];
+    [self.playerList addObjectsFromArray:[LKCacheHelper shared].allAnchorMs];
+    
+    [self.view addSubview:self.tableView];
 }
 
 - (LKLiveModel *)initialLive {
@@ -80,44 +81,44 @@ static NSString * const FocuseIdentifier = @"FocuseCellIdentifier";
 }
 
 - (void)noteRefresh {
-    if (self.focuseList.count) {
-        [self.focuseList removeAllObjects];
+    if (self.playerList.count) {
+        [self.playerList removeAllObjects];
     }
     
-    [self.focuseList addObject:[self initialLive]];
-    [self.focuseList addObjectsFromArray:[LKCacheHelper shared].allAnchorMs];
+    [self.playerList addObject:[self initialLive]];
+    [self.playerList addObjectsFromArray:[LKCacheHelper shared].allAnchorMs];
     
-    [self.tableView  reloadData];
+    [self.tableView reloadData];
 }
 
-#pragma mark - data && delegate
+#pragma mark - <UITableViewDataSource>
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
-    return self.focuseList.count;
+    return self.playerList.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    LKHotLiveTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:FocuseIdentifier];
+    LKHotLiveTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kFocuseIdentifier];
     cell.backgroundColor = [UIColor colorBackGroundWhiteColor];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    if (self.focuseList.count > indexPath.row) {
-        cell.model = self.focuseList[indexPath.row];
+    if (self.playerList.count > indexPath.row) {
+        cell.model = self.playerList[indexPath.row];
     }
     return cell;
 }
 
-
+#pragma mark - <UITableViewDataDelegate>
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    if (self.focuseList.count > indexPath.row) {
-        LKLiveModel *live = self.focuseList[indexPath.row]; //获取直播的源
-        [self startPlayWithLive:live];
+    if (self.playerList.count > indexPath.row) {
+        LKLiveModel *live = self.playerList[indexPath.row]; //获取直播的源
+        [self playLive:live];
     }
 }
 
-- (void)startPlayWithLive:(LKLiveModel *)live {
+- (void)playLive:(LKLiveModel *)live {
     if (!live) return;
     
     LKPlayerViewController *player = [[LKPlayerViewController alloc] init];

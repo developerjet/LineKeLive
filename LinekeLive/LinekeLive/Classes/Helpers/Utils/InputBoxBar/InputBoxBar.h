@@ -43,15 +43,10 @@ typedef enum {
 /** 编辑完成时回调 */
 @property (nonatomic, copy) EditFinishedBlock editFinishedBlock;
 
-/** 当前编辑的信息 */
-@property (nonatomic, copy) NSString *content;
-
 /** 弹出键盘 */
 - (void)become;
 
 /** 手动回收键盘 */
 - (void)recovery;
-
-
 
 @end

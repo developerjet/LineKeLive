@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <UIImageView+WebCache.h>
 
 @interface LKLaunchBrowseCell : UICollectionViewCell
 @property (nonatomic, strong) NSString    *imagePath;

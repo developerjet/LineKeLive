@@ -7,6 +7,7 @@
 //
 
 #import "LKBasicNavigationController.h"
+#import "LKNavigationBar.h"
 
 @interface LKBasicNavigationController ()
 
@@ -20,21 +21,15 @@
     return UIStatusBarStyleDefault;
 }
 
+#pragma mark - Life Cycle
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self initializeNav];
-}
-
-- (void)initializeNav {
-    
     //设置导航栏背景颜色
     self.navigationBar.barTintColor = [UIColor colorNavThemeColor];
-    
     //设置导航栏两侧文字&图片颜色
     self.navigationBar.tintColor = [UIColor whiteColor];
 }
-
 
 - (void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated {
 
@@ -42,8 +37,14 @@
         
         viewController.hidesBottomBarWhenPushed = YES;
     }
-    
     [super pushViewController:viewController animated:animated];
+    
+    if (@available(iOS 11.0, *)){
+        // 修改tabBra的frame
+        CGRect frame = self.tabBarController.tabBar.frame;
+        frame.origin.y = [UIScreen mainScreen].bounds.size.height - frame.size.height;
+        self.tabBarController.tabBar.frame = frame;
+    }
 }
 
 @end

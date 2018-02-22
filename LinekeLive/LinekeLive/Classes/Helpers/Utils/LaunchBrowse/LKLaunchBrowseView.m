@@ -13,14 +13,16 @@ static NSInteger showtime = 3.0;
 static NSString  *const kCacheImagesKey  = @"kCacheImagesKey";
 static NSString  *const kReuseIdentifier = @"kCellReuseIdentifier";
 
-@interface LKLaunchBrowseView()<UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
+@interface LKLaunchBrowseView()<UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UIActionSheetDelegate>
 @property (nonatomic, strong) dispatch_source_t timer;
 @property (nonatomic, strong) NSArray           *imageGroups; // 设置加载广告图片数组
 @property (nonatomic, strong) UICollectionView  *collectionView;
 @property (nonatomic, strong) UIPageControl     *pageControl;
 @property (nonatomic, strong) UIButton          *timerButton; //可自定义样式
 @property (nonatomic, strong) UIButton          *jumpButton;
-@property (nonatomic, assign) BOOL isCancel;
+@property (nonatomic, strong) UIImage           *savedImage;
+@property (nonatomic, strong) UIImageView       *currentImageView;
+@property (nonatomic, assign) BOOL              isCancel;
 
 @end
 
@@ -32,12 +34,12 @@ static NSString  *const kReuseIdentifier = @"kCellReuseIdentifier";
     
 }
 
-#pragma mark - init Configs
+#pragma mark - Life Cycle
 - (instancetype)initWithConfigImageGroups:(NSArray *)imageGroups isCache:(BOOL)isCache {
     
     if (self = [super init]) {
         self.alpha = 0.0; //默认不显示
-        self.backgroundColor = [UIColor clearColor];
+        self.backgroundColor = [UIColor blackColor];
         self.frame = [UIApplication sharedApplication].keyWindow.frame;
         
         if (isCache) {
@@ -61,7 +63,7 @@ static NSString  *const kReuseIdentifier = @"kCellReuseIdentifier";
     UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
     layout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
     
-    _collectionView = [[UICollectionView alloc] initWithFrame:self.bounds collectionViewLayout:layout];
+    _collectionView = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:layout];
     _collectionView.delegate   = self;
     _collectionView.dataSource = self;
     _collectionView.pagingEnabled = YES;
@@ -108,6 +110,15 @@ static NSString  *const kReuseIdentifier = @"kCellReuseIdentifier";
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAction:)];
     [self addGestureRecognizer:tap];
     
+    // 长按手势
+    UILongPressGestureRecognizer *longGtr = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longAction:)];
+    longGtr.minimumPressDuration = 1.f;
+    [self.collectionView addGestureRecognizer:longGtr];
+    
+    _currentImageView = [[UIImageView alloc] initWithFrame:self.collectionView.bounds];
+    _currentImageView.hidden = YES;
+    [self addSubview:_currentImageView];
+    
     if (self.imageGroups.count == 1) { //如果是单张图片
         [self startTimer]; // 开启倒计时
     }
@@ -120,10 +131,65 @@ static NSString  *const kReuseIdentifier = @"kCellReuseIdentifier";
     }
 }
 
+- (void)longAction:(UILongPressGestureRecognizer *)longGesture {
+    if (longGesture.state == UIGestureRecognizerStateBegan) {
+        NSIndexPath *indexPath = [self.collectionView indexPathForItemAtPoint:[longGesture locationInView:self.collectionView]];
+        NSString *imagePath = [NSString stringWithFormat:@"%@", self.imageGroups[[indexPath item]]];
+        if ([imagePath containsString:@"http"] || [imagePath containsString:@"https"]) {
+            [_currentImageView sd_setImageWithURL:[NSURL URLWithString:imagePath]];
+            _savedImage = _currentImageView.image;
+        }else {
+            _savedImage = [UIImage imageNamed:imagePath];
+        }
+        
+        UIActionSheet *sheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:@"保存" otherButtonTitles:nil, nil];
+        [sheet showInView:self];
+    }
+}
+
+#pragma mark - <UIActionSheetDelegate>
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+    
+    if (buttonIndex == 0) {
+        [self  performSelector:@selector(beginSave) withObject:nil afterDelay:0.25];
+    }
+}
+
+- (void)beginSave {
+    
+    [self saveBrowIsImage:_savedImage];
+}
+
+- (void)saveBrowIsImage:(UIImage *)image {
+    
+    if (image) {
+        NSLog(@"saveImage");
+        UIImageWriteToSavedPhotosAlbum(image, self, @selector(image:didFinishSavingWithError:contextInfo:), nil);
+    }
+}
+
+- (void)image:(UIImage *)image didFinishSavingWithError:(NSError *)error contextInfo:(void *)contextInfo
+{
+    NSString *msg = nil;
+    if(error != NULL) {
+        msg = @"保存图片失败";
+    }else {
+        msg = @"图片保存成功";
+    }
+    [XDProgressHUD showHUDWithText:msg hideDelay:1.0];
+}
+
+#pragma mark - <Setters && Getters>
 - (void)setImageName:(NSString *)imageName {
     _imageName = imageName;
     
     [self.jumpButton setImage:[UIImage imageNamed:imageName] forState:UIControlStateNormal];
+}
+
+- (void)setIndexPath:(NSIndexPath *)indexPath {
+    _indexPath = indexPath;
+    
+    [self.collectionView scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionLeft animated:YES];
 }
 
 #pragma mark - filed images
@@ -143,7 +209,7 @@ static NSString  *const kReuseIdentifier = @"kCellReuseIdentifier";
     
     NSArray *cachePaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *document = [cachePaths lastObject];
-    NSString *imagesPath = [document stringByAppendingPathComponent:@"images.plist"];
+    NSString *imagesPath = [document stringByAppendingPathComponent:@"browse.plist"];
     return imagesPath;
 }
 
@@ -197,6 +263,7 @@ static NSString  *const kReuseIdentifier = @"kCellReuseIdentifier";
     }
     
     [UIView animateWithDuration:0.25 animations:^{
+        self.backgroundColor = [UIColor clearColor];
         self.timerButton.alpha = 0;
         self.alpha = 0;
     } completion:^(BOOL finished) {
@@ -245,6 +312,7 @@ static NSString  *const kReuseIdentifier = @"kCellReuseIdentifier";
 }
 
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section{
+    
     return 0;
 }
 

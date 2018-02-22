@@ -18,11 +18,18 @@
 
 @implementation LKBasicTabBar
 
-#pragma mark - LazyLoad
+#pragma mark - Lazy
+- (UIImageView *)tabBgView {
+    
+    if (!_tabBgView) {
+        _tabBgView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"global_tab_bg"]];
+    }
+    return _tabBgView;
+}
 
 - (UIButton *)cameraButton {
     
-    if (_cameraButton == nil) {
+    if (!_cameraButton) {
         _cameraButton = [UIButton buttonWithType:UIButtonTypeCustom];
         [_cameraButton setImage:[UIImage imageNamed:@"tab_launch"] forState:UIControlStateNormal];
         [_cameraButton sizeToFit];
@@ -32,33 +39,23 @@
     return _cameraButton;
 }
 
-- (UIImageView *)tabBgView {
-    
-    if (_tabBgView == nil) {
-        _tabBgView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"global_tab_bg"]];
-    }
-    
-    return _tabBgView;
-}
-
 - (NSArray *)dataSource {
     
-    if (_dataSource == nil) {
+    if (!_dataSource) {
         _dataSource = @[@"tab_live", @"tab_me"];
     }
     return _dataSource;
 }
 
-#pragma mark - initialize
-
+#pragma mark - Life Cycle
 - (instancetype)initWithFrame:(CGRect)frame {
     
     if (self = [super initWithFrame:frame]) {
-
+        self.backgroundColor = [UIColor whiteColor];
         [self addSubview:self.tabBgView];
         
-        for (NSInteger idx=0; idx<self.dataSource.count; idx++) {
-    
+        for (NSInteger idx=0; idx<self.dataSource.count; idx++)
+        {
             UIButton *item = [UIButton buttonWithType:UIButtonTypeCustom];
             item.adjustsImageWhenHighlighted = NO; //不让图片在高亮下改变
             [item setImage:[UIImage imageNamed:self.dataSource[idx]] forState:UIControlStateNormal];
@@ -71,32 +68,32 @@
                 item.selected = YES;
                 self.lastItem = item;
             }
-            
             [self addSubview:item];
         }
         
         //添加启动直播按钮
         [self addSubview:self.cameraButton];
     }
-    
     return self;
 }
 
+#pragma mark - Override Methods
+- (void)setFrame:(CGRect)frame
+{
+    if (self.superview &&CGRectGetMaxY(self.superview.bounds) !=CGRectGetMaxY(frame)) {
+        frame.origin.y =CGRectGetHeight(self.superview.bounds) -CGRectGetHeight(frame);
+    }
+    [super setFrame:frame];
+}
 
-/**
- 按钮布局
- */
 - (void)layoutSubviews {
     [super layoutSubviews];
     
     for (NSInteger idx=0; idx<[self subviews].count; idx++) {
-
         UIView *btn = [self subviews][idx];
-        
         CGFloat width = self.bounds.size.width / self.dataSource.count;
         
         if ([btn isKindOfClass:[UIButton class]]) {
-            
             btn.frame = CGRectMake((btn.tag - LKItemTypeLive) * width, 0, width, self.frame.size.height);
         }
     }
@@ -107,16 +104,13 @@
 }
 
 
-#pragma mark - DidSelectItem
-
+#pragma mark - <Actions For Handle>
 - (void)itemClick:(UIButton *)button {
     
     if ([self.delegate respondsToSelector:@selector(tabBar:didSelectItemIndex:)]) {
         
         [self.delegate tabBar:self didSelectItemIndex:button.tag];
     }
-    
-    //!self.block?:self.block(self, button.tag);
     
     if (self.block) {
         self.block(self, button.tag);
@@ -136,26 +130,18 @@
     //将当前按钮设置为上一个按钮
     self.lastItem = button;
     
-    [self animateStart:button];
+    [self animaShow:button];
 }
 
-
-/**
- 添加动画
- */
-- (void)animateStart:(UIButton *)button {
+- (void)animaShow:(UIButton *)button {
     
     [UIView animateWithDuration:0.2 animations:^{
-        
         button.transform = CGAffineTransformMakeScale(1.2, 1.2);
-        
     } completion:^(BOOL finished) {
-        
         [UIView animateWithDuration:0.2 animations:^{
             //动画恢复
             button.transform = CGAffineTransformIdentity;
         }];
     }];
 }
-
 @end

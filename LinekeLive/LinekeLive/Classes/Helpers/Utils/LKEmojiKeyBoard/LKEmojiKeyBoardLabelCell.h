@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface LKEmojiKeyBoardLabelCell : UICollectionViewCell
-@property (nonatomic, copy) NSString *emojiValue;
+@property (nonatomic, copy) NSString *emoji;
 @end

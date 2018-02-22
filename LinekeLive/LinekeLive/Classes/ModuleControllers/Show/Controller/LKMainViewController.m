@@ -10,11 +10,11 @@
 #import "LKFocuseViewController.h"
 #import "LKHotViewController.h"
 #import "LKNearViewController.h"
-#import "LKItemSegmentView.h"
+#import "LKSegmentItemBar.h"
 
 @interface LKMainViewController ()<UIScrollViewDelegate>
 @property (nonatomic, strong) NSArray           *itemTitles;
-@property (nonatomic, strong) LKItemSegmentView *itemSegment;
+@property (nonatomic, strong) LKSegmentItemBar  *itemSegment;
 @property (nonatomic, strong) UIScrollView      *conentScrollView;
 
 @end
@@ -45,10 +45,10 @@
     return _itemTitles;
 }
 
-- (LKItemSegmentView *)itemSegment {
+- (LKSegmentItemBar *)itemSegment {
     
     if (!_itemSegment) {
-        _itemSegment = [[LKItemSegmentView alloc] initWithFrame:CGRectMake(0, 0, 200, 50) segmentItems:self.itemTitles];
+        _itemSegment = [[LKSegmentItemBar alloc] initWithFrame:CGRectMake(0, 0, 200, 50) segmentItems:self.itemTitles];
         WeakSelf;
         _itemSegment.didFinishedBlock = ^(NSInteger index) {
             CGPoint point = CGPointMake(index * self.conentScrollView.width, weakSelf.conentScrollView.contentOffset.y);

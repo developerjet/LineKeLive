@@ -33,6 +33,8 @@
 	<string>需要您的同意才能始终访问位置</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>允许相册选择相片</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>允许访问相册保存图片</string>
 	<key>NSMicrophoneUsageDescription</key>
 	<string>使用麦克风</string>
 	<key>UIMainStoryboardFile</key>

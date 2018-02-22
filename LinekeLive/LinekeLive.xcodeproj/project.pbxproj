@@ -16,6 +16,7 @@
 		2B55FBD61EFA73E0005A83BE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2B55FBD41EFA73E0005A83BE /* LaunchScreen.storyboard */; };
 		2B55FBE11EFA73E0005A83BE /* LinekeLiveTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B55FBE01EFA73E0005A83BE /* LinekeLiveTests.m */; };
 		2B55FBEC1EFA73E0005A83BE /* LinekeLiveUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B55FBEB1EFA73E0005A83BE /* LinekeLiveUITests.m */; };
+		2B5A5529203E9015002780EE /* LKNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B5A5528203E9015002780EE /* LKNavigationBar.m */; };
 		2B704C971EFB703D0020A0D6 /* UIColor+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B704C8E1EFB703D0020A0D6 /* UIColor+Extension.m */; };
 		2B704C981EFB703D0020A0D6 /* UIColor+UIImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B704C901EFB703D0020A0D6 /* UIColor+UIImage.m */; };
 		2B704C991EFB703D0020A0D6 /* UIImage+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B704C921EFB703D0020A0D6 /* UIImage+Additions.m */; };
@@ -25,7 +26,7 @@
 		2B75AF811EFCC8B900BFE311 /* LKBasicTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B75AF801EFCC8B900BFE311 /* LKBasicTabBar.m */; };
 		2B75AF881EFCED4700BFE311 /* LKBasicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B75AF871EFCED4700BFE311 /* LKBasicViewController.m */; };
 		2B75AF951EFCEEBC00BFE311 /* LKBasicNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B75AF941EFCEEBC00BFE311 /* LKBasicNavigationController.m */; };
-		2B7C32632023181500BA28DA /* LKItemSegmentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B7C32622023181400BA28DA /* LKItemSegmentView.m */; };
+		2B7C32632023181500BA28DA /* LKSegmentItemBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B7C32622023181400BA28DA /* LKSegmentItemBar.m */; };
 		2B8A333E1F4824880090B2BB /* LKShareActivityView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B8A333D1F4824880090B2BB /* LKShareActivityView.m */; };
 		2B8A3FC9202A993D00E2F5EE /* LKEmojiKeyBoard.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B8A3FC8202A993D00E2F5EE /* LKEmojiKeyBoard.m */; };
 		2B8A3FCE202AA9D900E2F5EE /* aio_face_delete@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2B8A3FCB202AA9D900E2F5EE /* aio_face_delete@2x.png */; };
@@ -154,6 +155,8 @@
 		2B55FBE71EFA73E0005A83BE /* LinekeLiveUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LinekeLiveUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2B55FBEB1EFA73E0005A83BE /* LinekeLiveUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LinekeLiveUITests.m; sourceTree = "<group>"; };
 		2B55FBED1EFA73E0005A83BE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2B5A5527203E9015002780EE /* LKNavigationBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LKNavigationBar.h; sourceTree = "<group>"; };
+		2B5A5528203E9015002780EE /* LKNavigationBar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LKNavigationBar.m; sourceTree = "<group>"; };
 		2B704C8D1EFB703D0020A0D6 /* UIColor+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Extension.h"; sourceTree = "<group>"; };
 		2B704C8E1EFB703D0020A0D6 /* UIColor+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Extension.m"; sourceTree = "<group>"; };
 		2B704C8F1EFB703D0020A0D6 /* UIColor+UIImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+UIImage.h"; sourceTree = "<group>"; };
@@ -172,8 +175,8 @@
 		2B75AF871EFCED4700BFE311 /* LKBasicViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKBasicViewController.m; sourceTree = "<group>"; };
 		2B75AF931EFCEEBC00BFE311 /* LKBasicNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKBasicNavigationController.h; sourceTree = "<group>"; };
 		2B75AF941EFCEEBC00BFE311 /* LKBasicNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKBasicNavigationController.m; sourceTree = "<group>"; };
-		2B7C32612023181400BA28DA /* LKItemSegmentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKItemSegmentView.h; sourceTree = "<group>"; };
-		2B7C32622023181400BA28DA /* LKItemSegmentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKItemSegmentView.m; sourceTree = "<group>"; };
+		2B7C32612023181400BA28DA /* LKSegmentItemBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKSegmentItemBar.h; sourceTree = "<group>"; };
+		2B7C32622023181400BA28DA /* LKSegmentItemBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKSegmentItemBar.m; sourceTree = "<group>"; };
 		2B8A333C1F4824880090B2BB /* LKShareActivityView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKShareActivityView.h; sourceTree = "<group>"; };
 		2B8A333D1F4824880090B2BB /* LKShareActivityView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKShareActivityView.m; sourceTree = "<group>"; };
 		2B8A3FC7202A993D00E2F5EE /* LKEmojiKeyBoard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKEmojiKeyBoard.h; sourceTree = "<group>"; };
@@ -455,8 +458,10 @@
 				2B75AF871EFCED4700BFE311 /* LKBasicViewController.m */,
 				2B9C001B1F00E5160010611A /* LKHasNavViewController.h */,
 				2B9C001C1F00E5160010611A /* LKHasNavViewController.m */,
-				2B7C32612023181400BA28DA /* LKItemSegmentView.h */,
-				2B7C32622023181400BA28DA /* LKItemSegmentView.m */,
+				2B7C32612023181400BA28DA /* LKSegmentItemBar.h */,
+				2B7C32622023181400BA28DA /* LKSegmentItemBar.m */,
+				2B5A5527203E9015002780EE /* LKNavigationBar.h */,
+				2B5A5528203E9015002780EE /* LKNavigationBar.m */,
 				2B75AF7F1EFCC8B900BFE311 /* LKBasicTabBar.h */,
 				2B75AF801EFCC8B900BFE311 /* LKBasicTabBar.m */,
 				2B147A661EFF5F770019312D /* LKBaseHandler.h */,
@@ -1179,6 +1184,7 @@
 				AE7E71941F3B09880019B515 /* LKLiveModel.m in Sources */,
 				2B704C991EFB703D0020A0D6 /* UIImage+Additions.m in Sources */,
 				2BE69B1D2022D45A009A2707 /* LKCacheData.m in Sources */,
+				2B5A5529203E9015002780EE /* LKNavigationBar.m in Sources */,
 				2BE69B1B2022D45A009A2707 /* LKAnimation.m in Sources */,
 				2BDFE13F202AF6AA0007CAB2 /* LKEmojiKeyBoardImageCell.m in Sources */,
 				AE7E71871F3B09880019B515 /* LKPlayerViewController.m in Sources */,
@@ -1192,7 +1198,7 @@
 				2BE69B1A2022D45A009A2707 /* LKCacheHelper.m in Sources */,
 				2BE9BA6020200AAE00711676 /* AppDelegate+Util.m in Sources */,
 				AE7E71811F3B09880019B515 /* LKMeHeaderView.m in Sources */,
-				2B7C32632023181500BA28DA /* LKItemSegmentView.m in Sources */,
+				2B7C32632023181500BA28DA /* LKSegmentItemBar.m in Sources */,
 				AE7E71951F3B09880019B515 /* MJExtensionConfig.m in Sources */,
 				AE7E71701F3B09880019B515 /* LKLaunchLiveViewController.m in Sources */,
 				AE7E71931F3B09880019B515 /* LKExtra.m in Sources */,

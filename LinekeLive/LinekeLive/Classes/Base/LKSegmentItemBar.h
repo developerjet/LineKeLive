@@ -10,7 +10,7 @@
 
 typedef void(^DidFinishedBlock)(NSInteger index);
 
-@interface LKItemSegmentView : UIView
+@interface LKSegmentItemBar : UIView
 
 - (instancetype)initWithFrame:(CGRect)frame segmentItems:(NSArray *)items;
 
@@ -18,7 +18,8 @@ typedef void(^DidFinishedBlock)(NSInteger index);
 
 /** 点击菜单标题的回调 */
 @property (nonatomic, copy) DidFinishedBlock didFinishedBlock;
+
 /** 菜单栏主题颜色设置(默认白色) */
-@property (nonatomic, strong) UIColor *subviewColor;
+@property (nonatomic, strong) UIColor *tintColor;
 
 @end

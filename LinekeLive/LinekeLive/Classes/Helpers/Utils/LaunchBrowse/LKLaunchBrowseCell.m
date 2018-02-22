@@ -7,7 +7,6 @@
 //
 
 #import "LKLaunchBrowseCell.h"
-#import <UIImageView+WebCache.h>
 
 @implementation LKLaunchBrowseCell
 
@@ -32,7 +31,7 @@
 }
 
 #pragma mark -
-#pragma mark - layoutSubviews
+#pragma mark - <layoutSubviews>
 - (void)layoutSubviews {
     [super layoutSubviews];
     

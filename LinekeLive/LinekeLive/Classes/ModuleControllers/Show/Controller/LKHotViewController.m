@@ -10,7 +10,7 @@
 #import "LKHotLiveTableViewCell.h"
 #import "LKPlayerViewController.h"
 
-static NSString * const LiveCellID = @"HotLiveCell";
+static NSString * const kHotLiveIdentifier = @"kHotLiveIdentifier";
 
 @interface LKHotViewController ()<UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic, strong) UITableView *tableView;
@@ -41,12 +41,12 @@ static NSString * const LiveCellID = @"HotLiveCell";
         _tableView.backgroundColor = [UIColor colorBackGroundColor];
         _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;//去除系统线条
         _tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
-        [_tableView registerNib:[UINib nibWithNibName:@"LKHotLiveTableViewCell" bundle:nil] forCellReuseIdentifier:LiveCellID];
+        [_tableView registerNib:[UINib nibWithNibName:@"LKHotLiveTableViewCell" bundle:nil] forCellReuseIdentifier:kHotLiveIdentifier];
     }
     return _tableView;
 }
 
-#pragma mark - View Load
+#pragma mark - Life Cycle
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor colorBackGroundColor];
@@ -66,7 +66,7 @@ static NSString * const LiveCellID = @"HotLiveCell";
     [self.view addSubview:self.tableView];
 }
 
-#pragma mark - Cycle net
+#pragma mark - request
 - (void)reloadData {
 
     [LKLiveHandler executeGetHotLiveTaskWithSuccess:^(id obj) {
@@ -100,7 +100,7 @@ static NSString * const LiveCellID = @"HotLiveCell";
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    LKHotLiveTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:LiveCellID];
+    LKHotLiveTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kHotLiveIdentifier];
     cell.backgroundColor = [UIColor colorBackGroundWhiteColor];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     

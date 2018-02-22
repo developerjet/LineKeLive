@@ -24,19 +24,18 @@
 - (LKBasicTabBar *)configTabBar {
     
     if (!_configTabBar) {
-        _configTabBar = [[LKBasicTabBar alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 49)];
+        _configTabBar = [[LKBasicTabBar alloc] initWithFrame:self.tabBar.bounds];
         _configTabBar.delegate = self;
     }
     return _configTabBar;
 }
 
-#pragma mark - EventMethods
-
+#pragma mark - Life Cycle
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     //加载控制器
-    [self configViewController];
+    [self insertControllers];
     
     //加载tabBar
     [self.tabBar addSubview:self.configTabBar];
@@ -46,11 +45,20 @@
     [[UITabBar appearance] setBackgroundImage:[UIImage new]];
 }
 
+- (void)viewDidLayoutSubviews {
+    [super viewDidLayoutSubviews];
+    
+    for (UIView *view in self.view.subviews) {
+        if ([view isKindOfClass:[UITabBar class]]) {
+            //此处注意设置 y的值 不要使用屏幕高度 - 49 ，因为还有tabbar的高度 ，用当前tabbarController的View的高度 - 49即可
+            view.frame = CGRectMake(view.frame.origin.x, self.view.bounds.size.height-49, view.frame.size.width, 49);
+        }
+    }
+    // 此处是自定义的View的设置 如果使用了约束 可以不需要设置下面,_bottomView的frame
+    self.configTabBar.frame = self.tabBar.bounds;
+}
 
-/**
- 加载控制器
- */
-- (void)configViewController {
+- (void)insertControllers {
     
     NSMutableArray *viewControllerMs = [NSMutableArray arrayWithArray:
                                @[@"LKMainViewController",

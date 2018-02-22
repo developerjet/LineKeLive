@@ -6,17 +6,16 @@
 //  Copyright © 2017年 CODER_TJ. All rights reserved.
 //
 
-#import "LKItemSegmentView.h"
+#import "LKSegmentItemBar.h"
 
-@interface LKItemSegmentView()
+@interface LKSegmentItemBar()
 @property (nonatomic, strong) UIView *indicatorView; //线条指示器
 @property (nonatomic, strong) NSMutableArray *itemGroups;
 
 @end
 
-@implementation LKItemSegmentView
+@implementation LKSegmentItemBar
 
-#pragma mark -
 #pragma mark - Lazy
 - (NSMutableArray *)itemGroups {
     
@@ -27,8 +26,7 @@
 }
 
 
-#pragma mark -
-#pragma mark - initialize
+#pragma mark - Life Cycle
 - (instancetype)initWithFrame:(CGRect)frame segmentItems:(NSArray *)items {
     
     if (self = [super initWithFrame:frame]) {
@@ -69,25 +67,25 @@
 }
 
 #pragma mark - Setter
-- (void)setSubviewColor:(UIColor *)subviewColor {
-    _subviewColor = subviewColor;
+- (void)setTintColor:(UIColor *)tintColor {
+    _tintColor = tintColor;
     
-    self.indicatorView.backgroundColor = subviewColor;
+    self.indicatorView.backgroundColor = tintColor;
     
     for (UIView *view in self.subviews) {
         if ([view isKindOfClass:[UIButton class]]) {
-            [(UIButton *)view setTitleColor:subviewColor forState:UIControlStateNormal];
+            [(UIButton *)view setTitleColor:tintColor forState:UIControlStateNormal];
         }
     }
 }
 
 #pragma mark -
-#pragma mark - actions
+#pragma mark - Cycle Actions
 //滑动控制器时调用title自动滚动
 - (void)scrolling:(NSInteger)index
 {
     UIButton *button = self.itemGroups[index]; //拿到按钮
-    [self movingTo:button];
+    [self scrollEnd:button];
 }
 
 - (void)itemClick:(UIButton *)button
@@ -99,7 +97,7 @@
     [self scrolling:button.tag];
 }
 
-- (void)movingTo:(UIButton *)button {
+- (void)scrollEnd:(UIButton *)button {
     
     [UIView animateWithDuration:0.25 animations:^{
         

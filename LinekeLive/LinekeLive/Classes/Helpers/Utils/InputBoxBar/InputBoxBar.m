@@ -11,8 +11,8 @@
 #define kSCREEN_WIDTH   [UIScreen mainScreen].bounds.size.width
 #define kSCREEN_HEIGHT  [UIScreen mainScreen].bounds.size.height
 
-static CGFloat kBoxBar_Height = 60;
-static CGFloat kEmojis_Height = 180;
+static CGFloat kBoxBarHeight = 60;
+static CGFloat kEmojisHeight = 180;
 
 @interface InputBoxBar()<UITextViewDelegate, LKEmojiKeyBoardDelegate>
 @property (nonatomic, strong) UIView     *topLine;
@@ -44,30 +44,29 @@ static CGFloat kEmojis_Height = 180;
     
     if (self = [super init]) {
         self.backgroundColor = [UIColor colorWithHexString:@"F8F8F8"];
-        self.frame = CGRectMake(0, kSCREEN_HEIGHT, kSCREEN_WIDTH, kBoxBar_Height);
-        
-        [self initSubview];
-        [self initKeyBoardNote];
+        self.frame = CGRectMake(0, kSCREEN_HEIGHT, kSCREEN_WIDTH, kBoxBarHeight);
+        [self initSubviews];
+        [self noteKeyBoard];
     }
     return self;
 }
 
-- (void)initSubview {
+- (void)initSubviews {
     _maxLine  = 3;
     _fontSize = 16;
     _keyboardIsVisible = YES;
-    _keyBoardStatus = kInputBarDidStatus_Emoji; //默认系统键盘
+    _keyBoardStatus    = kInputBarDidStatus_Emoji; //默认系统键盘
     
-    CGFloat padding = 10;
+    CGFloat padding    = 10;
     CGFloat lineHeight = 1;
     
-    _topLine = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kSCREEN_WIDTH, lineHeight)];
-    _topLine.backgroundColor = [self utilColor];
-    [self addSubview:_topLine];
+    self.topLine = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kSCREEN_WIDTH, lineHeight)];
+    self.topLine.backgroundColor = [self layerColor];
+    [self addSubview:self.topLine];
     
-    _botLine = [[UIView alloc] initWithFrame:CGRectMake(0, self.height-lineHeight, kSCREEN_WIDTH, lineHeight)];
-    _botLine.backgroundColor = [self utilColor];
-    [self addSubview:_botLine];
+    self.topLine = [[UIView alloc] initWithFrame:CGRectMake(0, self.height-lineHeight, kSCREEN_WIDTH, lineHeight)];
+    self.topLine.backgroundColor = [self layerColor];
+    [self addSubview:self.topLine];
     
     CGFloat voiceW = 30;
     CGFloat originY = (self.height - voiceW) * 0.5;
@@ -85,9 +84,9 @@ static CGFloat kEmojis_Height = 180;
     self.senderButton.backgroundColor = [UIColor colorNavThemeColor];
     [self.senderButton setTitle:@"发送" forState:UIControlStateNormal];
     self.senderButton.titleLabel.font = [UIFont systemFontOfSize:14];
-    self.senderButton.userInteractionEnabled = YES;
     self.senderButton.layer.cornerRadius = 5;
     self.senderButton.layer.masksToBounds = YES;
+    self.senderButton.enabled = NO;
     [self.senderButton addTarget:self action:@selector(reset) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:self.senderButton];
     
@@ -108,7 +107,7 @@ static CGFloat kEmojis_Height = 180;
     self.configedgView.left = CGRectGetMaxX(self.voicesButton.frame) + padding;
     self.configedgView.layer.borderWidth = 1;
     self.configedgView.layer.cornerRadius = 3;
-    self.configedgView.layer.borderColor = [self utilColor].CGColor;
+    self.configedgView.layer.borderColor = [self layerColor].CGColor;
     self.configedgView.layer.masksToBounds = YES;
     [self addSubview:self.configedgView];
     
@@ -127,12 +126,12 @@ static CGFloat kEmojis_Height = 180;
     self.configTextView.layoutManager.allowsNonContiguousLayout = NO;
     [self addSubview:self.configTextView];
     
-    self.keyBoardView = [[LKEmojiKeyBoard alloc] initWithFrame:CGRectMake(0, SCREEN_HEIGHT - kEmojis_Height, SCREEN_WIDTH, kEmojis_Height) delegate:self];
+    self.keyBoardView = [[LKEmojiKeyBoard alloc] initWithFrame:CGRectMake(0, kSCREEN_HEIGHT, SCREEN_WIDTH, kEmojisHeight) delegate:self];
     self.keyBoardView.hidden = YES;
     [[UIApplication sharedApplication].keyWindow addSubview:self.keyBoardView];
 }
 
-- (UIColor *)utilColor {
+- (UIColor *)layerColor {
     
     return [UIColor colorWithHexString:@"e8e8e8"];
 }
@@ -149,7 +148,7 @@ static CGFloat kEmojis_Height = 180;
     return lineHeight;
 }
 
-- (void)initKeyBoardNote
+- (void)noteKeyBoard
 {
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
@@ -193,13 +192,14 @@ static CGFloat kEmojis_Height = 180;
     [UIView animateWithDuration:_originDuration animations:^{
         [UIView setAnimationsEnabled:YES];
         [UIView setAnimationCurve:_animationCurve];
-        self.center = CGPointMake(self.center.x, keyBoardEndY - (self.bounds.size.height - keyBoardEndH)/2);
+        self.keyBoardView.hidden = _keyboardIsVisible;
+        self.center = CGPointMake(self.center.x, keyBoardEndY-(self.bounds.size.height - keyBoardEndH)/2);
         [UIView commitAnimations];
     }];
 }
 
 #pragma mark -
-#pragma mark - Setters - Getters
+#pragma mark - Setters && Getters
 - (void)setFontSize:(CGFloat)fontSize {
     _fontSize = fontSize;
     
@@ -218,14 +218,6 @@ static CGFloat kEmojis_Height = 180;
     if (!_maxLine || _maxLine <= 0) {
         _maxLine = 3;
     }
-}
-
-- (NSString *)content {
-    
-    if (self.configTextView.text.length) {
-        return self.configTextView.text;
-    }
-    return nil;
 }
 
 #pragma mark - <LKEmojiKeyBoardDelegate>
@@ -251,14 +243,14 @@ static CGFloat kEmojis_Height = 180;
         [UIView animateWithDuration:_originDuration+0.35 animations:^{
             [UIView setAnimationsEnabled:YES];
             [UIView setAnimationCurve:_animationCurve];
-            self.center = CGPointMake(self.center.x, self.keyBoardView.top - (self.height/2));
+            self.keyBoardView.center = CGPointMake(self.keyBoardView.centerX, kSCREEN_HEIGHT - self.keyBoardView.height/2);
             self.keyBoardView.hidden = NO;
+            self.center = CGPointMake(self.center.x, self.keyBoardView.top - (self.height/2));
             [UIView commitAnimations];
         }];
-        
     }else {
-        _keyBoardStatus = kInputBarDidStatus_keyboard;
         [self become];
+        _keyBoardStatus = kInputBarDidStatus_keyboard;
     }
     
     if (self.delegate && [self.delegate respondsToSelector:@selector(inputBoxBar:DidKeyBoardStatus:)]) {
@@ -280,7 +272,11 @@ static CGFloat kEmojis_Height = 180;
         [UIView setAnimationsEnabled:YES];
         [UIView setAnimationCurve:_animationCurve];
         self.center = CGPointMake(self.center.x, kSCREEN_HEIGHT + self.height);
-        self.keyBoardView.hidden = YES;
+        [UIView animateWithDuration:_originDuration animations:^{
+            self.keyBoardView.center = CGPointMake(self.keyBoardView.centerX, kSCREEN_HEIGHT + self.keyBoardView.height);
+        } completion:^(BOOL finished) {
+            self.keyBoardView.hidden = YES;
+        }];
         [UIView commitAnimations];
     }];
 }
@@ -301,6 +297,7 @@ static CGFloat kEmojis_Height = 180;
     [self.configTextView.delegate textViewDidChange:self.configTextView];
 }
 
+#pragma mark -
 #pragma mark - <UITextViewDelegate>
 - (void)textViewDidChange:(UITextView *)textView {
     if (textView.text.length <= 0) {
@@ -318,13 +315,18 @@ static CGFloat kEmojis_Height = 180;
         textView.height = maxTextViewHeight;
     }
     self.height = ceil(textView.height) + 10 + 10;
-    self.bottom = self.keyboardIsVisible == YES ? kSCREEN_HEIGHT - _keyboardHeight : kSCREEN_HEIGHT - kEmojis_Height;
+    self.bottom = self.keyboardIsVisible == YES ? kSCREEN_HEIGHT - _keyboardHeight : kSCREEN_HEIGHT - kEmojisHeight;
     [textView scrollRangeToVisible:NSMakeRange(textView.selectedRange.location, 1)];
     
     if (self.delegate && [self.delegate respondsToSelector:@selector(inputBoxBar:DidEditingAtText:)]) {
         
         [self.delegate inputBoxBar:self DidEditingAtText:textView.text];
     }
+}
+
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
+    self.senderButton.enabled = textField.text.length > 0;
+    return YES;
 }
 
 #pragma mark -
@@ -339,10 +341,10 @@ static CGFloat kEmojis_Height = 180;
     self.configedgView.height   = self.configTextView.height + 10;
     self.configedgView.centerY  = self.height * 0.5;
     self.configTextView.centerY = self.height * 0.5;
-    self.botLine.bottom = self.height - 1;
+    self.botLine.bottom         = self.height - 1;
 }
 
-#pragma mark - dealloc
+#pragma mark - <dealloc>
 - (void)dealloc {
     
     [[NSNotificationCenter defaultCenter] removeObserver:self];

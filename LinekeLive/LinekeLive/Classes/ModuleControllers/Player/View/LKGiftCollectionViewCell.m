@@ -20,15 +20,14 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     
-    [self configureas];
+    [self initSubviews];
 }
 
-- (void)configureas {
+- (void)initSubviews {
     self.backgroundColor = [UIColor clearColor];
     
     UIView *selectView = [[UIView alloc] init];
-    selectView.layer.cornerRadius = 5;
-    selectView.layer.borderWidth = 1.5;
+    selectView.layer.borderWidth = 1.0;
     selectView.layer.borderColor = [UIColor orangeColor].CGColor;
     selectView.layer.masksToBounds = YES;
     

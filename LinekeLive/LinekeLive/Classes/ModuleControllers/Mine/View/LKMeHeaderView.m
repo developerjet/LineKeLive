@@ -11,15 +11,13 @@
 #import "FLAnimatedImage.h"
 #import <Masonry.h>
 
-static NSString *imagePath = @"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1516351655298&di=5b3efa13bcd95159393f47ce4bee3668&imgtype=0&src=http%3A%2F%2Fwww.fevte.com%2Fdata%2Fattachment%2Fportal%2F201607%2F04%2F224648wo5vp2rya5pu0mp2.gif";
-
 @interface LKMeHeaderView()
 @property (nonatomic, strong) UIView   *spaceView;
 @property (nonatomic, strong) UIView   *bottomView;
 @property (nonatomic, strong) UILabel  *titleLabel;
 @property (nonatomic, strong) UIButton *topLeftBtn;
 @property (nonatomic, strong) UIButton *topRightBtn;
-@property (nonatomic, strong) FLAnimatedImageView *backImageView;
+@property (nonatomic, strong) UIImageView *backGroundView;
 @property (nonatomic, strong) NSArray *items; // 底部标题
 
 @end
@@ -40,7 +38,7 @@ static NSString *imagePath = @"https://timgsa.baidu.com/timg?image&quality=80&si
     
 }
 
-#pragma mark - initial
+#pragma mark - Life Cycle
 - (instancetype)initWithFrame:(CGRect)frame {
     
     if (self = [super initWithFrame:frame]) {
@@ -62,10 +60,8 @@ static NSString *imagePath = @"https://timgsa.baidu.com/timg?image&quality=80&si
     _bottomView.backgroundColor = [UIColor whiteColor];
     [self addSubview:_bottomView];
     
-    FLAnimatedImage *animatedImage = [FLAnimatedImage animatedImageWithGIFData:[NSData dataWithContentsOfURL:[NSURL URLWithString:imagePath]]];
-    _backImageView = [FLAnimatedImageView new];
-    _backImageView.animatedImage = animatedImage;
-    [self addSubview:_backImageView];
+    _backGroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"me_tableheader_image"]];
+    [self addSubview:_backGroundView];
     
     _topLeftBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [_topLeftBtn setImage:[UIImage imageNamed:@"me_global_search"] forState:UIControlStateNormal];
@@ -102,7 +98,7 @@ static NSString *imagePath = @"https://timgsa.baidu.com/timg?image&quality=80&si
         make.height.equalTo(@44);
     }];
     
-    [_backImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+    [_backGroundView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self);
         make.left.right.equalTo(self);
         make.bottom.equalTo(_bottomView.mas_top).offset(0);

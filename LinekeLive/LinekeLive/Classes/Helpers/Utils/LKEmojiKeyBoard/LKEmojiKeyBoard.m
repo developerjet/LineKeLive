@@ -11,7 +11,7 @@
 #import "LKEmojiKeyBoardLabelCell.h"
 #import "LKEmojiKeyBoardImageCell.h"
 
-static  NSString *kEmojiKeyBoardIdentifier  = @"LKEmojiKeyBoardLabelCell";
+static  NSString *kEmojiLabelCellIdentifier = @"LKEmojiKeyBoardLabelCell";
 static  NSString *kEmojiImageCellIdentifier = @"LKEmojiKeyBoardImageCell";
 
 @interface LKEmojiKeyBoard()<UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
@@ -22,7 +22,7 @@ static  NSString *kEmojiImageCellIdentifier = @"LKEmojiKeyBoardImageCell";
 
 @implementation LKEmojiKeyBoard
 
-#pragma mark - initial
+#pragma mark - Life cycle
 - (instancetype)init {
     if (self = [super init]) {
         [self initSubviews];
@@ -52,7 +52,7 @@ static  NSString *kEmojiImageCellIdentifier = @"LKEmojiKeyBoardImageCell";
     _emojiCollectionView.pagingEnabled = YES;
     _emojiCollectionView.backgroundColor = [UIColor colorWithHexString:@"F8F8F8"];
     [_emojiCollectionView registerClass:[LKEmojiKeyBoardLabelCell class]
-             forCellWithReuseIdentifier:kEmojiKeyBoardIdentifier];
+             forCellWithReuseIdentifier:kEmojiLabelCellIdentifier];
     [_emojiCollectionView registerClass:[LKEmojiKeyBoardImageCell class]
              forCellWithReuseIdentifier:kEmojiImageCellIdentifier];
     _emojiCollectionView.showsVerticalScrollIndicator = NO;
@@ -85,12 +85,12 @@ static  NSString *kEmojiImageCellIdentifier = @"LKEmojiKeyBoardImageCell";
         return cell;
     }
     
-    LKEmojiKeyBoardLabelCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kEmojiKeyBoardIdentifier forIndexPath:indexPath];
+    LKEmojiKeyBoardLabelCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kEmojiLabelCellIdentifier forIndexPath:indexPath];
     if (self.emojiAssets.count > indexPath.row) {
         NSArray *values = self.emojiAssets[indexPath.section];
         if (values.count > indexPath.row) {
-            NSString *value = self.emojiAssets[indexPath.section][indexPath.row];
-            cell.emojiValue = value;
+            NSString *emoji = self.emojiAssets[indexPath.section][indexPath.row];
+            cell.emoji = emoji;
         }
     }
     return cell;
@@ -140,6 +140,7 @@ static  NSString *kEmojiImageCellIdentifier = @"LKEmojiKeyBoardImageCell";
     return CGSizeZero;
 }
 
+#pragma mark -
 #pragma mark - Lazy
 - (NSMutableArray *)emojiAssets {
     

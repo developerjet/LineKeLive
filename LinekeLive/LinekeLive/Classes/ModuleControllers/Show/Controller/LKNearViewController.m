@@ -15,9 +15,8 @@
 #define kMargin     5
 #define kItemWidth  100
 #define ANGLE_TO_RADIAN(angle) ((angle)/180.0 * M_PI)
-//#define collectionWid   (SCREEN_WIDTH-(cols+1)*margin)/cols
 
-static NSString * const Identifier = @"NearLiveCell";
+static NSString * const kNearLiveIdentifier = @"kNearLiveIdentifier";
 
 @interface LKNearViewController ()
 <UICollectionViewDelegate,
@@ -48,19 +47,19 @@ UICollectionViewDelegateFlowLayout>
         layout.minimumInteritemSpacing = kMargin;
         layout.sectionInset = UIEdgeInsetsMake(kMargin, kMargin, kMargin, kMargin);
         
-        CGRect frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-SCREEN_NAV-SCREEN_TABBAR);
+        CGRect frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-64-49);
         _collectionView = [[UICollectionView alloc] initWithFrame:frame collectionViewLayout:layout];
         _collectionView.delegate = self;
         _collectionView.dataSource = self;
         _collectionView.backgroundColor = [UIColor clearColor];
         _collectionView.alwaysBounceVertical = YES;
-        [_collectionView registerNib:[UINib nibWithNibName:@"LKNearCollectionViewCell" bundle:nil] forCellWithReuseIdentifier:Identifier];
+        [_collectionView registerNib:[UINib nibWithNibName:@"LKNearCollectionViewCell" bundle:nil] forCellWithReuseIdentifier:kNearLiveIdentifier];
     }
     return _collectionView;
 }
 
 #pragma mark -
-#pragma mark - view Loads
+#pragma mark - Life Cycle
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor colorBackGroundWhiteColor];
@@ -172,7 +171,7 @@ UICollectionViewDelegateFlowLayout>
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     
-    LKNearCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:Identifier forIndexPath:indexPath];
+    LKNearCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kNearLiveIdentifier forIndexPath:indexPath];
     
     if (self.dataSource.count > indexPath.row) {
         

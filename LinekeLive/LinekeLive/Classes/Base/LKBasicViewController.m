@@ -8,7 +8,7 @@
 
 #import "LKBasicViewController.h"
 
-@interface LKBasicViewController ()
+@interface LKBasicViewController ()<UINavigationControllerDelegate>
 
 @end
 
@@ -20,6 +20,8 @@
     return UIStatusBarStyleDefault;
 }
 
+
+#pragma mark - Life Cycle
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     
@@ -30,22 +32,28 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.navigationController.delegate = self;
     self.view.backgroundColor = [UIColor colorWithRandom];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)viewSafeAreaInsetsDidChange {
+    // 补充：顶部的危险区域就是距离刘海10points，（状态栏不隐藏）
+    // 也可以不写，系统默认是UIEdgeInsetsMake(10, 0, 34, 0);
+    [super viewSafeAreaInsetsDidChange];
+    self.additionalSafeAreaInsets = UIEdgeInsetsMake(10, 0, 34, 0);
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+#pragma mark -
+#pragma mark - <UINavigationControllerDelegate>
+- (void)navigationController:(UINavigationController *)navigationController willShowViewController:(UIViewController *)viewController animated:(BOOL)animated {
+    if (![[[UIDevice currentDevice] model] isEqualToString: @"iPhone X"]) {
+        return;
+    }
+    CGRect frame = self.tabBarController.tabBar.frame;
+    if (frame.origin.y < ([UIScreen mainScreen].bounds.size.height - 83)) {
+        frame.origin.y = [UIScreen mainScreen].bounds.size.height - 83;
+        self.tabBarController.tabBar.frame = frame;
+    }
 }
-*/
 
 @end

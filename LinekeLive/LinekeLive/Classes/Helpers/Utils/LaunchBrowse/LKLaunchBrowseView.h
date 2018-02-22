@@ -23,6 +23,8 @@
 @property (nonatomic, copy) void(^browseFinishedBlock)();
 /** 跳转按钮图片设置 */
 @property (nonatomic, copy) NSString *imageName;
+/** 指定滚动的图片位置 */
+@property (nonatomic, strong) NSIndexPath *indexPath;
 
 - (void)show;
 - (void)dismiss;

@@ -87,7 +87,6 @@
                                  @"http://pic.paopaoche.net/up/2012-2/20122220201612322865.png",
                                  @"http://img5.pcpop.com/ArticleImages/picshow/0x0/20110801/2011080114495843125.jpg",
                                  @"http://www.mangowed.com/uploads/allimg/130410/1-130410215449417.jpg",
-                                 @"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1517393953794&di=e254bca583929d0bc6adaedd7a75cb5d&imgtype=0&src=http%3A%2F%2Fimg.zcool.cn%2Fcommunity%2F01af5a55f959226ac7251df8250c99.jpg"
                                  ];
         
         LKLaunchBrowseView *browseView = [[LKLaunchBrowseView alloc] initWithConfigImageGroups:imageArray1

@@ -10,4 +10,6 @@
 
 @interface LKBasicNavigationController : UINavigationController
 
+@property (nonatomic, strong) UIPanGestureRecognizer *pan;
+
 @end

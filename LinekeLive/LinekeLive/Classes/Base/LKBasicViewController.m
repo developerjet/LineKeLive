@@ -44,7 +44,7 @@
 }
 
 #pragma mark -
-#pragma mark - <UINavigationControllerDelegate>
+#pragma mark - <UINavigationControllerDelegate iPhoneX适配处理>
 - (void)navigationController:(UINavigationController *)navigationController willShowViewController:(UIViewController *)viewController animated:(BOOL)animated {
     if (![[[UIDevice currentDevice] model] isEqualToString: @"iPhone X"]) {
         return;

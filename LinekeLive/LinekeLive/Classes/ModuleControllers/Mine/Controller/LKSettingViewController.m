@@ -10,7 +10,7 @@
 #import "LKLoginViewController.h"
 #import <SDImageCache.h>
 
-static NSString *const Identifier = @"SettingCell";
+static NSString *const kSettingIdentifier = @"kSettingIdentifier";
 
 @interface LKSettingViewController ()<UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic, strong) UITableView *tableView;
@@ -20,7 +20,7 @@ static NSString *const Identifier = @"SettingCell";
 
 @implementation LKSettingViewController
 
-#pragma mark - lazyLoad
+#pragma mark - Lazy
 - (UITableView *)tableView {
     
     if (!_tableView) {
@@ -35,7 +35,7 @@ static NSString *const Identifier = @"SettingCell";
     return _tableView;
 }
 
-#pragma mark - view Load
+#pragma mark - Life Cycle
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -53,9 +53,9 @@ static NSString *const Identifier = @"SettingCell";
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:Identifier];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kSettingIdentifier];
     if (!cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:Identifier];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:kSettingIdentifier];
         if (indexPath.row == 0) {
             cell.textLabel.text = [self getCaches];
             self.clearBlock = ^{

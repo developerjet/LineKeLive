@@ -33,12 +33,12 @@
     return _items;
 }
 
+#pragma mark - Life Cycle
 - (void)awakeFromNib {
     [super awakeFromNib];
     
 }
 
-#pragma mark - Life Cycle
 - (instancetype)initWithFrame:(CGRect)frame {
     
     if (self = [super initWithFrame:frame]) {
@@ -80,8 +80,8 @@
     
     _topLeftBtn.tag  = 10000;
     _topRightBtn.tag = 10001;
-    [_topLeftBtn addTarget:self action:@selector(headerAction:) forControlEvents:UIControlEventTouchUpInside];
-    [_topRightBtn addTarget:self action:@selector(headerAction:) forControlEvents:UIControlEventTouchUpInside];
+    [_topLeftBtn addTarget:self action:@selector(onClick:) forControlEvents:UIControlEventTouchUpInside];
+    [_topRightBtn addTarget:self action:@selector(onClick:) forControlEvents:UIControlEventTouchUpInside];
 }
 
 - (void)initConstraint {
@@ -139,11 +139,11 @@
     }
 }
 
-#pragma mark - Header actions
-- (void)headerAction:(UIButton *)sender {
+#pragma mark - actions
+- (void)onClick:(UIButton *)button {
     
     if (self.DidFinishedBlock) {
-        self.DidFinishedBlock(sender.tag);
+        self.DidFinishedBlock(button.tag);
     }
 }
 

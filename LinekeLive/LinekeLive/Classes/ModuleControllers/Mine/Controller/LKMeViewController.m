@@ -8,12 +8,13 @@
 
 #import "LKMeViewController.h"
 #import "LKSettingViewController.h"
+#import "LKAddressListController.h"
 #import "LKMeTableViewCell.h"
 #import "LKMeHeaderView.h"
 #import "LKMineModel.h"
 #import "InputBoxBar.h"
 
-static NSString * const mineCellID = @"MineTableCell";
+static NSString * const kMeCellWithIdentifier = @"kMeCellWithIdentifier";
 
 @interface LKMeViewController ()<UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic, strong) UITableView *tableView;
@@ -28,7 +29,6 @@ static NSString * const mineCellID = @"MineTableCell";
 }
 
 #pragma mark - Lazy
-
 - (NSArray *)dataSource {
     
     if (!_dataSource) {
@@ -54,28 +54,34 @@ static NSString * const mineCellID = @"MineTableCell";
         _tableView.dataSource = self;
         _tableView.backgroundColor = [UIColor colorBackGroundColor];
         _tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
-        [_tableView registerNib:[UINib nibWithNibName:@"LKMeTableViewCell" bundle:nil] forCellReuseIdentifier:mineCellID];
+        [_tableView registerNib:[UINib nibWithNibName:@"LKMeTableViewCell" bundle:nil] forCellReuseIdentifier:kMeCellWithIdentifier];
     }
     return _tableView;
 }
 
-#pragma mark - Events
-
+#pragma mark - Life cycle
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self initSubviews];
+    [self initSubview];
 }
 
-- (void)initSubviews {
+- (void)initSubview {
     self.view.backgroundColor = [UIColor colorBackGroundColor];
     
+    WeakSelf;
     LKMeHeaderView *headerView = [[LKMeHeaderView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 300)];
     self.tableView.tableHeaderView = headerView;
     [self.view addSubview:self.tableView];
+    headerView.DidFinishedBlock = ^(kMeHeaderDidStatus status) {
+        if (status == kMeHeaderDidStatus_Left) {
+            LKAddressListController *address = [[LKAddressListController alloc] init];
+            [weakSelf.navigationController pushViewController:address animated:YES];
+        }
+    };
 }
 
-#pragma mark - data && delegate
+#pragma mark - <UITableViewDataSource>
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     
     return self.dataSource.count;
@@ -83,14 +89,12 @@ static NSString * const mineCellID = @"MineTableCell";
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
-    NSArray *datas = self.dataSource[section];
-    
-    return datas.count;
+    return [self.dataSource[section] count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    LKMeTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:mineCellID];
+    LKMeTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kMeCellWithIdentifier];
     cell.accessoryType = YES;
     if ([self.dataSource[indexPath.section] count] > indexPath.row) {
         cell.model = self.dataSource[indexPath.section][indexPath.row];
@@ -107,6 +111,7 @@ static NSString * const mineCellID = @"MineTableCell";
     }
 }
 
+#pragma mark - <UITableViewDataDelegate>
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     

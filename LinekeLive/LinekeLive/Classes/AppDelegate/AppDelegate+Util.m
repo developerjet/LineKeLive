@@ -9,6 +9,7 @@
 #import "AppDelegate+Util.h"
 #import "LKLaunchBrowseView.h"
 #import "LKLocationManager.h"
+#import <Contacts/Contacts.h>
 #import <UIColor+YYAdd.h>
 #import <Bugly/Bugly.h>
 #import "YYFPSLabel.h"
@@ -57,15 +58,16 @@
 
 #pragma mark -
 #pragma mark - Init Utils
-- (void)initAppUtil {
+- (void)initAppUtils {
     
     // 腾讯Bugly
     [Bugly startWithAppId:@"dcb5a15014"];
     
     [self appearanceSet];
     [self initReachNote];
-    [self initLoaction];
     [self initLaunchBrows];
+    [self initLoaction];
+    [self authorizeAddress];
 }
 
 - (void)appearanceSet {
@@ -75,6 +77,21 @@
         [UITableView appearance].estimatedSectionHeaderHeight =0;
         [UITableView appearance].estimatedSectionFooterHeight =0;
         [UITableView appearance].contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+    }
+}
+
+- (void)authorizeAddress
+{
+    CNAuthorizationStatus authorizationStatus = [CNContactStore authorizationStatusForEntityType:CNEntityTypeContacts];
+    
+    if(authorizationStatus ==CNAuthorizationStatusNotDetermined) {
+        CNContactStore *contactStore = [[CNContactStore alloc]init];
+        
+        [contactStore requestAccessForEntityType:CNEntityTypeContacts completionHandler:^(BOOL granted, NSError * _Nullable error) {
+            if (granted) {
+                LKLog(@"授权成功");
+            }
+        }];
     }
 }
 

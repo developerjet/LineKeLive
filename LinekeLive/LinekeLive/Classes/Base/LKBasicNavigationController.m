@@ -21,7 +21,7 @@
     return UIStatusBarStyleDefault;
 }
 
-#pragma mark - Life Cycle
+#pragma mark - Life cycle
 - (void)viewDidLoad {
     [super viewDidLoad];
     

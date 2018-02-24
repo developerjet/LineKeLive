@@ -11,6 +11,9 @@
 		2B1E7FCF1F458BDD00B00C58 /* LKLiveSessionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B1E7FCE1F458BDD00B00C58 /* LKLiveSessionView.m */; };
 		2B1E7FD31F459B2100B00C58 /* LKTalkTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B1E7FD11F459B2100B00C58 /* LKTalkTableViewCell.m */; };
 		2B1E7FD41F459B2100B00C58 /* LKTalkTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2B1E7FD21F459B2100B00C58 /* LKTalkTableViewCell.xib */; };
+		2B50558D2040128300AB2F5C /* LKAddressListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B50558C2040128300AB2F5C /* LKAddressListController.m */; };
+		2B50558F204012F200AB2F5C /* Contacts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B50558E204012F200AB2F5C /* Contacts.framework */; };
+		2B505591204012F900AB2F5C /* ContactsUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B505590204012F900AB2F5C /* ContactsUI.framework */; };
 		2B55FBC81EFA73E0005A83BE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B55FBC71EFA73E0005A83BE /* main.m */; };
 		2B55FBD31EFA73E0005A83BE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2B55FBD21EFA73E0005A83BE /* Assets.xcassets */; };
 		2B55FBD61EFA73E0005A83BE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2B55FBD41EFA73E0005A83BE /* LaunchScreen.storyboard */; };
@@ -144,6 +147,10 @@
 		2B1E7FD01F459B2100B00C58 /* LKTalkTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKTalkTableViewCell.h; sourceTree = "<group>"; };
 		2B1E7FD11F459B2100B00C58 /* LKTalkTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKTalkTableViewCell.m; sourceTree = "<group>"; };
 		2B1E7FD21F459B2100B00C58 /* LKTalkTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LKTalkTableViewCell.xib; sourceTree = "<group>"; };
+		2B50558B2040128300AB2F5C /* LKAddressListController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LKAddressListController.h; sourceTree = "<group>"; };
+		2B50558C2040128300AB2F5C /* LKAddressListController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LKAddressListController.m; sourceTree = "<group>"; };
+		2B50558E204012F200AB2F5C /* Contacts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Contacts.framework; path = System/Library/Frameworks/Contacts.framework; sourceTree = SDKROOT; };
+		2B505590204012F900AB2F5C /* ContactsUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ContactsUI.framework; path = System/Library/Frameworks/ContactsUI.framework; sourceTree = SDKROOT; };
 		2B55FBC31EFA73E0005A83BE /* LinekeLive.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LinekeLive.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2B55FBC71EFA73E0005A83BE /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		2B55FBD21EFA73E0005A83BE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -338,6 +345,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2B505591204012F900AB2F5C /* ContactsUI.framework in Frameworks */,
+				2B50558F204012F200AB2F5C /* Contacts.framework in Frameworks */,
 				2B9C00221F00F6010010611A /* CoreLocation.framework in Frameworks */,
 				2B9C000D1F00B0630010611A /* AVFoundation.framework in Frameworks */,
 				2B9C000B1F00B04C0010611A /* VideoToolbox.framework in Frameworks */,
@@ -683,6 +692,8 @@
 		611CC6AEAB7F8BE508BF8CD4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2B505590204012F900AB2F5C /* ContactsUI.framework */,
+				2B50558E204012F200AB2F5C /* Contacts.framework */,
 				2B9C00211F00F6010010611A /* CoreLocation.framework */,
 				2B9C000C1F00B0630010611A /* AVFoundation.framework */,
 				2B9C000A1F00B04C0010611A /* VideoToolbox.framework */,
@@ -802,6 +813,8 @@
 				AE7E71321F3B09880019B515 /* LKMeViewController.m */,
 				AE7E71331F3B09880019B515 /* LKSettingViewController.h */,
 				AE7E71341F3B09880019B515 /* LKSettingViewController.m */,
+				2B50558B2040128300AB2F5C /* LKAddressListController.h */,
+				2B50558C2040128300AB2F5C /* LKAddressListController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1171,6 +1184,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2B50558D2040128300AB2F5C /* LKAddressListController.m in Sources */,
 				2B8A3FD6202AC73800E2F5EE /* LKEmojiKeyBoardLabelCell.m in Sources */,
 				AE7E717E1F3B09880019B515 /* LKMeViewController.m in Sources */,
 				2B1E7FD31F459B2100B00C58 /* LKTalkTableViewCell.m in Sources */,

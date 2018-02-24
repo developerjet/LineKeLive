@@ -8,9 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
+typedef NS_ENUM(NSUInteger, kMeHeaderDidStatus) {
+    kMeHeaderDidStatus_Left = 1000,
+    kMeHeaderDidStatus_Right
+};
+
 @interface LKMeHeaderView : UIView
 
 /** 顶部点击回调 */
-@property (nonatomic, weak) void(^DidFinishedBlock)(NSInteger index);
+@property (nonatomic, copy) void(^DidFinishedBlock)(kMeHeaderDidStatus status);
 
 @end

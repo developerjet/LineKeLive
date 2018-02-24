@@ -23,7 +23,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
     [self initWindownRoot];
-    [self initAppUtil];
+    [self initAppUtils];
     
     return YES;
 }

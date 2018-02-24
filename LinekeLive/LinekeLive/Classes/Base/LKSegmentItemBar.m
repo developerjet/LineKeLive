@@ -80,7 +80,7 @@
 }
 
 #pragma mark -
-#pragma mark - Cycle Actions
+#pragma mark - Cycle scrolling
 //滑动控制器时调用title自动滚动
 - (void)scrolling:(NSInteger)index
 {

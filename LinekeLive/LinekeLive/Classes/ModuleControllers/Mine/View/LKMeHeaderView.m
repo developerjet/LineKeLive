@@ -78,8 +78,8 @@
     _titleLabel.text = @"送出99";
     [self addSubview:_titleLabel];
     
-    _topLeftBtn.tag  = 10000;
-    _topRightBtn.tag = 10001;
+    _topLeftBtn.tag  = 1000;
+    _topRightBtn.tag = 1001;
     [_topLeftBtn addTarget:self action:@selector(onClick:) forControlEvents:UIControlEventTouchUpInside];
     [_topRightBtn addTarget:self action:@selector(onClick:) forControlEvents:UIControlEventTouchUpInside];
 }

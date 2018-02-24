@@ -12,6 +12,6 @@
 @interface AppDelegate (Util)
 
 /** 应用启动时常规的设置 */
-- (void)initAppUtil;
+- (void)initAppUtils;
 
 @end

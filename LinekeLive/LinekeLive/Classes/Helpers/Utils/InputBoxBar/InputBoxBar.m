@@ -12,7 +12,7 @@
 #define kSCREEN_HEIGHT  [UIScreen mainScreen].bounds.size.height
 
 static CGFloat kBoxBarHeight = 60;
-static CGFloat kEmojisHeight = 180;
+static CGFloat kEmojisHeight = 200;
 
 @interface InputBoxBar()<UITextViewDelegate, LKEmojiKeyBoardDelegate>
 @property (nonatomic, strong) UIView     *topLine;
@@ -39,7 +39,7 @@ static CGFloat kEmojisHeight = 180;
 
 @implementation InputBoxBar
 
-#pragma mark - initial
+#pragma mark - Life Cycle
 - (instancetype)init {
     
     if (self = [super init]) {
@@ -64,9 +64,9 @@ static CGFloat kEmojisHeight = 180;
     self.topLine.backgroundColor = [self layerColor];
     [self addSubview:self.topLine];
     
-    self.topLine = [[UIView alloc] initWithFrame:CGRectMake(0, self.height-lineHeight, kSCREEN_WIDTH, lineHeight)];
-    self.topLine.backgroundColor = [self layerColor];
-    [self addSubview:self.topLine];
+    self.botLine = [[UIView alloc] initWithFrame:CGRectMake(0, self.height-lineHeight, kSCREEN_WIDTH, lineHeight)];
+    self.botLine.backgroundColor = [self layerColor];
+    [self addSubview:self.botLine];
     
     CGFloat voiceW = 30;
     CGFloat originY = (self.height - voiceW) * 0.5;

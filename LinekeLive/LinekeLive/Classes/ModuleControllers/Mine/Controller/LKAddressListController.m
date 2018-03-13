@@ -11,6 +11,9 @@
 #import "LKAddressListController.h"
 #import <ContactsUI/ContactsUI.h>
 #import <Contacts/Contacts.h>
+#import "LKAddressCell.h"
+
+static NSString *kAddressCellIdentifier = @"kAddressCellIdentifier";
 
 @interface LKAddressListController ()<UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic, strong) UITableView    *addressTable;
@@ -24,7 +27,7 @@
 - (NSMutableArray *)addressGroup {
     
     if (!_addressGroup) {
-        _addressGroup = [[NSMutableArray alloc] init];
+        _addressGroup = [NSMutableArray arrayWithCapacity:0];
     }
     return _addressGroup;
 }
@@ -33,10 +36,12 @@
     
     if (!_addressTable) {
         _addressTable = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, SCREEN_WIDTH, SCREEN_HEIGHT-64) style:UITableViewStylePlain];
+        _addressTable.rowHeight  = 50;
+        _addressTable.delegate   = self;
         _addressTable.dataSource = self;
-        _addressTable.delegate = self;
         _addressTable.showsVerticalScrollIndicator = NO;
         _addressTable.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+        [_addressTable registerNib:[UINib nibWithNibName:@"LKAddressCell" bundle:nil] forCellReuseIdentifier:kAddressCellIdentifier];
     }
     return _addressTable;
 }
@@ -44,7 +49,7 @@
 #pragma mark - Life cycle
 - (void)viewDidLoad {
     [super viewDidLoad];
- 
+    
     self.title = @"通讯录";
     
     [self initSubview];
@@ -112,20 +117,32 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    static NSString *titleFromCellIdentifier = @"titleFromCellIdentifier";
-    
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:titleFromCellIdentifier];
+
+    LKAddressCell *cell = [tableView dequeueReusableCellWithIdentifier:kAddressCellIdentifier];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:titleFromCellIdentifier];
-        cell.textLabel.font = [UIFont systemFontOfSize:15];
-        if (self.addressGroup.count > indexPath.row) {
-            NSDictionary *dict        = self.addressGroup[indexPath.row];
-            cell.textLabel.text       = dict[@"name"];
-            cell.detailTextLabel.text = dict[@"phone"];
-        }
+    if (self.addressGroup.count > indexPath.row) {
+        cell.addressMode = self.addressGroup[indexPath.row];
     }
     return cell;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    if (self.addressGroup.count > indexPath.row) {
+        NSDictionary *dict = self.addressGroup[indexPath.row];
+        [self callTelephoneWithNumber:dict[@"phone"]];
+    }
+}
+
+- (void)callTelephoneWithNumber:(NSString *)number
+{
+    NSString *urlString = [NSString stringWithFormat:@"telprompt://%@", number];
+    
+    if ([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:urlString]]) {
+        
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlString]];
+    }
+}
+
 @end
+

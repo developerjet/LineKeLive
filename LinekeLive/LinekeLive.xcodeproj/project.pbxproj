@@ -37,6 +37,8 @@
 		2B8A3FD0202AA9D900E2F5EE /* EmojisList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2B8A3FCD202AA9D900E2F5EE /* EmojisList.plist */; };
 		2B8A3FD3202AC70A00E2F5EE /* LKEmojiKeyBoardFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B8A3FD2202AC70A00E2F5EE /* LKEmojiKeyBoardFlowLayout.m */; };
 		2B8A3FD6202AC73800E2F5EE /* LKEmojiKeyBoardLabelCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B8A3FD5202AC73800E2F5EE /* LKEmojiKeyBoardLabelCell.m */; };
+		2B9685642045374200A018BC /* LKAddressCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B9685622045374200A018BC /* LKAddressCell.m */; };
+		2B9685652045374200A018BC /* LKAddressCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2B9685632045374200A018BC /* LKAddressCell.xib */; };
 		2B9C00011F00B0150010611A /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B9C00001F00B0150010611A /* libz.tbd */; };
 		2B9C00031F00B01D0010611A /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B9C00021F00B01D0010611A /* MediaPlayer.framework */; };
 		2B9C00051F00B0280010611A /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B9C00041F00B0280010611A /* MobileCoreServices.framework */; };
@@ -195,6 +197,9 @@
 		2B8A3FD2202AC70A00E2F5EE /* LKEmojiKeyBoardFlowLayout.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LKEmojiKeyBoardFlowLayout.m; sourceTree = "<group>"; };
 		2B8A3FD4202AC73800E2F5EE /* LKEmojiKeyBoardLabelCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LKEmojiKeyBoardLabelCell.h; sourceTree = "<group>"; };
 		2B8A3FD5202AC73800E2F5EE /* LKEmojiKeyBoardLabelCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LKEmojiKeyBoardLabelCell.m; sourceTree = "<group>"; };
+		2B9685612045374200A018BC /* LKAddressCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LKAddressCell.h; sourceTree = "<group>"; };
+		2B9685622045374200A018BC /* LKAddressCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LKAddressCell.m; sourceTree = "<group>"; };
+		2B9685632045374200A018BC /* LKAddressCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LKAddressCell.xib; sourceTree = "<group>"; };
 		2B9C00001F00B0150010611A /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		2B9C00021F00B01D0010611A /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		2B9C00041F00B0280010611A /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
@@ -836,6 +841,9 @@
 				AE7E713C1F3B09880019B515 /* LKMeTableViewCell.h */,
 				AE7E713D1F3B09880019B515 /* LKMeTableViewCell.m */,
 				AE7E713E1F3B09880019B515 /* LKMeTableViewCell.xib */,
+				2B9685612045374200A018BC /* LKAddressCell.h */,
+				2B9685622045374200A018BC /* LKAddressCell.m */,
+				2B9685632045374200A018BC /* LKAddressCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1088,6 +1096,7 @@
 				AE7E71751F3B09880019B515 /* camra_beauty_close@3x.png in Resources */,
 				AE7E71841F3B09880019B515 /* LKMeTableViewCell.xib in Resources */,
 				AE7E718B1F3B09880019B515 /* LKGiftCollectionViewCell.xib in Resources */,
+				2B9685652045374200A018BC /* LKAddressCell.xib in Resources */,
 				AE7E71721F3B09880019B515 /* camra_beauty@2x.png in Resources */,
 				AE7E71861F3B09880019B515 /* LKLiveRoomViewController.xib in Resources */,
 				AE7E71781F3B09880019B515 /* close_preview@2x.png in Resources */,
@@ -1191,6 +1200,7 @@
 				AE7E71911F3B09880019B515 /* LKLiveHandler.m in Sources */,
 				2BE69B152022D45A009A2707 /* LKLaunchBrowseCell.m in Sources */,
 				AE7E718E1F3B09880019B515 /* LKHotViewController.m in Sources */,
+				2B9685642045374200A018BC /* LKAddressCell.m in Sources */,
 				2BA6A17E20204D02006FDA28 /* HttpTool.m in Sources */,
 				2B8A333E1F4824880090B2BB /* LKShareActivityView.m in Sources */,
 				2BA6A17D20204D02006FDA28 /* APIConfig.m in Sources */,

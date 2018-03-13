@@ -22,20 +22,20 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
-    [self initWindownRoot];
+    [self initWindowRoot];
     [self initAppUtils];
     
     return YES;
 }
 
 //设置根控制器
-- (void)initWindownRoot {
+- (void)initWindowRoot {
     
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     self.window.backgroundColor = [UIColor colorBackGroundWhiteColor];
     
-    LKLoginViewController *LKLogin = [[LKLoginViewController alloc] init];
-    self.window.rootViewController = LKLogin;
+    LKLoginViewController *loginVC = [[LKLoginViewController alloc] init];
+    [self.window setRootViewController:loginVC];
     [self.window makeKeyAndVisible];
 }
 
